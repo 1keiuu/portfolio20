@@ -111,12 +111,12 @@ export default class SkillPage extends React.Component<Props, State> {
   render() {
     return (
       <div>
-        <Line data={this.state.data} redraw={true} />
         <select onChange={this.dataChange}>
           <option value="week">Week</option>
           <option value="month">Month</option>
           <option value="year">Year</option>
         </select>
+        <Line data={this.state.data} redraw={true} />
       </div>
     );
   }

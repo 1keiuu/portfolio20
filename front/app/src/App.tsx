@@ -1,9 +1,9 @@
 import React from "react";
-import "./App.css";
+import "./App.scss";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import SkillPage from "./pages/SkillPage";
-import Header from "./components/shared/Header";
+import Home from "./pages/home/Home";
+import SkillPage from "./pages/skill/SkillPage";
+import Header from "./shared/header/Header";
 export default class App extends React.Component {
   render() {
     return (
