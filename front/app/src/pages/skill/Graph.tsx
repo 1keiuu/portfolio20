@@ -1,6 +1,7 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 import "./style/Graph.scss";
+import axios from "axios";
 
 const weeklyData = {
   labels: ["7/7", "7/6", "7/5", "7/4", "7/3", "7/2", "7/1"],
@@ -91,8 +92,12 @@ export default class Graph extends React.Component<Props, State> {
       data: {},
     };
   }
-  componentDidMount() {
+  async componentDidMount() {
     this.setState({ data: weeklyData });
+    const res = await axios.get("http://localhost:8000/contributions", {
+      headers: { "Content-Type": "application/json" },
+    });
+    console.log(res);
   }
   dataChange = (e: any) => {
     const val = e.target.value;
