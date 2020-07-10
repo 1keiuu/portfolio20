@@ -38,6 +38,11 @@ services:
     ports:
       - 4000:4000
     stdin_open: true
+  scraping:
+    build: ./scraping
+    tty: true
+    volumes:
+      - ./scraping:/go/src/work
 volumes:
   mysql-data:
     driver: local
