@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"net/url"
 	"os"
+	"strconv"
 )
 
 func getDoc(URL string) *goquery.Document {
@@ -30,27 +31,7 @@ func getDoc(URL string) *goquery.Document {
 	return doc
 }
 
-func Write(MAP []map[string]string) {
-	fmt.Println(MAP)
-	b := []byte{}
-	for _, line := range MAP {
-		ll := []byte(line["date"] + " " + line["count"] + "\n")
-		for _, l := range ll {
-			b = append(b, l)
-		}
-	}
-
-	err := ioutil.WriteFile("write.txt", b, 0666)
-	if err != nil {
-		fmt.Println(os.Stderr, err)
-		os.Exit(1)
-	}
-}
-
-func main() {
-	base, _ := url.Parse("https://github.com/ikkei12")
-	doc := getDoc(base.String())
-	var endpointArr []string
+func getContributionData(doc *goquery.Document, index string) {
 	dataArr := []map[string]string{}
 
 	// 1回目
@@ -61,7 +42,29 @@ func main() {
 		dataMap := map[string]string{"count": count, "date": date}
 		dataArr = append(dataArr, dataMap)
 	})
-	Write(dataArr)
+	Write(dataArr, index)
+}
+
+func Write(dataMap []map[string]string, index string) {
+	b := []byte{}
+	for _, line := range dataMap {
+		ll := []byte(line["date"] + " " + line["count"] + "\n")
+		for _, l := range ll {
+			b = append(b, l)
+		}
+	}
+
+	err := ioutil.WriteFile("data"+index+".txt", b, 0666)
+	if err != nil {
+		fmt.Println(os.Stderr, err)
+		os.Exit(1)
+	}
+}
+
+func main() {
+	base, _ := url.Parse("https://github.com/ikkei12")
+	doc := getDoc(base.String())
+	var endpointArr []string
 
 	// 年度別にリンクを取得 endpointArrへ
 	yearCount := doc.Find("a.js-year-link")
@@ -71,7 +74,8 @@ func main() {
 		endpoint := base.ResolveReference(reference).String()
 		endpointArr = append(endpointArr, endpoint)
 	})
-
-	fmt.Println(endpointArr)
-
+	for i, endpoint := range endpointArr {
+		doc := getDoc(endpoint)
+		getContributionData(doc, strconv.Itoa(i+1))
+	}
 }
