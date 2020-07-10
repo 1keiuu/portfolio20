@@ -9,14 +9,14 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"os"
 )
 
-func main() {
-	base,_ := url.Parse("https://github.com/ikkei12")
-	res,_ := http.Get(base.String())
+func getDoc(URL string) *goquery.Document {
+	res, _ := http.Get(URL)
 	defer res.Body.Close()
 
-	buf,_ := ioutil.ReadAll(res.Body)
+	buf, _ := ioutil.ReadAll(res.Body)
 	det := chardet.NewTextDetector()
 	detRslt, _ := det.DetectBest(buf)
 	// => EUC-JP
@@ -27,24 +27,51 @@ func main() {
 
 	//HTMLパース
 	doc, _ := goquery.NewDocumentFromReader(reader)
-	yearCount := doc.Find("a.js-year-link")
-
-	yearCount.Each(func(i int, s *goquery.Selection) {
-		ref,_ := s.Attr("href")
-		reference,_ := url.Parse(ref)
-		endpoint := base.ResolveReference(reference).String()
-		fmt.Println(endpoint)
-	})
-	//rslt:= doc.Find("rect.day")
-	//rslt.Each(func(index int, s *goquery.Selection) {
-	//	count,_ := s.Attr("data-count")
-	//	date,_ := s.Attr("data-date")
-	//	fmt.Println(date,count)
-	//})
+	return doc
 }
 
+func Write(MAP []map[string]string) {
+	fmt.Println(MAP)
+	b := []byte{}
+	for _, line := range MAP {
+		ll := []byte(line["date"] + " " + line["count"] + "\n")
+		for _, l := range ll {
+			b = append(b, l)
+		}
+	}
 
+	err := ioutil.WriteFile("write.txt", b, 0666)
+	if err != nil {
+		fmt.Println(os.Stderr, err)
+		os.Exit(1)
+	}
+}
 
+func main() {
+	base, _ := url.Parse("https://github.com/ikkei12")
+	doc := getDoc(base.String())
+	var endpointArr []string
+	dataArr := []map[string]string{}
 
-//Q2 5 6 2 3
+	// 1回目
+	rslt := doc.Find("rect.day")
+	rslt.Each(func(index int, s *goquery.Selection) {
+		count, _ := s.Attr("data-count")
+		date, _ := s.Attr("data-date")
+		dataMap := map[string]string{"count": count, "date": date}
+		dataArr = append(dataArr, dataMap)
+	})
+	Write(dataArr)
 
+	// 年度別にリンクを取得 endpointArrへ
+	yearCount := doc.Find("a.js-year-link")
+	yearCount.Each(func(i int, s *goquery.Selection) {
+		ref, _ := s.Attr("href")
+		reference, _ := url.Parse(ref)
+		endpoint := base.ResolveReference(reference).String()
+		endpointArr = append(endpointArr, endpoint)
+	})
+
+	fmt.Println(endpointArr)
+
+}
