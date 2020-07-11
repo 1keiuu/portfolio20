@@ -1,7 +1,6 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 import "./style/Graph.scss";
-import axios from "axios";
 
 const weeklyData = {
   labels: ["7/7", "7/6", "7/5", "7/4", "7/3", "7/2", "7/1"],
@@ -81,27 +80,21 @@ const yearlyData = {
     },
   ],
 };
-interface Props {}
+interface Props {
+  contributionsPromise: Promise<any>;
+}
 interface State {
   data: object;
 }
 export default class Graph extends React.Component<Props, State> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      data: {},
-    };
-  }
-  async componentDidMount() {
-    this.setState({ data: weeklyData });
-    const res = await axios.get("http://localhost:8000/contributions", {
-      headers: { "Content-Type": "application/json" },
+  componentDidMount() {
+    this.props.contributionsPromise.then((data) => {
+      console.log(data);
     });
-    console.log(res);
+    this.setState({ data: weeklyData });
   }
   dataChange = (e: any) => {
     const val = e.target.value;
-    console.log(this.state);
     switch (val) {
       case "week":
         this.setState({ data: weeklyData });
@@ -122,7 +115,7 @@ export default class Graph extends React.Component<Props, State> {
           <option value="month">Month</option>
           <option value="year">Year</option>
         </select>
-        <Line data={this.state.data} redraw={true} />
+        <Line data={yearlyData} redraw={true} />
       </div>
     );
   }
