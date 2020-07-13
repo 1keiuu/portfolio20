@@ -8,6 +8,10 @@ interface Props {
 interface State {}
 export default class SkillPage extends React.Component<Props, State> {
   render() {
-    return <Graph contributionsPromise={this.props.contributionsPromise} />;
+    return (
+      <div className="graph__wrapper">
+        <Graph contributionsPromise={this.props.contributionsPromise} />
+      </div>
+    );
   }
 }

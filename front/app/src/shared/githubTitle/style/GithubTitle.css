@@ -1,0 +1,12 @@
+.github-title__wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.github-title__logo {
+  height: 40px;
+}
+
+.github-title__icon {
+  height: 40px;
+}
