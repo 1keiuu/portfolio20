@@ -8,7 +8,10 @@ class ContributionsController < BaseController
         lastday_of_thisweek = (today - 14.day)
         lastday_of_thisyear = (today - 1.year)
         contribution_of_thisyear = contributions_array.select{|d|today >d.date && d.date >lastday_of_thisyear}
-        weekly = contribution_of_thisyear.select{|y|today >y.date && y.date >=lastday_of_thisweek}
+        contribution_of_thisweek = contribution_of_thisyear.select{|y|today >y.date && y.date >=lastday_of_thisweek}
+        labels = contribution_of_thisweek.pluck(:date).map{|date|date.strftime("%m/%d")}
+        count = contribution_of_thisweek.pluck(:count)
+        weekly = {labels:labels,data:count}
         
         # 月別で取得
         monthly = []

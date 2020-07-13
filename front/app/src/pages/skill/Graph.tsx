@@ -119,65 +119,61 @@ export default class Graph extends React.Component<Props, State> {
   state: State = {
     data: {},
     weeklyData: contributionsData([], []),
-    monthlyData: {},
-    yearlyData: {},
+    monthlyData: contributionsData([], []),
+    yearlyData: contributionsData([], []),
   };
 
-  getWeeklyData(data: []) {
-    const today: object | undefined = data.find((d: { date: string }) => {
-      return (
-        d.date == moment(new Date()).subtract(1, "day").format("YYYY-MM-DD")
-      );
-    });
-    if (today) {
-      const todayIndex = data.indexOf(today);
-      const LABELS = data
-        .slice(todayIndex, todayIndex + 14)
-        .map((d: { date: string }) => {
-          return moment(d.date).format("MM/DD");
-        })
-        .reverse();
-      const DATA = data
-        .slice(todayIndex, todayIndex + 14)
-        .map((d: { count: number }) => {
-          return d.count;
-        })
-        .reverse();
+  // getWeeklyData(data: []) {
+  //   const today: object | undefined = data.find((d: { date: string }) => {
+  //     return (
+  //       d.date == moment(new Date()).subtract(1, "day").format("YYYY-MM-DD")
+  //     );
+  //   });
+  //   if (today) {
+  //     const todayIndex = data.indexOf(today);
+  //     const LABELS = data
+  //       .slice(todayIndex, todayIndex + 14)
+  //       .map((d: { date: string }) => {
+  //         return moment(d.date).format("MM/DD");
+  //       })
+  //       .reverse();
+  //     const DATA = data
+  //       .slice(todayIndex, todayIndex + 14)
+  //       .map((d: { count: number }) => {
+  //         return d.count;
+  //       })
+  //       .reverse();
 
-      return { labels: LABELS, data: DATA };
-    } else {
-      return { labels: [], data: [] };
-    }
-  }
+  //     return { labels: LABELS, data: DATA };
+  //   } else {
+  //     return { labels: [], data: [] };
+  //   }
+  // }
 
-  getMonthlyData(data: []) {
-    const today: {}[] | undefined = data.filter((d: { date: string }) => {
-      return (
-        d.date == moment(new Date()).subtract(1, "day").format("YYYY-MM-DD")
-      );
-    });
-    console.log(data);
-    data.forEach(() => {});
-  }
+  // getMonthlyData(data: []) {
+  //   const today: {}[] | undefined = data.filter((d: { date: string }) => {
+  //     return (
+  //       d.date == moment(new Date()).subtract(1, "day").format("YYYY-MM-DD")
+  //     );
+  //   });
+  //   console.log(data);
+  //   data.forEach(() => {});
+  // }
 
   componentDidMount() {
     this.props.contributionsPromise.then((data) => {
       console.log(data);
-      // const weekly: { labels: string[]; data: number[] } = this.getWeeklyData(
-      //   data
-      // );
-      // this.setState({
-      //   weeklyData: contributionsData(weekly.labels, weekly.data),
-      // });
-      // this.getMonthlyData(data);
-      // this.setState({ data: this.state.weeklyData });
+      this.setState({
+        weeklyData: contributionsData(data.weekly.labels, data.weekly.data),
+      });
+      this.setState({ data: this.state.weeklyData });
     });
   }
   dataChange = (e: any) => {
     const val = e.target.value;
     switch (val) {
       case "week":
-        // this.setState({ data: weeklyData });
+        this.setState({ data: this.state.weeklyData });
         break;
       case "month":
         this.setState({ data: monthlyData });
