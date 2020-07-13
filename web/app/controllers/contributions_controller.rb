@@ -35,7 +35,14 @@ class ContributionsController < BaseController
         end
 
         # 年別で取得
-            
-        render :json => {contributions:{weekly:weekly,monthly:monthly}}
+        first = contributions_array[0]
+        years = (first.date.year..today.year).to_a
+        yearly_array=[]
+        years.each{|year|
+            yearly_data = contributions_array.select{|contribution|contribution.date.year == year}
+            yearly_array.push({year:year,count:yearly_data.sum(&:count)})
+        }
+
+        render :json => {contributions:{weekly:weekly,monthly:monthly,yearly:yearly_array}}
     end
 end
