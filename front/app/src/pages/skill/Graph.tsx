@@ -6,8 +6,7 @@ interface Props {
   contributionsPromise: Promise<any>;
 }
 interface State {
-  currentData: object;
-  weeklyData: {
+  currentData: {
     labels: string[];
     datasets: {
       label: string;
@@ -31,8 +30,11 @@ interface State {
       data: any;
     }[];
   };
-  monthlyData: object;
-  yearlyData: object;
+  weeklyData: any;
+  monthlyData: any;
+  yearlyData: any;
+  weeklyArray: { labels: []; data: [] }[];
+  currentWeeklyIndex: number;
 }
 const contributionsData = (labels: string[], data: number[], type: string) => {
   return {
@@ -60,25 +62,25 @@ const contributionsData = (labels: string[], data: number[], type: string) => {
         data: data,
       },
     ],
+    date: { first: labels[0], last: labels[labels.length - 1] },
   };
 };
 export default class Graph extends React.Component<Props, State> {
   state: State = {
-    currentData: {},
+    currentData: contributionsData([], [], "weekly"),
     weeklyData: contributionsData([], [], "weekly"),
     monthlyData: contributionsData([], [], "monthly"),
     yearlyData: contributionsData([], [], "yearly"),
+    weeklyArray: [],
+    currentWeeklyIndex: 0,
   };
 
   componentDidMount() {
     this.props.contributionsPromise.then((data) => {
       this.setState({
-        weeklyData: contributionsData(
-          data.weekly.labels,
-          data.weekly.data,
-          "weekly"
-        ),
+        weeklyArray: data.weekly,
       });
+      this.getWeeklyData(this.state.currentWeeklyIndex);
       this.setState({
         monthlyData: contributionsData(
           data.monthly.labels,
@@ -109,9 +111,20 @@ export default class Graph extends React.Component<Props, State> {
         this.setState({ currentData: this.state.yearlyData });
         break;
     }
-
-    console.log(this.state.currentData);
   };
+  culcSpan(labels: string[]) {
+    return labels[0] + "~" + labels[labels.length - 1];
+  }
+  getWeeklyData(index: number) {
+    const contData = () => {
+      return contributionsData(
+        this.state.weeklyArray[index].labels,
+        this.state.weeklyArray[index].data,
+        "weekly"
+      );
+    };
+    this.setState({ weeklyData: contData() });
+  }
   render() {
     return (
       <div className="graph">
@@ -130,6 +143,31 @@ export default class Graph extends React.Component<Props, State> {
             </option>
           </select>
         </div>
+        <div>
+          <p>{this.culcSpan(this.state.currentData.labels)}</p>
+        </div>
+        <p
+          onClick={async () => {
+            await this.setState({
+              currentWeeklyIndex: this.state.currentWeeklyIndex - 1,
+            });
+            await this.getWeeklyData(this.state.currentWeeklyIndex);
+            this.setState({ currentData: this.state.weeklyData });
+          }}
+        >
+          next
+        </p>
+        <p
+          onClick={async () => {
+            await this.setState({
+              currentWeeklyIndex: this.state.currentWeeklyIndex + 1,
+            });
+            await this.getWeeklyData(this.state.currentWeeklyIndex);
+            this.setState({ currentData: this.state.weeklyData });
+          }}
+        >
+          prev
+        </p>
         {/* <div className="date-select">{this.state.currentData}</div> */}
         <Line data={this.state.currentData} redraw={true} key={Math.random()} />
       </div>

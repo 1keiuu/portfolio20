@@ -5,14 +5,21 @@ class ContributionsController < BaseController
         today  = Time.current.at_beginning_of_day
 
         # 週別で取得
-        lastday_of_thisweek = (today - 14.day)
+        lastday_of_thisweek = (today - 7.day)
         lastday_of_thisyear = (today - 1.year)
         contribution_of_thisyear = contributions_array.select{|d|today >d.date && d.date >lastday_of_thisyear}
-        contribution_of_thisweek = contribution_of_thisyear.select{|y|today >y.date && y.date >=lastday_of_thisweek}
-        weekly_labels = contribution_of_thisweek.pluck(:date)&.map{|date|date.strftime("%m/%d")}
-        weekly_count = contribution_of_thisweek.pluck(:count)
-        weekly = {labels:weekly_labels,data:weekly_count}
-        
+        contribution_of_thismonth = []
+        4.times{|n|
+            this_day = today-(7*n).day
+            contribution_of_thismonth.push(contributions_array.select{|d|this_day >d.date && d.date >=this_day - 7.day})
+        }
+        weekly = []
+        contribution_of_thismonth.each do |c|
+            weekly.push({
+                labels:c.pluck(:date)&.map{|date|date.strftime("%m/%d")},
+                data:c.pluck(:count)
+            })
+        end
         # 月別で取得
         monthly_array = []
         i = today.month
