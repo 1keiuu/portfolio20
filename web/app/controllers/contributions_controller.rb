@@ -9,12 +9,12 @@ class ContributionsController < BaseController
         lastday_of_thisyear = (today - 1.year)
         contribution_of_thisyear = contributions_array.select{|d|today >d.date && d.date >lastday_of_thisyear}
         contribution_of_thisweek = contribution_of_thisyear.select{|y|today >y.date && y.date >=lastday_of_thisweek}
-        labels = contribution_of_thisweek.pluck(:date).map{|date|date.strftime("%m/%d")}
-        count = contribution_of_thisweek.pluck(:count)
-        weekly = {labels:labels,data:count}
+        weekly_labels = contribution_of_thisweek.pluck(:date)&.map{|date|date.strftime("%m/%d")}
+        weekly_count = contribution_of_thisweek.pluck(:count)
+        weekly = {labels:weekly_labels,data:weekly_count}
         
         # 月別で取得
-        monthly = []
+        monthly_array = []
         i = today.month
         while i >= 1
             if i == today.month
@@ -22,7 +22,7 @@ class ContributionsController < BaseController
             else
                 monthly_data = contribution_of_thisyear.select{|y| y.date.month == i}
             end
-            monthly.push({month:monthly_data[0]&.date&.strftime("%Y/%m"),count_sum:monthly_data.pluck(:count).sum()})
+            monthly_array.push({month:monthly_data[0]&.date&.strftime("%Y/%m"),count:monthly_data.pluck(:count).sum()})
             i -= 1
         end
         index = 12
@@ -33,9 +33,13 @@ class ContributionsController < BaseController
             else
                 monthly_data = contribution_of_thisyear.select{|y| y.date.month == index}
             end
-            monthly.push({month:monthly_data[0].date.strftime("%Y/%m"),count_sum:monthly_data.pluck(:count).sum()})
+            monthly_array.push({month:monthly_data[0].date.strftime("%Y/%m"),count:monthly_data.pluck(:count).sum()})
             index -= 1
         end
+
+        monthly_labels = monthly_array.pluck(:month).reverse()
+        monthly_count = monthly_array.pluck(:count).reverse()
+        monthly = {labels:monthly_labels,data:monthly_count}
 
         # 年別で取得
         first = contributions_array[0]
@@ -45,7 +49,10 @@ class ContributionsController < BaseController
             yearly_data = contributions_array.select{|contribution|contribution.date.year == year}
             yearly_array.push({year:year,count:yearly_data.sum(&:count)})
         }
+        yearly_labels = yearly_array.pluck(:year)
+        yearly_count = yearly_array.pluck(:count)
+        yearly = {labels:yearly_labels,data:yearly_count}
 
-        render :json => {contributions:{weekly:weekly,monthly:monthly,yearly:yearly_array}}
+        render :json => {contributions:{weekly:weekly,monthly:monthly,yearly:yearly}}
     end
 end
