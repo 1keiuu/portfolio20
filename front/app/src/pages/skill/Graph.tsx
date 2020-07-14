@@ -39,6 +39,7 @@ interface State {
   monthlyArray: { labels: []; data: [] }[];
   currentWeeklyIndex: number;
   currentMonthlyIndex: number;
+  currentMaxAxis: number;
 }
 const contributionsData = (labels: string[], data: number[], type: string) => {
   return {
@@ -80,6 +81,7 @@ export default class Graph extends React.Component<Props, State> {
     monthlyArray: [],
     currentWeeklyIndex: 0,
     currentMonthlyIndex: 0,
+    currentMaxAxis: 0,
   };
 
   componentDidMount() {
@@ -106,6 +108,9 @@ export default class Graph extends React.Component<Props, State> {
           "yearly"
         ),
       });
+      this.setState({
+        currentMaxAxis: 20,
+      });
       this.setState({ currentData: this.state.weeklyData });
     });
   }
@@ -114,12 +119,23 @@ export default class Graph extends React.Component<Props, State> {
     switch (val) {
       case "week":
         this.setState({ currentData: this.state.weeklyData });
+        this.setState({
+          currentMaxAxis: 20,
+        });
         break;
       case "month":
         this.setState({ currentData: this.state.monthlyData });
+        this.setState({
+          currentMaxAxis: 400,
+        });
+
         break;
       case "year":
         this.setState({ currentData: this.state.yearlyData });
+        this.setState({
+          currentMaxAxis: 2000,
+        });
+
         break;
     }
   };
@@ -261,6 +277,18 @@ export default class Graph extends React.Component<Props, State> {
             data={this.state.currentData}
             redraw={true}
             key={Math.random()}
+            options={{
+              scales: {
+                yAxes: [
+                  {
+                    ticks: {
+                      beginAtZero: true,
+                      max: this.state.currentMaxAxis,
+                    },
+                  },
+                ],
+              },
+            }}
           />
         </div>
         <GithubTitle />
