@@ -1,6 +1,6 @@
 .graph {
-  height: 500px;
-  width: 70%;
+  width: 40%;
+  padding: 30px 50px;
 }
 .graph__upper {
   position: relative;
@@ -18,10 +18,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 20px 0;
+  margin: 15px 0;
   .prev-button {
-    padding-right: 30px;
-
+    width: 30px;
+    height: 30px;
+    margin-right: 30px;
     .prev-arrow__wrapper {
       cursor: pointer;
       background: #efefef;
@@ -34,7 +35,9 @@
     }
   }
   .next-button {
-    padding-left: 30px;
+    width: 30px;
+    height: 30px;
+    margin-left: 30px;
     .next-arrow__wrapper {
       cursor: pointer;
       background: #efefef;
@@ -46,4 +49,7 @@
       justify-content: center;
     }
   }
+}
+.line-graph__wrapper {
+  margin-bottom: 10px;
 }

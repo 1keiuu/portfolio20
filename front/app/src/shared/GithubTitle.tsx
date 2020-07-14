@@ -6,6 +6,7 @@ export default class GithubTitle extends React.Component {
   render() {
     return (
       <div className="github-title__wrapper">
+        <p>My contributions on</p>
         <img src={iconSrc} alt="logo" className="github-title__logo" />
         <img src={logoSrc} alt="icon" className="github-title__icon" />
       </div>

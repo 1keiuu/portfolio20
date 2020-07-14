@@ -1,6 +1,6 @@
 import React from "react";
-import { ComponentProps, SFC } from "react";
 import Graph from "./Graph";
+import "../../styles/SkillPage.scss";
 
 interface Props {
   contributionsPromise: Promise<any>;

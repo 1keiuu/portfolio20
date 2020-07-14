@@ -169,7 +169,81 @@ export default class Graph extends React.Component<Props, State> {
     return (
       <div className="graph">
         <div className="graph__upper">
-          <GithubTitle />
+          <div className="span-display__wrapper">
+            <div className="prev-button">
+              {(() => {
+                if (this.state.currentData == this.state.yearlyData) return;
+                if (this.state.currentData == this.state.weeklyData) {
+                  // weekly
+                  if (this.state.currentWeeklyIndex !== 3) {
+                    return (
+                      <div
+                        onClick={async () => {
+                          await this.changeGraphSpan(1);
+                        }}
+                        className="prev-arrow__wrapper"
+                      >
+                        <ArrowIcon isLeft={true} />
+                      </div>
+                    );
+                  }
+                } else {
+                  if (
+                    this.state.currentMonthlyIndex !==
+                    this.state.monthlyArray.length - 1
+                  ) {
+                    return (
+                      <div
+                        onClick={async () => {
+                          await this.changeGraphSpan(1);
+                        }}
+                        className="prev-arrow__wrapper"
+                      >
+                        <ArrowIcon isLeft={true} />
+                      </div>
+                    );
+                  }
+                }
+              })()}
+            </div>
+
+            <div>
+              <p>{this.culcSpan(this.state.currentData.labels)}</p>
+            </div>
+            <div className="next-button">
+              {(() => {
+                if (this.state.currentData == this.state.yearlyData) return;
+                if (this.state.currentData == this.state.weeklyData) {
+                  // weekly
+                  if (this.state.currentWeeklyIndex !== 0) {
+                    return (
+                      <div
+                        onClick={async () => {
+                          await this.changeGraphSpan(-1);
+                        }}
+                        className="next-arrow__wrapper"
+                      >
+                        <ArrowIcon isLeft={false} />
+                      </div>
+                    );
+                  }
+                } else {
+                  if (this.state.currentMonthlyIndex !== 0) {
+                    return (
+                      <div
+                        onClick={async () => {
+                          await this.changeGraphSpan(-1);
+                        }}
+                        className="next-arrow__wrapper"
+                      >
+                        <ArrowIcon isLeft={false} />
+                      </div>
+                    );
+                  }
+                }
+              })()}
+            </div>
+          </div>
           <select className="date-select" onChange={this.dataChange}>
             <option className="date-option" value="week">
               Week
@@ -182,83 +256,14 @@ export default class Graph extends React.Component<Props, State> {
             </option>
           </select>
         </div>
-        <div className="span-display__wrapper">
-          <div className="prev-button">
-            {(() => {
-              if (this.state.currentData == this.state.yearlyData) return;
-              if (this.state.currentData == this.state.weeklyData) {
-                // weekly
-                if (this.state.currentWeeklyIndex !== 3) {
-                  return (
-                    <div
-                      onClick={async () => {
-                        await this.changeGraphSpan(1);
-                      }}
-                      className="prev-arrow__wrapper"
-                    >
-                      <ArrowIcon isLeft={true} />
-                    </div>
-                  );
-                }
-              } else {
-                if (
-                  this.state.currentMonthlyIndex !==
-                  this.state.monthlyArray.length - 1
-                ) {
-                  return (
-                    <div
-                      onClick={async () => {
-                        await this.changeGraphSpan(1);
-                      }}
-                      className="prev-arrow__wrapper"
-                    >
-                      <ArrowIcon isLeft={true} />
-                    </div>
-                  );
-                }
-              }
-            })()}
-          </div>
-
-          <div>
-            <p>{this.culcSpan(this.state.currentData.labels)}</p>
-          </div>
-          <div className="next-button">
-            {(() => {
-              if (this.state.currentData == this.state.yearlyData) return;
-              if (this.state.currentData == this.state.weeklyData) {
-                // weekly
-                if (this.state.currentWeeklyIndex !== 0) {
-                  return (
-                    <div
-                      onClick={async () => {
-                        await this.changeGraphSpan(-1);
-                      }}
-                      className="next-arrow__wrapper"
-                    >
-                      <ArrowIcon isLeft={false} />
-                    </div>
-                  );
-                }
-              } else {
-                if (this.state.currentMonthlyIndex !== 0) {
-                  return (
-                    <div
-                      onClick={async () => {
-                        await this.changeGraphSpan(-1);
-                      }}
-                      className="next-arrow__wrapper"
-                    >
-                      <ArrowIcon isLeft={false} />
-                    </div>
-                  );
-                }
-              }
-            })()}
-          </div>
+        <div className="line-graph__wrapper">
+          <Line
+            data={this.state.currentData}
+            redraw={true}
+            key={Math.random()}
+          />
         </div>
-        {/* <div className="date-select">{this.state.currentData}</div> */}
-        <Line data={this.state.currentData} redraw={true} key={Math.random()} />
+        <GithubTitle />
       </div>
     );
   }

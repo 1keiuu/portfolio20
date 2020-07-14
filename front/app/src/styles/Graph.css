@@ -1,6 +1,6 @@
 .graph {
-  height: 500px;
-  width: 70%;
+  width: 40%;
+  padding: 30px 50px;
 }
 
 .graph__upper {
@@ -21,11 +21,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 20px 0;
+  margin: 15px 0;
 }
 
 .span-display__wrapper .prev-button {
-  padding-right: 30px;
+  width: 30px;
+  height: 30px;
+  margin-right: 30px;
 }
 
 .span-display__wrapper .prev-button .prev-arrow__wrapper {
@@ -40,7 +42,9 @@
 }
 
 .span-display__wrapper .next-button {
-  padding-left: 30px;
+  width: 30px;
+  height: 30px;
+  margin-left: 30px;
 }
 
 .span-display__wrapper .next-button .next-arrow__wrapper {
@@ -52,4 +56,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.line-graph__wrapper {
+  margin-bottom: 10px;
 }
