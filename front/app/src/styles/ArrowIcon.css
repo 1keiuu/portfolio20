@@ -1,0 +1,7 @@
+.icon {
+  width: 13px;
+}
+
+.icon.prev-arrow {
+  transform: rotate(180deg);
+}

@@ -1,7 +1,7 @@
 import React from "react";
-import iconSrc from "../../images/GitHub_Logo.png";
-import logoSrc from "../../images/GitHub_Icon.png";
-import "./style/GithubTitle.scss";
+import iconSrc from "../images/GitHub_Logo.png";
+import logoSrc from "../images/GitHub_Icon.png";
+import "../styles/GithubTitle.scss";
 export default class GithubTitle extends React.Component {
   render() {
     return (

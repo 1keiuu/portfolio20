@@ -1,9 +1,11 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
-import "./style/Graph.scss";
-import GithubTitle from "../../shared/githubTitle/GithubTitle";
+import "../../styles/Graph.scss";
+import GithubTitle from "../../shared/GithubTitle";
+import ArrowIcon from "../../shared/ArrowIcon";
 interface Props {
   contributionsPromise: Promise<any>;
+  hogeFunc: () => void;
 }
 interface State {
   currentData: {
@@ -65,6 +67,7 @@ const contributionsData = (labels: string[], data: number[], type: string) => {
     date: { first: labels[0], last: labels[labels.length - 1] },
   };
 };
+
 export default class Graph extends React.Component<Props, State> {
   state: State = {
     currentData: contributionsData([], [], "weekly"),
@@ -125,6 +128,14 @@ export default class Graph extends React.Component<Props, State> {
     };
     this.setState({ weeklyData: contData() });
   }
+  async changeWeeklySpan(n: number) {
+    await this.setState({
+      currentWeeklyIndex: this.state.currentWeeklyIndex + n,
+    });
+    await this.getWeeklyData(this.state.currentWeeklyIndex);
+    this.setState({ currentData: this.state.weeklyData });
+  }
+
   render() {
     return (
       <div className="graph">
@@ -143,31 +154,42 @@ export default class Graph extends React.Component<Props, State> {
             </option>
           </select>
         </div>
-        <div>
-          <p>{this.culcSpan(this.state.currentData.labels)}</p>
+        <div className="span-display__wrapper">
+          {(() => {
+            if (this.state.currentWeeklyIndex !== 3) {
+              return (
+                <div
+                  onClick={async () => {
+                    await this.changeWeeklySpan(1);
+                  }}
+                  className="prev-arrow__wrapper"
+                >
+                  <ArrowIcon isLeft={true} />
+                </div>
+              );
+            }
+          })()}
+          <div>
+            <p>{this.culcSpan(this.state.currentData.labels)}</p>
+          </div>
+          <div>
+            {(() => {
+              if (this.state.currentWeeklyIndex !== 0) {
+                return (
+                  <div
+                    onClick={async () => {
+                      await this.changeWeeklySpan(-1);
+                    }}
+                    className="next-arrow__wrapper"
+                  >
+                    <ArrowIcon isLeft={false} />
+                  </div>
+                );
+              }
+            })()}
+          </div>
         </div>
-        <p
-          onClick={async () => {
-            await this.setState({
-              currentWeeklyIndex: this.state.currentWeeklyIndex - 1,
-            });
-            await this.getWeeklyData(this.state.currentWeeklyIndex);
-            this.setState({ currentData: this.state.weeklyData });
-          }}
-        >
-          next
-        </p>
-        <p
-          onClick={async () => {
-            await this.setState({
-              currentWeeklyIndex: this.state.currentWeeklyIndex + 1,
-            });
-            await this.getWeeklyData(this.state.currentWeeklyIndex);
-            this.setState({ currentData: this.state.weeklyData });
-          }}
-        >
-          prev
-        </p>
+
         {/* <div className="date-select">{this.state.currentData}</div> */}
         <Line data={this.state.currentData} redraw={true} key={Math.random()} />
       </div>
