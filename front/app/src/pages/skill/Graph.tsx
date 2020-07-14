@@ -36,7 +36,9 @@ interface State {
   monthlyData: any;
   yearlyData: any;
   weeklyArray: { labels: []; data: [] }[];
+  monthlyArray: { labels: []; data: [] }[];
   currentWeeklyIndex: number;
+  currentMonthlyIndex: number;
 }
 const contributionsData = (labels: string[], data: number[], type: string) => {
   return {
@@ -75,19 +77,25 @@ export default class Graph extends React.Component<Props, State> {
     monthlyData: contributionsData([], [], "monthly"),
     yearlyData: contributionsData([], [], "yearly"),
     weeklyArray: [],
+    monthlyArray: [],
     currentWeeklyIndex: 0,
+    currentMonthlyIndex: 0,
   };
 
   componentDidMount() {
     this.props.contributionsPromise.then((data) => {
+      console.log(data);
       this.setState({
         weeklyArray: data.weekly,
+        monthlyArray: data.monthly,
       });
       this.getWeeklyData(this.state.currentWeeklyIndex);
+      this.getMonthlyData(this.state.currentMonthlyIndex);
+
       this.setState({
         monthlyData: contributionsData(
-          data.monthly.labels,
-          data.monthly.data,
+          data.monthly[0].labels,
+          data.monthly[0].data,
           "monthly"
         ),
       });
@@ -128,12 +136,33 @@ export default class Graph extends React.Component<Props, State> {
     };
     this.setState({ weeklyData: contData() });
   }
-  async changeWeeklySpan(n: number) {
-    await this.setState({
-      currentWeeklyIndex: this.state.currentWeeklyIndex + n,
-    });
-    await this.getWeeklyData(this.state.currentWeeklyIndex);
-    this.setState({ currentData: this.state.weeklyData });
+  getMonthlyData(index: number) {
+    const contData = () => {
+      return contributionsData(
+        this.state.monthlyArray[index].labels,
+        this.state.monthlyArray[index].data,
+        "monthly"
+      );
+    };
+    this.setState({ monthlyData: contData() });
+  }
+  async changeGraphSpan(n: number) {
+    switch (this.state.currentData) {
+      case this.state.weeklyData:
+        await this.setState({
+          currentWeeklyIndex: this.state.currentWeeklyIndex + n,
+        });
+        await this.getWeeklyData(this.state.currentWeeklyIndex);
+        this.setState({ currentData: this.state.weeklyData });
+        break;
+      case this.state.monthlyData:
+        await this.setState({
+          currentMonthlyIndex: this.state.currentMonthlyIndex + n,
+        });
+        await this.getMonthlyData(this.state.currentMonthlyIndex);
+        this.setState({ currentData: this.state.monthlyData });
+        break;
+    }
   }
 
   render() {
@@ -141,7 +170,6 @@ export default class Graph extends React.Component<Props, State> {
       <div className="graph">
         <div className="graph__upper">
           <GithubTitle />
-
           <select className="date-select" onChange={this.dataChange}>
             <option className="date-option" value="week">
               Week
@@ -155,41 +183,80 @@ export default class Graph extends React.Component<Props, State> {
           </select>
         </div>
         <div className="span-display__wrapper">
-          {(() => {
-            if (this.state.currentWeeklyIndex !== 3) {
-              return (
-                <div
-                  onClick={async () => {
-                    await this.changeWeeklySpan(1);
-                  }}
-                  className="prev-arrow__wrapper"
-                >
-                  <ArrowIcon isLeft={true} />
-                </div>
-              );
-            }
-          })()}
+          <div className="prev-button">
+            {(() => {
+              if (this.state.currentData == this.state.yearlyData) return;
+              if (this.state.currentData == this.state.weeklyData) {
+                // weekly
+                if (this.state.currentWeeklyIndex !== 3) {
+                  return (
+                    <div
+                      onClick={async () => {
+                        await this.changeGraphSpan(1);
+                      }}
+                      className="prev-arrow__wrapper"
+                    >
+                      <ArrowIcon isLeft={true} />
+                    </div>
+                  );
+                }
+              } else {
+                if (
+                  this.state.currentMonthlyIndex !==
+                  this.state.monthlyArray.length - 1
+                ) {
+                  return (
+                    <div
+                      onClick={async () => {
+                        await this.changeGraphSpan(1);
+                      }}
+                      className="prev-arrow__wrapper"
+                    >
+                      <ArrowIcon isLeft={true} />
+                    </div>
+                  );
+                }
+              }
+            })()}
+          </div>
+
           <div>
             <p>{this.culcSpan(this.state.currentData.labels)}</p>
           </div>
-          <div>
+          <div className="next-button">
             {(() => {
-              if (this.state.currentWeeklyIndex !== 0) {
-                return (
-                  <div
-                    onClick={async () => {
-                      await this.changeWeeklySpan(-1);
-                    }}
-                    className="next-arrow__wrapper"
-                  >
-                    <ArrowIcon isLeft={false} />
-                  </div>
-                );
+              if (this.state.currentData == this.state.yearlyData) return;
+              if (this.state.currentData == this.state.weeklyData) {
+                // weekly
+                if (this.state.currentWeeklyIndex !== 0) {
+                  return (
+                    <div
+                      onClick={async () => {
+                        await this.changeGraphSpan(-1);
+                      }}
+                      className="next-arrow__wrapper"
+                    >
+                      <ArrowIcon isLeft={false} />
+                    </div>
+                  );
+                }
+              } else {
+                if (this.state.currentMonthlyIndex !== 0) {
+                  return (
+                    <div
+                      onClick={async () => {
+                        await this.changeGraphSpan(-1);
+                      }}
+                      className="next-arrow__wrapper"
+                    >
+                      <ArrowIcon isLeft={false} />
+                    </div>
+                  );
+                }
               }
             })()}
           </div>
         </div>
-
         {/* <div className="date-select">{this.state.currentData}</div> */}
         <Line data={this.state.currentData} redraw={true} key={Math.random()} />
       </div>
