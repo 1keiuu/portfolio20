@@ -4,9 +4,14 @@
 }
 
 .github-title__logo {
-  height: 20px;
+  height: 40px;
 }
 
 .github-title__icon {
-  height: 20px;
+  height: 40px;
+}
+
+.github__link p {
+  margin: 0;
+  color: #333;
 }

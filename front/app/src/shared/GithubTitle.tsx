@@ -5,10 +5,20 @@ import "../styles/GithubTitle.scss";
 export default class GithubTitle extends React.Component {
   render() {
     return (
-      <div className="github-title__wrapper">
-        <p>My contributions on</p>
-        <img src={iconSrc} alt="logo" className="github-title__logo" />
-        <img src={logoSrc} alt="icon" className="github-title__icon" />
+      <div>
+        <div className="github-title__wrapper">
+          <p>ikkei12's contributions on</p>
+          <img src={iconSrc} alt="logo" className="github-title__logo" />
+          <img src={logoSrc} alt="icon" className="github-title__icon" />
+        </div>
+        <a
+          href="https://github.com/ikkei12"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="github__link"
+        >
+          <p>https://github.com/ikkei12</p>
+        </a>
       </div>
     );
   }

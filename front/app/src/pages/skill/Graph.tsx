@@ -5,7 +5,6 @@ import GithubTitle from "../../shared/GithubTitle";
 import ArrowIcon from "../../shared/ArrowIcon";
 interface Props {
   contributionsPromise: Promise<any>;
-  hogeFunc: () => void;
 }
 interface State {
   currentData: {
@@ -39,7 +38,8 @@ interface State {
   monthlyArray: { labels: []; data: [] }[];
   currentWeeklyIndex: number;
   currentMonthlyIndex: number;
-  currentMaxAxis: number;
+  currentMaxYAxis: number;
+  maxYAxisGroup: { weekly: number; monthly: number; yearly: number };
 }
 const contributionsData = (labels: string[], data: number[], type: string) => {
   return {
@@ -81,26 +81,21 @@ export default class Graph extends React.Component<Props, State> {
     monthlyArray: [],
     currentWeeklyIndex: 0,
     currentMonthlyIndex: 0,
-    currentMaxAxis: 0,
+    currentMaxYAxis: 0,
+    maxYAxisGroup: { weekly: 0, monthly: 0, yearly: 0 },
   };
 
   componentDidMount() {
     this.props.contributionsPromise.then((data) => {
       console.log(data);
+
       this.setState({
-        weeklyArray: data.weekly,
-        monthlyArray: data.monthly,
+        weeklyArray: data.weekly.array,
+        monthlyArray: data.monthly.array,
       });
       this.getWeeklyData(this.state.currentWeeklyIndex);
       this.getMonthlyData(this.state.currentMonthlyIndex);
 
-      this.setState({
-        monthlyData: contributionsData(
-          data.monthly[0].labels,
-          data.monthly[0].data,
-          "monthly"
-        ),
-      });
       this.setState({
         yearlyData: contributionsData(
           data.yearly.labels,
@@ -109,7 +104,15 @@ export default class Graph extends React.Component<Props, State> {
         ),
       });
       this.setState({
-        currentMaxAxis: 20,
+        currentMaxYAxis: data.weekly.max + 3,
+      });
+      // y軸の最大値を設定(+分はゆとり)
+      this.setState({
+        maxYAxisGroup: {
+          weekly: data.weekly.max + 3,
+          monthly: data.monthly.max + 40,
+          yearly: data.yearly.max + 100,
+        },
       });
       this.setState({ currentData: this.state.weeklyData });
     });
@@ -120,20 +123,20 @@ export default class Graph extends React.Component<Props, State> {
       case "week":
         this.setState({ currentData: this.state.weeklyData });
         this.setState({
-          currentMaxAxis: 20,
+          currentMaxYAxis: this.state.maxYAxisGroup.weekly,
         });
         break;
       case "month":
         this.setState({ currentData: this.state.monthlyData });
         this.setState({
-          currentMaxAxis: 400,
+          currentMaxYAxis: this.state.maxYAxisGroup.monthly,
         });
 
         break;
       case "year":
         this.setState({ currentData: this.state.yearlyData });
         this.setState({
-          currentMaxAxis: 2000,
+          currentMaxYAxis: this.state.maxYAxisGroup.yearly,
         });
 
         break;
@@ -283,7 +286,7 @@ export default class Graph extends React.Component<Props, State> {
                   {
                     ticks: {
                       beginAtZero: true,
-                      max: this.state.currentMaxAxis,
+                      max: this.state.currentMaxYAxis,
                     },
                   },
                 ],
