@@ -5,6 +5,7 @@ import Home from "./pages/home/Home";
 import SkillPage from "./pages/skill/SkillPage";
 import Header from "./shared/Header";
 import axios from "axios";
+import AdminLayout from "./pages/admin/AdminLayout";
 
 interface Props {}
 interface State {
@@ -27,13 +28,16 @@ export default class App extends React.Component<Props, State> {
     return (
       <div className="App">
         <Router>
-          <Header></Header>
-
           <Route exact path="/">
+            <Header></Header>
             <Home></Home>
           </Route>
           <Route path="/skills">
+            <Header></Header>
             <SkillPage contributionsPromise={this.getData()}></SkillPage>
+          </Route>
+          <Route path="/admin">
+            <AdminLayout></AdminLayout>
           </Route>
         </Router>
       </div>
