@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
-export default class AdminHeader extends React.Component {
+export default class Header extends React.Component {
   render() {
     return (
       <AppBar title="static">

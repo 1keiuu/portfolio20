@@ -5,7 +5,7 @@ module Admin
         before_action :authenticate
 
         def index
-            render json: {'auth':true}
+            render json: {'message':'ok'}
         end
 
         def authenticate

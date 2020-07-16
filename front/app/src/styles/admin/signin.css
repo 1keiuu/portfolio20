@@ -1,0 +1,28 @@
+.sign-in__wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sign-in__wrapper .sign-in__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-in__wrapper .sign-in__form .sign-in__email-input {
+  width: 30%;
+  margin-bottom: 25px;
+}
+
+.sign-in__wrapper .sign-in__form .sign-in__password-input {
+  width: 30%;
+  margin-bottom: 25px;
+}
+
+.sign-in__wrapper .error-text {
+  color: red;
+  height: 10px;
+}

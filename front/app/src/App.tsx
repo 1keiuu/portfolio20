@@ -5,7 +5,7 @@ import Home from "./pages/home/Home";
 import SkillPage from "./pages/skill/SkillPage";
 import Header from "./components/Header";
 import axios from "axios";
-import AdminLayout from "./pages/admin/AdminLayout";
+import AdminLayout from "./pages/admin/Layout";
 
 interface Props {}
 interface State {
