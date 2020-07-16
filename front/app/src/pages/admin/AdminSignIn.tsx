@@ -3,6 +3,7 @@ import axios from "axios";
 import { RouteComponentProps } from "react-router-dom";
 import * as H from "history";
 import { withRouter } from "react-router-dom";
+import "../../styles/admin/AdminSignIn.scss";
 interface Props extends RouteComponentProps<{}> {
   history: H.History;
 }
@@ -27,7 +28,6 @@ class AdminSignIn extends React.Component<Props, State> {
       email: this.state.email,
       password: this.state.password,
     });
-    console.log(res);
     if (res) {
       this.props.history.push({
         pathname: "/admin/home",
@@ -47,34 +47,39 @@ class AdminSignIn extends React.Component<Props, State> {
   }
   render() {
     return (
-      <form
-        onSubmit={(e) => {
-          this.signIn(e);
-        }}
-      >
-        <label>
-          Email:
-          <input
-            type="text"
-            value={this.state.email}
-            onChange={(e) => {
-              this.handleChange(e, "email");
-            }}
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            type="password"
-            value={this.state.password}
-            onChange={(e) => {
-              this.handleChange(e, "password");
-            }}
-          />
-        </label>
+      <div className="sign-in__wrapper">
+        <form
+          onSubmit={(e) => {
+            this.signIn(e);
+          }}
+          className="sign-in__form"
+        >
+          <label>
+            Email:
+            <input
+              type="text"
+              value={this.state.email}
+              onChange={(e) => {
+                this.handleChange(e, "email");
+              }}
+              className="sign-in__email-input"
+            />
+          </label>
+          <label>
+            Password:
+            <input
+              type="password"
+              value={this.state.password}
+              onChange={(e) => {
+                this.handleChange(e, "password");
+              }}
+              className="sign-in__password-input"
+            />
+          </label>
 
-        <input type="submit" value="Submit" />
-      </form>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
     );
   }
 }

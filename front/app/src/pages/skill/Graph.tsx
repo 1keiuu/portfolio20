@@ -1,8 +1,8 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 import "../../styles/Graph.scss";
-import GithubTitle from "../../shared/GithubTitle";
-import ArrowIcon from "../../shared/ArrowIcon";
+import GithubTitle from "../../components/GithubTitle";
+import ArrowIcon from "../../components/ArrowIcon";
 interface Props {
   contributionsPromise: Promise<any>;
 }

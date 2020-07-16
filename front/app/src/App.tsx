@@ -3,7 +3,7 @@ import "./App.scss";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
 import SkillPage from "./pages/skill/SkillPage";
-import Header from "./shared/Header";
+import Header from "./components/Header";
 import axios from "axios";
 import AdminLayout from "./pages/admin/AdminLayout";
 
