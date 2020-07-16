@@ -5,7 +5,8 @@ import Home from "./pages/home/Home";
 import SkillPage from "./pages/skill/SkillPage";
 import Header from "./components/Header";
 import axios from "axios";
-import AdminLayout from "./pages/admin/Layout";
+import AdminSignIn from "./pages/admin/SignIn";
+import AdminHome from "./pages/admin/Home";
 
 interface Props {}
 interface State {
@@ -36,8 +37,11 @@ export default class App extends React.Component<Props, State> {
             <Header></Header>
             <SkillPage contributionsPromise={this.getData()}></SkillPage>
           </Route>
-          <Route path="/admin">
-            <AdminLayout></AdminLayout>
+          <Route path="/admin/signIn">
+            <AdminSignIn></AdminSignIn>
+          </Route>
+          <Route exact path="/admin">
+            <AdminHome></AdminHome>
           </Route>
         </Router>
       </div>

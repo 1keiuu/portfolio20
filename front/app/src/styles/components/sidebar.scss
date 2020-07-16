@@ -1,0 +1,15 @@
+.side-bar {
+}
+.MuiList-root {
+  height: 100%;
+  width: 220px;
+  background: rgb(52, 58, 64);
+  padding-top: 10px;
+}
+.MuiDrawer-paperAnchorDockedLeft {
+  border-right: 0 !important;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22) !important;
+}
+.MuiListItemText-root {
+  color: rgb(194, 199, 208);
+}

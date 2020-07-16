@@ -19,19 +19,7 @@ class AdminHome extends React.Component<Props, State> {
       isSignIn: false,
     };
   }
-  async componentDidUpdate() {
-    const token = this.props.location.state;
-    try {
-      await axios.get("http://localhost:8000/admin/home", {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      });
-      if (!this.state.isSignIn) this.setState({ isSignIn: true });
-    } catch (e) {
-      this.props.history.push("/admin/signIn");
-    }
-  }
+
   async componentDidMount() {
     const token = this.props.location.state;
     try {
@@ -40,7 +28,7 @@ class AdminHome extends React.Component<Props, State> {
           Authorization: `Token ${token}`,
         },
       });
-      if (!this.state.isSignIn) this.setState({ isSignIn: true });
+      this.setState({ isSignIn: true });
     } catch (e) {
       this.props.history.push("/admin/signIn");
     }

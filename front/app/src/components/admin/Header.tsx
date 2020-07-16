@@ -1,25 +1,16 @@
 import React from "react";
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-  Button,
-} from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
-
+import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import "../../styles/components/header.scss";
 export default class Header extends React.Component {
   render() {
     return (
-      <AppBar title="static">
-        <Toolbar>
-          <IconButton color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6">News</Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
+      <div className="header__inner">
+        <AppBar position="fixed" style={{ background: "#fff" }}>
+          <Toolbar>
+            <Typography variant="h6">Portfolio Admin</Typography>
+          </Toolbar>
+        </AppBar>
+      </div>
     );
   }
 }
