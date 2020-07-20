@@ -1,13 +1,54 @@
 .graph {
-  width: 40%;
+  min-width: 500px;
   padding: 30px 50px;
 }
 
-.graph__upper {
+.graph .graph__upper {
   position: relative;
 }
 
-.date-select {
+.graph .graph__upper .span-display__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.graph .graph__upper .span-display__wrapper .prev-button {
+  width: 30px;
+  height: 30px;
+  margin-right: 30px;
+}
+
+.graph .graph__upper .span-display__wrapper .prev-button .prev-arrow__wrapper {
+  cursor: pointer;
+  background: #799c97;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.graph .graph__upper .span-display__wrapper .next-button {
+  width: 30px;
+  height: 30px;
+  margin-left: 30px;
+}
+
+.graph .graph__upper .span-display__wrapper .next-button .next-arrow__wrapper {
+  cursor: pointer;
+  background: #799c97;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.graph .date-select {
   width: 110px;
   height: 40px;
   cursor: pointer;
@@ -17,47 +58,6 @@
   outline: 0;
 }
 
-.span-display__wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 15px 0;
-}
-
-.span-display__wrapper .prev-button {
-  width: 30px;
-  height: 30px;
-  margin-right: 30px;
-}
-
-.span-display__wrapper .prev-button .prev-arrow__wrapper {
-  cursor: pointer;
-  background: #efefef;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.span-display__wrapper .next-button {
-  width: 30px;
-  height: 30px;
-  margin-left: 30px;
-}
-
-.span-display__wrapper .next-button .next-arrow__wrapper {
-  cursor: pointer;
-  background: #efefef;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.line-graph__wrapper {
+.graph .line-graph__wrapper {
   margin-bottom: 10px;
 }

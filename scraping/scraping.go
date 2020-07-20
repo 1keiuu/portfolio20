@@ -68,20 +68,20 @@ func Write(dataMap []map[string]string, index string) {
 }
 
 func insertDB(count int, date string) {
-	type Contribution struct {
-		id         int
-		count      int
-		date       string
-		created_at string
-		updated_at string
-	}
+	// type Contribution struct {
+	// 	id         int
+	// 	count      int
+	// 	date       string
+	// 	created_at string
+	// 	updated_at string
+	// }
 
 	db, err := sql.Open("mysql", "root:password@tcp(db)/app_development")
 	if err != nil {
 		panic(err.Error())
 	}
 	defer db.Close()
-
+	// ?入れてるのはSQL injectionを防ぐ為 → timestampもそうするべき？
 	stmtInsert, err := db.Prepare("INSERT INTO contributions(count, date,created_at,updated_at) VALUES(?,?,current_timestamp,current_timestamp)")
 	if err != nil {
 		panic(err.Error())
