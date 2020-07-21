@@ -1,8 +1,8 @@
-.icon {
+.arrow-icon {
   width: 13px;
   fill: #093e49;
 }
 
-.icon.prev-arrow {
+.arrow-icon.prev-arrow {
   transform: rotate(180deg);
 }

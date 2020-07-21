@@ -9,7 +9,9 @@ export default class ArrowIcon extends React.Component<Props> {
   render() {
     return (
       <svg
-        className={["icon", this.props.isLeft ? "prev-arrow" : ""].join(" ")}
+        className={["arrow-icon", this.props.isLeft ? "prev-arrow" : ""].join(
+          " "
+        )}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 512.002 512.002"
       >
