@@ -202,7 +202,7 @@ export default class Graph extends React.Component<Props, State> {
                         }}
                         className="prev-arrow__wrapper"
                       >
-                        <ArrowIcon isLeft={true} />
+                        <ArrowIcon isLeft={true} fill="#093e49" />
                       </div>
                     );
                   }
@@ -218,7 +218,7 @@ export default class Graph extends React.Component<Props, State> {
                         }}
                         className="prev-arrow__wrapper"
                       >
-                        <ArrowIcon isLeft={true} />
+                        <ArrowIcon isLeft={true} fill="#093e49" />
                       </div>
                     );
                   }
@@ -242,7 +242,7 @@ export default class Graph extends React.Component<Props, State> {
                         }}
                         className="next-arrow__wrapper"
                       >
-                        <ArrowIcon isLeft={false} />
+                        <ArrowIcon isLeft={false} fill="#093e49" />
                       </div>
                     );
                   }
@@ -255,7 +255,7 @@ export default class Graph extends React.Component<Props, State> {
                         }}
                         className="next-arrow__wrapper"
                       >
-                        <ArrowIcon isLeft={false} />
+                        <ArrowIcon isLeft={false} fill="#093e49" />
                       </div>
                     );
                   }
