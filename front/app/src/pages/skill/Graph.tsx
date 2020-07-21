@@ -191,8 +191,8 @@ export default class Graph extends React.Component<Props, State> {
           <div className="span-display__wrapper">
             <div className="prev-button">
               {(() => {
-                if (this.state.currentData == this.state.yearlyData) return;
-                if (this.state.currentData == this.state.weeklyData) {
+                if (this.state.currentData === this.state.yearlyData) return;
+                if (this.state.currentData === this.state.weeklyData) {
                   // weekly
                   if (this.state.currentWeeklyIndex !== 3) {
                     return (
@@ -231,8 +231,8 @@ export default class Graph extends React.Component<Props, State> {
             </div>
             <div className="next-button">
               {(() => {
-                if (this.state.currentData == this.state.yearlyData) return;
-                if (this.state.currentData == this.state.weeklyData) {
+                if (this.state.currentData === this.state.yearlyData) return;
+                if (this.state.currentData === this.state.weeklyData) {
                   // weekly
                   if (this.state.currentWeeklyIndex !== 0) {
                     return (
