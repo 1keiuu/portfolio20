@@ -227,7 +227,9 @@ export default class Graph extends React.Component<Props, State> {
             </div>
 
             <div>
-              <p>{this.culcSpan(this.state.currentData.labels)}</p>
+              <p className="graph__span">
+                {this.culcSpan(this.state.currentData.labels)}
+              </p>
             </div>
             <div className="next-button">
               {(() => {
@@ -291,7 +293,10 @@ export default class Graph extends React.Component<Props, State> {
                   },
                 ],
               },
+              maintainAspectRatio: false,
             }}
+            width={window.parent.screen.width * 0.4}
+            height={350}
           />
         </div>
         <GithubTitle />

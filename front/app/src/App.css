@@ -38,3 +38,7 @@
     transform: rotate(360deg);
   }
 }
+
+p {
+  font-family: "Space Mono", monospace;
+}

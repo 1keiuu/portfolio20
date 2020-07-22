@@ -1,14 +1,22 @@
 .github-title {
   &__wrapper {
-    display: flex;
+    display: inline-flex;
+    position: relative;
     justify-content: center;
     align-items: center;
+    p {
+      font-weight: 400;
+      margin: 0;
+    }
   }
   &__logo {
     height: 30px;
   }
   &__icon {
-    height: 30px;
+    height: 34px;
+    position: absolute;
+    right: -32px;
+    top: -8px;
   }
 }
 
@@ -16,6 +24,7 @@
   p {
     margin: 0;
     color: #333;
-    font-size: 14px;
+    font-size: 13px;
+    margin-top: 10px;
   }
 }

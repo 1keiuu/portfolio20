@@ -7,17 +7,18 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 15px 0;
+      margin: 20px 0;
       .prev-button {
         width: 30px;
         height: 30px;
-        margin-right: 30px;
+        margin-right: 50px;
         .prev-arrow__wrapper {
           cursor: pointer;
           background: #799c9770;
           border-radius: 50%;
           width: 30px;
           height: 30px;
+          border: 1px #2f7562 solid;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -26,17 +27,22 @@
       .next-button {
         width: 30px;
         height: 30px;
-        margin-left: 30px;
+        margin-left: 50px;
         .next-arrow__wrapper {
           cursor: pointer;
           background: #799c9770;
           border-radius: 50%;
           width: 30px;
           height: 30px;
+          border: 1px #2f7562 solid;
           display: flex;
           align-items: center;
           justify-content: center;
         }
+      }
+      .graph__span {
+        margin: 0;
+        font-size: 18px;
       }
     }
   }
@@ -48,9 +54,14 @@
     top: 0;
     right: 10px;
     outline: 0;
+    border: 1px #2f7562 solid;
+    border-radius: 4px;
+    background: #799c9770;
+    color: #2f7562;
+    font-weight: bold;
   }
 
   .line-graph__wrapper {
-    margin-bottom: 10px;
+    margin-bottom: 30px;
   }
 }

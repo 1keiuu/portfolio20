@@ -1,7 +1,13 @@
 .github-title__wrapper {
-  display: flex;
+  display: inline-flex;
+  position: relative;
   justify-content: center;
   align-items: center;
+}
+
+.github-title__wrapper p {
+  font-weight: 400;
+  margin: 0;
 }
 
 .github-title__logo {
@@ -9,11 +15,15 @@
 }
 
 .github-title__icon {
-  height: 30px;
+  height: 34px;
+  position: absolute;
+  right: -32px;
+  top: -8px;
 }
 
 .github__link p {
   margin: 0;
   color: #333;
-  font-size: 14px;
+  font-size: 13px;
+  margin-top: 10px;
 }
