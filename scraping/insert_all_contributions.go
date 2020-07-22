@@ -60,8 +60,8 @@ func insertAllContributionsToDB(count int, date string) {
 		panic(err.Error())
 	}
 	defer db.Close()
-	// ?入れてるのはSQL injectionを防ぐ為 → timestampもそうするべき？
-	stmtInsert, err := db.Prepare("INSERT INTO contributions(count, date,created_at,updated_at) VALUES(?,?,current_timestamp,current_timestamp)")
+	// ?入れてるのはSQL injectionを防ぐ為
+	stmtInsert, err := db.Prepare("INSERT INTO contributions(count, date) VALUES(?,?)")
 	if err != nil {
 		panic(err.Error())
 	}
