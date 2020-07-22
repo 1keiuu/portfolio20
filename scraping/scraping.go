@@ -43,40 +43,19 @@ func getContributionData(doc *goquery.Document, index string) {
 		count, _ := s.Attr("data-count")
 		date, _ := s.Attr("data-date")
 		Count, _ := strconv.Atoi(count)
-		// dataMap := map[string]string{"count": count, "date": date}
-		// dataArr = append(dataArr, dataMap)
-		insertDB(Count, date)
+		insertAllContributionsToDB(Count, date)
 	})
+	fmt.Println("finished!!!")
 
-	// Write(dataArr, index)
 }
 
-func Write(dataMap []map[string]string, index string) {
-	b := []byte{}
-	for _, line := range dataMap {
-		ll := []byte(line["date"] + " " + line["count"] + "\n")
-		for _, l := range ll {
-			b = append(b, l)
-		}
-	}
+func insertAllContributionsToDB(count int, date string) {
+	ENDPOINT := os.Getenv("DB_ENDPOINT")
+	USER_NAME := os.Getenv("DB_USER_NAME")
+	PASS := os.Getenv("DB_PASS")
+	DB_NAME := os.Getenv("DB_NAME")
 
-	err := ioutil.WriteFile("data"+index+".txt", b, 0666)
-	if err != nil {
-		fmt.Println(os.Stderr, err)
-		os.Exit(1)
-	}
-}
-
-func insertDB(count int, date string) {
-	// type Contribution struct {
-	// 	id         int
-	// 	count      int
-	// 	date       string
-	// 	created_at string
-	// 	updated_at string
-	// }
-
-	db, err := sql.Open("mysql", "root:password@tcp(db)/app_development")
+	db, err := sql.Open("mysql", USER_NAME+":"+PASS+"@tcp("+ENDPOINT+")/"+DB_NAME)
 	if err != nil {
 		panic(err.Error())
 	}
@@ -98,30 +77,9 @@ func insertDB(count int, date string) {
 		panic(err.Error())
 	}
 	fmt.Println(lastInsertID)
-
-	// rows, err := db.Query("SELECT * FROM contributions")
-	// if err != nil {
-	// 	panic(err.Error())
-	// }
-	// defer rows.Close()
-	// for rows.Next() {
-	// 	var contribution Contribution
-	// 	err := rows.Scan(&contribution.id, &contribution.count, &contribution.date, &contribution.created_at, &contribution.updated_at)
-	// 	if err != nil {
-	// 		panic(err.Error())
-	// 	}
-	// 	fmt.Println(contribution.date, contribution.count)
-	// }
 }
 
 func main() {
-
-	// _, err := connectDB()
-	// if err != nil {
-	// 	panic(err.Error())
-	// } else {
-	// 	fmt.Println("DB接続成功")
-	// }
 
 	base, _ := url.Parse("https://github.com/ikkei12")
 	doc := getDoc(base.String())
