@@ -4,27 +4,34 @@
     position: relative;
     justify-content: center;
     align-items: center;
+    margin-top: 30px;
     p {
-      font-weight: 400;
+      font-size: 24px;
+      font-weight: bold;
       margin: 0;
+      color: #f8f2ee;
     }
   }
   &__logo {
-    height: 30px;
+    height: 40px;
+    margin-left: 5px;
   }
   &__icon {
-    height: 34px;
+    height: 44px;
     position: absolute;
-    right: -32px;
+    right: -40px;
     top: -8px;
   }
 }
 
 .github__link {
   p {
+    font-weight: bold;
     margin: 0;
     color: #333;
     font-size: 13px;
     margin-top: 10px;
+    color: #f8f2ee;
+    text-decoration: underline;
   }
 }

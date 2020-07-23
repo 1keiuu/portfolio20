@@ -21,20 +21,30 @@ export default class SkillPage extends React.Component<Props, State> {
   constructor(props: any) {
     super(props);
     this.state = {
-      isGraphOpen: false,
+      isGraphOpen: true,
     };
   }
   render() {
     return (
-      <div className="graph__wrapper">
+      <div>
         <CSSTransition
           in={this.state.isGraphOpen}
           classNames="graph__back-ground"
           timeout={0}
         >
-          <GraphBg is={this.state.isGraphOpen}>
+          <GraphBg is={true}>
             <Fade bottom>
-              <Graph contributionsPromise={this.props.contributionsPromise} />
+              <div className="graph__wrapper">
+                <Graph contributionsPromise={this.props.contributionsPromise} />
+              </div>
+              <div
+                className="close__button"
+                onClick={() => {
+                  this.setState({ isGraphOpen: false });
+                }}
+              >
+                Close
+              </div>
             </Fade>
           </GraphBg>
         </CSSTransition>

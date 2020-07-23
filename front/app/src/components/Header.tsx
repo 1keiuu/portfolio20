@@ -4,7 +4,7 @@ import MenuIcon from "./MenuIcon";
 import ArrowIcon from "./ArrowIcon";
 import "../styles/header.scss";
 import { CSSTransition } from "react-transition-group";
-import title from "../images/titlepng.png";
+import title from "../images/title.png";
 import titleWhite from "../images/title-white.png";
 
 interface Props {}

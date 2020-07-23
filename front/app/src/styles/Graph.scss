@@ -14,7 +14,7 @@
         margin-right: 50px;
         .prev-arrow__wrapper {
           cursor: pointer;
-          background: #799c9770;
+          background: #f8f2ee;
           border-radius: 50%;
           width: 30px;
           height: 30px;
@@ -30,7 +30,7 @@
         margin-left: 50px;
         .next-arrow__wrapper {
           cursor: pointer;
-          background: #799c9770;
+          background: #f8f2ee;
           border-radius: 50%;
           width: 30px;
           height: 30px;
@@ -43,6 +43,8 @@
       .graph__span {
         margin: 0;
         font-size: 18px;
+        color: #f8f2ee;
+        font-weight: bold;
       }
     }
   }
@@ -56,12 +58,14 @@
     outline: 0;
     border: 1px #2f7562 solid;
     border-radius: 4px;
-    background: #799c9770;
+    background: #f8f2ee;
     color: #2f7562;
     font-weight: bold;
   }
 
   .line-graph__wrapper {
     margin-bottom: 30px;
+    background: #f8f2ee;
+    padding: 20px 40px;
   }
 }
