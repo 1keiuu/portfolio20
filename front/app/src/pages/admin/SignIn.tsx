@@ -29,7 +29,8 @@ class AdminSignIn extends React.Component<Props, State> {
     this.setState({ errorText: " " });
 
     try {
-      const res = await axios.post("http://localhost:8000/admin/login/new", {
+      const URL = `${process.env.REACT_APP_API_URL}/admin/login/new`;
+      const res = await axios.post(URL, {
         email: this.state.email,
         password: this.state.password,
       });

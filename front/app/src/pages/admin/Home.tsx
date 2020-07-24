@@ -22,8 +22,9 @@ class AdminHome extends React.Component<Props, State> {
 
   async componentDidMount() {
     const token = this.props.location.state;
+    const URL = `${process.env.REACT_APP_API_URL}/admin/home`;
     try {
-      await axios.get("http://localhost:8000/admin/home", {
+      await axios.get(URL, {
         headers: {
           Authorization: `Token ${token}`,
         },

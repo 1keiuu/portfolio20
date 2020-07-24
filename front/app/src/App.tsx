@@ -20,7 +20,8 @@ export default class App extends React.Component<Props, State> {
     };
   }
   getData = async () => {
-    const res = await axios.get("http://localhost:8000/contributions", {
+    const URL = `${process.env.REACT_APP_API_URL}/contributions`;
+    const res = await axios.get(URL, {
       headers: { "Content-Type": "application/json" },
     });
     return res.data.contributions;
