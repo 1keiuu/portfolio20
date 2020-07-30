@@ -2,6 +2,7 @@ package controller
 
 import (
 	"net/http"
+	"time"
 
 	"work/db"
 
@@ -18,13 +19,13 @@ type Contribution struct {
 }
 
 func GetContributions(c *gin.Context) {
-	db := db.Connect()
-	defer db.Close()
-	rows, err := db.Query("SELECT * FROM contributions")
+	DB := db.Connect()
+	defer DB.Close()
+	rows, err := DB.Query("SELECT * FROM contributions")
 	if err != nil {
 		panic(err.Error())
 	}
-	//contributions型のスライスに格納します
+
 	contributionsArgs := make([]Contribution, 0)
 	for rows.Next() {
 		var contributions Contribution
@@ -36,10 +37,15 @@ func GetContributions(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{
-		"contributions": contributionsArgs,
+		"contributions": sortContributionsData(contributionsArgs),
 	})
 }
 
-func main() {
+func sortContributionsData(array []Contribution) string {
+	nowUTC := time.Now().UTC()
+	jst := time.FixedZone("Asia/Tokyo", 9*60*60)
+	nowJST := nowUTC.In(jst)
 
+	today := nowJST.AddDate(0, 0, -7).Format("2006-01-02")
+	return today
 }

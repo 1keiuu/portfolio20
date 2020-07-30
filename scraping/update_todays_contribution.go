@@ -57,7 +57,6 @@ func getLatestContributionData(doc *goquery.Document) {
 	nowUTC := time.Now().UTC()
 	jst := time.FixedZone("Asia/Tokyo", 9*60*60)
 	nowJST := nowUTC.In(jst).Format("2006-01-02")
-	fmt.Println(nowJST)
 
 	rslt.Each(func(index int, s *goquery.Selection) {
 		date, _ := s.Attr("data-date")

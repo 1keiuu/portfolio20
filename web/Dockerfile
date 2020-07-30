@@ -6,5 +6,7 @@ WORKDIR /go/src/work
 
 RUN go get github.com/oxequa/realize
 
+CMD [ "realize", "start", "--run" ]
+
 ADD . /go/src/work
 

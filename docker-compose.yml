@@ -2,7 +2,7 @@ version: "3"
 services:
   web:
     build: ./web
-    command: go run main.go && realize start
+    command: go run main.go
     tty: true
     volumes:
       - ./web:/go/src/work
@@ -10,6 +10,7 @@ services:
       - 8000:8000
     depends_on:
       - db
+    working_dir: /go/src/work
     environment:
       DB_NAME: app_development
       DB_USER_NAME: root
