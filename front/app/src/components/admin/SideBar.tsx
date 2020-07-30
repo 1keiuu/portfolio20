@@ -20,9 +20,6 @@ interface Props extends RouteComponentProps<{}> {
 }
 
 class SideBar extends React.Component<Props> {
-  constructor(props: any) {
-    super(props);
-  }
   handleClick(type: string) {
     switch (type) {
       case "profile":

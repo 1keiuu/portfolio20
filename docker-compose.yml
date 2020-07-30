@@ -1,17 +1,11 @@
 version: "3"
 services:
   web:
-    build:
-      context: ./web
-      dockerfile: Dockerfile
-    command: /bin/sh -c "rm -f /app/tmp/pids/server.pid && bundle exec rails s -p 8000 -b '0.0.0.0'"
-    image: rails:dev
+    build: ./web
+    command: go run main.go
+    tty: true
     volumes:
-      - ./web:/app
-      - ./web/vendor/bundle:/vendor/bundle
-    environment:
-      TZ: Asia/Tokyo
-      RAILS_ENV: development
+      - ./web:/go/src/work
     ports:
       - 8000:8000
     depends_on:

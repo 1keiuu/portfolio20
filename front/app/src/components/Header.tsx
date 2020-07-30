@@ -98,6 +98,7 @@ export default class Header extends React.Component<Props, State> {
         <img
           src={title}
           className={"title" + " " + (this.state.isMenuOpen ? "--open" : "")}
+          alt="title"
         />
         <img
           src={titleWhite}
