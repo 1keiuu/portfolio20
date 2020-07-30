@@ -2,7 +2,7 @@ version: "3"
 services:
   web:
     build: ./web
-    command: go run main.go
+    command: go run main.go && realize start
     tty: true
     volumes:
       - ./web:/go/src/work
@@ -10,6 +10,11 @@ services:
       - 8000:8000
     depends_on:
       - db
+    environment:
+      DB_NAME: app_development
+      DB_USER_NAME: root
+      DB_PASS: password
+      DB_ENDPOINT: db
   db:
     image: mysql:5.7
     command: mysqld --character-set-server=utf8 --collation-server=utf8_general_ci
@@ -17,11 +22,6 @@ services:
       - "3336:3336"
     volumes:
       - mysql-data:/var/lib/mysql
-    environment:
-      MYSQL_DATABASE: app_development
-      MYSQL_USER: root
-      MYSQL_PASSWORD: password
-      MYSQL_ROOT_PASSWORD: password
   front:
     build:
       context: ./front
