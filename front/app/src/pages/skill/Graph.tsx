@@ -89,32 +89,32 @@ export default class Graph extends React.Component<Props, State> {
     this.props.contributionsPromise.then((data) => {
       console.log(data);
 
-      this.setState({
-        weeklyArray: data.weekly.array,
-        monthlyArray: data.monthly.array,
-      });
-      this.getWeeklyData(this.state.currentWeeklyIndex);
-      this.getMonthlyData(this.state.currentMonthlyIndex);
+      // this.setState({
+      //   weeklyArray: data.weekly.array,
+      //   monthlyArray: data.monthly.array,
+      // });
+      // this.getWeeklyData(this.state.currentWeeklyIndex);
+      // this.getMonthlyData(this.state.currentMonthlyIndex);
 
-      this.setState({
-        yearlyData: contributionsData(
-          data.yearly.labels,
-          data.yearly.data,
-          "yearly"
-        ),
-      });
-      this.setState({
-        currentMaxYAxis: data.weekly.max + 3,
-      });
-      // y軸の最大値を設定(+分はゆとり)
-      this.setState({
-        maxYAxisGroup: {
-          weekly: data.weekly.max + 3,
-          monthly: data.monthly.max + 40,
-          yearly: data.yearly.max + 100,
-        },
-      });
-      this.setState({ currentData: this.state.weeklyData });
+      // this.setState({
+      //   yearlyData: contributionsData(
+      //     data.yearly.labels,
+      //     data.yearly.data,
+      //     "yearly"
+      //   ),
+      // });
+      // this.setState({
+      //   currentMaxYAxis: data.weekly.max + 3,
+      // });
+      // // y軸の最大値を設定(+分はゆとり)
+      // this.setState({
+      //   maxYAxisGroup: {
+      //     weekly: data.weekly.max + 3,
+      //     monthly: data.monthly.max + 40,
+      //     yearly: data.yearly.max + 100,
+      //   },
+      // });
+      // this.setState({ currentData: this.state.weeklyData });
     });
   }
   dataChange = (e: any) => {

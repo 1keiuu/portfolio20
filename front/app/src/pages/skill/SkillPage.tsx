@@ -2,11 +2,11 @@ import React from "react";
 import Graph from "./Graph";
 import "../../styles/SkillPage.scss";
 import { CSSTransition } from "react-transition-group";
+import axios from "axios";
+
 const Fade = require("react-reveal/Fade");
 
-interface Props {
-  contributionsPromise: Promise<any>;
-}
+interface Props {}
 interface State {
   isGraphOpen: boolean;
 }
@@ -24,6 +24,14 @@ export default class SkillPage extends React.Component<Props, State> {
       isGraphOpen: true,
     };
   }
+  getData = async () => {
+    const URL = `${process.env.REACT_APP_API_URL}/`;
+    const res = await axios.get(URL, {
+      headers: { "Content-Type": "application/json" },
+    });
+    console.log(res.data);
+    return res.data.contributions;
+  };
   render() {
     return (
       <div>
@@ -35,7 +43,7 @@ export default class SkillPage extends React.Component<Props, State> {
           <GraphBg is={true}>
             <Fade bottom>
               <div className="graph__wrapper">
-                <Graph contributionsPromise={this.props.contributionsPromise} />
+                <Graph contributionsPromise={this.getData()} />
               </div>
               <div
                 className="close__button"

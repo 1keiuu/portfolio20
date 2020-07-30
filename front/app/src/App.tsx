@@ -19,13 +19,7 @@ export default class App extends React.Component<Props, State> {
       contributions: [],
     };
   }
-  getData = async () => {
-    const URL = `${process.env.REACT_APP_API_URL}/contributions`;
-    const res = await axios.get(URL, {
-      headers: { "Content-Type": "application/json" },
-    });
-    return res.data.contributions;
-  };
+
   render() {
     return (
       <div className="App">
@@ -36,7 +30,7 @@ export default class App extends React.Component<Props, State> {
           </Route>
           <Route path="/skills">
             <Header></Header>
-            <SkillPage contributionsPromise={this.getData()}></SkillPage>
+            <SkillPage></SkillPage>
           </Route>
           <Route path="/admin/signIn">
             <AdminSignIn></AdminSignIn>
