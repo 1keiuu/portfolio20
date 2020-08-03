@@ -2,7 +2,7 @@ version: "3"
 services:
   web:
     build: ./web
-    command: go run main.go
+    command: realize start --run
     tty: true
     volumes:
       - ./web:/go/src/work

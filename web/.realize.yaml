@@ -2,21 +2,25 @@ settings:
   legacy:
     force: false
     interval: 0s
-server:
-  status: true
-  open: false
-  port: 5002
-  host: localhost
+# server:
+#   status: false
+#   open: false
+#   port: 8000
+#   host: localhost
 schema:
-- name: work
-  path: .
-  commands: {}
-  watcher:
-    extensions:
-    - go
-    paths:
-    - /
-    ignored_paths:
-    - .git
-    - .realize
-    - vendor
+  - name: web
+    # path: .
+    commands:
+      install:
+        status: true
+        method: go build -o /bin/realize
+      run:
+        status: true
+        method: /bin/realize
+    watcher:
+      extensions:
+        - go
+      paths:
+        - /
+      ignore_paths:
+        - .git

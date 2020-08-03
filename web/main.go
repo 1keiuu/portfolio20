@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"work/adminController"
 	"work/controller"
 
 	"github.com/gin-contrib/cors"
@@ -33,6 +34,7 @@ func main() {
 	}))
 
 	engine.GET("/contributions", controller.GetContributions)
+	engine.GET("/admin/signUp", adminController.SignUp)
 	engine.Run(":8000")
 	if err := engine.Run(); err != nil {
 		log.Fatalf("main error: %s", err.Error())
