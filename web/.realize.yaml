@@ -2,14 +2,8 @@ settings:
   legacy:
     force: false
     interval: 0s
-# server:
-#   status: false
-#   open: false
-#   port: 8000
-#   host: localhost
 schema:
   - name: web
-    # path: .
     commands:
       install:
         status: true
