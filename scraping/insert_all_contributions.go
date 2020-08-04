@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"net/url"
 	"os"
@@ -12,9 +13,17 @@ import (
 
 	"github.com/PuerkitoBio/goquery"
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/joho/godotenv"
 	"github.com/saintfish/chardet"
 	"golang.org/x/net/html/charset"
 )
+
+func Env_load() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+}
 
 func getDoc(URL string) *goquery.Document {
 	res, _ := http.Get(URL)
@@ -50,6 +59,8 @@ func getContributionData(doc *goquery.Document, index string) {
 }
 
 func insertAllContributionsToDB(count int, date string) {
+	Env_load()
+
 	ENDPOINT := os.Getenv("DB_ENDPOINT")
 	USER_NAME := os.Getenv("DB_USER_NAME")
 	PASS := os.Getenv("DB_PASS")

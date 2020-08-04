@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"time"
+	"work/db"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/go-sql-driver/mysql"
@@ -18,26 +19,25 @@ type Contribution struct {
 }
 
 func GetContributions(c *gin.Context) {
-	// DB := db.Connect()
-	// defer DB.Close()
-	// rows, err := DB.Query("SELECT * FROM contributions")
-	// if err != nil {
-	// 	panic(err.Error())
-	// }
+	DB := db.Connect()
+	defer DB.Close()
+	rows, err := DB.Query("SELECT * FROM contributions")
+	if err != nil {
+		panic(err.Error())
+	}
 
-	// contributionsArgs := make([]Contribution, 0)
-	// for rows.Next() {
-	// 	var contributions Contribution
-	// 	err = rows.Scan(&contributions.ID, &contributions.Count, &contributions.Date, &contributions.CreatedAt, &contributions.UpdatedAt)
-	// 	if err != nil {
-	// 		panic(err.Error())
-	// 	}
-	// 	contributionsArgs = append(contributionsArgs, contributions)
-	// }
+	contributionsArgs := make([]Contribution, 0)
+	for rows.Next() {
+		var contributions Contribution
+		err = rows.Scan(&contributions.ID, &contributions.Count, &contributions.Date, &contributions.CreatedAt, &contributions.UpdatedAt)
+		if err != nil {
+			panic(err.Error())
+		}
+		contributionsArgs = append(contributionsArgs, contributions)
+	}
 
 	c.JSON(http.StatusOK, gin.H{
-		// "contributions": sortContributionsData(contributionsArgs),
-		"contributions": "test",
+		"contributions": sortContributionsData(contributionsArgs),
 	})
 }
 

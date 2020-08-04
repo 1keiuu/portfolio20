@@ -12,7 +12,7 @@ services:
       - db
     working_dir: /go/src/work
     environment:
-      DB_NAME: app_development
+      DB_NAME: development
       DB_USER_NAME: root
       DB_PASS: password
       DB_ENDPOINT: db
@@ -24,10 +24,7 @@ services:
     volumes:
       - mysql-data:/var/lib/mysql
     environment:
-      # DB_NAME: app_development
-      # DB_USER_NAME: root
       MYSQL_ROOT_PASSWORD: password
-      # DB_ENDPOINT: db
   front:
     build:
       context: ./front

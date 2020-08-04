@@ -2,7 +2,7 @@ import React from "react";
 import Graph from "./Graph";
 import "../../styles/SkillPage.scss";
 import { CSSTransition } from "react-transition-group";
-import axios from "axios";
+import axios from "../../plugin/axios/index";
 
 const Fade = require("react-reveal/Fade");
 
@@ -25,8 +25,7 @@ export default class SkillPage extends React.Component<Props, State> {
     };
   }
   getData = async () => {
-    const URL = `${process.env.REACT_APP_API_URL}/contributions`;
-    const res = await axios.get(URL, {
+    const res = await axios.get("/contributions", {
       headers: { "Content-Type": "application/json" },
     });
     console.log(res.data);

@@ -1,3 +1,8 @@
 
 
 web/vendor
+
+.env
+.env.production
+scraping/go.sum
+web/go.sum
