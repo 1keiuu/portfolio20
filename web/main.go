@@ -34,8 +34,8 @@ func main() {
 		},
 	}))
 
-	engine.GET("/contributions", controller.GetContributions)
-	engine.GET("/admin/signUp", adminController.SignUp)
+	engine.GET("/api/contributions", controller.GetContributions)
+	engine.GET("/api/admin/signUp", adminController.SignUp)
 	engine.Run(":8000")
 	if err := engine.Run(); err != nil {
 		log.Fatalf("main error: %s", err.Error())
