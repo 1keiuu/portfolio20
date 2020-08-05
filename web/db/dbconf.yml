@@ -1,3 +1,25 @@
+# development:
+#   driver: mysql
+#   open: tcp:localhost:3306*$DB_NAME/DB_USER_NAME/DB_PASS
+
+# test:
+#     driver: mysql
+#     open: user=liam dbname=${} sslmode=disable
+
 development:
   driver: mysql
-  open: tcp:localhost:3306*$DB_NAME/DB_USER_NAME/DB_PASS
+  open: user=${DB_USER_NAME}  dbname=${DB_NAME} sslmode=disable
+
+production:
+  driver: mysql
+  open: user=${DB_USER_NAME}  dbname=${DB_NAME} sslmode=verify-full
+
+customimport:
+  driver: customdriver
+  open: customdriver open
+  import: github.com/custom/driver
+  dialect: mysql
+
+environment_variable_config:
+  driver: $DB_DRIVER
+  open: $DATABASE_URL
