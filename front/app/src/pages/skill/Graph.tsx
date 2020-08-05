@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Line } from "react-chartjs-2";
 import "../../styles/Graph.scss";
 import GithubTitle from "../../components/GithubTitle";
@@ -71,236 +71,237 @@ const contributionsData = (labels: string[], data: number[], type: string) => {
   };
 };
 
-export default class Graph extends React.Component<Props, State> {
-  state: State = {
-    currentData: contributionsData([], [], "weekly"),
-    weeklyData: contributionsData([], [], "weekly"),
-    monthlyData: contributionsData([], [], "monthly"),
-    yearlyData: contributionsData([], [], "yearly"),
-    weeklyArray: [],
-    monthlyArray: [],
-    currentWeeklyIndex: 0,
-    currentMonthlyIndex: 0,
-    currentMaxYAxis: 0,
-    maxYAxisGroup: { weekly: 0, monthly: 0, yearly: 0 },
-  };
+const Graph: React.FC<Props> = (props) => {
+  const [currentData, setCurrentData] = useState(
+    contributionsData([], [], "weekly")
+  );
+  const [weeklyData, setWeeklyData] = useState(
+    contributionsData([], [], "weekly")
+  );
+  const [monthlyData, setMonthlyData] = useState(
+    contributionsData([], [], "monthly")
+  );
+  const [yearlyData, setYearlyData] = useState(
+    contributionsData([], [], "yearly")
+  );
+  const [weeklyArray, setWeeklyArray]: [
+    { labels: []; data: [] }[],
+    React.Dispatch<React.SetStateAction<[]>>
+  ] = useState([]);
+  const [monthlyArray, setMonthlyArray]: [
+    { labels: []; data: [] }[],
+    React.Dispatch<React.SetStateAction<[]>>
+  ] = useState([]);
+  const [currentWeeklyIndex, setCurrentWeeklyIndex] = useState(0);
+  const [currentMonthlyIndex, setCurrentMonthlyIndex] = useState(0);
+  const [currentMaxYAxis, setCurrentMaxYAxis] = useState(0);
+  const [maxYAxisGroup, setMaxYAxisGroup] = useState({
+    weekly: 0,
+    monthly: 0,
+    yearly: 0,
+  });
 
-  componentDidMount() {
-    this.props.contributionsPromise.then((data) => {
-      console.log(data);
+  // componentDidMount() {
+  props.contributionsPromise.then((data) => {
+    console.log(data);
 
-      // this.setState({
-      //   weeklyArray: data.weekly.array,
-      //   monthlyArray: data.monthly.array,
-      // });
-      // this.getWeeklyData(this.state.currentWeeklyIndex);
-      // this.getMonthlyData(this.state.currentMonthlyIndex);
+    // setState({
+    //   weeklyArray: data.weekly.array,
+    //   monthlyArray: data.monthly.array,
+    // });
+    // getWeeklyData(currentWeeklyIndex);
+    // getMonthlyData(currentMonthlyIndex);
 
-      // this.setState({
-      //   yearlyData: contributionsData(
-      //     data.yearly.labels,
-      //     data.yearly.data,
-      //     "yearly"
-      //   ),
-      // });
-      // this.setState({
-      //   currentMaxYAxis: data.weekly.max + 3,
-      // });
-      // // y軸の最大値を設定(+分はゆとり)
-      // this.setState({
-      //   maxYAxisGroup: {
-      //     weekly: data.weekly.max + 3,
-      //     monthly: data.monthly.max + 40,
-      //     yearly: data.yearly.max + 100,
-      //   },
-      // });
-      // this.setState({ currentData: this.state.weeklyData });
-    });
-  }
-  dataChange = (e: any) => {
+    // setState({
+    //   yearlyData: contributionsData(
+    //     data.yearly.labels,
+    //     data.yearly.data,
+    //     "yearly"
+    //   ),
+    // });
+    // setState({
+    //   currentMaxYAxis: data.weekly.max + 3,
+    // });
+    // // y軸の最大値を設定(+分はゆとり)
+    // setState({
+    //   maxYAxisGroup: {
+    //     weekly: data.weekly.max + 3,
+    //     monthly: data.monthly.max + 40,
+    //     yearly: data.yearly.max + 100,
+    //   },
+    // });
+    // setCurrentData: weeklyData });
+  });
+  // }
+
+  const dataChange = (e: any) => {
     const val = e.target.value;
     switch (val) {
       case "week":
-        this.setState({ currentData: this.state.weeklyData });
-        this.setState({
-          currentMaxYAxis: this.state.maxYAxisGroup.weekly,
-        });
+        setCurrentData(weeklyData);
+        setCurrentMaxYAxis(maxYAxisGroup.weekly);
         break;
       case "month":
-        this.setState({ currentData: this.state.monthlyData });
-        this.setState({
-          currentMaxYAxis: this.state.maxYAxisGroup.monthly,
-        });
-
+        setCurrentData(monthlyData);
+        setCurrentMaxYAxis(maxYAxisGroup.monthly);
         break;
       case "year":
-        this.setState({ currentData: this.state.yearlyData });
-        this.setState({
-          currentMaxYAxis: this.state.maxYAxisGroup.yearly,
-        });
+        setCurrentData(yearlyData);
+        setCurrentMaxYAxis(maxYAxisGroup.yearly);
 
         break;
     }
   };
-  culcSpan(labels: string[]) {
+  const culcSpan = (labels: string[]) => {
     return labels[0] + "~" + labels[labels.length - 1];
-  }
-  getWeeklyData(index: number) {
+  };
+  const getWeeklyData = (index: number) => {
     const contData = () => {
       return contributionsData(
-        this.state.weeklyArray[index].labels,
-        this.state.weeklyArray[index].data,
+        weeklyArray[index].labels,
+        weeklyArray[index].data,
         "weekly"
       );
     };
-    this.setState({ weeklyData: contData() });
-  }
-  getMonthlyData(index: number) {
+    setWeeklyData(contData());
+  };
+  const getMonthlyData = (index: number) => {
     const contData = () => {
       return contributionsData(
-        this.state.monthlyArray[index].labels,
-        this.state.monthlyArray[index].data,
+        monthlyArray[index].labels,
+        monthlyArray[index].data,
         "monthly"
       );
     };
-    this.setState({ monthlyData: contData() });
-  }
-  async changeGraphSpan(n: number) {
-    switch (this.state.currentData) {
-      case this.state.weeklyData:
-        await this.setState({
-          currentWeeklyIndex: this.state.currentWeeklyIndex + n,
-        });
-        await this.getWeeklyData(this.state.currentWeeklyIndex);
-        this.setState({ currentData: this.state.weeklyData });
+    setMonthlyData(contData);
+  };
+  const changeGraphSpan = async (n: number) => {
+    switch (currentData) {
+      case weeklyData:
+        await setCurrentWeeklyIndex(currentWeeklyIndex + n);
+        await getWeeklyData(currentWeeklyIndex);
+        setCurrentData(weeklyData);
         break;
-      case this.state.monthlyData:
-        await this.setState({
-          currentMonthlyIndex: this.state.currentMonthlyIndex + n,
-        });
-        await this.getMonthlyData(this.state.currentMonthlyIndex);
-        this.setState({ currentData: this.state.monthlyData });
+      case monthlyData:
+        await setCurrentMonthlyIndex(currentMonthlyIndex + n);
+        await getMonthlyData(currentMonthlyIndex);
+        setCurrentData(monthlyData);
         break;
     }
-  }
+  };
 
-  render() {
-    return (
-      <div className="graph">
-        <div className="graph__upper">
-          <div className="span-display__wrapper">
-            <div className="prev-button">
-              {(() => {
-                if (this.state.currentData === this.state.yearlyData) return;
-                if (this.state.currentData === this.state.weeklyData) {
-                  // weekly
-                  if (this.state.currentWeeklyIndex !== 3) {
-                    return (
-                      <div
-                        onClick={async () => {
-                          await this.changeGraphSpan(1);
-                        }}
-                        className="prev-arrow__wrapper"
-                      >
-                        <ArrowIcon isLeft={true} fill="#093e49" />
-                      </div>
-                    );
-                  }
-                } else {
-                  if (
-                    this.state.currentMonthlyIndex !==
-                    this.state.monthlyArray.length - 1
-                  ) {
-                    return (
-                      <div
-                        onClick={async () => {
-                          await this.changeGraphSpan(1);
-                        }}
-                        className="prev-arrow__wrapper"
-                      >
-                        <ArrowIcon isLeft={true} fill="#093e49" />
-                      </div>
-                    );
-                  }
+  return (
+    <div className="graph">
+      <div className="graph__upper">
+        <div className="span-display__wrapper">
+          <div className="prev-button">
+            {(() => {
+              if (currentData === yearlyData) return;
+              if (currentData === weeklyData) {
+                // weekly
+                if (currentWeeklyIndex !== 3) {
+                  return (
+                    <div
+                      onClick={async () => {
+                        await changeGraphSpan(1);
+                      }}
+                      className="prev-arrow__wrapper"
+                    >
+                      <ArrowIcon isLeft={true} fill="#093e49" />
+                    </div>
+                  );
                 }
-              })()}
-            </div>
-
-            <div>
-              <p className="graph__span">
-                {this.culcSpan(this.state.currentData.labels)}
-              </p>
-            </div>
-            <div className="next-button">
-              {(() => {
-                if (this.state.currentData === this.state.yearlyData) return;
-                if (this.state.currentData === this.state.weeklyData) {
-                  // weekly
-                  if (this.state.currentWeeklyIndex !== 0) {
-                    return (
-                      <div
-                        onClick={async () => {
-                          await this.changeGraphSpan(-1);
-                        }}
-                        className="next-arrow__wrapper"
-                      >
-                        <ArrowIcon isLeft={false} fill="#093e49" />
-                      </div>
-                    );
-                  }
-                } else {
-                  if (this.state.currentMonthlyIndex !== 0) {
-                    return (
-                      <div
-                        onClick={async () => {
-                          await this.changeGraphSpan(-1);
-                        }}
-                        className="next-arrow__wrapper"
-                      >
-                        <ArrowIcon isLeft={false} fill="#093e49" />
-                      </div>
-                    );
-                  }
+              } else {
+                if (currentMonthlyIndex !== monthlyArray.length - 1) {
+                  return (
+                    <div
+                      onClick={async () => {
+                        await changeGraphSpan(1);
+                      }}
+                      className="prev-arrow__wrapper"
+                    >
+                      <ArrowIcon isLeft={true} fill="#093e49" />
+                    </div>
+                  );
                 }
-              })()}
-            </div>
+              }
+            })()}
           </div>
-          <select className="date-select" onChange={this.dataChange}>
-            <option className="date-option" value="week">
-              Week
-            </option>
-            <option className="date-option" value="month">
-              Month
-            </option>
-            <option className="date-option" value="year">
-              Year
-            </option>
-          </select>
+
+          <div>
+            <p className="graph__span">{culcSpan(currentData.labels)}</p>
+          </div>
+          <div className="next-button">
+            {(() => {
+              if (currentData === yearlyData) return;
+              if (currentData === weeklyData) {
+                // weekly
+                if (currentWeeklyIndex !== 0) {
+                  return (
+                    <div
+                      onClick={async () => {
+                        await changeGraphSpan(-1);
+                      }}
+                      className="next-arrow__wrapper"
+                    >
+                      <ArrowIcon isLeft={false} fill="#093e49" />
+                    </div>
+                  );
+                }
+              } else {
+                if (currentMonthlyIndex !== 0) {
+                  return (
+                    <div
+                      onClick={async () => {
+                        await changeGraphSpan(-1);
+                      }}
+                      className="next-arrow__wrapper"
+                    >
+                      <ArrowIcon isLeft={false} fill="#093e49" />
+                    </div>
+                  );
+                }
+              }
+            })()}
+          </div>
         </div>
-        <div className="line-graph__wrapper">
-          <Line
-            data={this.state.currentData}
-            redraw={true}
-            key={Math.random()}
-            options={{
-              scales: {
-                yAxes: [
-                  {
-                    ticks: {
-                      beginAtZero: true,
-                      max: this.state.currentMaxYAxis,
-                    },
-                  },
-                ],
-              },
-              maintainAspectRatio: false,
-            }}
-            width={window.parent.screen.width * 0.4}
-            height={350}
-          />
-        </div>
-        <GithubTitle />
+        <select className="date-select" onChange={dataChange}>
+          <option className="date-option" value="week">
+            Week
+          </option>
+          <option className="date-option" value="month">
+            Month
+          </option>
+          <option className="date-option" value="year">
+            Year
+          </option>
+        </select>
       </div>
-    );
-  }
-}
+      <div className="line-graph__wrapper">
+        <Line
+          data={currentData}
+          redraw={true}
+          key={Math.random()}
+          options={{
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true,
+                    max: currentMaxYAxis,
+                  },
+                },
+              ],
+            },
+            maintainAspectRatio: false,
+          }}
+          width={window.parent.screen.width * 0.4}
+          height={350}
+        />
+      </div>
+      <GithubTitle />
+    </div>
+  );
+};
+
+export default Graph;

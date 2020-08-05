@@ -1,4 +1,4 @@
-import React, { FormEvent } from "react";
+import React, { FormEvent, useState } from "react";
 import axios from "axios";
 import { RouteComponentProps } from "react-router-dom";
 import * as H from "history";
@@ -8,94 +8,82 @@ import { Button, TextField } from "@material-ui/core";
 interface Props extends RouteComponentProps<{}> {
   history: H.History;
 }
-interface State {
-  email: string;
-  password: string;
-  errorText: string;
-}
 
-class AdminSignIn extends React.Component<Props, State> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      email: "",
-      password: "",
-      errorText: " ",
-    };
-  }
+const AdminSignIn: React.FC<Props> = (props) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorText, setErrorText] = useState("");
 
-  async signIn(event: FormEvent) {
+  const signIn = async (event: FormEvent) => {
     event.preventDefault();
-    this.setState({ errorText: " " });
+    setErrorText("");
 
     try {
       const URL = `${process.env.REACT_APP_API_URL}/admin/login/new`;
       const res = await axios.post(URL, {
-        email: this.state.email,
-        password: this.state.password,
+        email: email,
+        password: password,
       });
-      this.props.history.push({
+      props.history.push({
         pathname: "/admin",
         state: res.data,
       });
     } catch {
-      this.setState({ errorText: "ログインに失敗しました" });
+      setErrorText("ログインに失敗しました");
     }
-  }
-  handleChange(event: { target: { value: string } }, type: string) {
+  };
+  const handleChange = (event: { target: { value: string } }, type: string) => {
     switch (type) {
       case "email":
-        this.setState({ email: event.target.value });
+        setEmail(event.target.value);
         break;
       case "password":
-        this.setState({ password: event.target.value });
+        setPassword(event.target.value);
         break;
     }
-  }
-  render() {
-    return (
-      <div className="sign-in__wrapper">
-        <form
-          onSubmit={(e) => {
-            this.signIn(e);
+  };
+  return (
+    <div className="sign-in__wrapper">
+      <form
+        onSubmit={(e) => {
+          signIn(e);
+        }}
+        className="sign-in__form"
+      >
+        <p>Admin</p>
+        <TextField
+          variant="outlined"
+          placeholder="Email Address"
+          type="text"
+          value={email}
+          onChange={(e) => {
+            handleChange(e, "email");
           }}
-          className="sign-in__form"
-        >
-          <p>Admin</p>
-          <TextField
-            variant="outlined"
-            placeholder="Email Address"
-            type="text"
-            value={this.state.email}
-            onChange={(e) => {
-              this.handleChange(e, "email");
-            }}
-            className="sign-in__email-input"
-          />
-          <TextField
-            variant="outlined"
-            placeholder="Password"
-            type="password"
-            value={this.state.password}
-            onChange={(e) => {
-              this.handleChange(e, "password");
-            }}
-            className="sign-in__password-input"
-          />
+          className="sign-in__email-input"
+        />
+        <TextField
+          variant="outlined"
+          placeholder="Password"
+          type="password"
+          value={password}
+          onChange={(e) => {
+            handleChange(e, "password");
+          }}
+          className="sign-in__password-input"
+        />
 
-          <Button
-            variant="contained"
-            color="primary"
-            type="submit"
-            value="Submit"
-          >
-            Sign In
-          </Button>
-        </form>
-        <p className="error-text">{this.state.errorText}</p>
-      </div>
-    );
-  }
-}
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+          value="Submit"
+        >
+          Sign In
+        </Button>
+      </form>
+      <p className="error-text">{errorText}</p>
+    </div>
+  );
+};
 
 export default withRouter(AdminSignIn);

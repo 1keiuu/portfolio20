@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Graph from "./Graph";
 import "../../styles/SkillPage.scss";
 import { CSSTransition } from "react-transition-group";
 import axios from "../../plugin/axios/index";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 const Fade = require("react-reveal/Fade");
 
-interface Props {}
 interface State {
   isGraphOpen: boolean;
 }
@@ -17,51 +18,62 @@ const GraphBg = (props: any) => {
     return <div></div>;
   }
 };
-export default class SkillPage extends React.Component<Props, State> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      isGraphOpen: true,
-    };
-  }
-  getData = async () => {
+const SkillPage: React.FC = () => {
+  const [isGraphOpen, setIsGraphOpen] = useState(false);
+
+  const currentCount = useSelector((state: RootState) => state.counter);
+
+  const getData = async () => {
     const res = await axios.get("/contributions", {
       headers: { "Content-Type": "application/json" },
     });
     console.log(res.data);
     return res.data.contributions;
   };
-  render() {
-    return (
-      <div>
-        <CSSTransition
-          in={this.state.isGraphOpen}
-          classNames="graph__back-ground"
-          timeout={0}
-        >
-          <GraphBg is={true}>
-            <Fade bottom>
-              <div className="graph__wrapper">
-                <Graph contributionsPromise={this.getData()} />
-              </div>
-              <div
-                className="close__button"
-                onClick={() => {
-                  this.setState({ isGraphOpen: false });
-                }}
-              >
-                Close
-              </div>
-            </Fade>
-          </GraphBg>
-        </CSSTransition>
-        <div
-          className="github__button"
-          onClick={() => {
-            this.setState({ isGraphOpen: true });
-          }}
-        ></div>
-      </div>
-    );
-  }
-}
+
+  const getCount = async () => {
+    // await axios
+    //   .get("/contributions", {
+    //     headers: { "Content-Type": "application/json" },
+    //   })
+    //   .then((res) => {
+    //     console.log(res);
+    //   });
+    // };
+    console.log(currentCount);
+  };
+
+  return (
+    <div>
+      <CSSTransition
+        in={isGraphOpen}
+        classNames="graph__back-ground"
+        timeout={0}
+      >
+        <GraphBg is={isGraphOpen}>
+          <Fade bottom>
+            <div className="graph__wrapper">
+              <Graph contributionsPromise={getData()} />
+            </div>
+            <div
+              className="close__button"
+              onClick={() => {
+                setIsGraphOpen(false);
+              }}
+            >
+              Close
+            </div>
+          </Fade>
+        </GraphBg>
+      </CSSTransition>
+      <div
+        className="github__button"
+        onClick={() => {
+          setIsGraphOpen(true);
+        }}
+      ></div>
+    </div>
+  );
+};
+
+export default SkillPage;

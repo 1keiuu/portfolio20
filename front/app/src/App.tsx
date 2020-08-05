@@ -9,37 +9,28 @@ import AdminSignIn from "./pages/admin/SignIn";
 import AdminHome from "./pages/admin/Home";
 
 interface Props {}
-interface State {
-  contributions: [];
-}
-export default class App extends React.Component<Props, State> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      contributions: [],
-    };
-  }
 
-  render() {
-    return (
-      <div className="App">
-        <Router>
-          <Route exact path="/">
-            <Header></Header>
-            <Home></Home>
-          </Route>
-          <Route path="/skills">
-            <Header></Header>
-            <SkillPage></SkillPage>
-          </Route>
-          <Route path="/admin/signIn">
-            <AdminSignIn></AdminSignIn>
-          </Route>
-          <Route exact path="/admin">
-            <AdminHome></AdminHome>
-          </Route>
-        </Router>
-      </div>
-    );
-  }
-}
+const App: React.FC<Props> = () => {
+  return (
+    <div className="App">
+      <Router>
+        <Route exact path="/">
+          <Header></Header>
+          <Home></Home>
+        </Route>
+        <Route path="/skills">
+          <Header></Header>
+          <SkillPage></SkillPage>
+        </Route>
+        <Route path="/admin/signIn">
+          <AdminSignIn></AdminSignIn>
+        </Route>
+        <Route exact path="/admin">
+          <AdminHome></AdminHome>
+        </Route>
+      </Router>
+    </div>
+  );
+};
+
+export default App;

@@ -12,17 +12,15 @@ const styles = (): StyleRules =>
     },
   });
 
-class AdminLayout extends React.Component {
-  render() {
-    return (
-      <div className="admin__container">
-        <Router>
-          {/* <Route  path="/admin/signIn">
+const AdminLayout: React.FC = () => {
+  return (
+    <div className="admin__container">
+      <Router>
+        {/* <Route  path="/admin/signIn">
             <AdminSignIn></AdminSignIn>
           </Route> */}
-        </Router>
-      </div>
-    );
-  }
-}
+      </Router>
+    </div>
+  );
+};
 export default withStyles(styles)(AdminLayout);

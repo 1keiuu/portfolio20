@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import MenuIcon from "./MenuIcon";
 import ArrowIcon from "./ArrowIcon";
@@ -41,88 +41,73 @@ const MenuButton = (props: any) => {
     );
   }
 };
-export default class Header extends React.Component<Props, State> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      isMenuOpen: false,
-    };
-  }
-  changeMenuStatus(type: string) {
+const Header: React.FC<Props> = (props) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const changeMenuStatus = (type: string) => {
     if (type === "open") {
-      this.setState({ isMenuOpen: true });
+      setIsMenuOpen(true);
     } else {
-      this.setState({ isMenuOpen: false });
+      setIsMenuOpen(false);
     }
-  }
+  };
 
-  render() {
-    return (
-      <header
-        className={
-          "header" + " " + (this.state.isMenuOpen ? "--is-menu-open" : "")
-        }
+  return (
+    <header className={"header" + " " + (isMenuOpen ? "--is-menu-open" : "")}>
+      <CSSTransition
+        in={isMenuOpen}
+        classNames="menu-items__back-ground"
+        timeout={0}
       >
-        <CSSTransition
-          in={this.state.isMenuOpen}
-          classNames="menu-items__back-ground"
-          timeout={0}
-        >
-          <div className="menu-items__back-ground">
-            <div className="menu-items__inner">
-              <div className="menu-items">
-                <Link to="/" className="menu-item">
-                  Home
-                </Link>
-                <Link to="/skills" className="menu-item">
-                  Product
-                </Link>
-                <Link to="/" className="menu-item">
-                  Carrer
-                </Link>
-                <Link to="/" className="menu-item">
-                  Contact
-                </Link>
-              </div>
-              <CSSTransition
-                in={this.state.isMenuOpen}
-                classNames="menu-items__underline"
-                timeout={0}
-              >
-                <div className="menu-items__underline"></div>
-              </CSSTransition>
+        <div className="menu-items__back-ground">
+          <div className="menu-items__inner">
+            <div className="menu-items">
+              <Link to="/" className="menu-item">
+                Home
+              </Link>
+              <Link to="/skills" className="menu-item">
+                Product
+              </Link>
+              <Link to="/" className="menu-item">
+                Carrer
+              </Link>
+              <Link to="/" className="menu-item">
+                Contact
+              </Link>
             </div>
+            <CSSTransition
+              in={isMenuOpen}
+              classNames="menu-items__underline"
+              timeout={0}
+            >
+              <div className="menu-items__underline"></div>
+            </CSSTransition>
           </div>
-        </CSSTransition>
+        </div>
+      </CSSTransition>
 
-        <img
-          src={title}
-          className={"title" + " " + (this.state.isMenuOpen ? "--open" : "")}
-          alt="title"
+      <img
+        src={title}
+        className={"title" + " " + (isMenuOpen ? "--open" : "")}
+        alt="title"
+      />
+      <img
+        src={titleWhite}
+        className={"white-title" + " " + (isMenuOpen ? "--open" : "")}
+      />
+      <CSSTransition in={isMenuOpen} classNames="close-button" timeout={0}>
+        <MenuButton
+          isMenuOpen={isMenuOpen}
+          click={() => {
+            if (!isMenuOpen) {
+              changeMenuStatus("open");
+            } else {
+              changeMenuStatus("close");
+            }
+          }}
         />
-        <img
-          src={titleWhite}
-          className={
-            "white-title" + " " + (this.state.isMenuOpen ? "--open" : "")
-          }
-        />
-        <CSSTransition
-          in={this.state.isMenuOpen}
-          classNames="close-button"
-          timeout={0}
-        >
-          <MenuButton
-            isMenuOpen={this.state.isMenuOpen}
-            click={() => {
-              if (!this.state.isMenuOpen) {
-                this.changeMenuStatus("open");
-              } else {
-                this.changeMenuStatus("close");
-              }
-            }}
-          />
-        </CSSTransition>
-      </header>
-    );
-  }
-}
+      </CSSTransition>
+    </header>
+  );
+};
+
+export default Header;

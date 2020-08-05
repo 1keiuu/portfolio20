@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { RouteComponentProps } from "react-router-dom";
 import * as H from "history";
@@ -8,44 +8,34 @@ import "../../styles/admin/home.scss";
 interface Props extends RouteComponentProps<{}> {
   history: H.History;
 }
-interface State {
-  isSignIn: boolean;
-}
 
-class AdminHome extends React.Component<Props, State> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      isSignIn: false,
-    };
-  }
+const AdminHome: React.FC<Props> = (props) => {
+  const [isSignIn, setIsSignIn] = useState(false);
 
-  async componentDidMount() {
-    const token = this.props.location.state;
-    const URL = `${process.env.REACT_APP_API_URL}/admin/home`;
-    try {
-      await axios.get(URL, {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      });
-      this.setState({ isSignIn: true });
-    } catch (e) {
-      this.props.history.push("/admin/signIn");
-    }
-  }
-  render() {
-    return (
-      <div className="admin__home">
-        {this.state.isSignIn ? (
-          <AdminInner>
-            <p>admin home</p>
-          </AdminInner>
-        ) : (
-          <p> </p>
-        )}
-      </div>
-    );
-  }
-}
+  // async componentDidMount() {
+  //   const token = props.location.state;
+  //   const URL = `${process.env.REACT_APP_API_URL}/admin/home`;
+  //   try {
+  //     await axios.get(URL, {
+  //       headers: {
+  //         Authorization: `Token ${token}`,
+  //       },
+  //     });
+  //     setState({ isSignIn: true });
+  //   } catch (e) {
+  //     props.history.push("/admin/signIn");
+  //   }
+  // }
+  return (
+    <div className="admin__home">
+      {isSignIn ? (
+        <AdminInner>
+          <p>admin home</p>
+        </AdminInner>
+      ) : (
+        <p> </p>
+      )}
+    </div>
+  );
+};
 export default withRouter(AdminHome);
