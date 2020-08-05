@@ -1,14 +1,6 @@
-# development:
-#   driver: mysql
-#   open: tcp:localhost:3306*$DB_NAME/DB_USER_NAME/DB_PASS
-
-# test:
-#     driver: mysql
-#     open: user=liam dbname=${} sslmode=disable
-
 development:
   driver: mysql
-  open: user=${DB_USER_NAME}  dbname=${DB_NAME} sslmode=disable
+  open: ${DB_USER_NAME}:${DB_PASS}@tcp(${DB_ENDPOINT})/${DB_NAME}
 
 production:
   driver: mysql
