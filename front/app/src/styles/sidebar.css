@@ -1,0 +1,9 @@
+.sidebar {
+  height: 100%;
+  width: 30%;
+  background: #fafafa;
+}
+
+.sidebar .sidebar__inner {
+  width: 60px;
+}

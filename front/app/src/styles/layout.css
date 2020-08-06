@@ -1,0 +1,8 @@
+.layout {
+  height: 100%;
+  display: flex;
+}
+
+.layout .layout__inner {
+  width: 70%;
+}
