@@ -1,1 +1,1 @@
-.layout{height:100%;display:flex;position:relative}.layout .layout__inner{width:70%}
+.layout{height:100%;display:flex;position:relative}.layout .layout__inner{width:70%}.layout .layout__inner .layout__content{height:100%;padding:50px;overflow-y:scroll}

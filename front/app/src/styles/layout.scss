@@ -5,6 +5,9 @@
   .layout__inner {
     width: 70%;
     .layout__content {
+      height: 100%;
+      padding: 50px;
+      overflow-y: scroll;
     }
   }
 }
