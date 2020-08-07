@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, RouteComponentProps } from "react-router-dom";
-import MenuIcon from "./MenuIcon";
+import MenuIcon from "./_MenuIcon";
 import ArrowIcon from "./ArrowIcon";
 import "../styles/header.scss";
 import { CSSTransition } from "react-transition-group";

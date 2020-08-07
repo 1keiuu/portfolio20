@@ -12,6 +12,7 @@ import Home from "../pages/home/Home";
 import ProfilePage from "../pages/profile/ProfilePage";
 import ProductPage from "../pages/product/ProductPage";
 import ContactPage from "../pages/contact/ContactPage";
+import SlideCurtain from "../components/SlideCurtain";
 
 type Props = {} & RouteComponentProps<{ mode: string }>;
 
@@ -33,7 +34,10 @@ const Layout: React.FC<Props> = (props) => {
       <Sidebar current_page={props.match.params.mode}></Sidebar>
       <div className="layout__inner">
         <Header></Header>
-        <Inner current_page={props.match.params.mode}></Inner>
+        <div className="layout__content">
+          <SlideCurtain current_page={props.match.params.mode}></SlideCurtain>
+          <Inner current_page={props.match.params.mode}></Inner>
+        </div>
       </div>
     </div>
   );

@@ -32,7 +32,7 @@ const HOME: React.FC = () => {
     handleIncrement();
   };
   return (
-    <Fade bottom delay={1500}>
+    <Fade bottom delay={1000}>
       <p>home</p>
       <button
         onClick={async () => {

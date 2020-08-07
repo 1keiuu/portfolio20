@@ -3,6 +3,7 @@
   width: 30%;
   background: #fafafa;
   position: relative;
+  z-index: 3;
 }
 
 .sidebar .sidebar__inner {

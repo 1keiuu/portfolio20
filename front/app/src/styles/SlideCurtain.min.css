@@ -1,0 +1,1 @@
+.slide-curtain{position:absolute;background:#bbb;width:100vw;height:100vh;top:0;right:-100%;transition:1s}.slide-curtain-enter-done{right:100%;transition:1s}

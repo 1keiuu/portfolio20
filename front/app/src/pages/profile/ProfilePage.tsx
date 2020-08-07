@@ -44,7 +44,7 @@ const SkillPage: React.FC = () => {
   };
 
   return (
-    <Fade bottom delay={1500}>
+    <Fade bottom delay={1000}>
       <p>Profile</p>
     </Fade>
     // <div>
