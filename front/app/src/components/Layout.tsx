@@ -15,8 +15,8 @@ import ContactPage from "../pages/contact/ContactPage";
 
 type Props = {} & RouteComponentProps<{ mode: string }>;
 
-const Inner = (props: { location: string }) => {
-  switch (props.location) {
+const Inner = (props: { current_page: string }) => {
+  switch (props.current_page) {
     case "profile":
       return <SkillPage></SkillPage>;
     case "product":
@@ -30,10 +30,10 @@ const Inner = (props: { location: string }) => {
 const Layout: React.FC<Props> = (props) => {
   return (
     <div className="layout">
-      <Sidebar></Sidebar>
+      <Sidebar current_page={props.match.params.mode}></Sidebar>
       <div className="layout__inner">
         <Header></Header>
-        <Inner location={props.match.params.mode}></Inner>
+        <Inner current_page={props.match.params.mode}></Inner>
       </div>
     </div>
   );

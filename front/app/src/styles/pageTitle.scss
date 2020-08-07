@@ -1,0 +1,28 @@
+.page-title__inner {
+  position: relative;
+  width: 100%;
+  height: 185px;
+  .page-title__home,
+  .page-title__product,
+  .page-title__profile,
+  .page-title__contact {
+    font-size: 140px;
+    font-family: Roboto;
+    filter: blur(30px);
+    position: absolute;
+    top: 0;
+    margin: 0;
+    left: 10%;
+    opacity: 0;
+    transition: 1s;
+  }
+
+  .page-title__home-enter-done,
+  .page-title__product-enter-done,
+  .page-title__profile-enter-done,
+  .page-title__contact-enter-done {
+    opacity: 1;
+    filter: blur(0);
+    transition: 1s;
+  }
+}

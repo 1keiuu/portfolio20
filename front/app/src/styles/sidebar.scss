@@ -2,7 +2,13 @@
   height: 100%;
   width: 30%;
   background: #fafafa;
+  position: relative;
   .sidebar__inner {
     width: 60px;
+  }
+  .page-title__wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
   }
 }

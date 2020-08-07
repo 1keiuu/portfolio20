@@ -22,7 +22,7 @@ const Header: React.FC<Props> = (props) => {
               setSelectedItem("");
             }}
           >
-            Home
+            HOME
           </Link>
           <CSSTransition
             in={selectedItem == "home"}
@@ -44,7 +44,7 @@ const Header: React.FC<Props> = (props) => {
               setSelectedItem("");
             }}
           >
-            Profile
+            PROFILE
           </Link>
           <CSSTransition
             in={selectedItem == "profile"}
@@ -66,7 +66,7 @@ const Header: React.FC<Props> = (props) => {
               setSelectedItem("");
             }}
           >
-            Product
+            PRODUCT
           </Link>
           <CSSTransition
             in={selectedItem == "product"}
@@ -88,7 +88,7 @@ const Header: React.FC<Props> = (props) => {
               setSelectedItem("");
             }}
           >
-            Contact
+            CONTACT
           </Link>
           <CSSTransition
             in={selectedItem == "contact"}
