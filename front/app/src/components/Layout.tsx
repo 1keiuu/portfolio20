@@ -9,7 +9,7 @@ import {
 
 import "../styles/layout.scss";
 import Home from "../pages/home/Home";
-import SkillPage from "../pages/skill/SkillPage";
+import ProfilePage from "../pages/profile/ProfilePage";
 import ProductPage from "../pages/product/ProductPage";
 import ContactPage from "../pages/contact/ContactPage";
 
@@ -18,7 +18,7 @@ type Props = {} & RouteComponentProps<{ mode: string }>;
 const Inner = (props: { current_page: string }) => {
   switch (props.current_page) {
     case "profile":
-      return <SkillPage></SkillPage>;
+      return <ProfilePage></ProfilePage>;
     case "product":
       return <ProductPage></ProductPage>;
     case "contact":

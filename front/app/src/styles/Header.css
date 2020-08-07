@@ -31,7 +31,7 @@ header .menu-items .menu-item__wrapper .underline {
   width: 0;
   opacity: 0;
   transform-origin: right;
-  transition: 1s cubic-bezier(0.85, 0, 0.15, 1);
+  transition: 0.5s cubic-bezier(0.55, 0, 0.15, 1);
   position: absolute;
 }
 
@@ -39,5 +39,5 @@ header .menu-items .menu-item__wrapper .underline-enter-done {
   width: 100%;
   opacity: 1;
   bottom: -1px;
-  transition: 1s cubic-bezier(0.85, 0, 0.15, 1);
+  transition: 0.5s cubic-bezier(0.55, 0, 0.15, 1);
 }

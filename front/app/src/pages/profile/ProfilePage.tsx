@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Graph from "./Graph";
-import "../../styles/SkillPage.scss";
+import "../../styles/ProfilePage.scss";
 import { CSSTransition } from "react-transition-group";
 import axios from "../../plugin/axios/index";
 import { useSelector } from "react-redux";
@@ -44,35 +44,35 @@ const SkillPage: React.FC = () => {
   };
 
   return (
-    <div>
-      <CSSTransition
-        in={isGraphOpen}
-        classNames="graph__back-ground"
-        timeout={0}
-      >
-        <GraphBg is={isGraphOpen}>
-          <Fade bottom>
-            <div className="graph__wrapper">
-              <Graph contributionsPromise={getData()} />
-            </div>
-            <div
-              className="close__button"
-              onClick={() => {
-                setIsGraphOpen(false);
-              }}
-            >
-              Close
-            </div>
-          </Fade>
-        </GraphBg>
-      </CSSTransition>
-      <div
-        className="github__button"
-        onClick={() => {
-          setIsGraphOpen(true);
-        }}
-      ></div>
-    </div>
+    <Fade bottom delay={1500}>
+      <p>Profile</p>
+    </Fade>
+    // <div>
+    //   <CSSTransition
+    //     in={isGraphOpen}
+    //     classNames="graph__back-ground"
+    //     timeout={0}
+    //   >
+    //     <GraphBg is={isGraphOpen}>
+    //         {/* <div className="graph__wrapper">
+    //           <Graph contributionsPromise={getData()} />
+    //         </div>
+    //         <div
+    //           className="close__button"
+    //           onClick={() => {
+    //             setIsGraphOpen(false);
+    //           }}
+    //         >
+    //           Close
+    //         </div> */}
+    //     </GraphBg>
+    //   </CSSTransition>
+    //   <div
+    //     className="github__button"
+    //     onClick={() => {
+    //       setIsGraphOpen(true);
+    //     }}
+    //   ></div>
   );
 };
 
