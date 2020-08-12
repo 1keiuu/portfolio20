@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import VerticalSlider from "../../components/VerticalSlider";
 import ProductCard from "../../components/ProductCard";
+import SlidePagination from "../../components/SlidePagination";
+
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Pagination, Mousewheel } from "swiper";
+import SwiperCore, { Mousewheel } from "swiper";
 
 import "swiper/swiper.scss";
 import "swiper/components/pagination/pagination.scss";
 import "../../styles/productPage.scss";
 const Fade = require("react-reveal/Fade");
 
-SwiperCore.use([Pagination, Mousewheel]);
+SwiperCore.use([Mousewheel]);
 
 const products = [
   { title: "test" },
@@ -21,18 +23,20 @@ const products = [
 ];
 
 const ProductPage: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
   return (
     <Fade bottom delay={500}>
       <div className="product-page">
         <div className="slider__wrapper">
+          <SlidePagination currentIndex={currentIndex}></SlidePagination>
           <VerticalSlider>
             <Swiper
               direction="vertical"
-              slidesPerView={2.5}
+              slidesPerView={1}
               speed={1000}
               spaceBetween={60}
               mousewheel={true}
-              pagination={{ dynamicBullets: true }}
+              onSlideChange={(swiper) => setCurrentIndex(swiper.activeIndex)}
             >
               {products.map((product, i) => {
                 return (
