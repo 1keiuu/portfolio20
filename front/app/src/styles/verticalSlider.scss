@@ -1,12 +1,9 @@
 .vertical-slider {
   padding-right: 5vw;
   width: 50vw;
-  overflow-y: scroll;
-  height: 100%;
+  .swiper-container {
+    padding-top: 150px;
+  }
   .vertical-slider__inner {
-    // padding: 150px 0 500px;
-    overflow: auto;
-    scroll-snap-type: y mandatory;
-    height: 100vh;
   }
 }

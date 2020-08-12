@@ -1,14 +1,9 @@
 .product-card {
   width: 100%;
-  // height: 30vw;
-  scroll-snap-align: center;
-  height: 30vw;
-  // margin: 50px 0;
-  // margin-bottom: 45px;
+  background: grey;
+  height: 100%;
+  border-radius: 10px;
   .product-card__inner {
-    margin: 50px 0;
-    height: 100%;
-    background: grey;
   }
   .product-card__title-wrapper {
     height: 60px;
