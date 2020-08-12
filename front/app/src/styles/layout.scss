@@ -3,11 +3,10 @@
   display: flex;
   position: relative;
   .layout__inner {
+    z-index: 5;
     width: 70%;
     .layout__content {
       height: 100%;
-      padding: 50px;
-      overflow-y: scroll;
     }
   }
 }

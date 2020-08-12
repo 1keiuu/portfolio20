@@ -1,5 +1,7 @@
 html {
   background: rgba(230, 230, 230, 0.5);
+  height: 100vh;
+  overflow: hidden;
 }
 
 body {

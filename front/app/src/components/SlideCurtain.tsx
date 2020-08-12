@@ -24,7 +24,6 @@ const SlideCurtain: React.FC<Props> = (props) => {
     //   currentStatus.current = true;
     // }
     currentStatus.current = true;
-    console.log(currentStatus.current);
   });
   return (
     <CSSTransition

@@ -1,11 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import Sidebar from "./SideBar";
-import {
-  BrowserRouter as Router,
-  Route,
-  RouteComponentProps,
-} from "react-router-dom";
+import { BrowserRouter as Router, RouteComponentProps } from "react-router-dom";
 
 import "../styles/layout.scss";
 import Home from "../pages/home/Home";
