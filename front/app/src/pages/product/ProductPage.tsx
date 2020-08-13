@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import VerticalSlider from "../../components/VerticalSlider";
 import ProductCard from "../../components/ProductCard";
 import SlidePagination from "../../components/SlidePagination";
@@ -12,7 +12,6 @@ import "../../styles/productPage.scss";
 const Fade = require("react-reveal/Fade");
 
 SwiperCore.use([Mousewheel]);
-
 const products = [
   {
     title: "test",
@@ -55,7 +54,10 @@ const products = [
 const ProductPage: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
-
+  const [swiper, setSwiper] = useState({ slideTo: (i: number) => {} });
+  const changeCurrentSlide = (i: number) => {
+    swiper.slideTo(i);
+  };
   return (
     <Fade bottom delay={500}>
       <div className="product-page">
@@ -68,6 +70,7 @@ const ProductPage: React.FC = () => {
               centeredSlides={true}
               spaceBetween={60}
               mousewheel={true}
+              onSwiper={(swiper) => setSwiper(swiper)}
               onSlideChange={(swiper) => setCurrentIndex(swiper.activeIndex)}
             >
               {products.map((product, i) => {
@@ -94,6 +97,9 @@ const ProductPage: React.FC = () => {
           <SlidePagination
             currentIndex={currentIndex}
             products={products}
+            callback={(i: number) => {
+              changeCurrentSlide(i);
+            }}
           ></SlidePagination>
         </div>
       </div>

@@ -4,6 +4,7 @@ import "../styles/SlidePagination.scss";
 interface Props {
   currentIndex: number;
   products: { title: string; backgroundColor: string }[];
+  callback: (i: number) => void;
 }
 
 const SlidePagination: React.FC<Props> = (props) => {
@@ -16,6 +17,9 @@ const SlidePagination: React.FC<Props> = (props) => {
               "slide-pagination__dot " +
               (i == props.currentIndex ? "--active" : "")
             }
+            onClick={() => {
+              props.callback(i);
+            }}
           ></span>
         );
       })}
