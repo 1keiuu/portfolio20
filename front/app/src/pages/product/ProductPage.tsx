@@ -65,7 +65,8 @@ const ProductPage: React.FC = () => {
               direction="vertical"
               slidesPerView={2}
               speed={1000}
-              // spaceBetween={60}
+              centeredSlides={true}
+              spaceBetween={60}
               mousewheel={true}
               onSlideChange={(swiper) => setCurrentIndex(swiper.activeIndex)}
             >

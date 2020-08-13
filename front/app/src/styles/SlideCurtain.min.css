@@ -1,1 +1,1 @@
-.slide-curtain{position:absolute;background:#bbb;width:100vw;height:100vh;top:0;right:-100%;transition:1s}.slide-curtain-enter-done{right:100%;transition:1s}
+.slide-curtain{position:absolute;background:rgba(187,187,187,0.534);width:100vw;height:100vh;top:0;right:-100%;transition:1s;z-index:7}.slide-curtain-enter-done{right:100%;transition:1s}

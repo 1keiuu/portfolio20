@@ -1,7 +1,7 @@
 .product-card {
   width: 100%;
+  height: 100%;
   border-radius: 10px;
-  // height: 100%;
   .product-card__inner {
     height: 100%;
     box-sizing: border-box;
@@ -9,10 +9,10 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding-top: 10%;
+    padding-top: 8%;
     .product-card__image__wrapper {
       width: 70%;
-      height: 100%;
+      height: 75%;
       overflow: hidden;
       .product-card__image {
         transition: 0.4s;
@@ -27,6 +27,7 @@
       height: 25%;
       width: 100%;
       opacity: 0;
+      padding-top: 3%;
       border-radius: 10px;
       transition: 1s;
       display: flex;
