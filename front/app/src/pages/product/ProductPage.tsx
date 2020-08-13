@@ -14,12 +14,12 @@ const Fade = require("react-reveal/Fade");
 SwiperCore.use([Mousewheel]);
 
 const products = [
-  { title: "test" },
-  { title: "test2" },
-  { title: "test3" },
-  { title: "test4" },
-  { title: "test5" },
-  { title: "test6" },
+  { title: "test", backgroundColor: "#7996BF" },
+  { title: "test2", backgroundColor: "#658378" },
+  { title: "test3", backgroundColor: "#EF6D6D" },
+  { title: "test4", backgroundColor: "#7996BF" },
+  { title: "test5", backgroundColor: "#658378" },
+  { title: "test6", backgroundColor: "#EF6D6D" },
 ];
 
 const ProductPage: React.FC = () => {
@@ -28,7 +28,6 @@ const ProductPage: React.FC = () => {
     <Fade bottom delay={500}>
       <div className="product-page">
         <div className="slider__wrapper">
-          <SlidePagination currentIndex={currentIndex}></SlidePagination>
           <VerticalSlider>
             <Swiper
               direction="vertical"
@@ -40,7 +39,7 @@ const ProductPage: React.FC = () => {
             >
               {products.map((product, i) => {
                 return (
-                  <SwiperSlide>
+                  <SwiperSlide key={"product-slide" + i}>
                     <ProductCard
                       product={product}
                       key={"product" + i}
@@ -50,6 +49,10 @@ const ProductPage: React.FC = () => {
               })}
             </Swiper>
           </VerticalSlider>
+          <SlidePagination
+            currentIndex={currentIndex}
+            products={products}
+          ></SlidePagination>
         </div>
       </div>
     </Fade>
