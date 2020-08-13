@@ -2,8 +2,12 @@ html {
   background: #f3f3f3;
   height: 100vh;
   overflow: hidden;
+  color: #333;
+  font-family: Roboto;
 }
-
+p {
+  font-family: Roboto !important;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

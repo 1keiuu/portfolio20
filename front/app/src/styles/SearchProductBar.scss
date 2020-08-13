@@ -19,11 +19,101 @@
   background: #f3f3f3;
   position: absolute;
   height: 100vh;
-  width: 25vw;
+  width: 30vw;
   top: 0;
   right: -30%;
   display: none;
   z-index: 7;
+  overflow-y: scroll;
+  .selected-chips {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 0 0 3vw;
+    position: sticky;
+    top: 0;
+    background: #f3f3f396;
+    border-bottom: 1px #7b7878 solid;
+    .selected-chip {
+      padding: 0 15px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 30px;
+      background: #fff;
+      margin-right: 10px;
+      margin-bottom: 16px;
+      position: relative;
+
+      .selected-chip__title {
+        margin: 0;
+        margin-right: 20px;
+        color: #fff;
+      }
+      .selected-chip__icon-wrapper {
+        cursor: pointer;
+        border-radius: 50%;
+        height: 11px;
+        width: 11px;
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        right: 6px;
+      }
+    }
+  }
+  .skill-sections__group {
+    margin-top: 3vw;
+
+    .skill-section {
+      padding: 20px 0;
+
+      .skill-section__title {
+        margin-bottom: 20px;
+        margin-top: 0;
+        text-align: start;
+        margin-left: 3vw;
+        font-weight: bold;
+        font-size: 18px;
+      }
+      .skill-cards {
+        padding-left: 3vw;
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        .skill-cards__inner {
+          display: inline-flex;
+          justify-content: flex-start;
+          flex-wrap: wrap;
+          .skill-card {
+            width: 10vw;
+            height: 10vw;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            &:nth-child(odd) {
+              margin-right: 30px;
+            }
+            .skill-card__image-wrapper {
+              width: 75px;
+              height: 75px;
+              .skill-card__image {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 .search-product__bar-enter-done {

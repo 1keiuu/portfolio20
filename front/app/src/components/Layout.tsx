@@ -29,13 +29,82 @@ const Inner = (props: { current_page: string }) => {
 interface SearchProductProps {
   current_page: string;
 }
+const skilltypes = [
+  {
+    title: "Frontend",
+    skills: [
+      {
+        id: 1,
+        name: "string1",
+        imageURL: "http://placehold.jp/350x150.png",
+        backgroundColor: "green",
+      },
+      {
+        id: 2,
+        name: "string2",
+        imageURL: "http://placehold.jp/350x150.png",
+        backgroundColor: "blue",
+      },
+      {
+        id: 3,
+        name: "string2.1",
+        imageURL: "http://placehold.jp/350x150.png",
+        backgroundColor: "green",
+      },
+      {
+        id: 4,
+        name: "string2.2",
+        imageURL: "http://placehold.jp/350x150.png",
+        backgroundColor: "green",
+      },
+      {
+        id: 5,
+        name: "string2.3",
+        imageURL: "http://placehold.jp/350x150.png",
+        backgroundColor: "green",
+      },
+    ],
+  },
+  {
+    title: "Backend",
+    skills: [
+      {
+        id: 6,
+        name: "string3",
+        imageURL: "http://placehold.jp/250x150.png",
+        backgroundColor: "red",
+      },
+      {
+        id: 7,
+        name: "string4",
+        imageURL: "http://placehold.jp/350x350.png",
+        backgroundColor: "blue",
+      },
+    ],
+  },
+  {
+    title: "Infrastructure",
+    skills: [
+      {
+        id: 8,
+        name: "string6",
+        imageURL: "http://placehold.jp/350x350.png",
+        backgroundColor: "blue",
+      },
+    ],
+  },
+];
+
 const SearchProduct: React.FC<SearchProductProps> = (props) => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
 
   if (props.current_page == "product") {
     return (
       <div className="search-product__wrapper">
-        <SearchProductBar isOpen={isSideBarOpen}></SearchProductBar>
+        <SearchProductBar
+          skilltypes={skilltypes}
+          isOpen={isSideBarOpen}
+        ></SearchProductBar>
         <GopherImage
           callback={() => {
             setIsSideBarOpen(!isSideBarOpen);
