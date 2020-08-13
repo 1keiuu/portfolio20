@@ -17,13 +17,15 @@ header {
     .menu-item__wrapper {
       position: relative;
       margin-right: 30px;
-
       .menu-item {
         font-size: 18px;
-        color: #333;
+        color: #8a8f9b;
         text-decoration: unset;
         letter-spacing: 2px;
         font-family: Roboto;
+        &.--active {
+          color: #333;
+        }
       }
 
       .underline {

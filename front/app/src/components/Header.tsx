@@ -14,7 +14,9 @@ const Header: React.FC<Props> = (props) => {
         <div className="menu-item__wrapper">
           <Link
             to="/"
-            className="menu-item"
+            className={
+              "menu-item" + " " + (selectedItem == "home" ? "--active" : "")
+            }
             onMouseEnter={() => {
               setSelectedItem("home");
             }}
@@ -36,7 +38,9 @@ const Header: React.FC<Props> = (props) => {
         <div className="menu-item__wrapper">
           <Link
             to="/profile"
-            className="menu-item"
+            className={
+              "menu-item" + " " + (selectedItem == "profile" ? "--active" : "")
+            }
             onMouseEnter={() => {
               setSelectedItem("profile");
             }}
@@ -58,7 +62,9 @@ const Header: React.FC<Props> = (props) => {
         <div className="menu-item__wrapper">
           <Link
             to="/product"
-            className="menu-item"
+            className={
+              "menu-item" + " " + (selectedItem == "product" ? "--active" : "")
+            }
             onMouseEnter={() => {
               setSelectedItem("product");
             }}
@@ -80,7 +86,9 @@ const Header: React.FC<Props> = (props) => {
         <div className="menu-item__wrapper">
           <Link
             to="/contact"
-            className="menu-item"
+            className={
+              "menu-item" + " " + (selectedItem == "contact" ? "--active" : "")
+            }
             onMouseEnter={() => {
               setSelectedItem("contact");
             }}

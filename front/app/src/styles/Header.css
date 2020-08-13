@@ -25,10 +25,14 @@ header .menu-items .menu-item__wrapper {
 
 header .menu-items .menu-item__wrapper .menu-item {
   font-size: 18px;
-  color: #333;
+  color: #8a8f9b;
   text-decoration: unset;
   letter-spacing: 2px;
   font-family: Roboto;
+}
+
+header .menu-items .menu-item__wrapper .menu-item.--active {
+  color: #333;
 }
 
 header .menu-items .menu-item__wrapper .underline {

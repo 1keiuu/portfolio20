@@ -1,0 +1,21 @@
+.gopher-image__wrapper {
+  position: absolute;
+  right: -30px;
+  bottom: -7%;
+  z-index: 4;
+  .gopher-image__creater {
+    margin: 0;
+    font-size: 11px;
+    .gopher-image__creater-link {
+      text-decoration: none;
+      color: #8ac4e6;
+      font-weight: bold;
+    }
+  }
+  .gopher-image {
+    transform: rotate(-30deg);
+    z-index: 3;
+    width: 170px;
+    cursor: pointer;
+  }
+}

@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import VerticalSlider from "../../components/VerticalSlider";
 import ProductCard from "../../components/ProductCard";
 import SlidePagination from "../../components/SlidePagination";
-
+import GopherImage from "../../components/GopherImage";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Mousewheel } from "swiper";
 
@@ -54,7 +54,10 @@ const products = [
 const ProductPage: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
-  const [swiper, setSwiper] = useState({ slideTo: (i: number) => {} });
+  const [swiper, setSwiper] = useState({
+    slideTo: (i: number) => {},
+    removeSlide: (i: number) => {},
+  });
   const changeCurrentSlide = (i: number) => {
     swiper.slideTo(i);
   };
@@ -93,7 +96,9 @@ const ProductPage: React.FC = () => {
                 );
               })}
             </Swiper>
+            <GopherImage callback={() => {}}></GopherImage>
           </VerticalSlider>
+
           <SlidePagination
             currentIndex={currentIndex}
             products={products}

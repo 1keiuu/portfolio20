@@ -3,6 +3,15 @@
   .swiper-container {
     height: 100vh;
   }
+  .swiper-slide {
+    transition: 0.8s;
+    cursor: pointer;
+  }
+  .swiper-slide-next,
+  .swiper-slide-prev {
+    transition: 0.8s;
+    opacity: 0.6;
+  }
   .vertical-slider__inner {
   }
 }
