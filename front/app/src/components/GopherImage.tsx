@@ -8,12 +8,7 @@ interface Props {
 
 const GopherImage: React.FC<Props> = (props) => {
   return (
-    <div
-      className="gopher-image__wrapper"
-      onClick={() => {
-        props.callback();
-      }}
-    >
+    <div className="gopher-image__wrapper">
       <p className="gopher-image__creater">
         By
         <a
@@ -25,7 +20,13 @@ const GopherImage: React.FC<Props> = (props) => {
           　Takuya Ueda
         </a>
       </p>
-      <img src={imgSrc} className="gopher-image"></img>
+      <img
+        onClick={() => {
+          props.callback();
+        }}
+        src={imgSrc}
+        className="gopher-image"
+      ></img>
     </div>
   );
 };

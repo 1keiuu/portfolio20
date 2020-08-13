@@ -10,3 +10,18 @@
     }
   }
 }
+
+.search-product__background {
+  position: absolute;
+  opacity: 0.3;
+  background: #333;
+  z-index: 6;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  &.--active {
+    display: block;
+  }
+}

@@ -2,7 +2,6 @@ import React, { useState, useRef } from "react";
 import VerticalSlider from "../../components/VerticalSlider";
 import ProductCard from "../../components/ProductCard";
 import SlidePagination from "../../components/SlidePagination";
-import GopherImage from "../../components/GopherImage";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Mousewheel } from "swiper";
 
@@ -96,7 +95,6 @@ const ProductPage: React.FC = () => {
                 );
               })}
             </Swiper>
-            <GopherImage callback={() => {}}></GopherImage>
           </VerticalSlider>
 
           <SlidePagination

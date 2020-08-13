@@ -1,11 +1,15 @@
 .gopher-image__wrapper {
   position: absolute;
-  right: -30px;
-  bottom: -7%;
-  z-index: 4;
+  right: -23px;
+  bottom: -2%;
+  z-index: 8;
   .gopher-image__creater {
     margin: 0;
     font-size: 11px;
+    position: absolute;
+    left: -5px;
+    top: -20px;
+    z-index: 2;
     .gopher-image__creater-link {
       text-decoration: none;
       color: #8ac4e6;
@@ -15,7 +19,7 @@
   .gopher-image {
     transform: rotate(-30deg);
     z-index: 3;
-    width: 170px;
+    width: 120px;
     cursor: pointer;
   }
 }

@@ -1,0 +1,40 @@
+@keyframes show {
+  from {
+    right: -30%;
+  }
+  to {
+    right: 0;
+  }
+}
+
+@keyframes disappear {
+  from {
+    right: 0;
+  }
+  to {
+    right: -30%;
+  }
+}
+
+.search-product__bar {
+  background: #f3f3f3;
+  position: absolute;
+  height: 100vh;
+  width: 25vw;
+  top: 0;
+  right: -30%;
+  display: none;
+  z-index: 7;
+}
+
+.search-product__bar-enter-done {
+  animation: show 0.3s linear 0s;
+  display: block;
+  right: 0;
+}
+
+.search-product__bar-exit-done {
+  animation: disappear 0.3s linear 0s;
+  display: block;
+  right: -30%;
+}
