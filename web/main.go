@@ -35,8 +35,8 @@ func main() {
 	}))
 
 	engine.GET("/api/contributions", controller.GetContributions)
-	engine.GET("/api/admin/signIn", admincontroller.SignIn)
-	// engine.POST("/api/admin/createAdminUser", admincontroller.CreateAdminUser)
+	engine.POST("/api/admin/signIn", admincontroller.SignIn)
+	engine.POST("/api/admin/createAdminUser", admincontroller.CreateAdminUser)
 
 	engine.Run(":8000")
 	if err := engine.Run(); err != nil {

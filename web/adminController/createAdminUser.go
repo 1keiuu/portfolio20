@@ -10,15 +10,14 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-type User struct {
+type AdminUser struct {
 	Email    string `json:"email"`
 	Password string `json:"password"`
 }
 
 func CreateAdminUser(c *gin.Context) {
-	var json User
+	var json AdminUser
 	// バリデーション処理
-	fmt.Println(json)
 
 	if err := c.ShouldBindJSON(&json); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -26,7 +25,6 @@ func CreateAdminUser(c *gin.Context) {
 	} else {
 		email := json.Email
 		password := json.Password
-		// 登録ユーザーが重複していた場合にはじく処理
 		if err := insertDB(email, password); err != nil {
 			fmt.Println("same")
 		}

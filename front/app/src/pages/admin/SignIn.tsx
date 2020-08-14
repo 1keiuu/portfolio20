@@ -19,11 +19,20 @@ const AdminSignIn: React.FC<Props> = (props) => {
     setErrorText("");
 
     try {
-      const URL = `${process.env.REACT_APP_API_URL}/admin/login/new`;
-      const res = await axios.post(URL, {
-        email: email,
-        password: password,
-      });
+      const URL = `${process.env.REACT_APP_API_URL}/api/admin/signIn`;
+      const res = await axios.post(
+        URL,
+        {
+          email: email,
+          password: password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(res);
       props.history.push({
         pathname: "/admin",
         state: res.data,
