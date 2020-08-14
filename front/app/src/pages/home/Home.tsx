@@ -20,14 +20,14 @@ const HOME: React.FC = () => {
   const handleDecrement = () => dispatch(decrementAction());
   const handleReset = () => dispatch(resetAction());
   const getData = async () => {
-    // await axios
-    //   .get("/contributions", {
-    //     headers: { "Content-Type": "application/json" },
-    //   })
-    //   .then((res) => {
-    //     console.log(res);
-    //   });
-    // };
+    await axios
+      .get("/contributions", {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((res) => {
+        console.log(res);
+      });
+
     console.log(currentCount);
     handleIncrement();
   };

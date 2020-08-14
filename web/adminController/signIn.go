@@ -1,4 +1,4 @@
-package adminController
+package admincontroller
 
 import (
 	"fmt"
@@ -6,6 +6,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func SignUp(c *gin.Context) {
+func SignIn(c *gin.Context) {
 	fmt.Println()
 }

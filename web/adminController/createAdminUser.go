@@ -1,11 +1,50 @@
-package adminController
+package admincontroller
 
 import (
 	"fmt"
+	"log"
+	"net/http"
+	"work/db"
 
 	"github.com/gin-gonic/gin"
+	"golang.org/x/crypto/bcrypt"
 )
 
-func SignIn(c *gin.Context) {
-	fmt.Println()
+type User struct {
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}
+
+func CreateAdminUser(c *gin.Context) {
+	var json User
+	// バリデーション処理
+	fmt.Println(json)
+
+	if err := c.ShouldBindJSON(&json); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	} else {
+		email := json.Email
+		password := json.Password
+		// 登録ユーザーが重複していた場合にはじく処理
+		if err := insertDB(email, password); err != nil {
+			fmt.Println("same")
+		}
+		c.JSON(http.StatusOK, gin.H{"email": json.Password})
+	}
+}
+
+func insertDB(email string, password string) []error {
+	passwordEncrypt, _ := bcrypt.GenerateFromPassword([]byte(password), 4)
+	DB := db.Connect()
+	defer DB.Close()
+
+	ins, err := DB.Prepare("INSERT INTO admin_users(email,password) VALUES(?,?)")
+	if err != nil {
+		log.Fatal(err)
+	}
+	ins.Exec(email, passwordEncrypt)
+
+	return nil
+
 }

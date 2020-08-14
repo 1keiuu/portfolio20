@@ -2,7 +2,7 @@ package main
 
 import (
 	"log"
-	"work/adminController"
+	"work/admincontroller"
 	"work/controller"
 
 	"github.com/gin-contrib/cors"
@@ -35,7 +35,9 @@ func main() {
 	}))
 
 	engine.GET("/api/contributions", controller.GetContributions)
-	engine.GET("/api/admin/signUp", adminController.SignUp)
+	engine.GET("/api/admin/signIn", admincontroller.SignIn)
+	// engine.POST("/api/admin/createAdminUser", admincontroller.CreateAdminUser)
+
 	engine.Run(":8000")
 	if err := engine.Run(); err != nil {
 		log.Fatalf("main error: %s", err.Error())
