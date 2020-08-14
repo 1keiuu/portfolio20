@@ -4,7 +4,7 @@
 CREATE TABLE skills(
     id int AUTO_INCREMENT,
     name varchar(255),
-    skill_type_id int,
+    skill_type_id int NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY(skill_type_id)
     REFERENCES skill_types(id)

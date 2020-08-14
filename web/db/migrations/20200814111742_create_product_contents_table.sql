@@ -5,7 +5,7 @@ CREATE TABLE product_contents(
     id int AUTO_INCREMENT,
     description varchar(255),
     image_url varchar(255),
-    product_id int,
+    product_id int NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY(product_id)
     REFERENCES products(id)
