@@ -1,9 +1,16 @@
 import React from "react";
 import "../styles/SlidePagination.scss";
-
+interface Product {
+  id: number;
+  title: string;
+  span: string;
+  background_color: string;
+  images: string;
+  descriptions: string;
+}
 interface Props {
   currentIndex: number;
-  products: { title: string; backgroundColor: string }[];
+  products: Product[];
   callback: (i: number) => void;
 }
 

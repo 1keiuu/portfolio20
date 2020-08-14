@@ -11,46 +11,19 @@ import "../../styles/productPage.scss";
 const Fade = require("react-reveal/Fade");
 
 SwiperCore.use([Mousewheel]);
-const products = [
-  {
-    title: "test",
-    span: "2020/02~2020/07",
-    backgroundColor: "#7996BF",
-    imageUrl: "https://loremflickr.com/640/360",
-  },
-  {
-    title: "test2",
-    span: "2020/02~2020/07",
-    backgroundColor: "#658378",
-    imageUrl: "https://loremflickr.com/640/360",
-  },
-  {
-    title: "test3",
-    span: "2020/02~2020/07",
-    backgroundColor: "#EF6D6D",
-    imageUrl: "https://loremflickr.com/640/360",
-  },
-  {
-    title: "test4",
-    span: "2020/02~2020/07",
-    backgroundColor: "#7996BF",
-    imageUrl: "https://loremflickr.com/640/360",
-  },
-  {
-    title: "test5",
-    span: "2020/02~2020/07",
-    backgroundColor: "#658378",
-    imageUrl: "https://loremflickr.com/640/360",
-  },
-  {
-    title: "test6",
-    span: "2020/02~2020/07",
-    backgroundColor: "#EF6D6D",
-    imageUrl: "https://loremflickr.com/640/360",
-  },
-];
 
-const ProductPage: React.FC = () => {
+interface Product {
+  id: number;
+  title: string;
+  span: string;
+  background_color: string;
+  images: string;
+  descriptions: string;
+}
+interface Props {
+  products: Product[];
+}
+const ProductPage: React.FC<Props> = (props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
   const [swiper, setSwiper] = useState({
@@ -75,7 +48,7 @@ const ProductPage: React.FC = () => {
               onSwiper={(swiper) => setSwiper(swiper)}
               onSlideChange={(swiper) => setCurrentIndex(swiper.activeIndex)}
             >
-              {products.map((product, i) => {
+              {props.products.map((product, i) => {
                 return (
                   <SwiperSlide
                     key={"product-slide" + i}
@@ -99,7 +72,7 @@ const ProductPage: React.FC = () => {
 
           <SlidePagination
             currentIndex={currentIndex}
-            products={products}
+            products={props.products}
             callback={(i: number) => {
               changeCurrentSlide(i);
             }}

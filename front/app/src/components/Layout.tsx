@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../store";
+import { incrementAction } from "../store/counter/actions";
+
 import Header from "./Header";
 import Sidebar from "./SideBar";
 import { BrowserRouter as Router, RouteComponentProps } from "react-router-dom";
-
+import axios from "axios";
 import "../styles/layout.scss";
 import Home from "../pages/home/Home";
 import ProfilePage from "../pages/profile/ProfilePage";
@@ -14,12 +18,12 @@ import GopherImage from "../components/GopherImage";
 
 type Props = {} & RouteComponentProps<{ mode: string }>;
 
-const Inner = (props: { current_page: string }) => {
+const Inner = (props: { current_page: string; products: Product[] }) => {
   switch (props.current_page) {
     case "profile":
       return <ProfilePage></ProfilePage>;
     case "product":
-      return <ProductPage></ProductPage>;
+      return <ProductPage products={props.products}></ProductPage>;
     case "contact":
       return <ContactPage></ContactPage>;
     default:
@@ -28,6 +32,14 @@ const Inner = (props: { current_page: string }) => {
 };
 interface SearchProductProps {
   current_page: string;
+}
+interface Product {
+  id: number;
+  title: string;
+  span: string;
+  background_color: string;
+  images: string;
+  descriptions: string;
 }
 const skilltypes = [
   {
@@ -128,6 +140,22 @@ const SearchProduct: React.FC<SearchProductProps> = (props) => {
 };
 
 const Layout: React.FC<Props> = (props) => {
+  const currentCount = useSelector((state: RootState) => state.counter);
+  const dispatch = useDispatch();
+
+  // action を発行する関数
+  // 引数にはaction creatorを渡す
+  // 親のrenderごとに子のrenderが走るので、useCallbackを用いメモ化すべき。
+  const handleIncrement = (products: any) => {
+    dispatch(incrementAction(products));
+  };
+
+  useEffect(() => {
+    const URL = `${process.env.REACT_APP_API_URL}/api/products`;
+    axios.get(URL).then((res) => {
+      handleIncrement(res.data.products);
+    });
+  }, []);
   return (
     <div className="layout">
       <Sidebar current_page={props.match.params.mode}></Sidebar>
@@ -135,7 +163,10 @@ const Layout: React.FC<Props> = (props) => {
         <Header></Header>
         <div className="layout__content">
           <SlideCurtain current_page={props.match.params.mode}></SlideCurtain>
-          <Inner current_page={props.match.params.mode}></Inner>
+          <Inner
+            current_page={props.match.params.mode}
+            products={currentCount.value}
+          ></Inner>
         </div>
       </div>
       <SearchProduct current_page={props.match.params.mode}></SearchProduct>

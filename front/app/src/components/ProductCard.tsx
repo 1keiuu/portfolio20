@@ -1,10 +1,12 @@
 import React from "react";
 import "../styles/productCard.scss";
 interface Product {
+  id: number;
   title: string;
   span: string;
-  imageUrl: string;
-  backgroundColor: string;
+  background_color: string;
+  images: string;
+  descriptions: string;
 }
 
 interface Props {
@@ -16,7 +18,7 @@ const ProductCard: React.FC<Props> = (props) => {
   return (
     <div
       className="product-card"
-      style={{ background: props.product.backgroundColor }}
+      style={{ background: props.product.background_color }}
     >
       <div className="product-card__inner">
         <div className="product-card__image__wrapper">
@@ -24,7 +26,7 @@ const ProductCard: React.FC<Props> = (props) => {
             className={
               "product-card__image" + " " + (props.isHover ? "--hover" : "")
             }
-            src={props.product.imageUrl}
+            src={props.product.images.split(",")[0]}
           ></img>
         </div>
         <div

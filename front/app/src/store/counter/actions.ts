@@ -5,9 +5,10 @@ import { CounterActionTypes } from "./types";
 // * action creators
 // *
 
-export const incrementAction = (): CounterActionTypes => {
+export const incrementAction = (products: any): CounterActionTypes => {
   return {
     type: ActionTypes.increment, // "INCREMENT"
+    products: products,
   };
 };
 

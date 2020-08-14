@@ -8,12 +8,13 @@ import { ActionTypes } from "../actionTypes";
 
 // stateの型
 export type Count = {
-  value: number;
+  value: any;
 };
 
 // Actionの型 Actionを継承
 interface IncrementAction extends Action {
   type: typeof ActionTypes.increment; // "INCREMENT"型
+  products: any;
 }
 
 interface DecrementAction extends Action {

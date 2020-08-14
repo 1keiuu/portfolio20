@@ -16,7 +16,7 @@ const HOME: React.FC = () => {
   // action を発行する関数
   // 引数にはaction creatorを渡す
   // 親のrenderごとに子のrenderが走るので、useCallbackを用いメモ化すべき。
-  const handleIncrement = () => dispatch(incrementAction());
+  // const handleIncrement = () => dispatch(incrementAction());
   const handleDecrement = () => dispatch(decrementAction());
   const handleReset = () => dispatch(resetAction());
   const getData = async () => {
@@ -29,7 +29,6 @@ const HOME: React.FC = () => {
       });
 
     console.log(currentCount);
-    handleIncrement();
   };
   return (
     <Fade bottom delay={500}>
