@@ -23,8 +23,13 @@ const SideBar: React.FC<Props> = (props) => {
   const handleClick = (type: string) => {
     switch (type) {
       case "profile":
+        props.history.push("/admin/profile");
         break;
-      case "work":
+      case "product":
+        props.history.push("/admin/product");
+        break;
+      case "skill":
+        props.history.push("/admin/skill");
         break;
       case "signOut":
         props.history.push("/admin/signIn");
@@ -54,13 +59,25 @@ const SideBar: React.FC<Props> = (props) => {
         <ListItem
           button
           onClick={() => {
-            handleClick("work");
+            handleClick("product");
           }}
         >
           <ListItemIcon>
             <Assignment style={{ color: "rgb(194, 199, 208)" }} />
           </ListItemIcon>
           <ListItemText primary="成果物管理" />
+        </ListItem>
+        <Divider></Divider>
+        <ListItem
+          button
+          onClick={() => {
+            handleClick("skill");
+          }}
+        >
+          <ListItemIcon>
+            <Assignment style={{ color: "rgb(194, 199, 208)" }} />
+          </ListItemIcon>
+          <ListItemText primary="スキル" />
         </ListItem>
         <Divider></Divider>
         <ListItem

@@ -10,7 +10,7 @@ interface Props extends RouteComponentProps<{}> {
 }
 
 const AdminHome: React.FC<Props> = (props) => {
-  const [isSignIn, setIsSignIn] = useState(false);
+  const [isSignIn, setIsSignIn] = useState(true);
 
   // async componentDidMount() {
   //   const token = props.location.state;
