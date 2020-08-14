@@ -1,25 +1,19 @@
 import { ActionTypes } from "../actionTypes";
-import { CounterActionTypes } from "./types";
+import { ProductActionTypes } from "./types";
 
 // *
 // * action creators
 // *
 
-export const incrementAction = (products: any): CounterActionTypes => {
+export const addProductsAction = (products: any): ProductActionTypes => {
   return {
-    type: ActionTypes.increment, // "INCREMENT"
+    type: ActionTypes.addProducts,
     products: products,
   };
 };
 
-export const decrementAction = (): CounterActionTypes => {
+export const resetProductsAction = (): ProductActionTypes => {
   return {
-    type: ActionTypes.decrement,
-  };
-};
-
-export const resetAction = (): CounterActionTypes => {
-  return {
-    type: ActionTypes.countReset,
+    type: ActionTypes.resetProducts,
   };
 };

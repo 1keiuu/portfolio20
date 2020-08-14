@@ -1,28 +1,24 @@
 import { ActionTypes } from "../actionTypes";
-import { Count, CounterActionTypes } from "./types";
+import { Product, ProductActionTypes } from "./types";
 
 // *
 // * reducer
 // *
 
-const initialState: Count = {
+const initialState: Product = {
   value: [],
 };
 
 export const countReducer = (
   state = initialState,
-  action: CounterActionTypes
-): Count => {
+  action: ProductActionTypes
+): Product => {
   switch (action.type) {
-    case ActionTypes.increment: // action.type === "INCREMENT"
-      return { value: action.products }; // value に1足す
-    case ActionTypes.decrement:
-    // 0以下にはならない
-    // return { value: state.value === 0 ? 0 : state.value - 1 };
-    case ActionTypes.countReset:
-    // return { value: 0 };
+    case ActionTypes.addProducts: // action.type === "ADD_PRODUCTS"
+      return { value: action.products };
+    case ActionTypes.resetProducts:
+      return { value: [] };
     default:
-      // const _: never = action;
       return state;
   }
 };

@@ -7,26 +7,19 @@ import { ActionTypes } from "../actionTypes";
 // *
 
 // stateの型
-export type Count = {
+export type Product = {
   value: any;
 };
 
 // Actionの型 Actionを継承
-interface IncrementAction extends Action {
-  type: typeof ActionTypes.increment; // "INCREMENT"型
+interface AddProductsAction extends Action {
+  type: typeof ActionTypes.addProducts; // "INCREMENT"型
   products: any;
 }
 
-interface DecrementAction extends Action {
-  type: typeof ActionTypes.decrement;
-}
-
-interface ResetAction extends Action {
-  type: typeof ActionTypes.countReset;
+interface ResetProductsAction extends Action {
+  type: typeof ActionTypes.resetProducts;
 }
 
 // exportするActionの型, Unionで結合
-export type CounterActionTypes =
-  | IncrementAction
-  | DecrementAction
-  | ResetAction;
+export type ProductActionTypes = AddProductsAction | ResetProductsAction;

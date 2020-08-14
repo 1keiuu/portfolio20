@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../store";
-import { incrementAction } from "../store/counter/actions";
+import { addProductsAction } from "../store/counter/actions";
 
 import Header from "./Header";
 import Sidebar from "./SideBar";
@@ -147,7 +147,7 @@ const Layout: React.FC<Props> = (props) => {
   // 引数にはaction creatorを渡す
   // 親のrenderごとに子のrenderが走るので、useCallbackを用いメモ化すべき。
   const handleIncrement = (products: any) => {
-    dispatch(incrementAction(products));
+    dispatch(addProductsAction(products));
   };
 
   useEffect(() => {
