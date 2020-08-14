@@ -22,7 +22,7 @@ type Product struct {
 func GetProducts(c *gin.Context) {
 	DB := db.Connect()
 	defer DB.Close()
-	rows, err := DB.Query("SELECT products.id, title, span, background_color, group_concat(distinct product_contents.image_url) AS images,group_concat(distinct product_contents.description) AS descriptions FROM products INNER JOIN product_contents ON (products.id=product_contents.product_id);")
+	rows, err := DB.Query("SELECT products.id, title, span, background_color, group_concat(distinct product_contents.image_url) AS images,group_concat(distinct product_contents.description) AS descriptions FROM products INNER JOIN product_contents ON (products.id=product_contents.product_id) GROUP BY product_id;")
 	if err != nil {
 		panic(err.Error())
 	}
