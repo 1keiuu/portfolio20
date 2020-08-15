@@ -36,6 +36,7 @@ func main() {
 
 	engine.GET("/api/contributions", controller.GetContributions)
 	engine.GET("/api/products", controller.GetProducts)
+	engine.GET("/api/skills", controller.GetSkills)
 	engine.POST("/api/admin/signIn", admincontroller.SignIn)
 	// engine.POST("/api/admin/createAdminUser", admincontroller.CreateAdminUser)
 

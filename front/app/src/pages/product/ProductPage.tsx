@@ -28,6 +28,7 @@ const ProductPage: React.FC<Props> = (props) => {
   const [hoveredIndex, setHoveredIndex] = useState(-1);
   const [swiper, setSwiper] = useState({
     slideTo: (i: number) => {},
+    slideNext: () => {},
     removeSlide: (i: number) => {},
   });
   const changeCurrentSlide = (i: number) => {
@@ -63,6 +64,9 @@ const ProductPage: React.FC<Props> = (props) => {
                       product={product}
                       isHover={i == hoveredIndex}
                       key={"product" + i}
+                      callback={() => {
+                        changeCurrentSlide(i);
+                      }}
                     ></ProductCard>
                   </SwiperSlide>
                 );

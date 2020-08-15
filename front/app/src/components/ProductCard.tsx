@@ -12,6 +12,7 @@ interface Product {
 interface Props {
   product: Product;
   isHover: boolean;
+  callback: () => void;
 }
 
 const ProductCard: React.FC<Props> = (props) => {
@@ -19,6 +20,9 @@ const ProductCard: React.FC<Props> = (props) => {
     <div
       className="product-card"
       style={{ background: props.product.background_color }}
+      onClick={() => {
+        props.callback();
+      }}
     >
       <div className="product-card__inner">
         <div className="product-card__image__wrapper">
