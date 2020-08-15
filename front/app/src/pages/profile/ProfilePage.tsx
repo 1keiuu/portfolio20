@@ -21,7 +21,7 @@ const GraphBg = (props: any) => {
 const SkillPage: React.FC = () => {
   const [isGraphOpen, setIsGraphOpen] = useState(false);
 
-  const currentCount = useSelector((state: RootState) => state.counter);
+  const currentCount = useSelector((state: RootState) => state.product);
 
   const getData = async () => {
     const res = await axios.get("/contributions", {

@@ -9,7 +9,7 @@ const initialState: Product = {
   value: [],
 };
 
-export const countReducer = (
+export const productReducer = (
   state = initialState,
   action: ProductActionTypes
 ): Product => {

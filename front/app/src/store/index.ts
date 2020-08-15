@@ -1,6 +1,7 @@
 import { combineReducers, createStore } from "redux";
 
-import { countReducer } from "./counter/reducer";
+import { productReducer } from "./product/reducer";
+import { skillReducer } from "./skill/reducer";
 
 // *
 // * store 本体
@@ -8,7 +9,8 @@ import { countReducer } from "./counter/reducer";
 
 // Reducerを増やすときは、ここに追加
 const rootReducer = combineReducers({
-  counter: countReducer,
+  product: productReducer,
+  skill: skillReducer,
 });
 
 // states type

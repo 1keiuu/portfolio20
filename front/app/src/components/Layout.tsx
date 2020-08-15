@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../store";
-import { addProductsAction } from "../store/counter/actions";
+import { addProductsAction } from "../store/product/actions";
+import { addSkillsAction } from "../store/skill/actions";
 
 import Header from "./Header";
 import Sidebar from "./SideBar";
@@ -32,6 +33,12 @@ const Inner = (props: { current_page: string; products: Product[] }) => {
 };
 interface SearchProductProps {
   current_page: string;
+  skills: {
+    skill_type_name: string;
+    skill_names: string;
+    background_colors: string;
+    image_urls: string;
+  }[];
 }
 interface Product {
   id: number;
@@ -41,71 +48,6 @@ interface Product {
   images: string;
   descriptions: string;
 }
-const skilltypes = [
-  {
-    title: "Frontend",
-    skills: [
-      {
-        id: 1,
-        name: "string1",
-        imageURL: "http://placehold.jp/350x150.png",
-        backgroundColor: "green",
-      },
-      {
-        id: 2,
-        name: "string2",
-        imageURL: "http://placehold.jp/350x150.png",
-        backgroundColor: "blue",
-      },
-      {
-        id: 3,
-        name: "string2.1",
-        imageURL: "http://placehold.jp/350x150.png",
-        backgroundColor: "green",
-      },
-      {
-        id: 4,
-        name: "string2.2",
-        imageURL: "http://placehold.jp/350x150.png",
-        backgroundColor: "green",
-      },
-      {
-        id: 5,
-        name: "string2.3",
-        imageURL: "http://placehold.jp/350x150.png",
-        backgroundColor: "green",
-      },
-    ],
-  },
-  {
-    title: "Backend",
-    skills: [
-      {
-        id: 6,
-        name: "string3",
-        imageURL: "http://placehold.jp/250x150.png",
-        backgroundColor: "red",
-      },
-      {
-        id: 7,
-        name: "string4",
-        imageURL: "http://placehold.jp/350x350.png",
-        backgroundColor: "blue",
-      },
-    ],
-  },
-  {
-    title: "Infrastructure",
-    skills: [
-      {
-        id: 8,
-        name: "string6",
-        imageURL: "http://placehold.jp/350x350.png",
-        backgroundColor: "blue",
-      },
-    ],
-  },
-];
 
 const SearchProduct: React.FC<SearchProductProps> = (props) => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
@@ -114,7 +56,7 @@ const SearchProduct: React.FC<SearchProductProps> = (props) => {
     return (
       <div className="search-product__wrapper">
         <SearchProductBar
-          skilltypes={skilltypes}
+          skills={props.skills}
           isOpen={isSideBarOpen}
         ></SearchProductBar>
         <GopherImage
@@ -140,20 +82,29 @@ const SearchProduct: React.FC<SearchProductProps> = (props) => {
 };
 
 const Layout: React.FC<Props> = (props) => {
-  const currentCount = useSelector((state: RootState) => state.counter);
+  const storeProducts = useSelector((state: RootState) => state.product);
+  const storeSkills = useSelector((state: RootState) => state.skill);
+
   const dispatch = useDispatch();
 
   // action を発行する関数
   // 引数にはaction creatorを渡す
   // 親のrenderごとに子のrenderが走るので、useCallbackを用いメモ化すべき。
-  const handleIncrement = (products: any) => {
+  const handleAddProducts = (products: Product[]) => {
     dispatch(addProductsAction(products));
   };
-
+  const handleAddSkills = (skills: any) => {
+    dispatch(addSkillsAction(skills));
+  };
   useEffect(() => {
-    const URL = `${process.env.REACT_APP_API_URL}/api/products`;
-    axios.get(URL).then((res) => {
-      handleIncrement(res.data.products);
+    const PRODUCTS_URL = `${process.env.REACT_APP_API_URL}/api/products`;
+    const SKILLS_URL = `${process.env.REACT_APP_API_URL}/api/skills`;
+
+    axios.get(PRODUCTS_URL).then((res) => {
+      handleAddProducts(res.data.products);
+    });
+    axios.get(SKILLS_URL).then((res) => {
+      handleAddSkills(res.data.skills);
     });
   }, []);
   return (
@@ -165,11 +116,14 @@ const Layout: React.FC<Props> = (props) => {
           <SlideCurtain current_page={props.match.params.mode}></SlideCurtain>
           <Inner
             current_page={props.match.params.mode}
-            products={currentCount.value}
+            products={storeProducts.value}
           ></Inner>
         </div>
       </div>
-      <SearchProduct current_page={props.match.params.mode}></SearchProduct>
+      <SearchProduct
+        current_page={props.match.params.mode}
+        skills={storeSkills.value}
+      ></SearchProduct>
     </div>
   );
 };

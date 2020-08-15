@@ -4,6 +4,8 @@
 // *
 
 export const ActionTypes = {
-  addProducts: "ADD_PRODUCTS", // "INCREMENT"型
-  resetProducts: "RESET_PRODUCTS", // "COUNT_RESET"型
+  addProducts: "ADD_PRODUCTS",
+  resetProducts: "RESET_PRODUCTS",
+  addSkills: "ADD_SKILLS",
+  resetSkills: "RESET_SKILLS",
 } as const;

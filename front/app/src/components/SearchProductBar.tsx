@@ -4,9 +4,11 @@ import { CSSTransition } from "react-transition-group";
 import CrossIcon from "../components/CrossIcon";
 interface Props {
   isOpen: boolean;
-  skilltypes: {
-    title: string;
-    skills: Skill[];
+  skills: {
+    skill_type_name: string;
+    skill_names: string;
+    background_colors: string;
+    image_urls: string;
   }[];
 }
 interface Skill {
@@ -18,17 +20,17 @@ interface Skill {
 
 const SearchProductBar: React.FC<Props> = (props) => {
   const [selectedArray, setSelectedArray] = useState<Skill[]>([]);
-  const addSelectedChip = (skill: Skill) => {
-    let newSelectedArray = [
-      ...selectedArray,
-      {
-        id: skill.id,
-        name: skill.name,
-        backgroundColor: skill.backgroundColor,
-      },
-    ];
-    setSelectedArray(newSelectedArray);
-  };
+  // const addSelectedChip = (skill: Skill) => {
+  //   let newSelectedArray = [
+  //     ...selectedArray,
+  //     {
+  //       id: skill.id,
+  //       name: skill.name,
+  //       backgroundColor: skill.backgroundColor,
+  //     },
+  //   ];
+  //   setSelectedArray(newSelectedArray);
+  // };
   const deleteSelectedChip = (i: number) => {
     let newSelectedArray = [...selectedArray];
     newSelectedArray.splice(i, 1);
@@ -64,13 +66,13 @@ const SearchProductBar: React.FC<Props> = (props) => {
           })}
         </div>
         <div className="skill-sections__group">
-          {props.skilltypes.map((skilltype, i) => {
+          {props.skills.map((skill, i) => {
             return (
-              <div className="skill-section" key={"skilltype" + i}>
-                <p className="skill-section__title">{skilltype.title}</p>
+              <div className="skill-section" key={"skill" + i}>
+                <p className="skill-section__title">{skill.skill_type_name}</p>
                 <div className="skill-cards">
                   <div className="skill-cards__inner">
-                    {skilltype.skills.map((skill) => {
+                    {/* {skill.skills.map((skill) => {
                       return (
                         <div
                           className="skill-card"
@@ -93,7 +95,7 @@ const SearchProductBar: React.FC<Props> = (props) => {
                           <p className="skill-card__title">{skill.name}</p>
                         </div>
                       );
-                    })}
+                    })} */}
                   </div>
                 </div>
               </div>
