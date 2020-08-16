@@ -35,9 +35,10 @@ interface SearchProductProps {
   current_page: string;
   skills: {
     skill_type_name: string;
-    skill_names: string;
-    background_colors: string;
-    image_urls: string;
+    id: number;
+    name: string;
+    background_color: string;
+    image_url: string;
   }[];
 }
 interface Product {

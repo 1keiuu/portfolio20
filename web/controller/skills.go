@@ -9,16 +9,17 @@ import (
 )
 
 type Skill struct {
+	Id               int    `json:"id"`
 	SkillTypeName    string `json:"skill_type_name"`
-	SkillNames       string `json:"skill_names"`
-	BackgroundColors string `json:"background_colors"`
-	ImageURLs        string `json:"image_urls"`
+	SkillNames       string `json:"name"`
+	BackgroundColors string `json:"background_color"`
+	ImageURLs        string `json:"image_url"`
 }
 
 func GetSkills(c *gin.Context) {
 	DB := db.Connect()
 	defer DB.Close()
-	rows, err := DB.Query("SELECT skill_types.name AS skill_type_name,group_concat(distinct skills.name) AS skill_names, group_concat(distinct skills.background_color) AS background_colors,group_concat(distinct skills.image_url) AS image_urls  FROM skill_types INNER JOIN skills ON skill_types.id = skills.skill_type_id GROUP BY skill_type_id;")
+	rows, err := DB.Query("SELECT skill_types.name AS skill_type_name,skills.id, skills.name,skills.background_color,skills.image_url  FROM skill_types INNER JOIN skills ON skill_types.id = skills.skill_type_id;")
 	if err != nil {
 		panic(err.Error())
 	}
@@ -26,7 +27,7 @@ func GetSkills(c *gin.Context) {
 	skillsArray := make([]Skill, 0)
 	for rows.Next() {
 		var skills Skill
-		err = rows.Scan(&skills.SkillTypeName, &skills.SkillNames, &skills.BackgroundColors, &skills.ImageURLs)
+		err = rows.Scan(&skills.SkillTypeName, &skills.Id, &skills.SkillNames, &skills.BackgroundColors, &skills.ImageURLs)
 		if err != nil {
 			panic(err.Error())
 		}
