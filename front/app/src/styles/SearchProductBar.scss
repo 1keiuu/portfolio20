@@ -25,47 +25,51 @@
   display: none;
   z-index: 7;
   overflow-y: scroll;
-  .selected-chips {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0 0 0 3vw;
-    position: sticky;
-    top: 0;
-    background: #f3f3f396;
-    border-bottom: 1px #7b7878 solid;
-    .selected-chip {
-      padding: 0 15px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 30px;
-      background: #fff;
-      margin-right: 10px;
-      margin-bottom: 16px;
-      position: relative;
-
-      .selected-chip__title {
-        margin: 0;
-        margin-right: 20px;
-        color: #fff;
-      }
-      .selected-chip__icon-wrapper {
-        cursor: pointer;
-        border-radius: 50%;
-        height: 11px;
-        width: 11px;
-        padding: 5px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        right: 6px;
-      }
-    }
+  &::-webkit-scrollbar {
+    display: none;
   }
+  // .selected-chips {
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   position: sticky;
+  //   top: 0;
+  //   min-height: 50px;
+  //   padding-top: 16px;
+  //   border-bottom: 1px #7b7878 solid;
+  //   margin: 0 3vw;
+  //   .selected-chip {
+  //     padding: 0 15px;
+  //     height: 24px;
+  //     display: flex;
+  //     align-items: center;
+  //     justify-content: center;
+  //     border-radius: 30px;
+  //     background: #fff;
+  //     margin-right: 10px;
+  //     margin-bottom: 16px;
+  //     position: relative;
+
+  //     .selected-chip__title {
+  //       margin: 0;
+  //       margin-right: 20px;
+  //       font-size: 1vw;
+  //     }
+  //     .selected-chip__icon-wrapper {
+  //       cursor: pointer;
+  //       border-radius: 50%;
+  //       height: 11px;
+  //       width: 11px;
+  //       padding: 5px;
+  //       display: flex;
+  //       justify-content: center;
+  //       align-items: center;
+  //       position: absolute;
+  //       right: 6px;
+  //     }
+  //   }
+  // }
   .skill-sections__group {
-    margin-top: 3vw;
+    margin: 3vw 0;
 
     .skill-section {
       padding: 20px 0;

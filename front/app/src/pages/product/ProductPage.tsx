@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import VerticalSlider from "../../components/VerticalSlider";
 import ProductCard from "../../components/ProductCard";
 import SlidePagination from "../../components/SlidePagination";
@@ -26,6 +26,32 @@ interface Props {
 const ProductPage: React.FC<Props> = (props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
+  const [products, setProducts] = useState<Product[]>([
+    {
+      id: 1,
+      title: "string",
+      span: "string",
+      background_color: "#333",
+      images: "string",
+      descriptions: "string",
+    },
+    {
+      id: 1,
+      title: "string",
+      span: "string",
+      background_color: "#333",
+      images: "string",
+      descriptions: "string",
+    },
+    {
+      id: 1,
+      title: "string",
+      span: "string",
+      background_color: "#333",
+      images: "string",
+      descriptions: "string",
+    },
+  ]);
   const [swiper, setSwiper] = useState({
     slideTo: (i: number) => {},
     slideNext: () => {},
@@ -34,6 +60,10 @@ const ProductPage: React.FC<Props> = (props) => {
   const changeCurrentSlide = (i: number) => {
     swiper.slideTo(i);
   };
+  // useEffect(() => {
+  //   const newProduct = [...props.products];
+  //   setProducts(newProduct);
+  // }, [props.products]);
   return (
     <Fade bottom delay={500}>
       <div className="product-page">
@@ -47,9 +77,11 @@ const ProductPage: React.FC<Props> = (props) => {
               spaceBetween={60}
               mousewheel={true}
               onSwiper={(swiper) => setSwiper(swiper)}
-              onSlideChange={(swiper) => setCurrentIndex(swiper.activeIndex)}
+              onSlideChange={(swiper) => {
+                setCurrentIndex(swiper.activeIndex);
+              }}
             >
-              {props.products.map((product, i) => {
+              {products.map((product, i) => {
                 return (
                   <SwiperSlide
                     key={"product-slide" + i}
@@ -76,7 +108,7 @@ const ProductPage: React.FC<Props> = (props) => {
 
           <SlidePagination
             currentIndex={currentIndex}
-            products={props.products}
+            products={products}
             callback={(i: number) => {
               changeCurrentSlide(i);
             }}

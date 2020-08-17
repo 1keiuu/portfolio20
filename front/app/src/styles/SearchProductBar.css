@@ -28,50 +28,12 @@
   overflow-y: scroll;
 }
 
-.search-product__bar .selected-chips {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 0 0 3vw;
-  position: sticky;
-  top: 0;
-  background: #f3f3f396;
-  border-bottom: 1px #7b7878 solid;
-}
-
-.search-product__bar .selected-chips .selected-chip {
-  padding: 0 15px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 30px;
-  background: #fff;
-  margin-right: 10px;
-  margin-bottom: 16px;
-  position: relative;
-}
-
-.search-product__bar .selected-chips .selected-chip .selected-chip__title {
-  margin: 0;
-  margin-right: 20px;
-  color: #fff;
-}
-
-.search-product__bar .selected-chips .selected-chip .selected-chip__icon-wrapper {
-  cursor: pointer;
-  border-radius: 50%;
-  height: 11px;
-  width: 11px;
-  padding: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  right: 6px;
+.search-product__bar::-webkit-scrollbar {
+  display: none;
 }
 
 .search-product__bar .skill-sections__group {
-  margin-top: 3vw;
+  margin: 3vw 0;
 }
 
 .search-product__bar .skill-sections__group .skill-section {

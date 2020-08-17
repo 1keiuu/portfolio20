@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/SearchProductBar.scss";
 import { CSSTransition } from "react-transition-group";
-import CrossIcon from "../components/CrossIcon";
+import SquareFloatButton from "../components/SquareFloatButton";
 interface Props {
   isOpen: boolean;
   skills: Skill[];
@@ -52,11 +52,11 @@ const SearchProductBar: React.FC<Props> = (props) => {
   const addSelectedSkill = (skill: Skill) => {
     let newSelectedArray = [...selectedArray, skill];
     setSelectedArray(newSelectedArray);
-    return Promise;
   };
   const removeSelectedSkill = (skill: Skill) => {
     const index = selectedArray.indexOf(skill);
-    let newSelectedArray = selectedArray.splice(index, 1);
+    selectedArray.splice(index, 1);
+    let newSelectedArray = [...selectedArray];
     setSelectedArray(newSelectedArray);
   };
 
@@ -93,12 +93,23 @@ const SearchProductBar: React.FC<Props> = (props) => {
               <div
                 className="selected-chip"
                 key={skill.name + "-chip"}
-                style={{ background_color: skill.background_color }}
+                style={{
+                  borderColor: skill.background_color,
+                  borderWidth: "1px",
+                  borderStyle: "solid",
+                }}
               >
-                <p className="selected-chip__title">{skill.name}</p>
+                <p
+                  className="selected-chip__title"
+                  style={{
+                    color: skill.background_color,
+                  }}
+                >
+                  {skill.name}
+                </p>
                 <div
                   className="selected-chip__icon-wrapper"
-                  style={{ background_color: skill.background_color }}
+                  style={{ backgroundColor: skill.background_color }}
                   onClick={() => {
                     deleteSelectedChip(i);
                   }}
@@ -133,21 +144,11 @@ const SearchProductBar: React.FC<Props> = (props) => {
                               : {}
                           }
                           onClick={() => {
-                            console.log(selectedArray);
                             if (!isSelected(skill)) {
-                              console.log("add");
                               addSelectedSkill(skill);
                             } else {
-                              console.log("remove");
                               removeSelectedSkill(skill);
                             }
-
-                            console.log(selectedArray);
-                            // addSelectedChip({
-                            //   id: skill.id,
-                            //   name: skill.skill_name,
-                            //   background_color: skill.background_color,
-                            // });
                           }}
                         >
                           <div className="skill-card__image-wrapper">
@@ -162,6 +163,14 @@ const SearchProductBar: React.FC<Props> = (props) => {
                     })}
                   </div>
                 </div>
+                <SquareFloatButton
+                  is_selected={selectedArray.length > 0 ? true : false}
+                  callback={() => {
+                    console.log(selectedArray);
+                  }}
+                >
+                  絞り込んで検索
+                </SquareFloatButton>
               </div>
             );
           })}

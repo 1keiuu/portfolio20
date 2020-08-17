@@ -101,12 +101,15 @@ const Layout: React.FC<Props> = (props) => {
     const PRODUCTS_URL = `${process.env.REACT_APP_API_URL}/api/products`;
     const SKILLS_URL = `${process.env.REACT_APP_API_URL}/api/skills`;
 
-    axios.get(PRODUCTS_URL).then((res) => {
-      handleAddProducts(res.data.products);
-    });
-    axios.get(SKILLS_URL).then((res) => {
-      handleAddSkills(res.data.skills);
-    });
+    const get = async () => {
+      await axios.get(PRODUCTS_URL).then((res) => {
+        handleAddProducts(res.data.products);
+      });
+      await axios.get(SKILLS_URL).then((res) => {
+        handleAddSkills(res.data.skills);
+      });
+    };
+    get();
   }, []);
   return (
     <div className="layout">
