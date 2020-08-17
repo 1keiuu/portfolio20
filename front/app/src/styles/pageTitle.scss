@@ -23,5 +23,20 @@
     opacity: 1;
     filter: blur(0);
     transition: 1s;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  .page-title__home-enter-done {
+    background-image: url(https://media.giphy.com/media/RczrZPh9LHpCM/giphy.gif);
+  }
+  .page-title__product-enter-done {
+    background-image: url(https://media.giphy.com/media/R5W9M7mtfgmR2/giphy.gif);
+  }
+  .page-title__profile-enter-done {
+    background-image: url(https://media.giphy.com/media/rDVjzeKwbmBRm/giphy.gif);
+  }
+  .page-title__contact-enter-done {
+    background-image: url(https://media.giphy.com/media/gAG8IHCJcea4M/giphy.gif);
   }
 }

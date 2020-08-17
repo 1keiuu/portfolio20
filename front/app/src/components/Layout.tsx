@@ -31,6 +31,25 @@ const Inner = (props: { current_page: string; products: Product[] }) => {
       return <Home></Home>;
   }
 };
+
+interface Product {
+  id: number;
+  title: string;
+  span: string;
+  background_color: string;
+  images: string;
+  descriptions: string;
+  skill_ids: string;
+}
+
+interface Skill {
+  id: number;
+  name: string;
+  image_url: string;
+  background_color: string;
+  skill_type_name: string;
+}
+
 interface SearchProductProps {
   current_page: string;
   skills: {
@@ -40,18 +59,16 @@ interface SearchProductProps {
     background_color: string;
     image_url: string;
   }[];
-}
-interface Product {
-  id: number;
-  title: string;
-  span: string;
-  background_color: string;
-  images: string;
-  descriptions: string;
+  change_products: (arr: Skill[]) => void;
 }
 
 const SearchProduct: React.FC<SearchProductProps> = (props) => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+
+  const handleDecideButtonClick = (selectedItems: Skill[]) => {
+    props.change_products(selectedItems);
+    setIsSideBarOpen(false);
+  };
 
   if (props.current_page == "product") {
     return (
@@ -59,6 +76,9 @@ const SearchProduct: React.FC<SearchProductProps> = (props) => {
         <SearchProductBar
           skills={props.skills}
           isOpen={isSideBarOpen}
+          decide_button_callback={(selectedItems) => {
+            handleDecideButtonClick(selectedItems);
+          }}
         ></SearchProductBar>
         <GopherImage
           callback={() => {
@@ -88,6 +108,37 @@ const Layout: React.FC<Props> = (props) => {
 
   const dispatch = useDispatch();
 
+  const [products, setProducts] = useState<Product[]>([
+    {
+      id: 1,
+      title: "string",
+      span: "string",
+      background_color: "#333",
+      images: "string",
+      descriptions: "string",
+      skill_ids: "1,2",
+    },
+    {
+      id: 1,
+      title: "string",
+      span: "string",
+      background_color: "#333",
+      images: "string",
+      descriptions: "string",
+      skill_ids: "2,5",
+    },
+    {
+      id: 1,
+      title: "string",
+      span: "string",
+      background_color: "#333",
+      images: "string",
+      descriptions: "string",
+      skill_ids: "2,4",
+    },
+  ]);
+  const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
+
   // action を発行する関数
   // 引数にはaction creatorを渡す
   // 親のrenderごとに子のrenderが走るので、useCallbackを用いメモ化すべき。
@@ -110,6 +161,7 @@ const Layout: React.FC<Props> = (props) => {
       });
     };
     get();
+    setSelectedProducts(products);
   }, []);
   return (
     <div className="layout">
@@ -120,14 +172,24 @@ const Layout: React.FC<Props> = (props) => {
           <SlideCurtain current_page={props.match.params.mode}></SlideCurtain>
           <Inner
             current_page={props.match.params.mode}
-            products={storeProducts.value}
+            products={selectedProducts}
           ></Inner>
         </div>
       </div>
       <SearchProduct
         current_page={props.match.params.mode}
         skills={storeSkills.value}
+        change_products={(selectedItems: Skill[]) => {
+          selectedItems.forEach((item) => {
+            const newProducts = products.filter((product) => {
+              const arr = product.skill_ids.split(",");
+              return arr.includes(item.id.toString());
+            });
+            setSelectedProducts(newProducts);
+          });
+        }}
       ></SearchProduct>
+      <div className="noise"></div>
     </div>
   );
 };

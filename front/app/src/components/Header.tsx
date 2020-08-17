@@ -107,6 +107,7 @@ const Header: React.FC<Props> = (props) => {
           </CSSTransition>
         </div>
       </div>
+      <div className="noise"></div>
     </header>
   );
 };

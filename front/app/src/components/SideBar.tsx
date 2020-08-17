@@ -43,6 +43,7 @@ const SideBar: React.FC<Props> = (props) => {
           title={props.current_page ? props.current_page : "WELCOME"}
         ></PageTitle>
       </div>
+      <div className="noise"></div>
     </div>
   );
 };

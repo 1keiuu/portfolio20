@@ -5,6 +5,7 @@ import SquareFloatButton from "../components/SquareFloatButton";
 interface Props {
   isOpen: boolean;
   skills: Skill[];
+  decide_button_callback: (arr: Skill[]) => void;
 }
 
 interface Skill {
@@ -80,6 +81,8 @@ const SearchProductBar: React.FC<Props> = (props) => {
     newSelectedArray.splice(i, 1);
     setSelectedArray(newSelectedArray);
   };
+
+  const handleDecideButtonClick = () => {};
   return (
     <CSSTransition
       in={props.isOpen}
@@ -166,7 +169,7 @@ const SearchProductBar: React.FC<Props> = (props) => {
                 <SquareFloatButton
                   is_selected={selectedArray.length > 0 ? true : false}
                   callback={() => {
-                    console.log(selectedArray);
+                    props.decide_button_callback(selectedArray);
                   }}
                 >
                   絞り込んで検索

@@ -26,32 +26,6 @@ interface Props {
 const ProductPage: React.FC<Props> = (props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
-  const [products, setProducts] = useState<Product[]>([
-    {
-      id: 1,
-      title: "string",
-      span: "string",
-      background_color: "#333",
-      images: "string",
-      descriptions: "string",
-    },
-    {
-      id: 1,
-      title: "string",
-      span: "string",
-      background_color: "#333",
-      images: "string",
-      descriptions: "string",
-    },
-    {
-      id: 1,
-      title: "string",
-      span: "string",
-      background_color: "#333",
-      images: "string",
-      descriptions: "string",
-    },
-  ]);
   const [swiper, setSwiper] = useState({
     slideTo: (i: number) => {},
     slideNext: () => {},
@@ -81,7 +55,7 @@ const ProductPage: React.FC<Props> = (props) => {
                 setCurrentIndex(swiper.activeIndex);
               }}
             >
-              {products.map((product, i) => {
+              {props.products.map((product, i) => {
                 return (
                   <SwiperSlide
                     key={"product-slide" + i}
@@ -108,7 +82,7 @@ const ProductPage: React.FC<Props> = (props) => {
 
           <SlidePagination
             currentIndex={currentIndex}
-            products={products}
+            products={props.products}
             callback={(i: number) => {
               changeCurrentSlide(i);
             }}

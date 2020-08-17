@@ -16,6 +16,7 @@ header .menu-items {
   display: flex;
   align-items: flex-end;
   position: relative;
+  z-index: 2;
 }
 
 header .menu-items .menu-item__wrapper {
