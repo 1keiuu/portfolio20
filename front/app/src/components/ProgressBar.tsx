@@ -30,51 +30,39 @@ const ProgreeBar: React.FC<Props> = (props) => {
       setActiveIndex(props.active_index);
     }
   }, [props.active_index]);
+
+  const slideArray = [
+    {
+      title: "Profile",
+    },
+    {
+      title: "Career",
+    },
+    {
+      title: "Skill",
+    },
+    {
+      title: "Github",
+    },
+  ];
   return (
     <div className="progress-bar" ref={REF}>
-      <div className="dot__wrapper">
-        <p className={activeIndex > -1 ? "--active" : ""}>Profile</p>
-        <span
-          className={"dot__border" + " " + (activeIndex > -1 ? "--active" : "")}
-        >
-          <span
-            className={"dot" + " " + (activeIndex > -1 ? "--active" : "")}
-          ></span>
-        </span>
-      </div>
-
-      <div className="dot__wrapper">
-        <p className={activeIndex > 0 ? "--active" : ""}>Career</p>
-        <span
-          className={"dot__border" + " " + (activeIndex > 0 ? "--active" : "")}
-        >
-          <span
-            className={"dot" + " " + (activeIndex > 0 ? "--active" : "")}
-          ></span>
-        </span>
-      </div>
-
-      <div className="dot__wrapper">
-        <p className={activeIndex > 1 ? "--active" : ""}>Skill</p>
-        <span
-          className={"dot__border" + " " + (activeIndex > 1 ? "--active" : "")}
-        >
-          <span
-            className={"dot" + " " + (activeIndex > 1 ? "--active" : "")}
-          ></span>
-        </span>
-      </div>
-
-      <div className="dot__wrapper">
-        <p className={activeIndex > 2 ? "--active" : ""}>Github</p>
-        <span
-          className={"dot__border" + " " + (activeIndex > 2 ? "--active" : "")}
-        >
-          <span
-            className={"dot" + " " + (activeIndex > 2 ? "--active" : "")}
-          ></span>
-        </span>
-      </div>
+      {slideArray.map((slide, i) => {
+        return (
+          <div className="dot__wrapper">
+            <p className={activeIndex >= i ? "--active" : ""}>{slide.title}</p>
+            <span
+              className={
+                "dot__border" + " " + (activeIndex >= i ? "--active" : "")
+              }
+            >
+              <span
+                className={"dot" + " " + (activeIndex >= i ? "--active" : "")}
+              ></span>
+            </span>
+          </div>
+        );
+      })}
 
       <span className="progress-bar__line"></span>
       <span
