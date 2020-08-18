@@ -1,11 +1,13 @@
 import React, { useState, useRef } from "react";
-import Graph from "./Graph";
 import "../../styles/ProfilePage.scss";
-import { CSSTransition } from "react-transition-group";
 import axios from "../../plugin/axios/index";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import ProgressBar from "../../components/ProgressBar";
+import ProfileSlide from "./ProfileSlide";
+import CareerSlide from "./CareerSlide";
+import SkillSlide from "./SkillSlide";
+import GithubSlide from "./GithubSlide";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Mousewheel } from "swiper";
@@ -72,16 +74,16 @@ const SkillPage: React.FC = () => {
         }}
       >
         <SwiperSlide>
-          <div className="slide profile__slide">profile</div>
+          <ProfileSlide></ProfileSlide>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="slide career__slide">career</div>
+          <CareerSlide></CareerSlide>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="slide skill__slide">skill</div>
+          <SkillSlide></SkillSlide>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="slide github__slide">github</div>
+          <GithubSlide></GithubSlide>
         </SwiperSlide>
       </Swiper>
     </div>
