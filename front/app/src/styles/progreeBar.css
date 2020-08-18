@@ -6,15 +6,29 @@
   margin-top: 60px;
 }
 
-.progress-bar .progress-bar__dot {
+.progress-bar .dot__border {
+  background: #f3f3f3;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  z-index: 3;
+}
+
+.progress-bar .dot__border.--active {
+  border: #f5a85b 1px solid;
+}
+
+.progress-bar .dot__border .dot {
   background: #333;
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  z-index: 2;
 }
 
-.progress-bar .progress-bar__dot.--active {
+.progress-bar .dot__border .dot.--active {
   background: #f5a85b;
 }
 

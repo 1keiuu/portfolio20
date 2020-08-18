@@ -4,14 +4,26 @@
   justify-content: space-between;
   width: 60%;
   margin-top: 60px;
-  .progress-bar__dot {
-    background: #333;
-    width: 10px;
-    height: 10px;
+  .dot__border {
+    background: #f3f3f3;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 50%;
-    z-index: 2;
+    z-index: 3;
     &.--active {
-      background: #f5a85b;
+      border: #f5a85b 1px solid;
+    }
+    .dot {
+      background: #333;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      &.--active {
+        background: #f5a85b;
+      }
     }
   }
   .progress-bar__line {
