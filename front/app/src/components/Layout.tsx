@@ -109,33 +109,33 @@ const Layout: React.FC<Props> = (props) => {
   const dispatch = useDispatch();
 
   const [products, setProducts] = useState<Product[]>([
-    {
-      id: 1,
-      title: "string",
-      span: "string",
-      background_color: "#333",
-      images: "string",
-      descriptions: "string",
-      skill_ids: "1,2",
-    },
-    {
-      id: 1,
-      title: "string",
-      span: "string",
-      background_color: "#333",
-      images: "string",
-      descriptions: "string",
-      skill_ids: "2,5",
-    },
-    {
-      id: 1,
-      title: "string",
-      span: "string",
-      background_color: "#333",
-      images: "string",
-      descriptions: "string",
-      skill_ids: "2,4",
-    },
+    // {
+    //   id: 1,
+    //   title: "string",
+    //   span: "string",
+    //   background_color: "#333",
+    //   images: "string",
+    //   descriptions: "string",
+    //   skill_ids: "1,2",
+    // },
+    // {
+    //   id: 1,
+    //   title: "string",
+    //   span: "string",
+    //   background_color: "#333",
+    //   images: "string",
+    //   descriptions: "string",
+    //   skill_ids: "2,5",
+    // },
+    // {
+    //   id: 1,
+    //   title: "string",
+    //   span: "string",
+    //   background_color: "#333",
+    //   images: "string",
+    //   descriptions: "string",
+    //   skill_ids: "2,4",
+    // },
   ]);
   const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
 
@@ -155,13 +155,13 @@ const Layout: React.FC<Props> = (props) => {
     const get = async () => {
       await axios.get(PRODUCTS_URL).then((res) => {
         handleAddProducts(res.data.products);
+        setSelectedProducts(res.data.products);
       });
       await axios.get(SKILLS_URL).then((res) => {
         handleAddSkills(res.data.skills);
       });
     };
     get();
-    setSelectedProducts(products);
   }, []);
   return (
     <div className="layout">

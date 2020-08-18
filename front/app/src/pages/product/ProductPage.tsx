@@ -2,12 +2,13 @@ import React, { useState, useRef, useEffect } from "react";
 import VerticalSlider from "../../components/VerticalSlider";
 import ProductCard from "../../components/ProductCard";
 import SlidePagination from "../../components/SlidePagination";
+import "../../styles/productPage.scss";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Mousewheel } from "swiper";
-
 import "swiper/swiper.scss";
 import "swiper/components/pagination/pagination.scss";
-import "../../styles/productPage.scss";
+
 const Fade = require("react-reveal/Fade");
 
 SwiperCore.use([Mousewheel]);
