@@ -6,7 +6,21 @@
   margin-top: 60px;
 }
 
-.progress-bar .dot__border {
+.progress-bar .dot__wrapper {
+  z-index: 3;
+}
+
+.progress-bar .dot__wrapper p {
+  position: absolute;
+  margin: 0;
+  top: -25px;
+}
+
+.progress-bar .dot__wrapper p.--active {
+  color: #f5a85b;
+}
+
+.progress-bar .dot__wrapper .dot__border {
   background: #f3f3f3;
   width: 16px;
   height: 16px;
@@ -14,21 +28,20 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  z-index: 3;
 }
 
-.progress-bar .dot__border.--active {
+.progress-bar .dot__wrapper .dot__border.--active {
   border: #f5a85b 1px solid;
 }
 
-.progress-bar .dot__border .dot {
+.progress-bar .dot__wrapper .dot__border .dot {
   background: #333;
   width: 10px;
   height: 10px;
   border-radius: 50%;
 }
 
-.progress-bar .dot__border .dot.--active {
+.progress-bar .dot__wrapper .dot__border .dot.--active {
   background: #f5a85b;
 }
 

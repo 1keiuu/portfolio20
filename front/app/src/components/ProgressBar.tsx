@@ -32,31 +32,49 @@ const ProgreeBar: React.FC<Props> = (props) => {
   }, [props.active_index]);
   return (
     <div className="progress-bar" ref={REF}>
-      <span className={"dot__border --active"}>
-        <span className={"dot --active"}></span>
-      </span>
-      <span
-        className={"dot__border" + " " + (activeIndex > 0 ? "--active" : "")}
-      >
+      <div className="dot__wrapper">
+        <p className={activeIndex > -1 ? "--active" : ""}>Profile</p>
         <span
-          className={"dot" + " " + (activeIndex > 0 ? "--active" : "")}
-        ></span>
-      </span>
-      <span
-        className={"dot__border" + " " + (activeIndex > 1 ? "--active" : "")}
-      >
-        <span
-          className={"dot" + " " + (activeIndex > 1 ? "--active" : "")}
-        ></span>
-      </span>
+          className={"dot__border" + " " + (activeIndex > -1 ? "--active" : "")}
+        >
+          <span
+            className={"dot" + " " + (activeIndex > -1 ? "--active" : "")}
+          ></span>
+        </span>
+      </div>
 
-      <span
-        className={"dot__border" + " " + (activeIndex > 2 ? "--active" : "")}
-      >
+      <div className="dot__wrapper">
+        <p className={activeIndex > 0 ? "--active" : ""}>Career</p>
         <span
-          className={"dot" + " " + (activeIndex > 2 ? "--active" : "")}
-        ></span>
-      </span>
+          className={"dot__border" + " " + (activeIndex > 0 ? "--active" : "")}
+        >
+          <span
+            className={"dot" + " " + (activeIndex > 0 ? "--active" : "")}
+          ></span>
+        </span>
+      </div>
+
+      <div className="dot__wrapper">
+        <p className={activeIndex > 1 ? "--active" : ""}>Skill</p>
+        <span
+          className={"dot__border" + " " + (activeIndex > 1 ? "--active" : "")}
+        >
+          <span
+            className={"dot" + " " + (activeIndex > 1 ? "--active" : "")}
+          ></span>
+        </span>
+      </div>
+
+      <div className="dot__wrapper">
+        <p className={activeIndex > 2 ? "--active" : ""}>Github</p>
+        <span
+          className={"dot__border" + " " + (activeIndex > 2 ? "--active" : "")}
+        >
+          <span
+            className={"dot" + " " + (activeIndex > 2 ? "--active" : "")}
+          ></span>
+        </span>
+      </div>
 
       <span className="progress-bar__line"></span>
       <span
