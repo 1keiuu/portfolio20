@@ -15,7 +15,7 @@ function usePrevious(value: any) {
 const ProgreeBar: React.FC<Props> = (props) => {
   const REF = useRef<HTMLDivElement>(null);
   const [currentLeft, setCurrentLeft] = useState(0);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(-1);
   const prevIndex = usePrevious(activeIndex);
 
   useEffect(() => {
@@ -23,6 +23,9 @@ const ProgreeBar: React.FC<Props> = (props) => {
     setCurrentLeft(currentDot!.offsetLeft);
     if (props.active_index > prevIndex!) {
       // バーが戻る時は遅らせたくない
+      if (prevIndex) {
+        if (prevIndex! < 0) return setActiveIndex(props.active_index);
+      }
       setTimeout(() => {
         setActiveIndex(props.active_index);
       }, 900);

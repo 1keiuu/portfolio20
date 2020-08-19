@@ -56,7 +56,36 @@ const SkillPage: React.FC = () => {
   useEffect(() => {
     setIsLoad(true);
   }, []);
-
+  const initSlide = () => {
+    const params = window.location.pathname.replace("/profile/", "");
+    switch (params) {
+      case "career":
+        return 1;
+      case "skill":
+        return 2;
+      case "github":
+        return 3;
+      default:
+        return 0;
+    }
+  };
+  const handleChangeSlide = (swiper: { activeIndex: number }) => {
+    setCurrentIndex(swiper.activeIndex);
+    switch (swiper.activeIndex) {
+      case 1:
+        window.history.pushState(null, "", "/profile/career");
+        break;
+      case 2:
+        window.history.pushState(null, "", "/profile/skill");
+        break;
+      case 3:
+        window.history.pushState(null, "", "/profile/github");
+        break;
+      case 0:
+        window.history.pushState(null, "", "/profile");
+        break;
+    }
+  };
   return (
     <div className="profile__inner">
       {/* <div className="profile__card">
@@ -70,13 +99,14 @@ const SkillPage: React.FC = () => {
       <Swiper
         slidesPerView={1}
         speed={1000}
-        centeredSlides={true}
         spaceBetween={60}
-        initialSlide={2}
         mousewheel={true}
         effect="fade"
+        onSwiper={(swiper) => {
+          swiper.slideTo(initSlide());
+        }}
         onSlideChange={(swiper) => {
-          setCurrentIndex(swiper.activeIndex);
+          handleChangeSlide(swiper);
         }}
       >
         <SwiperSlide>
@@ -92,7 +122,6 @@ const SkillPage: React.FC = () => {
           <GithubSlide></GithubSlide>
         </SwiperSlide>
       </Swiper>
-
       <CSSTransition in={isLoad} classNames="scroll-text__wrapper" timeout={0}>
         {currentIndex < 3 ? (
           <div className="scroll-text__wrapper">
