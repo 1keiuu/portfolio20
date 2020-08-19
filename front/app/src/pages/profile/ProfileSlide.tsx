@@ -4,11 +4,19 @@ import profileImg from "../../images/profile.jpeg";
 import { CSSTransition } from "react-transition-group";
 const Fade = require("react-reveal/Fade");
 
-const ProfileSlide: React.FC = () => {
+interface Props {
+  isLoad: boolean;
+}
+
+const ProfileSlide: React.FC<Props> = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
-    setIsLoaded(true);
-  }, []);
+    if (props.isLoad) {
+      setIsLoaded(true);
+    } else {
+      setIsLoaded(false);
+    }
+  }, [props.isLoad]);
   return (
     <div className="slide profile__slide">
       <div className="slide-upper">

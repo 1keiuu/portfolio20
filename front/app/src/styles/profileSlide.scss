@@ -11,6 +11,7 @@
         height: 100%;
         position: absolute;
         background: #f3f3f3;
+        transition: 0.5s;
       }
       .slide-upper__image {
         width: 100%;
@@ -27,6 +28,7 @@
       .slide-upper__text {
         opacity: 0;
         transform: translateY(100px);
+        transition: 1s ease-out;
       }
       .slide-upper__text-enter-done {
         opacity: 1;
@@ -40,6 +42,7 @@
     .slide-lower__text {
       opacity: 0;
       transform: translateY(100px);
+      transition: 1s ease-out;
     }
     .slide-lower__text-enter-done {
       opacity: 1;

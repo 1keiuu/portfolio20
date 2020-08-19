@@ -111,7 +111,9 @@ const SkillPage: React.FC = () => {
         }}
       >
         <SwiperSlide>
-          <ProfileSlide></ProfileSlide>
+          <ProfileSlide
+            isLoad={currentIndex == 0 ? true : false}
+          ></ProfileSlide>
         </SwiperSlide>
         <SwiperSlide>
           <CareerSlide isLoad={currentIndex == 1 ? true : false}></CareerSlide>

@@ -17,6 +17,7 @@
   height: 100%;
   position: absolute;
   background: #f3f3f3;
+  transition: 0.5s;
 }
 
 .profile__slide .slide-upper .slide-upper__image-wrapper .slide-upper__image {
@@ -36,6 +37,7 @@
 .profile__slide .slide-upper .slide-upper__text-group .slide-upper__text {
   opacity: 0;
   transform: translateY(100px);
+  transition: 1s ease-out;
 }
 
 .profile__slide .slide-upper .slide-upper__text-group .slide-upper__text-enter-done {
@@ -51,6 +53,7 @@
 .profile__slide .slide-lower .slide-lower__text {
   opacity: 0;
   transform: translateY(100px);
+  transition: 1s ease-out;
 }
 
 .profile__slide .slide-lower .slide-lower__text-enter-done {
