@@ -11,7 +11,7 @@ const SkillSlide: React.FC = () => {
           title: "Vue.js",
           image_url:
             "https://1keiu-portfolio20.s3-ap-northeast-1.amazonaws.com/skills/vue.svg",
-          count: 2,
+          project_count: 2,
           percentage: 90,
           color: "#85CB7B",
         },
@@ -19,7 +19,7 @@ const SkillSlide: React.FC = () => {
           title: "React.js",
           image_url:
             "https://1keiu-portfolio20.s3-ap-northeast-1.amazonaws.com/skills/react.svg",
-          count: 2,
+          project_count: 2,
           percentage: 75,
           color: "#64E7F8",
         },
@@ -32,7 +32,20 @@ const SkillSlide: React.FC = () => {
           title: "Go",
           image_url:
             "https://1keiu-portfolio20.s3-ap-northeast-1.amazonaws.com/skills/gopher.svg",
-          count: 2,
+          project_count: 1,
+          percentage: 50,
+          color: "#51A4C3",
+        },
+      ],
+    },
+    {
+      skill_type: "Infrastructure",
+      skills: [
+        {
+          title: "AWS",
+          image_url:
+            "https://1keiu-portfolio20.s3-ap-northeast-1.amazonaws.com/skills/aws.svg",
+          project_count: 1,
           percentage: 50,
           color: "#51A4C3",
         },
@@ -69,7 +82,7 @@ const SkillSlide: React.FC = () => {
       {items.map((item) => {
         return (
           <div className="skill-section">
-            <p>{item.skill_type}</p>
+            <p className="skill-section__skill-type">{item.skill_type}</p>
             <div className="skill-cards__group">
               {item.skills.map((skill, i) => {
                 return (
@@ -86,7 +99,11 @@ const SkillSlide: React.FC = () => {
                       />
                       <img className="skill-card__logo" src={skill.image_url} />
                     </div>
-                    <p>{skill.title}</p>
+                    <p className="skill-card__title">{skill.title}</p>
+                    <p className="skill-card__sub-title">
+                      {skill.project_count +
+                        (skill.project_count == 0 ? "Project" : "Projects")}
+                    </p>
                   </div>
                 );
               })}

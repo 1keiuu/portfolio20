@@ -42,7 +42,7 @@ const ProgreeBar: React.FC<Props> = (props) => {
       title: "Career",
     },
     {
-      title: "Skill",
+      title: "SkillSet",
     },
     {
       title: "Github",
