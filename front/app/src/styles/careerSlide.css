@@ -44,6 +44,14 @@
   margin-left: 10px;
 }
 
+.career__slide .timeline .timeline__item .item__text-list {
+  font-size: 13px;
+  padding-left: 50px;
+  margin-top: 8px;
+  color: grey;
+  text-align: left;
+}
+
 .career__slide .timeline .timeline__item-enter-done {
   transform: translateY(0px);
   opacity: 1;

@@ -37,6 +37,13 @@
       .item__text {
         margin-left: 10px;
       }
+      .item__text-list {
+        font-size: 13px;
+        padding-left: 50px;
+        margin-top: 8px;
+        color: grey;
+        text-align: left;
+      }
     }
     .timeline__item-enter-done {
       transform: translateY(0px);

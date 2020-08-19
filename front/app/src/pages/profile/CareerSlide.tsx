@@ -16,13 +16,15 @@ const CareerSlide: React.FC<Props> = (props) => {
     },
     {
       title: "2018.5 株式会社Seven garden インターン開始",
-      list: [""],
+      list: ["- ゲストハウスの立ち上げ"],
     },
     {
       title: "2019.2 株式会社カイエン インターン開始",
+      list: ["- コーディング", "- ワイヤーフレーム設計"],
     },
     {
       title: "2020.2 株式会社Parchie インターン開始",
+      list: ["- Vue×Railsを使ったECサイトの開発/運営"],
     },
   ];
   const [status, setStatus] = useState(false);
@@ -54,7 +56,14 @@ const CareerSlide: React.FC<Props> = (props) => {
                 <span className="item__dot-wrapper ">
                   <span className="item__dot"></span>
                 </span>
-                <p className="item__text">{item.title}</p>
+                <div className="item__text-wrapper">
+                  <p className="item__text">{item.title}</p>
+                  <div className="item__text-list">
+                    {item.list?.map((listItem) => {
+                      return <p>{listItem}</p>;
+                    })}
+                  </div>
+                </div>
               </div>
             </CSSTransition>
           );
