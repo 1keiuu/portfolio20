@@ -11,7 +11,9 @@
 .skill__slide .skill-section .skill-section__skill-type {
   text-align: start;
   color: #989898;
-  font-size: 25px;
+  font-size: 1.9vw;
+  margin-bottom: 8px;
+  padding-left: 5px;
 }
 
 .skill__slide .skill-section .skill-cards__group {
@@ -20,8 +22,8 @@
 }
 
 .skill__slide .skill-section .skill-cards__group .skill-card {
-  width: 10vw;
-  height: 10vw;
+  width: 9vw;
+  height: 9vw;
   margin-left: 3vw;
   background: #fff;
   border-radius: 10px;

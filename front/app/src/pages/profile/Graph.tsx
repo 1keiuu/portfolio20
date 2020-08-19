@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import "../../styles/Graph.scss";
 import GithubTitle from "../../components/GithubTitle";
 import ArrowIcon from "../../components/ArrowIcon";
 interface Props {
-  contributionsPromise: Promise<any>;
+  contributionsPromise: any;
 }
 interface State {
   currentData: {
@@ -101,38 +101,27 @@ const Graph: React.FC<Props> = (props) => {
     yearly: 0,
   });
 
-  // componentDidMount() {
-  props.contributionsPromise.then((data) => {
+  useEffect(() => {
+    const data = props.contributionsPromise;
     console.log(data);
 
-    // setState({
-    //   weeklyArray: data.weekly.array,
-    //   monthlyArray: data.monthly.array,
-    // });
+    // setWeeklyData(data.weekly.array);
+    // setMonthlyData(data.monthly.array);
     // getWeeklyData(currentWeeklyIndex);
     // getMonthlyData(currentMonthlyIndex);
+    // setYearlyData(
+    //   contributionsData(data.yearly.labels, data.yearly.data, "yearly")
+    // );
 
-    // setState({
-    //   yearlyData: contributionsData(
-    //     data.yearly.labels,
-    //     data.yearly.data,
-    //     "yearly"
-    //   ),
-    // });
-    // setState({
-    //   currentMaxYAxis: data.weekly.max + 3,
-    // });
+    // setCurrentMaxYAxis(data.weekly.max + 3);
     // // y軸の最大値を設定(+分はゆとり)
-    // setState({
-    //   maxYAxisGroup: {
-    //     weekly: data.weekly.max + 3,
-    //     monthly: data.monthly.max + 40,
-    //     yearly: data.yearly.max + 100,
-    //   },
+    // setMaxYAxisGroup({
+    //   weekly: data.weekly.max + 3,
+    //   monthly: data.monthly.max + 40,
+    //   yearly: data.yearly.max + 100,
     // });
-    // setCurrentData: weeklyData });
-  });
-  // }
+    // setCurrentData(weeklyData);
+  }, []);
 
   const dataChange = (e: any) => {
     const val = e.target.value;

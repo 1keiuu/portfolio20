@@ -30,7 +30,7 @@ const GraphBg = (props: any) => {
   }
 };
 const SkillPage: React.FC = () => {
-  const [isGraphOpen, setIsGraphOpen] = useState(false);
+  const [contributions, setContributions] = useState();
   const [isLoad, setIsLoad] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentCount = useSelector((state: RootState) => state.product);
@@ -39,7 +39,7 @@ const SkillPage: React.FC = () => {
       headers: { "Content-Type": "application/json" },
     });
     console.log(res.data);
-    return res.data.contributions;
+    setContributions(res.data.contributions);
   };
 
   const getCount = async () => {
@@ -55,6 +55,7 @@ const SkillPage: React.FC = () => {
   };
   useEffect(() => {
     setIsLoad(true);
+    getData();
   }, []);
   const initSlide = () => {
     const params = window.location.pathname.replace("/profile/", "");
@@ -119,7 +120,7 @@ const SkillPage: React.FC = () => {
           <SkillSlide isLoad={currentIndex == 2 ? true : false}></SkillSlide>
         </SwiperSlide>
         <SwiperSlide>
-          <GithubSlide></GithubSlide>
+          <GithubSlide contributions={contributions}></GithubSlide>
         </SwiperSlide>
       </Swiper>
       <CSSTransition in={isLoad} classNames="scroll-text__wrapper" timeout={0}>
