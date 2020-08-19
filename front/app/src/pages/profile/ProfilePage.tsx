@@ -72,6 +72,7 @@ const SkillPage: React.FC = () => {
         speed={1000}
         centeredSlides={true}
         spaceBetween={60}
+        initialSlide={2}
         mousewheel={true}
         effect="fade"
         onSlideChange={(swiper) => {
@@ -82,7 +83,7 @@ const SkillPage: React.FC = () => {
           <ProfileSlide></ProfileSlide>
         </SwiperSlide>
         <SwiperSlide>
-          <CareerSlide></CareerSlide>
+          <CareerSlide isLoad={currentIndex == 1 ? true : false}></CareerSlide>
         </SwiperSlide>
         <SwiperSlide>
           <SkillSlide></SkillSlide>
@@ -95,11 +96,11 @@ const SkillPage: React.FC = () => {
       <CSSTransition in={isLoad} classNames="scroll-text__wrapper" timeout={0}>
         {currentIndex < 3 ? (
           <div className="scroll-text__wrapper">
-            <p className="scroll-text">Scroll↓</p>
+            <p className="scroll-text">SCROLL↓</p>
           </div>
         ) : (
           <div className="scroll-text__wrapper">
-            <p className="scroll-text">Scroll↑</p>
+            <p className="scroll-text">SCROLL↑</p>
           </div>
         )}
       </CSSTransition>

@@ -1,2 +1,47 @@
-.career_slide {
+.career__slide {
+  .timeline {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    .timeline__left-line {
+      position: absolute;
+      width: 1.5px;
+      height: 100%;
+      background: #cecece;
+      left: 12px;
+    }
+    .timeline__item {
+      display: flex;
+      align-items: center;
+      transform: translateY(100px);
+      opacity: 0;
+      .item__dot-wrapper {
+        width: 24px;
+        height: 24px;
+        background: #fff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+        .item__dot {
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background: #9d9d9d;
+        }
+      }
+      .item__text {
+        margin-left: 10px;
+      }
+    }
+    .timeline__item-enter-done {
+      transform: translateY(0px);
+      opacity: 1;
+      transition: 1s;
+    }
+  }
 }
