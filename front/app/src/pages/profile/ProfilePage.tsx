@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "../../styles/ProfilePage.scss";
 import axios from "../../plugin/axios/index";
 import { useSelector } from "react-redux";
@@ -13,6 +13,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Mousewheel } from "swiper";
 import "swiper/swiper.scss";
 import "swiper/components/pagination/pagination.scss";
+import { CSSTransition } from "react-transition-group";
 
 const Fade = require("react-reveal/Fade");
 
@@ -30,6 +31,7 @@ const GraphBg = (props: any) => {
 };
 const SkillPage: React.FC = () => {
   const [isGraphOpen, setIsGraphOpen] = useState(false);
+  const [isLoad, setIsLoad] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentCount = useSelector((state: RootState) => state.product);
   const getData = async () => {
@@ -51,6 +53,9 @@ const SkillPage: React.FC = () => {
     // };
     console.log(currentCount);
   };
+  useEffect(() => {
+    setIsLoad(true);
+  }, []);
 
   return (
     <div className="profile__inner">
@@ -86,6 +91,18 @@ const SkillPage: React.FC = () => {
           <GithubSlide></GithubSlide>
         </SwiperSlide>
       </Swiper>
+
+      <CSSTransition in={isLoad} classNames="scroll-text__wrapper" timeout={0}>
+        {currentIndex < 3 ? (
+          <div className="scroll-text__wrapper">
+            <p className="scroll-text">Scroll↓</p>
+          </div>
+        ) : (
+          <div className="scroll-text__wrapper">
+            <p className="scroll-text">Scroll↑</p>
+          </div>
+        )}
+      </CSSTransition>
     </div>
     // <div>
     //   <CSSTransition

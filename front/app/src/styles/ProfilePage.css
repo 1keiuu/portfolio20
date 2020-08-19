@@ -4,10 +4,39 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding-top: 60px;
+  padding: 5vw;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .profile__inner .swiper-container {
   width: 100%;
   height: 100%;
+}
+
+.profile__inner .swiper-slide {
+  display: flex;
+  justify-content: center;
+}
+
+.profile__inner .scroll-text__wrapper {
+  position: absolute;
+  bottom: 30px;
+}
+
+.profile__inner .scroll-text__wrapper .scroll-text {
+  font-size: 1.5rem;
+}
+
+.profile__inner .scroll-text__wrapper-enter-done {
+  animation: 1s ease-in 1s infinite alternate forwards running move;
+}
+
+@keyframes move {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(8px);
+  }
 }

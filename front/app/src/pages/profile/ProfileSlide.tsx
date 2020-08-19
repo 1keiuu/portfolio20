@@ -24,19 +24,37 @@ const ProfileSlide: React.FC = () => {
           <div className="noise --upper"></div>
         </div>
         <div className="slide-upper__text-group">
-          <p>
-            テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
-          </p>
-          <p>
-            テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
-          </p>
+          <CSSTransition
+            in={isLoaded}
+            classNames="slide-upper__text"
+            timeout={1000}
+          >
+            <p className="slide-upper__text">
+              テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+            </p>
+          </CSSTransition>
+          <CSSTransition
+            in={isLoaded}
+            classNames="slide-upper__text"
+            timeout={1500}
+          >
+            <p className="slide-upper__text">
+              テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+            </p>
+          </CSSTransition>
         </div>
       </div>
       <div className="slide-lower">
-        <p>
-          テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
-          テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
-        </p>
+        <CSSTransition
+          in={isLoaded}
+          classNames="slide-lower__text"
+          timeout={2000}
+        >
+          <p className="slide-lower__text">
+            テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+            テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。
+          </p>
+        </CSSTransition>
       </div>
     </div>
   );
