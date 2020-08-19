@@ -34,4 +34,7 @@
   width: 100%;
   top: 0;
   z-index: -1;
+  &.--upper {
+    z-index: 3;
+  }
 }

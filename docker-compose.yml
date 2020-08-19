@@ -5,7 +5,7 @@ services:
     command: realize start --run
     tty: true
     volumes:
-      - ./web:/go/src/work
+      - ./web:/go/src/work:cached
     ports:
       - 8000:8000
     depends_on:
@@ -21,7 +21,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - mysql-data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql:cached
     environment:
       MYSQL_ROOT_PASSWORD: password
   front:
@@ -30,7 +30,7 @@ services:
       dockerfile: Dockerfile
     command: yarn start
     volumes:
-      - ./front/app:/usr/src/app
+      - ./front/app:/usr/src/app:cached
     ports:
       - 4000:4000
     stdin_open: true
@@ -38,7 +38,7 @@ services:
     build: ./scraping
     tty: true
     volumes:
-      - ./scraping:/go/src/work
+      - ./scraping:/go/src/work:cached
 volumes:
   mysql-data:
     driver: local
