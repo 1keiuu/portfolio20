@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import "../../styles/skillSlide.scss";
 import Circle from "react-circle";
 
-const SkillSlide: React.FC = () => {
+interface Props {
+  isLoad: boolean;
+}
+
+const SkillSlide: React.FC<Props> = (props) => {
   const items = [
     {
       skill_type: "Frontend",
@@ -64,6 +68,7 @@ const SkillSlide: React.FC = () => {
   });
 
   const [progressArray, setProgressArray] = useState(initialArray);
+
   useEffect(() => {
     const percentageArray: number[] = [];
     items.forEach((item) => {
@@ -71,11 +76,18 @@ const SkillSlide: React.FC = () => {
         percentageArray.push(skill.percentage);
       });
     });
-
-    setTimeout(() => {
-      setProgressArray(percentageArray);
-    }, 1000);
-  }, []);
+    const initialArray: number[] = [];
+    percentageArray.forEach(() => {
+      initialArray.push(0);
+    });
+    if (props.isLoad) {
+      setTimeout(() => {
+        setProgressArray(percentageArray);
+      }, 800);
+    } else {
+      setProgressArray(initialArray);
+    }
+  }, [props.isLoad]);
 
   return (
     <div className="slide skill__slide">

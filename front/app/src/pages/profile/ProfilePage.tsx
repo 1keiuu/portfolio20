@@ -116,7 +116,7 @@ const SkillPage: React.FC = () => {
           <CareerSlide isLoad={currentIndex == 1 ? true : false}></CareerSlide>
         </SwiperSlide>
         <SwiperSlide>
-          <SkillSlide></SkillSlide>
+          <SkillSlide isLoad={currentIndex == 2 ? true : false}></SkillSlide>
         </SwiperSlide>
         <SwiperSlide>
           <GithubSlide></GithubSlide>
