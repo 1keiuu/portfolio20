@@ -2,10 +2,26 @@
   width: 100%;
   height: 100%;
   padding-left: 9vw;
+  overflow-y: scroll;
+}
+
+.skill__slide::-webkit-scrollbar {
+  width: 7px;
+  border-radius: 30px;
+}
+
+.skill__slide::-webkit-scrollbar-thumb {
+  background: #b6b6b6;
+  border-radius: 30px;
+}
+
+.skill__slide::-webkit-scrollbar {
+  background-color: #f1f1f1;
+  border-radius: 10px;
 }
 
 .skill__slide .skill-section {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .skill__slide .skill-section .skill-section__skill-type {
@@ -22,8 +38,8 @@
 }
 
 .skill__slide .skill-section .skill-cards__group .skill-card {
-  width: 9vw;
-  height: 9vw;
+  width: 10vw;
+  height: 10vw;
   margin-left: 3vw;
   background: #fff;
   border-radius: 10px;
