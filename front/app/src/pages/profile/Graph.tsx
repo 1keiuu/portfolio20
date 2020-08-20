@@ -3,7 +3,7 @@ import { Line } from "react-chartjs-2";
 import "../../styles/Graph.scss";
 import ArrowIcon from "../../components/ArrowIcon";
 interface Props {
-  contributionsPromise: any;
+  contributions: any;
 }
 interface State {
   currentData: {
@@ -101,7 +101,7 @@ const Graph: React.FC<Props> = (props) => {
   });
 
   useEffect(() => {
-    const data = props.contributionsPromise;
+    const data = props.contributions;
     console.log(data);
 
     // setWeeklyData(data.weekly.array);

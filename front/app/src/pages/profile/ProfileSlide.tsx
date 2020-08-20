@@ -5,24 +5,24 @@ import { CSSTransition } from "react-transition-group";
 const Fade = require("react-reveal/Fade");
 
 interface Props {
-  isLoad: boolean;
+  isLoaded: boolean;
 }
 
 const ProfileSlide: React.FC<Props> = (props) => {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoadeded, setIsLoaded] = useState(false);
   useEffect(() => {
-    if (props.isLoad) {
+    if (props.isLoaded) {
       setIsLoaded(true);
     } else {
       setIsLoaded(false);
     }
-  }, [props.isLoad]);
+  }, [props.isLoaded]);
   return (
     <div className="slide profile__slide">
       <div className="slide-upper">
         <div className="slide-upper__image-wrapper">
           <CSSTransition
-            in={isLoaded}
+            in={isLoadeded}
             classNames="slide-upper__image-surface"
             timeout={500}
           >
@@ -33,7 +33,7 @@ const ProfileSlide: React.FC<Props> = (props) => {
         </div>
         <div className="slide-upper__text-group">
           <CSSTransition
-            in={isLoaded}
+            in={isLoadeded}
             classNames="slide-upper__text"
             timeout={1000}
           >
@@ -42,7 +42,7 @@ const ProfileSlide: React.FC<Props> = (props) => {
             </p>
           </CSSTransition>
           <CSSTransition
-            in={isLoaded}
+            in={isLoadeded}
             classNames="slide-upper__text"
             timeout={1500}
           >
@@ -54,7 +54,7 @@ const ProfileSlide: React.FC<Props> = (props) => {
       </div>
       <div className="slide-lower">
         <CSSTransition
-          in={isLoaded}
+          in={isLoadeded}
           classNames="slide-lower__text"
           timeout={2000}
         >

@@ -31,7 +31,7 @@ const GraphBg = (props: any) => {
 };
 const SkillPage: React.FC = () => {
   const [contributions, setContributions] = useState();
-  const [isLoad, setIsLoad] = useState(false);
+  const [isLoaded, setIsLoad] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentCount = useSelector((state: RootState) => state.product);
   const getData = async () => {
@@ -112,23 +112,29 @@ const SkillPage: React.FC = () => {
       >
         <SwiperSlide>
           <ProfileSlide
-            isLoad={currentIndex == 0 ? true : false}
+            isLoaded={currentIndex == 0 ? true : false}
           ></ProfileSlide>
         </SwiperSlide>
         <SwiperSlide>
-          <CareerSlide isLoad={currentIndex == 1 ? true : false}></CareerSlide>
+          <CareerSlide
+            isLoaded={currentIndex == 1 ? true : false}
+          ></CareerSlide>
         </SwiperSlide>
         <SwiperSlide>
-          <SkillSlide isLoad={currentIndex == 2 ? true : false}></SkillSlide>
+          <SkillSlide isLoaded={currentIndex == 2 ? true : false}></SkillSlide>
         </SwiperSlide>
         <SwiperSlide>
           <GithubSlide
-            isLoad={currentIndex == 3 ? true : false}
+            isLoaded={currentIndex == 3 ? true : false}
             contributions={contributions}
           ></GithubSlide>
         </SwiperSlide>
       </Swiper>
-      <CSSTransition in={isLoad} classNames="scroll-text__wrapper" timeout={0}>
+      <CSSTransition
+        in={isLoaded}
+        classNames="scroll-text__wrapper"
+        timeout={0}
+      >
         {currentIndex < 3 ? (
           <div className="scroll-text__wrapper">
             <p className="scroll-text">SCROLL↓</p>
@@ -148,7 +154,7 @@ const SkillPage: React.FC = () => {
     //   >
     //     <GraphBg is={isGraphOpen}>
     //         {/* <div className="graph__wrapper">
-    //           <Graph contributionsPromise={getData()} />
+    //           <Graph contributions={getData()} />
     //         </div>
     //         <div
     //           className="close__button"

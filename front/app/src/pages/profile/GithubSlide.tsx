@@ -6,7 +6,7 @@ import { CSSTransition } from "react-transition-group";
 
 interface Props {
   contributions: any;
-  isLoad: boolean;
+  isLoaded: boolean;
 }
 
 const GithubSlide: React.FC<Props> = (props) => {
@@ -26,16 +26,16 @@ const GithubSlide: React.FC<Props> = (props) => {
       }
     }
     isFirstRender.current = true;
-  }, [props.isLoad]);
+  }, [props.isLoaded]);
   return (
     <div className="slide github__slide">
       <div className="slide__inner">
-        <CSSTransition in={props.isLoad} classNames="wrap" timeout={30}>
+        <CSSTransition in={props.isLoaded} classNames="wrap" timeout={30}>
           <div className="wrap">
-            <Graph contributionsPromise={props.contributions}></Graph>
+            <Graph contributions={props.contributions}></Graph>
           </div>
         </CSSTransition>
-        <CSSTransition in={props.isLoad} classNames="wrap" timeout={800}>
+        <CSSTransition in={props.isLoaded} classNames="wrap" timeout={800}>
           <div className="wrap">
             <GithubTitle />
           </div>

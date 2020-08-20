@@ -3,7 +3,7 @@ import "../../styles/careerSlide.scss";
 import { CSSTransition } from "react-transition-group";
 
 interface Props {
-  isLoad: boolean;
+  isLoaded: boolean;
 }
 
 const CareerSlide: React.FC<Props> = (props) => {
@@ -38,7 +38,7 @@ const CareerSlide: React.FC<Props> = (props) => {
       }
     }
     isFirstRender.current = true;
-  }, [props.isLoad]);
+  }, [props.isLoaded]);
 
   return (
     <div className="slide career__slide">

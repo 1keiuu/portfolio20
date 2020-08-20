@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { CSSTransition } from "react-transition-group";
 
 interface Props {
-  isLoad: boolean;
+  isLoaded: boolean;
 }
 
 const SkillSlide: React.FC<Props> = (props) => {
@@ -89,7 +89,7 @@ const SkillSlide: React.FC<Props> = (props) => {
       }
     }
     isFirstRender.current = true;
-  }, [props.isLoad]);
+  }, [props.isLoaded]);
 
   useEffect(() => {
     const percentageArray: number[] = [];
@@ -102,21 +102,21 @@ const SkillSlide: React.FC<Props> = (props) => {
     percentageArray.forEach(() => {
       initialArray.push(0);
     });
-    if (props.isLoad) {
+    if (props.isLoaded) {
       setTimeout(() => {
         setProgressArray(percentageArray);
       }, 800);
     } else {
       setProgressArray(initialArray);
     }
-  }, [props.isLoad]);
+  }, [props.isLoaded]);
 
   return (
     <div className="slide skill__slide">
       {items.map((item, i) => {
         return (
           <CSSTransition
-            in={props.isLoad}
+            in={props.isLoaded}
             classNames="skill-section"
             timeout={i * 500}
           >
