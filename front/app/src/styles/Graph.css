@@ -1,8 +1,3 @@
-.graph {
-  min-width: 500px;
-  padding: 30px 50px;
-}
-
 .graph .graph__upper {
   position: relative;
 }
@@ -22,7 +17,7 @@
 
 .graph .graph__upper .span-display__wrapper .prev-button .prev-arrow__wrapper {
   cursor: pointer;
-  background: #f8f2ee;
+  background: #fff;
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -40,7 +35,7 @@
 
 .graph .graph__upper .span-display__wrapper .next-button .next-arrow__wrapper {
   cursor: pointer;
-  background: #f8f2ee;
+  background: #fff;
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -53,7 +48,7 @@
 .graph .graph__upper .span-display__wrapper .graph__span {
   margin: 0;
   font-size: 18px;
-  color: #f8f2ee;
+  color: #fff;
   font-weight: bold;
 }
 
@@ -67,13 +62,13 @@
   outline: 0;
   border: 1px #2f7562 solid;
   border-radius: 4px;
-  background: #f8f2ee;
+  background: #fff;
   color: #2f7562;
   font-weight: bold;
 }
 
 .graph .line-graph__wrapper {
   margin-bottom: 30px;
-  background: #f8f2ee;
+  background: #fff;
   padding: 20px 40px;
 }

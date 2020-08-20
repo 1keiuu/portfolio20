@@ -11,7 +11,9 @@ const GithubSlide: React.FC<Props> = (props) => {
   }, []);
   return (
     <div className="slide github__slide">
-      <Graph contributionsPromise={props.contributions}></Graph>
+      <div className="slide__inner">
+        <Graph contributionsPromise={props.contributions}></Graph>
+      </div>
     </div>
   );
 };
