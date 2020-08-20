@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"fmt"
 	"net/http"
 	"time"
 	"work/db"
@@ -26,26 +25,27 @@ func GetContributions(c *gin.Context) {
 		panic(err.Error())
 	}
 
-	contributionsArgs := make([]Contribution, 0)
+	contributionsArray := make([]Contribution, 0)
 	for rows.Next() {
 		var contributions Contribution
 		err = rows.Scan(&contributions.ID, &contributions.Count, &contributions.Date, &contributions.CreatedAt, &contributions.UpdatedAt)
 		if err != nil {
 			panic(err.Error())
 		}
-		contributionsArgs = append(contributionsArgs, contributions)
+		contributionsArray = append(contributionsArray, contributions)
 	}
 	c.JSON(http.StatusOK, gin.H{
-		"weekly": getWeeklyData(contributionsArgs),
+		"weekly":  getWeeklyData(contributionsArray),
+		"monthly": getMonthlyData(contributionsArray),
+		"Yearly":  getYearlyData(contributionsArray),
 	})
 }
 
 func culcWeeklyData(array []Contribution, todaysContributionIndex int) [][]Contribution {
 
-	from := todaysContributionIndex
-	to := from + 7
-	fmt.Printf("fromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfromfrom")
-	// fmt.Printf("%v", array[from:to])
+	from := todaysContributionIndex // 週の初日
+	to := from + 7                  // 週の最終日
+
 	var newArray [][]Contribution
 	for i := 0; i < 4; i++ {
 		newArray = append(newArray, array[from:to])
@@ -56,12 +56,10 @@ func culcWeeklyData(array []Contribution, todaysContributionIndex int) [][]Contr
 }
 
 func getWeeklyData(array []Contribution) [][]Contribution {
+	// 日付time.Now()を日本時間へ
 	nowUTC := time.Now().UTC()
 	jst := time.FixedZone("Asia/Tokyo", 9*60*60)
 	today := nowUTC.In(jst)
-
-	// lastdayOfThisWeek := today.AddDate(0, 0, -7).Format("2006-01-02")
-	// 一年以内のcontribution
 
 	var todaysContributionIndex int
 	for i, s := range array {
@@ -102,4 +100,10 @@ func getWeeklyData(array []Contribution) [][]Contribution {
 	// 	}
 	// }
 	return weekly
+}
+
+func getMonthlyData(array []Contribution) [][]Contribution {
+}
+
+func getYearlyData(array []Contribution) [][]Contribution {
 }
