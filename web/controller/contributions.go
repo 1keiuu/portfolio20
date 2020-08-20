@@ -2,6 +2,8 @@ package controller
 
 import (
 	"net/http"
+	"strconv"
+	"strings"
 	"time"
 	"work/db"
 
@@ -15,6 +17,11 @@ type Contribution struct {
 	Date      string `json:"date"`
 	CreatedAt string `json:"created_at"`
 	UpdatedAt string `json:"updated_at"`
+}
+
+type DataStruct struct {
+	Label string `json:"label"`
+	Count int    `json:"count"`
 }
 
 func GetContributions(c *gin.Context) {
@@ -102,8 +109,62 @@ func getWeeklyData(array []Contribution) [][]Contribution {
 	return weekly
 }
 
-func getMonthlyData(array []Contribution) [][]Contribution {
+func getMonthlyData(array []Contribution) []DataStruct {
+	// 日付time.Now()を日本時間へ
+	nowUTC := time.Now().UTC()
+	jst := time.FixedZone("Asia/Tokyo", 9*60*60)
+	today := nowUTC.In(jst)
+	layout := "2006-01"
+
+	var monthly []DataStruct
+	var monthArray []string
+	for i := 0; i > -12; i-- {
+		// "2006-01"のフォーマットのstringを今月から数えて12ヶ月分を配列へ追加
+		culc := today.AddDate(0, i, 0).Format(layout)
+		monthArray = append(monthArray, culc)
+	}
+
+	for _, month := range monthArray {
+		data := DataStruct{month, culculateCount(array, month)}
+		monthly = append(monthly, data)
+	}
+	return monthly
 }
 
-func getYearlyData(array []Contribution) [][]Contribution {
+func culculateCount(array []Contribution, month string) int {
+	sum := 0
+	for _, item := range array {
+		bool := strings.Contains(item.Date, month)
+		if bool {
+			sum += item.Count
+		}
+	}
+	return sum
+}
+
+func getYearlyData(array []Contribution) []DataStruct {
+	// 日付time.Now()を日本時間へ
+	nowUTC := time.Now().UTC()
+	jst := time.FixedZone("Asia/Tokyo", 9*60*60)
+	today := nowUTC.In(jst)
+	layout := "2006"
+
+	// 文字列→数値
+	thisYear, _ := strconv.Atoi(today.Format(layout))
+	// 観測開始(2018-01-01)と今年の差を求めてループの回数に使う
+	yearCount := thisYear - 2017
+	var yearly []DataStruct
+	var yearArray []string
+	for i := 0; i < yearCount; i++ {
+		culc := thisYear - i
+		// 数値→文字列
+		string := strconv.Itoa(culc)
+		yearArray = append(yearArray, string)
+	}
+
+	for _, year := range yearArray {
+		data := DataStruct{year, culculateCount(array, year)}
+		yearly = append(yearly, data)
+	}
+	return yearly
 }
