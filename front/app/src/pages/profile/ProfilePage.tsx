@@ -92,20 +92,20 @@ const SkillPage: React.FC = () => {
       >
         <SwiperSlide>
           <ProfileSlide
-            isLoaded={currentIndex == 0 ? true : false}
+            isLoaded={currentIndex === 0 ? true : false}
           ></ProfileSlide>
         </SwiperSlide>
         <SwiperSlide>
           <CareerSlide
-            isLoaded={currentIndex == 1 ? true : false}
+            isLoaded={currentIndex === 1 ? true : false}
           ></CareerSlide>
         </SwiperSlide>
         <SwiperSlide>
-          <SkillSlide isLoaded={currentIndex == 2 ? true : false}></SkillSlide>
+          <SkillSlide isLoaded={currentIndex === 2 ? true : false}></SkillSlide>
         </SwiperSlide>
         <SwiperSlide>
           <GithubSlide
-            isLoaded={currentIndex == 3 ? true : false}
+            isLoaded={currentIndex === 3 ? true : false}
             contributions={contributions}
           ></GithubSlide>
         </SwiperSlide>

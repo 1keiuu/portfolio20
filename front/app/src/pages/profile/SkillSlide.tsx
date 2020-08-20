@@ -144,7 +144,7 @@ const SkillSlide: React.FC<Props> = (props) => {
                       <p className="skill-card__title">{skill.title}</p>
                       <p className="skill-card__sub-title">
                         {skill.project_count +
-                          (skill.project_count == 0 ? "Project" : "Projects")}
+                          (skill.project_count === 0 ? "Project" : "Projects")}
                       </p>
                     </div>
                   );
