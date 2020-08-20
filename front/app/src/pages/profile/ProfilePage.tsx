@@ -122,7 +122,10 @@ const SkillPage: React.FC = () => {
           <SkillSlide isLoad={currentIndex == 2 ? true : false}></SkillSlide>
         </SwiperSlide>
         <SwiperSlide>
-          <GithubSlide contributions={contributions}></GithubSlide>
+          <GithubSlide
+            isLoad={currentIndex == 3 ? true : false}
+            contributions={contributions}
+          ></GithubSlide>
         </SwiperSlide>
       </Swiper>
       <CSSTransition in={isLoad} classNames="scroll-text__wrapper" timeout={0}>

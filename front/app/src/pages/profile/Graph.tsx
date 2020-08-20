@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import "../../styles/Graph.scss";
-import GithubTitle from "../../components/GithubTitle";
 import ArrowIcon from "../../components/ArrowIcon";
 interface Props {
   contributionsPromise: any;
@@ -288,7 +287,6 @@ const Graph: React.FC<Props> = (props) => {
           height={350}
         />
       </div>
-      <GithubTitle />
     </div>
   );
 };

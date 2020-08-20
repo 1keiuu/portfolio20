@@ -18,6 +18,7 @@
       align-items: center;
       transform: translateY(100px);
       opacity: 0;
+      transition: 0.5s;
       .item__dot-wrapper {
         width: 24px;
         height: 24px;

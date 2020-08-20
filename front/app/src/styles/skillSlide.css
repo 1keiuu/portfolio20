@@ -23,6 +23,7 @@
 .skill__slide .skill-section {
   transform: translateY(100px);
   opacity: 0;
+  transition: 0.5s;
 }
 
 .skill__slide .skill-section .skill-section__skill-type {

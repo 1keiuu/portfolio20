@@ -20,6 +20,7 @@
   align-items: center;
   transform: translateY(100px);
   opacity: 0;
+  transition: 0.5s;
 }
 
 .career__slide .timeline .timeline__item .item__dot-wrapper {

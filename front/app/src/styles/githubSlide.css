@@ -8,3 +8,15 @@
 .github__slide .slide__inner {
   width: 50vw;
 }
+
+.wrap {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: 0.5s;
+}
+
+.wrap-enter-done {
+  opacity: 1;
+  transform: translateY(0);
+  transition: 1s;
+}
