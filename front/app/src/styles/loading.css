@@ -1,0 +1,35 @@
+.loading__wrapper {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  position: absolute;
+  background: #333;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading__wrapper .loading__inner {
+  width: 10vw;
+  height: 10vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #fff;
+  filter: blur(3px);
+  box-shadow: -5px -5px 20px #333;
+}
+
+.loading__wrapper .loading__inner .loading {
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.loading__wrapper-enter-done {
+  transform: scale(20);
+  transition: 3s ease-in;
+}
