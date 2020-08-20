@@ -10,11 +10,9 @@ interface Props {
 }
 
 const GithubSlide: React.FC<Props> = (props) => {
-  useEffect(() => {
-    console.log(props.contributions);
-  }, []);
-
   const [status, setStatus] = useState(false);
+  const [contributions, setContributions] = useState<any>();
+
   const isFirstRender = useRef(false);
   useEffect(() => {
     //
@@ -27,12 +25,15 @@ const GithubSlide: React.FC<Props> = (props) => {
     }
     isFirstRender.current = true;
   }, [props.isLoaded]);
+  useEffect(() => {
+    setContributions(props.contributions);
+  }, [props.contributions]);
   return (
     <div className="slide github__slide">
       <div className="slide__inner">
         <CSSTransition in={props.isLoaded} classNames="wrap" timeout={30}>
           <div className="wrap">
-            <Graph contributions={props.contributions}></Graph>
+            <Graph contributions={contributions}></Graph>
           </div>
         </CSSTransition>
         <CSSTransition in={props.isLoaded} classNames="wrap" timeout={800}>

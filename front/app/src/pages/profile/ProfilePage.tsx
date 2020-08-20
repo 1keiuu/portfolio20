@@ -22,40 +22,27 @@ SwiperCore.use([Mousewheel]);
 interface State {
   isGraphOpen: boolean;
 }
-const GraphBg = (props: any) => {
-  if (props.is) {
-    return <div className="graph__back-ground">{props.children}</div>;
-  } else {
-    return <div></div>;
-  }
-};
+
 const SkillPage: React.FC = () => {
-  const [contributions, setContributions] = useState();
+  const [contributions, setContributions] = useState<any>({
+    weekly: [],
+    monthly: [],
+    yearly: [],
+  });
   const [isLoaded, setIsLoad] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const currentCount = useSelector((state: RootState) => state.product);
-  const getData = async () => {
-    const res = await axios.get("/contributions", {
-      headers: { "Content-Type": "application/json" },
-    });
-    console.log(res.data);
-    setContributions(res.data.contributions);
-  };
 
-  const getCount = async () => {
-    // await axios
-    //   .get("/contributions", {
-    //     headers: { "Content-Type": "application/json" },
-    //   })
-    //   .then((res) => {
-    //     console.log(res);
-    //   });
-    // };
-    console.log(currentCount);
-  };
   useEffect(() => {
     setIsLoad(true);
-    getData();
+    const fetchData = async () => {
+      const res = await axios.get("/contributions", {
+        headers: { "Content-Type": "application/json" },
+      });
+      setContributions(res.data);
+      console.log(res.data);
+    };
+
+    fetchData();
   }, []);
   const initSlide = () => {
     const params = window.location.pathname.replace("/profile/", "");
@@ -89,13 +76,6 @@ const SkillPage: React.FC = () => {
   };
   return (
     <div className="profile__inner">
-      {/* <div className="profile__card">
-        <Fade bottom delay={500}>
-          <p>profile</p>
-        </Fade>
-
-        <div className="noise"></div>
-      </div> */}
       <ProgressBar active_index={currentIndex}></ProgressBar>
       <Swiper
         slidesPerView={1}
@@ -146,32 +126,6 @@ const SkillPage: React.FC = () => {
         )}
       </CSSTransition>
     </div>
-    // <div>
-    //   <CSSTransition
-    //     in={isGraphOpen}
-    //     classNames="graph__back-ground"
-    //     timeout={0}
-    //   >
-    //     <GraphBg is={isGraphOpen}>
-    //         {/* <div className="graph__wrapper">
-    //           <Graph contributions={getData()} />
-    //         </div>
-    //         <div
-    //           className="close__button"
-    //           onClick={() => {
-    //             setIsGraphOpen(false);
-    //           }}
-    //         >
-    //           Close
-    //         </div> */}
-    //     </GraphBg>
-    //   </CSSTransition>
-    //   <div
-    //     className="github__button"
-    //     onClick={() => {
-    //       setIsGraphOpen(true);
-    //     }}
-    //   ></div>
   );
 };
 

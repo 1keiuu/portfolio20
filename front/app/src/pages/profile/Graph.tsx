@@ -104,23 +104,25 @@ const Graph: React.FC<Props> = (props) => {
     const data = props.contributions;
     console.log(data);
 
-    // setWeeklyData(data.weekly.array);
-    // setMonthlyData(data.monthly.array);
-    // getWeeklyData(currentWeeklyIndex);
-    // getMonthlyData(currentMonthlyIndex);
-    // setYearlyData(
-    //   contributionsData(data.yearly.labels, data.yearly.data, "yearly")
-    // );
+    if (data) {
+      setWeeklyData(data.weekly);
+      setMonthlyData(data.monthly);
+      getWeeklyData(currentWeeklyIndex);
+      getMonthlyData(currentMonthlyIndex);
+      setYearlyData(
+        contributionsData(data.yearly.labels, data.yearly.data, "yearly")
+      );
 
-    // setCurrentMaxYAxis(data.weekly.max + 3);
-    // // y軸の最大値を設定(+分はゆとり)
-    // setMaxYAxisGroup({
-    //   weekly: data.weekly.max + 3,
-    //   monthly: data.monthly.max + 40,
-    //   yearly: data.yearly.max + 100,
-    // });
-    // setCurrentData(weeklyData);
-  }, []);
+      setCurrentMaxYAxis(data.weekly.max + 3);
+      // y軸の最大値を設定(+分はゆとり)
+      setMaxYAxisGroup({
+        weekly: data.weekly.max + 3,
+        monthly: data.monthly.max + 40,
+        yearly: data.yearly.max + 100,
+      });
+      setCurrentData(weeklyData);
+    }
+  }, [props.contributions]);
 
   const dataChange = (e: any) => {
     const val = e.target.value;

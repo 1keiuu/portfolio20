@@ -24,6 +24,11 @@ type DataStruct struct {
 	Count int    `json:"count"`
 }
 
+type LabelsAndCounts struct {
+	Labels []string `json:"labels"`
+	Counts []int    `json:"counts"`
+}
+
 func GetContributions(c *gin.Context) {
 	DB := db.Connect()
 	defer DB.Close()
@@ -41,28 +46,37 @@ func GetContributions(c *gin.Context) {
 		}
 		contributionsArray = append(contributionsArray, contributions)
 	}
+
+	wCounts, wLabels := getWeeklyData(contributionsArray)
+	mCounts, mLabels := getMonthlyData(contributionsArray)
+	yCounts, yLabels := getYearlyData(contributionsArray)
+
 	c.JSON(http.StatusOK, gin.H{
-		"weekly":  getWeeklyData(contributionsArray),
-		"monthly": getMonthlyData(contributionsArray),
-		"Yearly":  getYearlyData(contributionsArray),
+		"weekly":  LabelsAndCounts{Counts: wCounts, Labels: wLabels},
+		"monthly": LabelsAndCounts{Counts: mCounts, Labels: mLabels},
+		"yearly":  LabelsAndCounts{Counts: yCounts, Labels: yLabels},
 	})
 }
 
-func culcWeeklyData(array []Contribution, todaysContributionIndex int) [][]Contribution {
+func culcWeeklyData(array []Contribution, todaysContributionIndex int) ([]int, []string) {
 
 	from := todaysContributionIndex // 週の初日
 	to := from + 7                  // 週の最終日
 
-	var newArray [][]Contribution
+	var counts []int
+	var labels []string
 	for i := 0; i < 4; i++ {
-		newArray = append(newArray, array[from:to])
+		for _, item := range array[from:to] {
+			counts = append(counts, item.Count)
+			labels = append(labels, item.Date)
+		}
 		from = from + 7
 		to = to + 7
 	}
-	return newArray
+	return counts, labels
 }
 
-func getWeeklyData(array []Contribution) [][]Contribution {
+func getWeeklyData(array []Contribution) ([]int, []string) {
 	// 日付time.Now()を日本時間へ
 	nowUTC := time.Now().UTC()
 	jst := time.FixedZone("Asia/Tokyo", 9*60*60)
@@ -81,54 +95,31 @@ func getWeeklyData(array []Contribution) [][]Contribution {
 		}
 	}
 
-	weekly := culcWeeklyData(array, todaysContributionIndex)
+	counts, labels := culcWeeklyData(array, todaysContributionIndex)
 
-	// lastdayOfThisYear := today.AddDate(0, 0, -365)
-	// var contributionOfThisYear []Contribution
-	// for _, s := range array {
-	// 	layout := "2006-01-02"
-	// 	t, _ := time.Parse(layout, s.Date)
-
-	// 	if today.Unix() > t.Unix() && t.Unix() > lastdayOfThisYear.Unix() {
-	// 		contributionOfThisYear = append(contributionOfThisYear, s)
-	// 	}
-	// }
-	// var contributionOfThisMonth []Contribution
-	// for i := 0; i < 5; i++ {
-	// 	thisDay := today.AddDate(0, 0, -(7 * i))
-	// 	fmt.Println(thisDay)
-	// 	for _, s := range contributionOfThisYear {
-	// 		layout := "2006-01-02"
-	// 		t, _ := time.Parse(layout, s.Date)
-
-	// 		if thisDay.Unix() > t.Unix() && t.Unix() >= thisDay.AddDate(0, 0, -7).Unix() {
-	// 			contributionOfThisMonth = append(contributionOfThisMonth, s)
-	// 		}
-	// 	}
-	// }
-	return weekly
+	return counts, labels
 }
 
-func getMonthlyData(array []Contribution) []DataStruct {
+func getMonthlyData(array []Contribution) ([]int, []string) {
 	// 日付time.Now()を日本時間へ
 	nowUTC := time.Now().UTC()
 	jst := time.FixedZone("Asia/Tokyo", 9*60*60)
 	today := nowUTC.In(jst)
 	layout := "2006-01"
 
-	var monthly []DataStruct
-	var monthArray []string
+	var counts []int
+	var labels []string
 	for i := 0; i > -12; i-- {
 		// "2006-01"のフォーマットのstringを今月から数えて12ヶ月分を配列へ追加
 		culc := today.AddDate(0, i, 0).Format(layout)
-		monthArray = append(monthArray, culc)
+		labels = append(labels, culc)
 	}
 
-	for _, month := range monthArray {
+	for _, month := range labels {
 		data := DataStruct{month, culculateCount(array, month)}
-		monthly = append(monthly, data)
+		counts = append(counts, data.Count)
 	}
-	return monthly
+	return counts, labels
 }
 
 func culculateCount(array []Contribution, month string) int {
@@ -142,7 +133,7 @@ func culculateCount(array []Contribution, month string) int {
 	return sum
 }
 
-func getYearlyData(array []Contribution) []DataStruct {
+func getYearlyData(array []Contribution) ([]int, []string) {
 	// 日付time.Now()を日本時間へ
 	nowUTC := time.Now().UTC()
 	jst := time.FixedZone("Asia/Tokyo", 9*60*60)
@@ -153,18 +144,18 @@ func getYearlyData(array []Contribution) []DataStruct {
 	thisYear, _ := strconv.Atoi(today.Format(layout))
 	// 観測開始(2018-01-01)と今年の差を求めてループの回数に使う
 	yearCount := thisYear - 2017
-	var yearly []DataStruct
-	var yearArray []string
+	var counts []int
+	var labels []string
 	for i := 0; i < yearCount; i++ {
 		culc := thisYear - i
 		// 数値→文字列
 		string := strconv.Itoa(culc)
-		yearArray = append(yearArray, string)
+		labels = append(labels, string)
 	}
 
-	for _, year := range yearArray {
+	for _, year := range labels {
 		data := DataStruct{year, culculateCount(array, year)}
-		yearly = append(yearly, data)
+		counts = append(counts, data.Count)
 	}
-	return yearly
+	return counts, labels
 }
