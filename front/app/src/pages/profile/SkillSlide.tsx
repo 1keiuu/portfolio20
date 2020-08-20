@@ -118,7 +118,7 @@ const SkillSlide: React.FC<Props> = (props) => {
           <CSSTransition
             in={props.isLoaded}
             classNames="skill-section"
-            timeout={i * 500}
+            timeout={i * 700}
           >
             <div className="skill-section">
               <p className="skill-section__skill-type">{item.skill_type}</p>

@@ -53,10 +53,10 @@
   transition: 0.5s;
   cursor: pointer;
   margin-bottom: 20px;
+  box-shadow: 1px 1px 20px #cfcfcf;
 }
 
 .skill__slide .skill-section .skill-cards__group .skill-card:hover {
-  box-shadow: 1px 1px 20px #cfcfcf;
   transition: 0.5s;
 }
 

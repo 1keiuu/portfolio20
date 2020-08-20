@@ -4,6 +4,7 @@ import "../styles/progreeBar.scss";
 interface Props {
   active_index: number;
 }
+
 function usePrevious(value: any) {
   const ref = useRef();
   useEffect(() => {

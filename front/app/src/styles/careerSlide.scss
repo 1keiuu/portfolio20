@@ -19,6 +19,8 @@
       transform: translateY(100px);
       opacity: 0;
       transition: 0.5s;
+      display: flex;
+      align-items: flex-start;
       .item__dot-wrapper {
         width: 24px;
         height: 24px;

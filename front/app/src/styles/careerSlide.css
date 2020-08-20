@@ -21,6 +21,8 @@
   transform: translateY(100px);
   opacity: 0;
   transition: 0.5s;
+  display: flex;
+  align-items: flex-start;
 }
 
 .career__slide .timeline .timeline__item .item__dot-wrapper {

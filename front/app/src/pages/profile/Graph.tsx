@@ -33,14 +33,18 @@ interface State {
   weeklyData: any;
   monthlyData: any;
   yearlyData: any;
-  weeklyArray: { labels: []; data: [] }[];
-  monthlyArray: { labels: []; data: [] }[];
+  weeklyArray: { labels: []; counts: [] }[];
+  monthlyArray: { labels: []; counts: [] }[];
   currentWeeklyIndex: number;
   currentMonthlyIndex: number;
   currentMaxYAxis: number;
   maxYAxisGroup: { weekly: number; monthly: number; yearly: number };
 }
-const contributionsData = (labels: string[], data: number[], type: string) => {
+const contributionsData = (
+  labels: string[],
+  counts: number[],
+  type: string
+) => {
   return {
     labels: labels,
     datasets: [
@@ -63,7 +67,7 @@ const contributionsData = (labels: string[], data: number[], type: string) => {
         pointHoverBorderWidth: 1,
         pointRadius: 1,
         pointHitRadius: 10,
-        data: data,
+        data: counts,
       },
     ],
     date: { first: labels[0], last: labels[labels.length - 1] },
@@ -84,11 +88,11 @@ const Graph: React.FC<Props> = (props) => {
     contributionsData([], [], "yearly")
   );
   const [weeklyArray, setWeeklyArray]: [
-    { labels: []; data: [] }[],
+    { labels: []; counts: [] }[],
     React.Dispatch<React.SetStateAction<[]>>
   ] = useState([]);
   const [monthlyArray, setMonthlyArray]: [
-    { labels: []; data: [] }[],
+    { labels: []; counts: [] }[],
     React.Dispatch<React.SetStateAction<[]>>
   ] = useState([]);
   const [currentWeeklyIndex, setCurrentWeeklyIndex] = useState(0);
@@ -102,10 +106,10 @@ const Graph: React.FC<Props> = (props) => {
 
   useEffect(() => {
     const data = props.contributions;
-    console.log(data);
 
     if (data) {
-      setWeeklyData(data.weekly);
+      console.log(data);
+      setWeeklyData(data.weekly.labels);
       // setMonthlyData(data.monthly);
       // getWeeklyData(currentWeeklyIndex);
       // getMonthlyData(currentMonthlyIndex);
@@ -120,7 +124,7 @@ const Graph: React.FC<Props> = (props) => {
       //   monthly: data.monthly.max + 40,
       //   yearly: data.yearly.max + 100,
       // });
-      // setCurrentData(weeklyData);
+      setCurrentData(data.weekly);
     }
   }, [props.contributions]);
 
@@ -143,13 +147,14 @@ const Graph: React.FC<Props> = (props) => {
     }
   };
   const culcSpan = (labels: string[]) => {
+    if (!labels) return;
     return labels[0] + "~" + labels[labels.length - 1];
   };
   const getWeeklyData = (index: number) => {
     const contData = () => {
       return contributionsData(
-        weeklyArray[index].labels,
-        weeklyArray[index].data,
+        weeklyArray[0].labels,
+        weeklyArray[0].counts,
         "weekly"
       );
     };
@@ -159,7 +164,7 @@ const Graph: React.FC<Props> = (props) => {
     const contData = () => {
       return contributionsData(
         monthlyArray[index].labels,
-        monthlyArray[index].data,
+        monthlyArray[index].counts,
         "monthly"
       );
     };
@@ -220,6 +225,13 @@ const Graph: React.FC<Props> = (props) => {
 
           <div>
             <p className="graph__span">{culcSpan(currentData.labels)}</p>
+            <button
+              onClick={() => {
+                console.log(currentData);
+              }}
+            >
+              culc
+            </button>
           </div>
           <div className="next-button">
             {(() => {
