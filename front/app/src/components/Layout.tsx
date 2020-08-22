@@ -16,6 +16,7 @@ import ContactPage from "../pages/contact/ContactPage";
 import SlideCurtain from "../components/SlideCurtain";
 import SearchProductBar from "../components/SearchProductBar";
 import GopherImage from "../components/GopherImage";
+import { CSSTransition } from "react-transition-group";
 
 type Props = {} & RouteComponentProps<{ mode: string }>;
 
@@ -64,7 +65,6 @@ interface SearchProductProps {
 
 const SearchProduct: React.FC<SearchProductProps> = (props) => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
-
   const handleDecideButtonClick = (selectedItems: Skill[]) => {
     props.change_products(selectedItems);
     setIsSideBarOpen(false);
@@ -107,7 +107,7 @@ const Layout: React.FC<Props> = (props) => {
   const storeSkills = useSelector((state: RootState) => state.skill);
 
   const dispatch = useDispatch();
-
+  const [isLoaded, setIsLoaded] = useState(false);
   const [products, setProducts] = useState<Product[]>([
     // {
     //   id: 1,
@@ -162,35 +162,38 @@ const Layout: React.FC<Props> = (props) => {
       });
     };
     get();
+    setIsLoaded(true);
   }, []);
   return (
-    <div className="layout">
-      <Sidebar current_page={props.match.params.mode}></Sidebar>
-      <div className="layout__inner">
-        <Header></Header>
-        <div className="layout__content">
-          <SlideCurtain current_page={props.match.params.mode}></SlideCurtain>
-          <Inner
-            current_page={props.match.params.mode}
-            products={selectedProducts}
-          ></Inner>
+    <CSSTransition in={isLoaded} classNames="layout" timeout={0}>
+      <div className="layout">
+        <Sidebar current_page={props.match.params.mode}></Sidebar>
+        <div className="layout__inner">
+          <Header></Header>
+          <div className="layout__content">
+            <SlideCurtain current_page={props.match.params.mode}></SlideCurtain>
+            <Inner
+              current_page={props.match.params.mode}
+              products={selectedProducts}
+            ></Inner>
+          </div>
         </div>
-      </div>
-      <SearchProduct
-        current_page={props.match.params.mode}
-        skills={storeSkills.value}
-        change_products={(selectedItems: Skill[]) => {
-          selectedItems.forEach((item) => {
-            const newProducts = products.filter((product) => {
-              const arr = product.skill_ids.split(",");
-              return arr.includes(item.id.toString());
+        <SearchProduct
+          current_page={props.match.params.mode}
+          skills={storeSkills.value}
+          change_products={(selectedItems: Skill[]) => {
+            selectedItems.forEach((item) => {
+              const newProducts = products.filter((product) => {
+                const arr = product.skill_ids.split(",");
+                return arr.includes(item.id.toString());
+              });
+              setSelectedProducts(newProducts);
             });
-            setSelectedProducts(newProducts);
-          });
-        }}
-      ></SearchProduct>
-      <div className="noise"></div>
-    </div>
+          }}
+        ></SearchProduct>
+        <div className="noise"></div>
+      </div>
+    </CSSTransition>
   );
 };
 

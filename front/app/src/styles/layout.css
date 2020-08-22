@@ -2,6 +2,7 @@
   height: 100%;
   display: flex;
   position: relative;
+  opacity: 0;
 }
 
 .layout .layout__inner {
@@ -11,6 +12,11 @@
 
 .layout .layout__inner .layout__content {
   height: 100%;
+}
+
+.layout-enter-done {
+  opacity: 1;
+  transition: 3s;
 }
 
 .search-product__background {

@@ -16,15 +16,15 @@ const Thing = () => {
     if (ref !== undefined) {
       // ref!.current.position.x += Math.cos(clock.getElapsedTime()) * 3;
       // ref!.current.position.y += Math.sin(clock.getElapsedTime()) * 3;
-      ref!.current.position.z += clock.getElapsedTime() * 10;
+      ref!.current.position.z += clock.getElapsedTime() * 6;
       // ref!.current.rotation.y += 0.01;
     }
   });
 
   return (
     <mesh ref={ref}>
-      <sphereGeometry attach="geometry" args={[300, 30, 30]} />
-      <meshStandardMaterial attach="material" color="#FF0000" />
+      <sphereGeometry attach="geometry" args={[30, 30, 30]} />
+      <meshStandardMaterial attach="material" color="#FFF" />
     </mesh>
   );
 };
@@ -37,7 +37,7 @@ const Loading: React.FC<Props> = (props) => {
   return (
     <div className="loading__wrapper">
       <Canvas camera={{ position: [0, 0, 1000] }}>
-        <pointLight color="#FFFFFF" intensity={1} position={[0, 2000, 1000]} />
+        <pointLight color="#FFFFFF" intensity={1} position={[0, 1000, 1000]} />
         <Thing />
       </Canvas>
     </div>

@@ -17,21 +17,25 @@ const App: React.FC<PageProps> = () => {
       setIsLoaded(true);
       setTimeout(() => {
         setIsLoaded(false);
-      }, 5000);
+      }, 3000);
     }
   }, []);
   return (
     <div className="App">
-      <Router>
-        <Route
-          path="/:mode(|profile|product|contact)"
-          component={Layout}
-        ></Route>
-        <Route path="/admin/signIn" component={AdminSignIn}></Route>
-        <Route exact path="/admin" component={AdminHome}></Route>
-        <Route path="/admin/product" component={AdminProduct}></Route>
-      </Router>
-      {isLoaded ? <Loading isLoaded={isLoaded}></Loading> : <div></div>}
+      {isLoaded ? (
+        <Loading isLoaded={isLoaded}></Loading>
+      ) : (
+        <Router>
+          <Route
+            path="/:mode(|profile|product|contact)"
+            component={Layout}
+            isLoaded={isLoaded}
+          ></Route>
+          <Route path="/admin/signIn" component={AdminSignIn}></Route>
+          <Route exact path="/admin" component={AdminHome}></Route>
+          <Route path="/admin/product" component={AdminProduct}></Route>
+        </Router>
+      )}
     </div>
   );
 };

@@ -2,6 +2,7 @@
   height: 100%;
   display: flex;
   position: relative;
+  opacity: 0;
   .layout__inner {
     z-index: 5;
     width: 70%;
@@ -11,6 +12,10 @@
   }
 }
 
+.layout-enter-done {
+  opacity: 1;
+  transition: 3s;
+}
 .search-product__background {
   position: absolute;
   opacity: 0.3;
