@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/profileSlide.scss";
-import profileImg from "../../images/profile.jpeg";
+import profileImg from "../../images/me.png";
 import { CSSTransition } from "react-transition-group";
 const Fade = require("react-reveal/Fade");
 
@@ -24,18 +24,19 @@ const ProfileSlide: React.FC<Props> = (props) => {
           <CSSTransition
             in={isLoadeded}
             classNames="slide-upper__image-surface"
-            timeout={500}
+            timeout={1000}
           >
-            <div className="slide-upper__image-surface"></div>
+            <div className="slide-upper__image-surface">
+              <div className="noise --upper"></div>
+            </div>
           </CSSTransition>
           <img className="slide-upper__image" src={profileImg}></img>
-          <div className="noise --upper"></div>
         </div>
         <div className="slide-upper__text-group">
           <CSSTransition
             in={isLoadeded}
             classNames="slide-upper__text"
-            timeout={1000}
+            timeout={1200}
           >
             <p className="slide-upper__text">
               テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。テキストが入ります。

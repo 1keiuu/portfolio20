@@ -25,7 +25,7 @@
 }
 
 .profile__slide .slide-upper .slide-upper__image-wrapper .slide-upper__image-surface-enter-done {
-  transform: translateX(-100%);
+  transform: translateY(-100%);
   transition: 0.5s;
 }
 
