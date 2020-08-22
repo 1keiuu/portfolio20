@@ -17,7 +17,7 @@ const App: React.FC<PageProps> = () => {
       setIsLoaded(true);
       setTimeout(() => {
         setIsLoaded(false);
-      }, 3000);
+      }, 5000);
     }
   }, []);
   return (
