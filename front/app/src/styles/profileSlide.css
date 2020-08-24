@@ -1,18 +1,16 @@
 .profile__slide {
-  width: 86%;
+  width: 65%;
+  padding-top: 5%;
 }
 
-.profile__slide .slide-upper {
-  display: flex;
-}
-
-.profile__slide .slide-upper .slide-upper__image-wrapper {
+.profile__slide .slide-upper__image-wrapper {
   position: relative;
   overflow: hidden;
-  width: 40%;
+  width: 30%;
+  opacity: 0.3;
 }
 
-.profile__slide .slide-upper .slide-upper__image-wrapper .slide-upper__image-surface {
+.profile__slide .slide-upper__image-wrapper .slide-upper__image-surface {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -20,18 +18,21 @@
   transition: 0.5s;
 }
 
-.profile__slide .slide-upper .slide-upper__image-wrapper .slide-upper__image {
+.profile__slide .slide-upper__image-wrapper .slide-upper__image {
   width: 100%;
 }
 
-.profile__slide .slide-upper .slide-upper__image-wrapper .slide-upper__image-surface-enter-done {
+.profile__slide .slide-upper__image-wrapper .slide-upper__image-surface-enter-done {
   transform: translateY(-100%);
   transition: 0.5s;
 }
 
+.profile__slide .slide-upper {
+  display: flex;
+}
+
 .profile__slide .slide-upper .slide-upper__text-group {
-  width: 60%;
-  padding: 20px 0 20px 20px;
+  padding: 20px 40px;
 }
 
 .profile__slide .slide-upper .slide-upper__text-group .slide-upper__text {
