@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import "../styles/header.scss";
 import { CSSTransition } from "react-transition-group";
 
-type Props = {};
+type Props = {
+  current_page: string;
+};
 
 const Header: React.FC<Props> = (props) => {
   const [selectedItem, setSelectedItem] = useState("");
@@ -15,7 +17,9 @@ const Header: React.FC<Props> = (props) => {
           <Link
             to="/"
             className={
-              "menu-item" + " " + (selectedItem == "home" ? "--active" : "")
+              "menu-item" +
+              (selectedItem == "home" ? " --hover" : "") +
+              (props.current_page == "" ? " --active" : "")
             }
             onMouseEnter={() => {
               setSelectedItem("home");
@@ -39,7 +43,9 @@ const Header: React.FC<Props> = (props) => {
           <Link
             to="/profile"
             className={
-              "menu-item" + " " + (selectedItem == "profile" ? "--active" : "")
+              "menu-item" +
+              (selectedItem == "profile" ? " --hover" : "") +
+              (props.current_page == "profile" ? " --active" : "")
             }
             onMouseEnter={() => {
               setSelectedItem("profile");
@@ -63,7 +69,9 @@ const Header: React.FC<Props> = (props) => {
           <Link
             to="/product"
             className={
-              "menu-item" + " " + (selectedItem == "product" ? "--active" : "")
+              "menu-item" +
+              (selectedItem == "product" ? " --hover" : "") +
+              (props.current_page == "product" ? " --active" : "")
             }
             onMouseEnter={() => {
               setSelectedItem("product");
@@ -87,7 +95,9 @@ const Header: React.FC<Props> = (props) => {
           <Link
             to="/contact"
             className={
-              "menu-item" + " " + (selectedItem == "contact" ? "--active" : "")
+              "menu-item" +
+              (selectedItem == "contact" ? " --hover" : "") +
+              (props.current_page == "contact" ? " --active" : "")
             }
             onMouseEnter={() => {
               setSelectedItem("contact");

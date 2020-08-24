@@ -169,7 +169,7 @@ const Layout: React.FC<Props> = (props) => {
       <div className="layout">
         <Sidebar current_page={props.match.params.mode}></Sidebar>
         <div className="layout__inner">
-          <Header></Header>
+          <Header current_page={props.match.params.mode}></Header>
           <div className="layout__content">
             <SlideCurtain current_page={props.match.params.mode}></SlideCurtain>
             <Inner

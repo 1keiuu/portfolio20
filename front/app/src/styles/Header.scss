@@ -24,8 +24,13 @@ header {
         text-decoration: unset;
         letter-spacing: 2px;
         font-family: Roboto;
+        font-weight: bold;
+        &.--hover {
+          color: #333;
+        }
         &.--active {
           color: #333;
+          pointer-events: none;
         }
       }
 

@@ -30,10 +30,16 @@ header .menu-items .menu-item__wrapper .menu-item {
   text-decoration: unset;
   letter-spacing: 2px;
   font-family: Roboto;
+  font-weight: bold;
+}
+
+header .menu-items .menu-item__wrapper .menu-item.--hover {
+  color: #333;
 }
 
 header .menu-items .menu-item__wrapper .menu-item.--active {
   color: #333;
+  pointer-events: none;
 }
 
 header .menu-items .menu-item__wrapper .underline {
