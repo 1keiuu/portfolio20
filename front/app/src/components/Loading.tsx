@@ -31,7 +31,7 @@ const renderThree = () => {
   // 配置する範囲
   const SIZE = 3000;
   // 配置する個数
-  const LENGTH = 800;
+  const LENGTH = 400;
   for (let i = 0; i < LENGTH; i++) {
     geometry.vertices.push(
       new THREE.Vector3(
@@ -109,24 +109,39 @@ const renderThree = () => {
 };
 const Loading: React.FC<Props> = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [intensity, setIntensity] = useState(1);
-  const intensityRef = useRef(intensity);
-
+  const [isActive, setIsActive] = useState(false);
+  const isActiveRef = useRef(isActive);
+  const [count, setCount] = useState(0);
+  const countRef = useRef(count);
   useEffect(() => {
     setIsLoaded(true);
     renderThree();
-    // const timer = setInterval(() => {
-    //   console.log(camera);
-    //   setCamera(cameraRef.current + 500);
-    // }, 300);
-    // return () => {
-    //   clearTimeout(timer);
-    // };
+    const timerID = setInterval(() => {
+      isActiveRef.current = !isActiveRef.current;
+      setIsActive(isActiveRef.current);
+    }, 200);
+    const countTimerID = setInterval(() => {
+      countRef.current += 1;
+      setCount(countRef.current);
+    }, 50);
+
+    return () => {
+      clearTimeout(timerID);
+      clearTimeout(countTimerID);
+    };
   }, [props.isLoaded]);
 
   return (
     <div className="loading__wrapper">
       <canvas id="canvas" />
+      <div className="loading__text-wrapper">
+        <p className={"loading__text" + " " + (isActive ? "--active" : "")}>
+          loading...
+        </p>
+        {/* <p className={"loading__text" + " " + (isActive ? "--active" : "")}>
+          {count}%
+        </p> */}
+      </div>
     </div>
   );
 };

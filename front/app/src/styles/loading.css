@@ -30,6 +30,21 @@
   background: #fff;
 }
 
+.loading__wrapper .loading__text-wrapper {
+  position: absolute;
+  z-index: 5;
+}
+
+.loading__wrapper .loading__text-wrapper .loading__text {
+  opacity: 0;
+  font-size: 1.5vw;
+  font-weight: bold;
+}
+
+.loading__wrapper .loading__text-wrapper .loading__text.--active {
+  opacity: 1;
+}
+
 canvas {
   width: 100% !important;
   height: 100% !important;

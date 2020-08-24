@@ -16,7 +16,7 @@
 
 .layout-enter-done {
   opacity: 1;
-  transition: 5s;
+  transition: 5s ease-in;
 }
 
 .search-product__background {

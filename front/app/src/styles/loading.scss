@@ -27,6 +27,19 @@
     }
     box-shadow: -5px -5px 20px #333;
   }
+  .loading__text-wrapper {
+    position: absolute;
+    z-index: 5;
+
+    .loading__text {
+      opacity: 0;
+      font-size: 1.5vw;
+      font-weight: bold;
+      &.--active {
+        opacity: 1;
+      }
+    }
+  }
 }
 canvas {
   width: 100% !important;
