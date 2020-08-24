@@ -30,6 +30,11 @@
   background: #fff;
 }
 
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
 .circle {
   position: absolute;
   filter: blur(3px);
