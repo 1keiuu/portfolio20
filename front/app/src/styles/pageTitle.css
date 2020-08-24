@@ -9,7 +9,8 @@
 .page-title__inner .page-title__profile,
 .page-title__inner .page-title__contact {
   font-size: 8vw;
-  font-family: Roboto;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
   filter: blur(30px);
   position: absolute;
   top: 0;
