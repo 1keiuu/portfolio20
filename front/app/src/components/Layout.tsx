@@ -26,7 +26,6 @@ const Layout: React.FC<Props> = (props) => {
             {props.children}
           </div>
         </div>
-        <div className="noise"></div>
       </div>
     </CSSTransition>
   );

@@ -30,16 +30,3 @@
     display: block;
   }
 }
-
-.noise {
-  background-image: url(https://media.giphy.com/media/FSqYDfsdaiG9W/giphy.gif);
-  opacity: 0.025;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  z-index: -1;
-  &.--upper {
-    z-index: 3;
-  }
-}
