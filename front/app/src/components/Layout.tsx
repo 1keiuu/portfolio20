@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Header from "./Sidebar";
-import Sidebar from "./_SideBar";
+import Sidebar from "./SideBar";
 import "../styles/layout.scss";
 import SlideCurtain from "../components/SlideCurtain";
 import { CSSTransition } from "react-transition-group";
@@ -23,7 +22,7 @@ const Layout: React.FC<Props> = (props) => {
   return (
     <CSSTransition in={isLoaded} classNames="layout" timeout={0}>
       <div className="layout">
-        <Header current_page={props.location.pathname}></Header>
+        <Sidebar current_page={props.location.pathname}></Sidebar>
         <div className="layout__inner">
           <div className="layout__content">
             <SlideCurtain current_page={props.location.pathname}></SlideCurtain>
