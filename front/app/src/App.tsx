@@ -17,25 +17,8 @@ import ContactPage from "./pages/contact/ContactPage";
 type PageProps = {};
 
 const App: React.FC<PageProps> = () => {
-  const [isLoaded, setIsLoaded] = useState(true);
-  const isLoadedRef = useRef(isLoaded);
-
-  useEffect(() => {
-    isLoadedRef.current = true;
-
-    setIsLoaded(true);
-    // if (window.location.pathname == "/") {
-    //   setIsLoaded(true);
-    //   // setTimeout(() => {
-    //   //   setIsLoaded(false);
-    //   // }, 5000);
-    // }
-  }, []);
   return (
     <div className="App">
-      {/* {isLoaded ? (
-        <Loading isLoaded={isLoaded}></Loading>
-      ) : ( */}
       <Router>
         <Layout current_page={window.location.pathname}>
           <Route exact path="/" render={() => <Home />}></Route>
