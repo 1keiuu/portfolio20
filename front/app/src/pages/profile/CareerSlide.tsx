@@ -51,16 +51,19 @@ const CareerSlide: React.FC<Props> = (props) => {
               in={status}
               classNames="timeline__item"
               timeout={500 * i}
+              key={"timeline-trans" + i}
             >
-              <div className="timeline__item">
+              <div className="timeline__item" key={"timeline-item" + i}>
                 <span className="item__dot-wrapper ">
                   <span className="item__dot"></span>
                 </span>
                 <div className="item__text-wrapper">
                   <p className="item__text">{item.title}</p>
                   <div className="item__text-list">
-                    {item.list?.map((listItem) => {
-                      return <p>{listItem}</p>;
+                    {item.list?.map((listItem, index) => {
+                      return (
+                        <p key={"item-text" + i + "-" + index}>{listItem}</p>
+                      );
                     })}
                   </div>
                 </div>

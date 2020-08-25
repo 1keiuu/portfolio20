@@ -119,13 +119,14 @@ const SkillSlide: React.FC<Props> = (props) => {
             in={props.isLoaded}
             classNames="skill-section"
             timeout={i * 700}
+            key={"section-trans" + i}
           >
-            <div className="skill-section">
+            <div className="skill-section" key={"section" + i}>
               <p className="skill-section__skill-type">{item.skill_type}</p>
               <div className="skill-cards__group">
                 {item.skills.map((skill, i) => {
                   return (
-                    <div className="skill-card">
+                    <div className="skill-card" key={"card" + i}>
                       <div className="skill-card__circle-wrapper">
                         <Circle
                           progress={progressArray[i]}

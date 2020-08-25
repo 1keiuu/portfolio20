@@ -56,7 +56,7 @@ const ProgreeBar: React.FC<Props> = (props) => {
     <div className="progress-bar" ref={REF}>
       {slideArray.map((slide, i) => {
         return (
-          <div className="dot__wrapper">
+          <div className="dot__wrapper" key={"dot" + i}>
             <p className={activeIndex >= i ? "--active" : ""}>{slide.title}</p>
             <span
               className={
