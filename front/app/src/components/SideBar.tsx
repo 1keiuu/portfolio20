@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/sidebar.scss";
 import { CSSTransition } from "react-transition-group";
@@ -10,7 +10,7 @@ type Props = {
   current_page: string;
 };
 
-const Header: React.FC<Props> = (props) => {
+const Sidebar: React.FC<Props> = (props) => {
   const [selectedItem, setSelectedItem] = useState("");
 
   return (
@@ -21,8 +21,8 @@ const Header: React.FC<Props> = (props) => {
             to="/"
             className={
               "menu-item" +
-              (selectedItem == "home" ? " --hover" : "") +
-              (props.current_page == "/" ? " --active" : "")
+              (selectedItem === "home" ? " --hover" : "") +
+              (props.current_page === "/" ? " --active" : "")
             }
             onMouseEnter={() => {
               setSelectedItem("home");
@@ -34,7 +34,7 @@ const Header: React.FC<Props> = (props) => {
             Home
           </Link>
           <CSSTransition
-            in={selectedItem == "home"}
+            in={selectedItem === "home"}
             classNames="underline"
             timeout={0}
           >
@@ -47,8 +47,8 @@ const Header: React.FC<Props> = (props) => {
             to="/profile"
             className={
               "menu-item" +
-              (selectedItem == "profile" ? " --hover" : "") +
-              (props.current_page == "/profile" ? " --active" : "")
+              (selectedItem === "profile" ? " --hover" : "") +
+              (props.current_page === "/profile" ? " --active" : "")
             }
             onMouseEnter={() => {
               setSelectedItem("profile");
@@ -60,7 +60,7 @@ const Header: React.FC<Props> = (props) => {
             Profile
           </Link>
           <CSSTransition
-            in={selectedItem == "profile"}
+            in={selectedItem === "profile"}
             classNames="underline"
             timeout={0}
           >
@@ -73,8 +73,8 @@ const Header: React.FC<Props> = (props) => {
             to="/product"
             className={
               "menu-item" +
-              (selectedItem == "product" ? " --hover" : "") +
-              (props.current_page == "/product" ? " --active" : "")
+              (selectedItem === "product" ? " --hover" : "") +
+              (props.current_page === "/product" ? " --active" : "")
             }
             onMouseEnter={() => {
               setSelectedItem("product");
@@ -86,7 +86,7 @@ const Header: React.FC<Props> = (props) => {
             Product
           </Link>
           <CSSTransition
-            in={selectedItem == "product"}
+            in={selectedItem === "product"}
             classNames="underline"
             timeout={0}
           >
@@ -99,8 +99,8 @@ const Header: React.FC<Props> = (props) => {
             to="/contact"
             className={
               "menu-item" +
-              (selectedItem == "contact" ? " --hover" : "") +
-              (props.current_page == "/contact" ? " --active" : "")
+              (selectedItem === "contact" ? " --hover" : "") +
+              (props.current_page === "/contact" ? " --active" : "")
             }
             onMouseEnter={() => {
               setSelectedItem("contact");
@@ -112,7 +112,7 @@ const Header: React.FC<Props> = (props) => {
             Contact
           </Link>
           <CSSTransition
-            in={selectedItem == "contact"}
+            in={selectedItem === "contact"}
             classNames="underline"
             timeout={0}
           >
@@ -156,4 +156,4 @@ const Header: React.FC<Props> = (props) => {
   );
 };
 
-export default Header;
+export default Sidebar;

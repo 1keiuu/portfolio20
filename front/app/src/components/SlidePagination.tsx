@@ -22,7 +22,7 @@ const SlidePagination: React.FC<Props> = (props) => {
           <span
             className={
               "slide-pagination__dot " +
-              (i == props.currentIndex ? "--active" : "")
+              (i === props.currentIndex ? "--active" : "")
             }
             onClick={() => {
               props.callback(i);

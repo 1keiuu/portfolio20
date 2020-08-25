@@ -1,10 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import "./App.scss";
-import {
-  BrowserRouter as Router,
-  Route,
-  useRouteMatch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import AdminSignIn from "./pages/admin/SignIn";
 import AdminHome from "./pages/admin/Home";

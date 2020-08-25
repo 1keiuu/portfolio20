@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import VerticalSlider from "../../components/VerticalSlider";
-import ProductCard from "../../components/ProductCard";
 import SlidePagination from "../../components/SlidePagination";
 import "../../styles/productPage.scss";
 import axios from "axios";

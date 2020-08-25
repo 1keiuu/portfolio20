@@ -27,7 +27,6 @@
   opacity: 1;
   filter: blur(0);
   transition: 1s;
-  -webkit-background-clip: text;
   color: transparent;
 }
 

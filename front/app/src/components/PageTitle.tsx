@@ -13,7 +13,7 @@ const Title: React.FC<TitleProps> = (props) => {
   return (
     <div className="page-title__inner">
       <CSSTransition
-        in={props.title == "product"}
+        in={props.title === "product"}
         appear
         classNames="page-title__product"
         timeout={500}
@@ -22,7 +22,7 @@ const Title: React.FC<TitleProps> = (props) => {
       </CSSTransition>
       <CSSTransition
         appear
-        in={props.title == "profile"}
+        in={props.title === "profile"}
         classNames="page-title__profile"
         timeout={500}
       >
@@ -30,7 +30,7 @@ const Title: React.FC<TitleProps> = (props) => {
       </CSSTransition>
       <CSSTransition
         appear
-        in={props.title == "contact"}
+        in={props.title === "contact"}
         classNames="page-title__contact"
         timeout={500}
       >
@@ -38,7 +38,7 @@ const Title: React.FC<TitleProps> = (props) => {
       </CSSTransition>
       <CSSTransition
         appear
-        in={props.title == "WELCOME"}
+        in={props.title === "WELCOME"}
         classNames="page-title__home"
         timeout={500}
       >
