@@ -20,6 +20,7 @@ import "swiper/components/pagination/pagination.scss";
 // router
 import * as H from "history";
 import { RouteComponentProps, withRouter } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
 
 const Fade = require("react-reveal/Fade");
 
@@ -186,76 +187,82 @@ const ProductPage: React.FC<Props> = (props) => {
     }
   };
   return (
-    <Fade bottom delay={500}>
-      <div className="product-page">
-        <div className="slider__wrapper">
-          <VerticalSlider>
-            <Swiper
-              slidesPerView={2}
-              centeredSlides
-              speed={1000}
-              spaceBetween={60}
-              direction="vertical"
-              mousewheel={true}
-              initialSlide={1}
-              onSwiper={(swiper) => {
-                setSwiper(swiper);
-                initializeSlide(swiper);
-              }}
-              observer={true}
-              onReachBeginning={() => {
-                props.history.push("/profile");
-              }}
-              onReachEnd={() => {
-                handleReachEnd(() => {
-                  props.history.push("/contact");
-                });
-              }}
-              onSlideChange={(swiper) => {
-                setCurrentIndex(swiper.activeIndex);
-              }}
-            >
-              <SwiperSlide></SwiperSlide>
+    <CSSTransition
+      in={isLoadedRef.current}
+      classNames="product-page"
+      timeout={0}
+    >
+      <Fade bottom delay={500}>
+        <div className="product-page">
+          <div className="slider__wrapper">
+            <VerticalSlider>
+              <Swiper
+                slidesPerView={2}
+                centeredSlides
+                speed={1000}
+                spaceBetween={60}
+                direction="vertical"
+                mousewheel={true}
+                initialSlide={1}
+                onSwiper={(swiper) => {
+                  setSwiper(swiper);
+                  initializeSlide(swiper);
+                }}
+                observer={true}
+                onReachBeginning={() => {
+                  props.history.push("/profile");
+                }}
+                onReachEnd={() => {
+                  handleReachEnd(() => {
+                    props.history.push("/contact");
+                  });
+                }}
+                onSlideChange={(swiper) => {
+                  setCurrentIndex(swiper.activeIndex);
+                }}
+              >
+                <SwiperSlide></SwiperSlide>
 
-              <SwiperSlide></SwiperSlide>
-            </Swiper>
-          </VerticalSlider>
+                <SwiperSlide></SwiperSlide>
+              </Swiper>
+            </VerticalSlider>
 
-          <SlidePagination
-            currentIndex={currentIndex}
-            products={selectedProducts}
-            callback={(i: number) => {
-              changeCurrentSlide(i);
-            }}
-          ></SlidePagination>
+            <SlidePagination
+              currentIndex={currentIndex}
+              products={selectedProducts}
+              callback={(i: number) => {
+                changeCurrentSlide(i);
+              }}
+            ></SlidePagination>
+          </div>
         </div>
-      </div>
 
-      <div className="search-product__wrapper">
-        <SearchProductBar
-          skills={storeSkills.value}
-          isOpen={isSideBarOpen}
-          decide_button_callback={(selectedItems) => {
-            handleDecideButtonClick(selectedItems);
-          }}
-        ></SearchProductBar>
-        <GopherImage
-          callback={() => {
-            setIsSideBarOpen(!isSideBarOpen);
-          }}
-        ></GopherImage>
-        <div
-          onClick={() => {
-            setIsSideBarOpen(false);
-          }}
-          className={
-            "search-product__background" +
-            " " +
-            (isSideBarOpen ? "--active" : "")
-          }
-        ></div>
-      </div>
-    </Fade>
+        <div className="search-product__wrapper">
+          <SearchProductBar
+            skills={storeSkills.value}
+            isOpen={isSideBarOpen}
+            decide_button_callback={(selectedItems) => {
+              handleDecideButtonClick(selectedItems);
+            }}
+          ></SearchProductBar>
+          <GopherImage
+            callback={() => {
+              setIsSideBarOpen(!isSideBarOpen);
+            }}
+          ></GopherImage>
+          <div
+            onClick={() => {
+              setIsSideBarOpen(false);
+            }}
+            className={
+              "search-product__background" +
+              " " +
+              (isSideBarOpen ? "--active" : "")
+            }
+          ></div>
+        </div>
+      </Fade>
+    </CSSTransition>
   );
 };
 

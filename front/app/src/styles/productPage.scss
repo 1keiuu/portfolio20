@@ -4,6 +4,14 @@
   // .slider__wrapper {
   //   display: flex;
   // }
+  opacity: 0;
+  filter: blur(30px);
+  transition: 1s;
+}
+.product-page-enter-done {
+  opacity: 1;
+  filter: blur(0);
+  transition: 1s;
 }
 
 .product-card {

@@ -1,3 +1,15 @@
+.product-page {
+  opacity: 0;
+  filter: blur(30px);
+  transition: 1s;
+}
+
+.product-page-enter-done {
+  opacity: 1;
+  filter: blur(0);
+  transition: 1s;
+}
+
 .product-card {
   width: 100%;
   height: 100%;

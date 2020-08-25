@@ -3,22 +3,24 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-bottom: 15px;
+  align-items: flex-start;
+  padding-left: 3vw;
   box-sizing: border-box;
-  align-items: center;
   z-index: 5;
   background: transparent;
   .menu-items {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    justify-content: space-between;
     position: relative;
     z-index: 2;
+    height: 20%;
     .menu-item__wrapper {
       position: relative;
-      margin-right: 30px;
+      text-align: start;
+
       .menu-item {
-        font-size: 0.9vw;
+        font-size: 1vw;
         color: #fff;
         text-decoration: unset;
         letter-spacing: 2px;
@@ -47,6 +49,21 @@ header {
         bottom: -1px;
         transition: 0.5s cubic-bezier(0.55, 0, 0.15, 1);
       }
+    }
+  }
+  .icon__group {
+    position: absolute;
+    bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    .git-icon,
+    .ig-icon {
+      width: 18px;
+      margin-bottom: 30px;
+    }
+    .wantedly-icon {
+      width: 21px;
+      margin-bottom: 30px;
     }
   }
 }

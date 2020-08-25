@@ -35,6 +35,7 @@ const SkillPage: React.FC<Props> = (props) => {
 
   useEffect(() => {
     setIsLoad(true);
+
     const fetchData = async () => {
       const res = await axios.get("/contributions", {
         headers: { "Content-Type": "application/json" },
@@ -76,67 +77,77 @@ const SkillPage: React.FC<Props> = (props) => {
     }
   };
   return (
-    <div className="profile__inner">
-      <ProgressBar active_index={currentIndex}></ProgressBar>
-      <Swiper
-        slidesPerView={1}
-        speed={1000}
-        spaceBetween={60}
-        mousewheel={true}
-        effect="fade"
-        initialSlide={1}
-        onSwiper={(swiper) => {
-          swiper.slideTo(initSlide());
-        }}
-        onReachBeginning={() => {
-          // index=0(空)のスライドに到達したらホームへ
-          props.history.push("/");
-        }}
-        onReachEnd={() => {
-          props.history.push("/product");
-        }}
-        onSlideChange={(swiper) => {
-          handleChangeSlide(swiper);
-        }}
-      >
-        <SwiperSlide></SwiperSlide>
-        <SwiperSlide>
-          <ProfileSlide
-            isLoaded={currentIndex === 1 ? true : false}
-          ></ProfileSlide>
-        </SwiperSlide>
-        <SwiperSlide>
-          <CareerSlide
-            isLoaded={currentIndex === 2 ? true : false}
-          ></CareerSlide>
-        </SwiperSlide>
-        <SwiperSlide>
-          <SkillSlide isLoaded={currentIndex === 3 ? true : false}></SkillSlide>
-        </SwiperSlide>
-        <SwiperSlide>
-          <GithubSlide
-            isLoaded={currentIndex === 4 ? true : false}
-            contributions={contributions}
-          ></GithubSlide>
-        </SwiperSlide>
-        <SwiperSlide></SwiperSlide>
-      </Swiper>
-      <CSSTransition
-        in={isLoaded}
-        classNames="scroll-text__wrapper"
-        timeout={0}
-      >
-        {currentIndex < 3 ? (
-          <div className="scroll-text__wrapper">
-            <p className="scroll-text">SCROLL↓</p>
-          </div>
-        ) : (
-          <div className="scroll-text__wrapper">
-            <p className="scroll-text">SCROLL↑</p>
-          </div>
-        )}
-      </CSSTransition>
-    </div>
+    <CSSTransition in={isLoaded} classNames="profile__inner" timeout={0}>
+      <div className="profile__inner">
+        <ProgressBar active_index={currentIndex}></ProgressBar>
+        <Swiper
+          slidesPerView={1}
+          speed={1000}
+          spaceBetween={60}
+          mousewheel={true}
+          effect="fade"
+          initialSlide={1}
+          onSwiper={(swiper) => {
+            swiper.slideTo(initSlide());
+          }}
+          onReachBeginning={() => {
+            // index=0(空)のスライドに到達したらホームへ
+            setIsLoad(false);
+            setTimeout(() => {
+              props.history.push("/");
+            }, 1000);
+          }}
+          onReachEnd={() => {
+            setIsLoad(false);
+            setTimeout(() => {
+              props.history.push("/product");
+            }, 1000);
+          }}
+          onSlideChange={(swiper) => {
+            handleChangeSlide(swiper);
+          }}
+        >
+          <SwiperSlide></SwiperSlide>
+          <SwiperSlide>
+            <ProfileSlide
+              isLoaded={currentIndex === 1 ? true : false}
+            ></ProfileSlide>
+          </SwiperSlide>
+          <SwiperSlide>
+            <CareerSlide
+              isLoaded={currentIndex === 2 ? true : false}
+            ></CareerSlide>
+          </SwiperSlide>
+          <SwiperSlide>
+            <SkillSlide
+              isLoaded={currentIndex === 3 ? true : false}
+            ></SkillSlide>
+          </SwiperSlide>
+          <SwiperSlide>
+            <GithubSlide
+              isLoaded={currentIndex === 4 ? true : false}
+              contributions={contributions}
+            ></GithubSlide>
+          </SwiperSlide>
+          <SwiperSlide></SwiperSlide>
+        </Swiper>
+        <CSSTransition
+          in={isLoaded}
+          classNames="scroll-text__wrapper"
+          timeout={0}
+        >
+          {currentIndex < 3 ? (
+            <div className="scroll-text__wrapper">
+              <p className="scroll-text">SCROLL↓</p>
+            </div>
+          ) : (
+            <div className="scroll-text__wrapper">
+              <p className="scroll-text">SCROLL↑</p>
+            </div>
+          )}
+        </CSSTransition>
+      </div>
+    </CSSTransition>
   );
 };
 

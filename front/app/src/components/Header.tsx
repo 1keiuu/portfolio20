@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/header.scss";
 import { CSSTransition } from "react-transition-group";
+import igIcon from "../images/ig-icon.png";
+import wantedlyIcon from "../images/wantedly_mark.png";
+import gitIcon from "../images/GitHub_Icon.png";
 
 type Props = {
   current_page: string;
@@ -116,6 +119,29 @@ const Header: React.FC<Props> = (props) => {
             <div className="underline"></div>
           </CSSTransition>
         </div>
+      </div>
+      <div className="icon__group">
+        <a
+          href="https://github.com/ikkei12"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={gitIcon} className="git-icon" />
+        </a>
+        <a
+          href="https://www.instagram.com/1keiuu/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={igIcon} className="ig-icon" />
+        </a>
+        <a
+          href=" https://www.wantedly.com/users/103088073"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={wantedlyIcon} className="wantedly-icon" />
+        </a>
       </div>
     </header>
   );

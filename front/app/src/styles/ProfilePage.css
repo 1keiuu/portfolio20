@@ -7,6 +7,9 @@
   padding: 5vw 5vw 0 0;
   height: 100%;
   box-sizing: border-box;
+  opacity: 0;
+  filter: blur(30px);
+  transition: 1s;
 }
 
 .profile__inner .swiper-container {
@@ -39,4 +42,10 @@
   100% {
     transform: translateY(8px);
   }
+}
+
+.profile__inner-enter-done {
+  opacity: 1;
+  filter: blur(0);
+  transition: 1s;
 }
