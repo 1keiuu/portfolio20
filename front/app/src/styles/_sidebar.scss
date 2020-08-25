@@ -1,0 +1,49 @@
+.sidebar {
+  height: 100%;
+  width: 30%;
+  display: flex;
+  background: #fafafa;
+  position: relative;
+  z-index: 6;
+  .sidebar__inner {
+    width: 60px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    .my-name {
+      font-family: Roboto;
+      font-size: 20px;
+      transform: rotate(270deg);
+      letter-spacing: 2px;
+      left: -100%;
+      margin: 0;
+      position: absolute;
+      white-space: nowrap;
+      transform-origin: bottom;
+    }
+    .icon__group {
+      position: absolute;
+      bottom: 50px;
+      display: flex;
+      flex-direction: column;
+      .git-icon,
+      .ig-icon {
+        width: 18px;
+        margin-bottom: 30px;
+      }
+      .wantedly-icon {
+        width: 21px;
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  .page-title__wrapper {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+}

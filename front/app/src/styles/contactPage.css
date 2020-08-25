@@ -1,5 +1,6 @@
 .contact-page {
   height: 100vh;
+  box-sizing: border-box;
   opacity: 0;
   filter: blur(50px);
   transform: perspective(50px) translateZ(50px);

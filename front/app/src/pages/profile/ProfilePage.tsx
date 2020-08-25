@@ -82,9 +82,11 @@ const SkillPage: React.FC<Props> = (props) => {
         <ProgressBar active_index={currentIndex}></ProgressBar>
         <Swiper
           slidesPerView={1}
-          speed={1000}
-          spaceBetween={60}
+          centeredSlides
+          speed={100}
+          spaceBetween={0}
           mousewheel={true}
+          freeMode
           effect="fade"
           initialSlide={1}
           onSwiper={(swiper) => {
@@ -97,13 +99,18 @@ const SkillPage: React.FC<Props> = (props) => {
               props.history.push("/");
             }, 500);
           }}
-          onReachEnd={() => {
-            setIsLoad(false);
-            setTimeout(() => {
-              props.history.push("/product");
-            }, 500);
-          }}
           onSlideChange={(swiper) => {
+            if (swiper.activeIndex >= 5) {
+              setIsLoad(false);
+              setTimeout(() => {
+                props.history.push("/product");
+              }, 500);
+            } else if (swiper.activeIndex <= 0) {
+              setIsLoad(false);
+              setTimeout(() => {
+                props.history.push("/");
+              }, 500);
+            }
             handleChangeSlide(swiper);
           }}
         >

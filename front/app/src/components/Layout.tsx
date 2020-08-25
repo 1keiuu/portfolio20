@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Header from "./Header";
-import Sidebar from "./SideBar";
+import Header from "./Sidebar";
+import Sidebar from "./_SideBar";
 import "../styles/layout.scss";
 import SlideCurtain from "../components/SlideCurtain";
 import { CSSTransition } from "react-transition-group";
