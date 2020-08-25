@@ -20,18 +20,21 @@ const ProgreeBar: React.FC<Props> = (props) => {
   const prevIndex = usePrevious(activeIndex);
 
   useEffect(() => {
-    const currentDot = REF.current!.children[props.active_index] as HTMLElement;
-    setCurrentLeft(currentDot!.offsetLeft);
-    if (props.active_index > prevIndex!) {
+    const ROBOT = props.active_index - 1;
+    // setActiveIndex(props.active_index - 1);
+    const currentDot = REF.current!.children[ROBOT] as HTMLElement;
+    if (ROBOT > 0) setCurrentLeft(currentDot!.offsetLeft);
+    else setCurrentLeft(0);
+    if (ROBOT > prevIndex!) {
       // バーが戻る時は遅らせたくない
       if (prevIndex) {
-        if (prevIndex! < 0) return setActiveIndex(props.active_index);
+        if (prevIndex! < 1) return setActiveIndex(ROBOT);
       }
       setTimeout(() => {
-        setActiveIndex(props.active_index);
+        setActiveIndex(ROBOT);
       }, 900);
     } else {
-      setActiveIndex(props.active_index);
+      setActiveIndex(ROBOT);
     }
   }, [props.active_index]);
 

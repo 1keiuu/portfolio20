@@ -1,14 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import "../../styles/ProfilePage.scss";
 import axios from "../../plugin/axios/index";
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
 import ProgressBar from "../../components/ProgressBar";
 import ProfileSlide from "./ProfileSlide";
 import CareerSlide from "./CareerSlide";
 import SkillSlide from "./SkillSlide";
 import GithubSlide from "./GithubSlide";
 
+import * as H from "history";
+import { RouteComponentProps, withRouter } from "react-router-dom";
+// swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Mousewheel } from "swiper";
 import "swiper/swiper.scss";
@@ -19,11 +20,11 @@ const Fade = require("react-reveal/Fade");
 
 SwiperCore.use([Mousewheel]);
 
-interface State {
-  isGraphOpen: boolean;
+interface Props extends RouteComponentProps<{}> {
+  history: H.History;
 }
 
-const SkillPage: React.FC = () => {
+const SkillPage: React.FC<Props> = (props) => {
   const [contributions, setContributions] = useState<any>({
     weekly: [],
     monthly: [],
@@ -33,6 +34,20 @@ const SkillPage: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
+    // // 縦スクロールイベント
+    // window.addEventListener("wheel", (e) => {
+    //   var current_pos = e.deltaY;
+    //   var start_pos = 0;
+    //   if (current_pos > start_pos) {
+    //     if (current_pos - start_pos > 15) props.history.push("/product");
+    //   } else {
+    //     {
+    //       if (start_pos - current_pos > 15) props.history.push("/home");
+    //     }
+    //   }
+    //   start_pos = current_pos;
+    // });
+
     setIsLoad(true);
     const fetchData = async () => {
       const res = await axios.get("/contributions", {
@@ -48,28 +63,28 @@ const SkillPage: React.FC = () => {
     const params = window.location.pathname.replace("/profile/", "");
     switch (params) {
       case "career":
-        return 1;
-      case "skill":
         return 2;
-      case "github":
+      case "skill":
         return 3;
+      case "github":
+        return 4;
       default:
-        return 0;
+        return 1;
     }
   };
   const handleChangeSlide = (swiper: { activeIndex: number }) => {
     setCurrentIndex(swiper.activeIndex);
     switch (swiper.activeIndex) {
-      case 1:
+      case 2:
         window.history.pushState(null, "", "/profile/career");
         break;
-      case 2:
+      case 3:
         window.history.pushState(null, "", "/profile/skill");
         break;
-      case 3:
+      case 4:
         window.history.pushState(null, "", "/profile/github");
         break;
-      case 0:
+      case 1:
         window.history.pushState(null, "", "/profile");
         break;
     }
@@ -83,32 +98,41 @@ const SkillPage: React.FC = () => {
         spaceBetween={60}
         mousewheel={true}
         effect="fade"
+        initialSlide={1}
         onSwiper={(swiper) => {
           swiper.slideTo(initSlide());
+        }}
+        onReachBeginning={() => {
+          props.history.push("/");
+        }}
+        onReachEnd={() => {
+          props.history.push("/product");
         }}
         onSlideChange={(swiper) => {
           handleChangeSlide(swiper);
         }}
       >
+        <SwiperSlide></SwiperSlide>
         <SwiperSlide>
           <ProfileSlide
-            isLoaded={currentIndex === 0 ? true : false}
+            isLoaded={currentIndex === 1 ? true : false}
           ></ProfileSlide>
         </SwiperSlide>
         <SwiperSlide>
           <CareerSlide
-            isLoaded={currentIndex === 1 ? true : false}
+            isLoaded={currentIndex === 2 ? true : false}
           ></CareerSlide>
         </SwiperSlide>
         <SwiperSlide>
-          <SkillSlide isLoaded={currentIndex === 2 ? true : false}></SkillSlide>
+          <SkillSlide isLoaded={currentIndex === 3 ? true : false}></SkillSlide>
         </SwiperSlide>
         <SwiperSlide>
           <GithubSlide
-            isLoaded={currentIndex === 3 ? true : false}
+            isLoaded={currentIndex === 4 ? true : false}
             contributions={contributions}
           ></GithubSlide>
         </SwiperSlide>
+        <SwiperSlide></SwiperSlide>
       </Swiper>
       <CSSTransition
         in={isLoaded}
@@ -129,4 +153,4 @@ const SkillPage: React.FC = () => {
   );
 };
 
-export default SkillPage;
+export default withRouter(SkillPage);
