@@ -1,1 +1,14 @@
-.contact-page{height:100vh;opacity:0;filter:blur(30px);transition:1s;padding:30%}.contact-page-enter-done{opacity:1;filter:blur(0);transition:1s}
+.contact-page {
+  height: 100vh;
+  opacity: 0;
+  filter: blur(50px);
+  transform: perspective(50px) translateZ(50px);
+  transition: 1s;
+  padding: 30%;
+}
+.contact-page-enter-done {
+  opacity: 1;
+  filter: blur(0);
+  transform: perspective(50px) translateZ(0);
+  transition: 1s;
+}

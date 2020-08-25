@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import axios from "../../plugin/axios/index";
 import "../../styles/home.scss";
 //swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -12,7 +11,6 @@ import { RouteComponentProps, withRouter } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 
 SwiperCore.use([Mousewheel]);
-const Fade = require("react-reveal/Fade");
 
 interface Props extends RouteComponentProps<{}> {
   history: H.History;
@@ -20,15 +18,7 @@ interface Props extends RouteComponentProps<{}> {
 
 const Home: React.FC<Props> = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const getData = async () => {
-    await axios
-      .get("/contributions", {
-        headers: { "Content-Type": "application/json" },
-      })
-      .then((res) => {
-        console.log(res);
-      });
-  };
+
   const handleWheel = (e: any) => {
     // 縦スクロールイベント
     var current_pos = e.deltaY;
@@ -65,13 +55,6 @@ const Home: React.FC<Props> = (props) => {
         <CSSTransition in={isLoaded} timeout={0} classNames="home__inner">
           <div className="home__inner">
             <p>home</p>
-            <button
-              onClick={async () => {
-                await getData();
-              }}
-            >
-              click
-            </button>
           </div>
         </CSSTransition>
       </SwiperSlide>

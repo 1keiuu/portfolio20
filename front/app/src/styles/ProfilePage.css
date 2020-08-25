@@ -9,6 +9,7 @@
   box-sizing: border-box;
   opacity: 0;
   filter: blur(30px);
+  transform: perspective(50px) translateZ(50px);
   transition: 1s;
 }
 
@@ -47,5 +48,6 @@
 .profile__inner-enter-done {
   opacity: 1;
   filter: blur(0);
+  transform: perspective(50px) translateZ(0);
   transition: 1s;
 }
