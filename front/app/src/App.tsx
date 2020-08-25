@@ -5,7 +5,10 @@ import Layout from "./components/Layout";
 import AdminSignIn from "./pages/admin/SignIn";
 import AdminHome from "./pages/admin/Home";
 import AdminProduct from "./pages/admin/Product";
-import Loading from "./components/Loading";
+import Home from "./pages/home/Home";
+import ProfilePage from "./pages/profile/ProfilePage";
+import ProductPage from "./pages/product/ProductPage";
+import ContactPage from "./pages/contact/ContactPage";
 
 type PageProps = {};
 
@@ -15,27 +18,40 @@ const App: React.FC<PageProps> = () => {
   useEffect(() => {
     if (window.location.pathname == "/") {
       setIsLoaded(true);
-      setTimeout(() => {
-        setIsLoaded(false);
-      }, 5000);
+      // setTimeout(() => {
+      //   setIsLoaded(false);
+      // }, 5000);
     }
   }, []);
   return (
     <div className="App">
-      {isLoaded ? (
+      {/* {isLoaded ? (
         <Loading isLoaded={isLoaded}></Loading>
-      ) : (
-        <Router>
-          <Route
-            path="/:mode(|profile|product|contact)"
-            component={Layout}
-            isLoaded={isLoaded}
-          ></Route>
-          <Route path="/admin/signIn" component={AdminSignIn}></Route>
-          <Route exact path="/admin" component={AdminHome}></Route>
-          <Route path="/admin/product" component={AdminProduct}></Route>
-        </Router>
-      )}
+      ) : ( */}
+      <Router>
+        <Route path="/" component={Home} isLoaded={isLoaded}></Route>
+        <Route
+          path="/profile"
+          component={ProfilePage}
+          isLoaded={isLoaded}
+        ></Route>
+        <Route
+          path="/product"
+          component={ProductPage}
+          isLoaded={isLoaded}
+        ></Route>
+        <Route
+          path="/contact"
+          component={ContactPage}
+          isLoaded={isLoaded}
+        ></Route>
+      </Router>
+      <Router>
+        <Route path="/admin/signIn" component={AdminSignIn}></Route>
+        <Route exact path="/admin" component={AdminHome}></Route>
+        <Route path="/admin/product" component={AdminProduct}></Route>
+      </Router>
+      {/* )} */}
     </div>
   );
 };

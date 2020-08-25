@@ -6,7 +6,12 @@ import { addSkillsAction } from "../store/skill/actions";
 
 import Header from "./Header";
 import Sidebar from "./SideBar";
-import { BrowserRouter as Router, RouteComponentProps } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  RouteComponentProps,
+  useRouteMatch,
+} from "react-router-dom";
 import axios from "axios";
 import "../styles/layout.scss";
 import Home from "../pages/home/Home";
@@ -18,20 +23,22 @@ import SearchProductBar from "../components/SearchProductBar";
 import GopherImage from "../components/GopherImage";
 import { CSSTransition } from "react-transition-group";
 
-type Props = {} & RouteComponentProps<{ mode: string }>;
+interface Props {
+  current_page: string;
+}
 
-const Inner = (props: { current_page: string; products: Product[] }) => {
-  switch (props.current_page) {
-    case "profile":
-      return <ProfilePage></ProfilePage>;
-    case "product":
-      return <ProductPage products={props.products}></ProductPage>;
-    case "contact":
-      return <ContactPage></ContactPage>;
-    default:
-      return <Home></Home>;
-  }
-};
+// const Inner = (props: { current_page: string; products: Product[] }) => {
+//   switch (props.current_page) {
+//     case "profile":
+//       return <ProfilePage></ProfilePage>;
+//     case "product":
+//       return <ProductPage products={props.products}></ProductPage>;
+//     case "contact":
+//       return <ContactPage></ContactPage>;
+//     default:
+//       return <Home></Home>;
+//   }
+// };
 
 interface Product {
   id: number;
@@ -148,7 +155,10 @@ const Layout: React.FC<Props> = (props) => {
   const handleAddSkills = (skills: any) => {
     dispatch(addSkillsAction(skills));
   };
+  let { path, url } = useRouteMatch();
+
   useEffect(() => {
+    console.log(path, url);
     const PRODUCTS_URL = `${process.env.REACT_APP_API_URL}/api/products`;
     const SKILLS_URL = `${process.env.REACT_APP_API_URL}/api/skills`;
 
@@ -167,19 +177,16 @@ const Layout: React.FC<Props> = (props) => {
   return (
     <CSSTransition in={isLoaded} classNames="layout" timeout={0}>
       <div className="layout">
-        <Sidebar current_page={props.match.params.mode}></Sidebar>
+        {/* <Sidebar current_page={props.current_page}></Sidebar> */}
+        <Header current_page={props.current_page}></Header>
         <div className="layout__inner">
-          <Header current_page={props.match.params.mode}></Header>
           <div className="layout__content">
-            <SlideCurtain current_page={props.match.params.mode}></SlideCurtain>
-            <Inner
-              current_page={props.match.params.mode}
-              products={selectedProducts}
-            ></Inner>
+            <SlideCurtain current_page={props.current_page}></SlideCurtain>
+            {props.children}
           </div>
         </div>
         <SearchProduct
-          current_page={props.match.params.mode}
+          current_page={props.current_page}
           skills={storeSkills.value}
           change_products={(selectedItems: Skill[]) => {
             selectedItems.forEach((item) => {
