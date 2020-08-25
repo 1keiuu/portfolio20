@@ -4,9 +4,14 @@ import Sidebar from "./_SideBar";
 import "../styles/layout.scss";
 import SlideCurtain from "../components/SlideCurtain";
 import { CSSTransition } from "react-transition-group";
+import * as H from "history";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 
-interface Props {
-  current_page: string;
+// interface Props {
+//   current_page: string;
+// }
+interface Props extends RouteComponentProps<{}> {
+  history: H.History;
 }
 
 const Layout: React.FC<Props> = (props) => {
@@ -18,11 +23,10 @@ const Layout: React.FC<Props> = (props) => {
   return (
     <CSSTransition in={isLoaded} classNames="layout" timeout={0}>
       <div className="layout">
-        {/* <Sidebar current_page={props.current_page}></Sidebar> */}
-        <Header current_page={props.current_page}></Header>
+        <Header current_page={props.location.pathname}></Header>
         <div className="layout__inner">
           <div className="layout__content">
-            <SlideCurtain current_page={props.current_page}></SlideCurtain>
+            <SlideCurtain current_page={props.location.pathname}></SlideCurtain>
             {props.children}
           </div>
         </div>
@@ -31,4 +35,4 @@ const Layout: React.FC<Props> = (props) => {
   );
 };
 
-export default Layout;
+export default withRouter(Layout);

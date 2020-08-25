@@ -48,7 +48,7 @@ const ProfileSlide: React.FC<Props> = (props) => {
             timeout={1500}
           >
             <p className="slide-upper__text">
-              現在は長期インターンできる職場を探しつつ、フリーランスで知り合いの仕事(タイピングゲームの開発)を手伝ったり、個人でもWebアプリの開発をしております。{" "}
+              現在は長期インターンできる職場を探しつつ、フリーランスで知り合いの仕事(タイピングゲームの開発)を手伝ったり、個人でもWebアプリの開発をしております。
             </p>
           </CSSTransition>
         </div>
