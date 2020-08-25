@@ -11,6 +11,12 @@ nav {
   position: fixed;
 }
 
+nav .sidebar__title {
+  position: absolute;
+  top: 10px;
+  text-align: start;
+}
+
 nav .menu-items {
   display: flex;
   flex-direction: column;
@@ -26,7 +32,7 @@ nav .menu-items .menu-item__wrapper {
 }
 
 nav .menu-items .menu-item__wrapper .menu-item {
-  font-size: 1vw;
+  font-size: 15px;
   color: #fff;
   text-decoration: unset;
   letter-spacing: 2px;

@@ -130,26 +130,16 @@ const ProductPage: React.FC<Props> = (props) => {
 
   const initializeSlide = (swiper: SwiperCore) => {
     products.forEach((product, i) => {
-      const slide = `<div class="swiper-slide" id="slide${i}">
-          <div class="product-card" id="product-card${i}"
-          style="background: ${product.background_color}"
-      >
-        <div class="product-card__inner">
-          <div class="product-card__image__wrapper">
-            <img
-              class="product-card__image"
-              src=${product.images.split(",")[0]}
-            ></img>
-          </div>
-          <div
-            class=
-              "product-card__title-wrapper"
-          >
-            <p class="product-card__title">${product.title}</p>
-            <p class="product-card__sub-title">${product.span}</p>
-          </div>
+      const slide = `
+      <div class="swiper-slide" id="slide${i}">
+        <img
+          class="product-card__image"
+          src=${product.images.split(",")[0]}
+        ></img>
+        <div class="product-card__title-wrapper">
+          <p class="product-card__title">${product.title}</p>
+          <p class="product-card__sub-title">${product.span}</p>
         </div>
-      </div>
       </div>`;
 
       swiper.addSlide(1 + i, slide);
@@ -202,7 +192,7 @@ const ProductPage: React.FC<Props> = (props) => {
                 slidesPerView={2}
                 centeredSlides
                 speed={1000}
-                spaceBetween={60}
+                spaceBetween={70}
                 direction="vertical"
                 mousewheel={true}
                 initialSlide={1}
@@ -236,8 +226,8 @@ const ProductPage: React.FC<Props> = (props) => {
             </VerticalSlider>
 
             <SlidePagination
-              currentIndex={currentIndex}
-              products={selectedProducts}
+              currentIndex={currentIndex - 1}
+              products={products}
               callback={(i: number) => {
                 changeCurrentSlide(i);
               }}

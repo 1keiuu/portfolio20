@@ -9,6 +9,11 @@ nav {
   z-index: 8;
   background: transparent;
   position: fixed;
+  .sidebar__title {
+    position: absolute;
+    top: 10px;
+    text-align: start;
+  }
   .menu-items {
     display: flex;
     flex-direction: column;
@@ -21,7 +26,7 @@ nav {
       text-align: start;
 
       .menu-item {
-        font-size: 1vw;
+        font-size: 15px;
         color: #fff;
         text-decoration: unset;
         letter-spacing: 2px;

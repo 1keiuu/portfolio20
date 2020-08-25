@@ -15,6 +15,7 @@ const Sidebar: React.FC<Props> = (props) => {
 
   return (
     <nav>
+      <h3 className="sidebar__title">Ikkei Harashima</h3>
       <div className="menu-items">
         <div className="menu-item__wrapper">
           <Link

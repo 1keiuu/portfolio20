@@ -17,19 +17,3 @@
 .layout-enter-done {
   opacity: 1;
 }
-
-.search-product__background {
-  position: absolute;
-  opacity: 0.3;
-  background: #fff;
-  z-index: 6;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: none;
-}
-
-.search-product__background.--active {
-  display: block;
-}
