@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./App.scss";
 import {
   BrowserRouter as Router,
@@ -17,15 +17,19 @@ import ContactPage from "./pages/contact/ContactPage";
 type PageProps = {};
 
 const App: React.FC<PageProps> = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(true);
+  const isLoadedRef = useRef(isLoaded);
 
   useEffect(() => {
-    if (window.location.pathname == "/") {
-      setIsLoaded(true);
-      // setTimeout(() => {
-      //   setIsLoaded(false);
-      // }, 5000);
-    }
+    isLoadedRef.current = true;
+
+    setIsLoaded(true);
+    // if (window.location.pathname == "/") {
+    //   setIsLoaded(true);
+    //   // setTimeout(() => {
+    //   //   setIsLoaded(false);
+    //   // }, 5000);
+    // }
   }, []);
   return (
     <div className="App">
@@ -34,22 +38,10 @@ const App: React.FC<PageProps> = () => {
       ) : ( */}
       <Router>
         <Layout current_page={window.location.pathname}>
-          <Route exact path="/" component={Home} isLoaded={isLoaded}></Route>
-          <Route
-            path="/profile"
-            component={ProfilePage}
-            isLoaded={isLoaded}
-          ></Route>
-          <Route
-            path="/product"
-            component={ProductPage}
-            isLoaded={isLoaded}
-          ></Route>
-          <Route
-            path="/contact"
-            component={ContactPage}
-            isLoaded={isLoaded}
-          ></Route>
+          <Route exact path="/" render={() => <Home />}></Route>
+          <Route path="/profile" render={() => <ProfilePage />}></Route>
+          <Route path="/product" render={() => <ProductPage />}></Route>
+          <Route path="/contact" render={() => <ContactPage />}></Route>
         </Layout>
         <Route path="/admin/signIn" component={AdminSignIn}></Route>
         <Route exact path="/admin" component={AdminHome}></Route>

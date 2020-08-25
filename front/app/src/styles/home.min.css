@@ -1,1 +1,1 @@
-.home__inner{height:100vh}
+.home__inner{height:100vh;opacity:0;filter:blur(30px);transition:1s}.home__inner-enter-done{opacity:1;filter:blur(0);transition:1s}

@@ -275,4 +275,4 @@ const ProductPage: React.FC<Props> = (props) => {
   );
 };
 
-export default ProductPage;
+export default withRouter(ProductPage);

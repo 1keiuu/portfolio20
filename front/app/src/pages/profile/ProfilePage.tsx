@@ -95,13 +95,13 @@ const SkillPage: React.FC<Props> = (props) => {
             setIsLoad(false);
             setTimeout(() => {
               props.history.push("/");
-            }, 1000);
+            }, 500);
           }}
           onReachEnd={() => {
             setIsLoad(false);
             setTimeout(() => {
               props.history.push("/product");
-            }, 1000);
+            }, 500);
           }}
           onSlideChange={(swiper) => {
             handleChangeSlide(swiper);

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "../../plugin/axios/index";
 import "../../styles/home.scss";
 //swiper
@@ -9,6 +9,7 @@ import "swiper/components/pagination/pagination.scss";
 
 import * as H from "history";
 import { RouteComponentProps, withRouter } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
 
 SwiperCore.use([Mousewheel]);
 const Fade = require("react-reveal/Fade");
@@ -18,6 +19,7 @@ interface Props extends RouteComponentProps<{}> {
 }
 
 const Home: React.FC<Props> = (props) => {
+  const [isLoaded, setIsLoaded] = useState(false);
   const getData = async () => {
     await axios
       .get("/contributions", {
@@ -32,28 +34,35 @@ const Home: React.FC<Props> = (props) => {
     var current_pos = e.deltaY;
     var start_pos = 0;
     if (current_pos > start_pos) {
-      if (current_pos - start_pos > 0) props.history.push("/profile");
+      if (current_pos - start_pos <= 0) return;
+      setIsLoaded(false);
+      setTimeout(() => {
+        props.history.push("/profile");
+      }, 500);
     }
     start_pos = current_pos;
   };
+
   useEffect(() => {
+    setIsLoaded(true);
+
     window.addEventListener("wheel", handleWheel);
     return () => {
       window.removeEventListener("wheel", handleWheel);
     };
   }, []);
   return (
-    <Fade bottom delay={500}>
-      <Swiper
-        noSwiping={true}
-        mousewheel={true}
-        centeredSlides={true}
-        centeredSlidesBounds={true}
-        preventInteractionOnTransition={true}
-        resistance={true}
-        resistanceRatio={1}
-      >
-        <SwiperSlide>
+    <Swiper
+      noSwiping={true}
+      mousewheel={true}
+      centeredSlides={true}
+      centeredSlidesBounds={true}
+      preventInteractionOnTransition={true}
+      resistance={true}
+      resistanceRatio={1}
+    >
+      <SwiperSlide>
+        <CSSTransition in={isLoaded} timeout={0} classNames="home__inner">
           <div className="home__inner">
             <p>home</p>
             <button
@@ -64,9 +73,9 @@ const Home: React.FC<Props> = (props) => {
               click
             </button>
           </div>
-        </SwiperSlide>
-      </Swiper>
-    </Fade>
+        </CSSTransition>
+      </SwiperSlide>
+    </Swiper>
   );
 };
 
