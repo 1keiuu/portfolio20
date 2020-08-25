@@ -29,7 +29,7 @@
 }
 
 .profile__inner .scroll-text__wrapper-enter-done {
-  animation: 1s ease-in 1s infinite alternate forwards running move;
+  animation: 1s ease-in 0s infinite alternate forwards running move;
 }
 
 @keyframes move {

@@ -58,32 +58,33 @@ interface Props extends RouteComponentProps<{}> {
 }
 
 const ProductPage: React.FC<Props> = (props) => {
+  const isLoadedRef = useRef(false);
   const [products, setProducts] = useState<Product[]>([
+    {
+      id: 1,
+      title: "title1",
+      span: "2020/02~2020/07",
+      background_color: "#333",
+      images: "https://placekitten.com/640/360",
+      descriptions: "desc",
+      skill_ids: "1,2",
+    },
     // {
     //   id: 1,
-    //   title: "string",
-    //   span: "string",
+    //   title: "title2",
+    //   span: "2020/02~2020/07",
     //   background_color: "#333",
-    //   images: "string",
-    //   descriptions: "string",
-    //   skill_ids: "1,2",
-    // },
-    // {
-    //   id: 1,
-    //   title: "string",
-    //   span: "string",
-    //   background_color: "#333",
-    //   images: "string",
-    //   descriptions: "string",
+    //   images: "https://placekitten.com/640/360",
+    //   descriptions: "desc",
     //   skill_ids: "2,5",
     // },
     // {
     //   id: 1,
-    //   title: "string",
-    //   span: "string",
+    //   title: "title3",
+    //   span: "2020/02~2020/07",
     //   background_color: "#333",
-    //   images: "string",
-    //   descriptions: "string",
+    //   images: "https://placekitten.com/640/360",
+    //   descriptions: "desc",
     //   skill_ids: "2,4",
     // },
   ]);
@@ -125,7 +126,44 @@ const ProductPage: React.FC<Props> = (props) => {
     setIsSideBarOpen(false);
   };
 
+  const initializeSlide = (swiper: SwiperCore) => {
+    products.forEach((product, i) => {
+      const slide = `<div class="swiper-slide" id="slide${i}">
+          <div class="product-card" id="product-card${i}"
+          style="background: ${product.background_color}"
+      >
+        <div class="product-card__inner">
+          <div class="product-card__image__wrapper">
+            <img
+              class="product-card__image"
+              src=${product.images.split(",")[0]}
+            ></img>
+          </div>
+          <div
+            class=
+              "product-card__title-wrapper"
+          >
+            <p class="product-card__title">${product.title}</p>
+            <p class="product-card__sub-title">${product.span}</p>
+          </div>
+        </div>
+      </div>
+      </div>`;
+
+      swiper.addSlide(1 + i, slide);
+
+      const a = document.getElementById(String(i));
+      a?.addEventListener("mouseenter", (e) => {
+        const id = (e.target! as Element).getAttribute("id");
+        setHoveredIndex(Number(id));
+        console.log(hoveredIndex);
+      });
+    });
+  };
+
   useEffect(() => {
+    isLoadedRef.current = true;
+
     const PRODUCTS_URL = `${process.env.REACT_APP_API_URL}/api/products`;
     const SKILLS_URL = `${process.env.REACT_APP_API_URL}/api/skills`;
 
@@ -140,61 +178,46 @@ const ProductPage: React.FC<Props> = (props) => {
     };
     get();
   }, []);
+
+  const handleReachEnd = (func: () => void) => {
+    // 初回ロード時にスライドがないと見做されてcontactページへ遷移してしまうのを避ける
+    if (isLoadedRef.current) {
+      func();
+    }
+  };
   return (
     <Fade bottom delay={500}>
       <div className="product-page">
         <div className="slider__wrapper">
           <VerticalSlider>
             <Swiper
-              slidesPerView={1}
+              slidesPerView={2}
+              centeredSlides
               speed={1000}
               spaceBetween={60}
+              direction="vertical"
               mousewheel={true}
               initialSlide={1}
               onSwiper={(swiper) => {
                 setSwiper(swiper);
-                console.log(swiper.activeIndex);
+                initializeSlide(swiper);
               }}
+              observer={true}
               onReachBeginning={() => {
                 props.history.push("/profile");
               }}
-              // onReachEnd={() => {
-              //   props.history.push("/contact");
-              // }}
+              onReachEnd={() => {
+                handleReachEnd(() => {
+                  props.history.push("/contact");
+                });
+              }}
               onSlideChange={(swiper) => {
-                console.log(swiper.activeIndex);
                 setCurrentIndex(swiper.activeIndex);
               }}
             >
-              <SwiperSlide>
-                <p>test</p>
-              </SwiperSlide>{" "}
-              {selectedProducts.map((product, i) => {
-                return (
-                  <SwiperSlide
-                    key={"product-slide" + i}
-                    onMouseEnter={() => {
-                      setHoveredIndex(i);
-                    }}
-                    onMouseLeave={() => {
-                      setHoveredIndex(-1);
-                    }}
-                  >
-                    <p>{product.title}</p>
-                    {/* <ProductCard
-                      product={product}
-                      isHover={i == hoveredIndex}
-                      key={"product" + i}
-                      callback={() => {
-                        changeCurrentSlide(i);
-                      }}
-                    ></ProductCard> */}
-                  </SwiperSlide>
-                );
-              })}
-              <SwiperSlide>
-                <p>test</p>
-              </SwiperSlide>{" "}
+              <SwiperSlide></SwiperSlide>
+
+              <SwiperSlide></SwiperSlide>
             </Swiper>
           </VerticalSlider>
 

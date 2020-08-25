@@ -29,11 +29,10 @@ const HOME: React.FC<Props> = (props) => {
   };
   const handleWheel = (e: any) => {
     // 縦スクロールイベント
-    console.log("test");
     var current_pos = e.deltaY;
     var start_pos = 0;
     if (current_pos > start_pos) {
-      if (current_pos - start_pos > 15) props.history.push("/profile");
+      if (current_pos - start_pos > 0) props.history.push("/profile");
     }
     start_pos = current_pos;
   };
