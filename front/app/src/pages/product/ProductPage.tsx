@@ -17,6 +17,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Mousewheel } from "swiper";
 import "swiper/swiper.scss";
 import "swiper/components/pagination/pagination.scss";
+// router
+import * as H from "history";
+import { RouteComponentProps, withRouter } from "react-router-dom";
 
 const Fade = require("react-reveal/Fade");
 
@@ -50,7 +53,10 @@ interface SearchProductProps {
     image_url: string;
   }[];
 }
-interface Props {}
+interface Props extends RouteComponentProps<{}> {
+  history: H.History;
+}
+
 const ProductPage: React.FC<Props> = (props) => {
   const [products, setProducts] = useState<Product[]>([
     // {
@@ -140,17 +146,29 @@ const ProductPage: React.FC<Props> = (props) => {
         <div className="slider__wrapper">
           <VerticalSlider>
             <Swiper
-              direction="vertical"
-              slidesPerView={2}
+              slidesPerView={1}
               speed={1000}
-              centeredSlides={true}
               spaceBetween={60}
               mousewheel={true}
-              onSwiper={(swiper) => setSwiper(swiper)}
+              initialSlide={1}
+              onSwiper={(swiper) => {
+                setSwiper(swiper);
+                console.log(swiper.activeIndex);
+              }}
+              onReachBeginning={() => {
+                props.history.push("/profile");
+              }}
+              // onReachEnd={() => {
+              //   props.history.push("/contact");
+              // }}
               onSlideChange={(swiper) => {
+                console.log(swiper.activeIndex);
                 setCurrentIndex(swiper.activeIndex);
               }}
             >
+              <SwiperSlide>
+                <p>test</p>
+              </SwiperSlide>{" "}
               {selectedProducts.map((product, i) => {
                 return (
                   <SwiperSlide
@@ -162,17 +180,21 @@ const ProductPage: React.FC<Props> = (props) => {
                       setHoveredIndex(-1);
                     }}
                   >
-                    <ProductCard
+                    <p>{product.title}</p>
+                    {/* <ProductCard
                       product={product}
                       isHover={i == hoveredIndex}
                       key={"product" + i}
                       callback={() => {
                         changeCurrentSlide(i);
                       }}
-                    ></ProductCard>
+                    ></ProductCard> */}
                   </SwiperSlide>
                 );
               })}
+              <SwiperSlide>
+                <p>test</p>
+              </SwiperSlide>{" "}
             </Swiper>
           </VerticalSlider>
 

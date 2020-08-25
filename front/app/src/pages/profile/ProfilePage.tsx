@@ -6,7 +6,7 @@ import ProfileSlide from "./ProfileSlide";
 import CareerSlide from "./CareerSlide";
 import SkillSlide from "./SkillSlide";
 import GithubSlide from "./GithubSlide";
-
+// router
 import * as H from "history";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 // swiper
@@ -34,20 +34,6 @@ const SkillPage: React.FC<Props> = (props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    // // 縦スクロールイベント
-    // window.addEventListener("wheel", (e) => {
-    //   var current_pos = e.deltaY;
-    //   var start_pos = 0;
-    //   if (current_pos > start_pos) {
-    //     if (current_pos - start_pos > 15) props.history.push("/product");
-    //   } else {
-    //     {
-    //       if (start_pos - current_pos > 15) props.history.push("/home");
-    //     }
-    //   }
-    //   start_pos = current_pos;
-    // });
-
     setIsLoad(true);
     const fetchData = async () => {
       const res = await axios.get("/contributions", {
@@ -103,6 +89,7 @@ const SkillPage: React.FC<Props> = (props) => {
           swiper.slideTo(initSlide());
         }}
         onReachBeginning={() => {
+          // index=0(空)のスライドに到達したらホームへ
           props.history.push("/");
         }}
         onReachEnd={() => {

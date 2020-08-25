@@ -7,7 +7,7 @@
 
 .layout .layout__inner {
   z-index: 5;
-  width: 70%;
+  width: 100%;
 }
 
 .layout .layout__inner .layout__content {
