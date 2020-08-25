@@ -121,27 +121,36 @@ const Header: React.FC<Props> = (props) => {
         </div>
       </div>
       <div className="icon__group">
-        <a
-          href="https://github.com/ikkei12"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src={gitIcon} className="git-icon" />
-        </a>
-        <a
-          href="https://www.instagram.com/1keiuu/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src={igIcon} className="ig-icon" />
-        </a>
-        <a
-          href=" https://www.wantedly.com/users/103088073"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src={wantedlyIcon} className="wantedly-icon" />
-        </a>
+        <div className="icon__wrapper">
+          <a
+            className="icon__link"
+            href="https://github.com/ikkei12"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={gitIcon} className="git-icon" />
+          </a>
+        </div>
+        <div className="icon__wrapper">
+          <a
+            className="icon__link"
+            href="https://www.instagram.com/1keiuu/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={igIcon} className="ig-icon" />
+          </a>
+        </div>
+        <div className="icon__wrapper">
+          <a
+            className="icon__link"
+            href="https://www.wantedly.com/users/103088073"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={wantedlyIcon} className="wantedly-icon" />
+          </a>
+        </div>
       </div>
     </nav>
   );

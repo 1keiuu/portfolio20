@@ -6,7 +6,7 @@ nav {
   align-items: flex-start;
   padding-left: 3vw;
   box-sizing: border-box;
-  z-index: 5;
+  z-index: 8;
   background: transparent;
   position: fixed;
 }
@@ -66,13 +66,31 @@ nav .icon__group {
   flex-direction: column;
 }
 
-nav .icon__group .git-icon,
-nav .icon__group .ig-icon {
+nav .icon__group .icon__wrapper {
+  padding: 9px;
   width: 18px;
+  height: 18px;
   margin-bottom: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-nav .icon__group .wantedly-icon {
+nav .icon__group .icon__wrapper:hover {
+  background: #363636;
+  transition: 0.5s;
+}
+
+nav .icon__group .icon__wrapper .icon__link {
+  display: flex;
+}
+
+nav .icon__group .icon__wrapper .icon__link .git-icon,
+nav .icon__group .icon__wrapper .icon__link .ig-icon {
+  width: 18px;
+}
+
+nav .icon__group .icon__wrapper .icon__link .wantedly-icon {
   width: 21px;
-  margin-bottom: 30px;
 }
