@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 html {
-  background: #f3f3f3;
+  background: #2a292e;
   height: 100vh;
   overflow: hidden;
-  color: #333;
+  color: #fff;
   font-family: "Roboto", sans-serif;
 }
 p {

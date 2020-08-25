@@ -21,7 +21,7 @@
   border-radius: 50%;
   width: 30px;
   height: 30px;
-  border: 1px #333 solid;
+  border: 1px #fff solid;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,7 +39,7 @@
   border-radius: 50%;
   width: 30px;
   height: 30px;
-  border: 1px #333 solid;
+  border: 1px #fff solid;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,7 +48,7 @@
 .graph .graph__upper .span-display__wrapper .graph__span {
   margin: 0;
   font-size: 18px;
-  color: #333;
+  color: #fff;
   font-weight: bold;
 }
 
@@ -60,10 +60,10 @@
   top: 0;
   right: 10px;
   outline: 0;
-  border: 1px #333 solid;
+  border: 1px #fff solid;
   border-radius: 4px;
   background: #fff;
-  color: #333;
+  color: #fff;
   font-weight: bold;
 }
 

@@ -10,7 +10,7 @@
   font-size: 24px;
   font-weight: bold;
   margin: 0;
-  color: #333;
+  color: #fff;
 }
 
 .github-title__logo {
@@ -28,9 +28,9 @@
 .github__link p {
   font-weight: bold;
   margin: 0;
-  color: #333;
+  color: #fff;
   font-size: 13px;
   margin-top: 10px;
-  color: #333;
+  color: #fff;
   text-decoration: underline;
 }

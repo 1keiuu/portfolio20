@@ -33,16 +33,16 @@ header .menu-items .menu-item__wrapper .menu-item {
 }
 
 header .menu-items .menu-item__wrapper .menu-item.--hover {
-  color: #333;
+  color: #fff;
 }
 
 header .menu-items .menu-item__wrapper .menu-item.--active {
-  color: #333;
+  color: #fff;
   pointer-events: none;
 }
 
 header .menu-items .menu-item__wrapper .underline {
-  border-bottom: 2px #333 solid;
+  border-bottom: 2px #fff solid;
   width: 0;
   opacity: 0;
   transform-origin: right;

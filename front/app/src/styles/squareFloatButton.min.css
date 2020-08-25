@@ -1,1 +1,1 @@
-.square-button{position:fixed;bottom:0;height:7vh;width:30vw;background:#333;display:flex;align-items:center;justify-content:center;border:0;outline:0;cursor:pointer}.square-button.--disabled{cursor:unset;background:grey}.square-button .square-button__text{color:#fff;font-weight:bold}
+.square-button{position:fixed;bottom:0;height:7vh;width:30vw;background:#fff;display:flex;align-items:center;justify-content:center;border:0;outline:0;cursor:pointer}.square-button.--disabled{cursor:unset;background:grey}.square-button .square-button__text{color:#fff;font-weight:bold}

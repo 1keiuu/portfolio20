@@ -3,7 +3,7 @@
   height: 100vh;
   top: 0;
   position: absolute;
-  background: #333;
+  background: #fff;
   z-index: 10;
   display: flex;
   justify-content: center;
@@ -20,7 +20,7 @@
   border-radius: 50%;
   background: #fff;
   filter: blur(3px);
-  box-shadow: -5px -5px 20px #333;
+  box-shadow: -5px -5px 20px #fff;
 }
 
 .loading__wrapper .loading__inner .loading {
@@ -53,7 +53,7 @@ canvas {
 .circle {
   position: absolute;
   filter: blur(3px);
-  background: #333;
+  background: #fff;
   width: 5vw;
   height: 5vw;
   border-radius: 50%;
@@ -62,7 +62,7 @@ canvas {
 .circle1 {
   width: 8vw;
   height: 8vw;
-  background: #333;
+  background: #fff;
   z-index: 10;
 }
 
