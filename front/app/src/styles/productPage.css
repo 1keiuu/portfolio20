@@ -1,13 +1,17 @@
-.product-page {
+.product-page__inner {
   opacity: 0;
   filter: blur(30px);
   transition: 1s;
 }
 
-.product-page-enter-done {
+.product-page__inner-enter-done {
   opacity: 1;
   filter: blur(0);
   transition: 1s;
+}
+
+.product-page {
+  padding: 0 20%;
 }
 
 .product-card {

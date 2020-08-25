@@ -59,7 +59,9 @@ interface Props extends RouteComponentProps<{}> {
 }
 
 const ProductPage: React.FC<Props> = (props) => {
+  const isFirstRenderRef = useRef(true);
   const isLoadedRef = useRef(false);
+
   const [products, setProducts] = useState<Product[]>([
     {
       id: 1,
@@ -70,24 +72,24 @@ const ProductPage: React.FC<Props> = (props) => {
       descriptions: "desc",
       skill_ids: "1,2",
     },
-    // {
-    //   id: 1,
-    //   title: "title2",
-    //   span: "2020/02~2020/07",
-    //   background_color: "#fff",
-    //   images: "https://placekitten.com/640/360",
-    //   descriptions: "desc",
-    //   skill_ids: "2,5",
-    // },
-    // {
-    //   id: 1,
-    //   title: "title3",
-    //   span: "2020/02~2020/07",
-    //   background_color: "#fff",
-    //   images: "https://placekitten.com/640/360",
-    //   descriptions: "desc",
-    //   skill_ids: "2,4",
-    // },
+    {
+      id: 1,
+      title: "title2",
+      span: "2020/02~2020/07",
+      background_color: "#fff",
+      images: "https://placekitten.com/640/360",
+      descriptions: "desc",
+      skill_ids: "2,5",
+    },
+    {
+      id: 1,
+      title: "title3",
+      span: "2020/02~2020/07",
+      background_color: "#fff",
+      images: "https://placekitten.com/640/360",
+      descriptions: "desc",
+      skill_ids: "2,4",
+    },
   ]);
 
   //swiper
@@ -163,6 +165,7 @@ const ProductPage: React.FC<Props> = (props) => {
   };
 
   useEffect(() => {
+    isFirstRenderRef.current = false;
     isLoadedRef.current = true;
 
     const PRODUCTS_URL = `${process.env.REACT_APP_API_URL}/api/products`;
@@ -182,17 +185,17 @@ const ProductPage: React.FC<Props> = (props) => {
 
   const handleReachEnd = (func: () => void) => {
     // 初回ロード時にスライドがないと見做されてcontactページへ遷移してしまうのを避ける
-    if (isLoadedRef.current) {
+    if (!isFirstRenderRef.current) {
       func();
     }
   };
   return (
     <CSSTransition
       in={isLoadedRef.current}
-      classNames="product-page"
+      classNames="product-page__inner"
       timeout={0}
     >
-      <Fade bottom delay={500}>
+      <div className="product-page__inner">
         <div className="product-page">
           <div className="slider__wrapper">
             <VerticalSlider>
@@ -210,11 +213,17 @@ const ProductPage: React.FC<Props> = (props) => {
                 }}
                 observer={true}
                 onReachBeginning={() => {
-                  props.history.push("/profile");
+                  isLoadedRef.current = false;
+                  setTimeout(() => {
+                    props.history.push("/profile");
+                  }, 500);
                 }}
                 onReachEnd={() => {
+                  isLoadedRef.current = false;
                   handleReachEnd(() => {
-                    props.history.push("/contact");
+                    setTimeout(() => {
+                      props.history.push("/contact");
+                    }, 500);
                   });
                 }}
                 onSlideChange={(swiper) => {
@@ -261,7 +270,7 @@ const ProductPage: React.FC<Props> = (props) => {
             }
           ></div>
         </div>
-      </Fade>
+      </div>
     </CSSTransition>
   );
 };
