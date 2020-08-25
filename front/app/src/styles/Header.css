@@ -24,8 +24,8 @@ header .menu-items .menu-item__wrapper {
 }
 
 header .menu-items .menu-item__wrapper .menu-item {
-  font-size: 18px;
-  color: #8a8f9b;
+  font-size: 0.9vw;
+  color: #fff;
   text-decoration: unset;
   letter-spacing: 2px;
   font-family: Roboto;
@@ -37,7 +37,7 @@ header .menu-items .menu-item__wrapper .menu-item.--hover {
 }
 
 header .menu-items .menu-item__wrapper .menu-item.--active {
-  color: #fff;
+  color: #f5a85b;
   pointer-events: none;
 }
 

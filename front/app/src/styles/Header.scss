@@ -18,8 +18,8 @@ header {
       position: relative;
       margin-right: 30px;
       .menu-item {
-        font-size: 18px;
-        color: #8a8f9b;
+        font-size: 0.9vw;
+        color: #fff;
         text-decoration: unset;
         letter-spacing: 2px;
         font-family: Roboto;
@@ -28,7 +28,7 @@ header {
           color: #fff;
         }
         &.--active {
-          color: #fff;
+          color: #f5a85b;
           pointer-events: none;
         }
       }

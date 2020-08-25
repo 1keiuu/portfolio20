@@ -17,7 +17,7 @@ interface Props extends RouteComponentProps<{}> {
   history: H.History;
 }
 
-const HOME: React.FC<Props> = (props) => {
+const Home: React.FC<Props> = (props) => {
   const getData = async () => {
     await axios
       .get("/contributions", {
@@ -70,4 +70,4 @@ const HOME: React.FC<Props> = (props) => {
   );
 };
 
-export default withRouter(HOME);
+export default withRouter(Home);

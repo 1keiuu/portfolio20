@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../styles/header.scss";
 import { CSSTransition } from "react-transition-group";
@@ -19,7 +19,7 @@ const Header: React.FC<Props> = (props) => {
             className={
               "menu-item" +
               (selectedItem == "home" ? " --hover" : "") +
-              (props.current_page == "" ? " --active" : "")
+              (props.current_page == "/" ? " --active" : "")
             }
             onMouseEnter={() => {
               setSelectedItem("home");
@@ -28,7 +28,7 @@ const Header: React.FC<Props> = (props) => {
               setSelectedItem("");
             }}
           >
-            HOME
+            Home
           </Link>
           <CSSTransition
             in={selectedItem == "home"}
@@ -45,7 +45,7 @@ const Header: React.FC<Props> = (props) => {
             className={
               "menu-item" +
               (selectedItem == "profile" ? " --hover" : "") +
-              (props.current_page == "profile" ? " --active" : "")
+              (props.current_page == "/profile" ? " --active" : "")
             }
             onMouseEnter={() => {
               setSelectedItem("profile");
@@ -54,7 +54,7 @@ const Header: React.FC<Props> = (props) => {
               setSelectedItem("");
             }}
           >
-            PROFILE
+            Profile
           </Link>
           <CSSTransition
             in={selectedItem == "profile"}
@@ -71,7 +71,7 @@ const Header: React.FC<Props> = (props) => {
             className={
               "menu-item" +
               (selectedItem == "product" ? " --hover" : "") +
-              (props.current_page == "product" ? " --active" : "")
+              (props.current_page == "/product" ? " --active" : "")
             }
             onMouseEnter={() => {
               setSelectedItem("product");
@@ -80,7 +80,7 @@ const Header: React.FC<Props> = (props) => {
               setSelectedItem("");
             }}
           >
-            PRODUCT
+            Product
           </Link>
           <CSSTransition
             in={selectedItem == "product"}
@@ -97,7 +97,7 @@ const Header: React.FC<Props> = (props) => {
             className={
               "menu-item" +
               (selectedItem == "contact" ? " --hover" : "") +
-              (props.current_page == "contact" ? " --active" : "")
+              (props.current_page == "/contact" ? " --active" : "")
             }
             onMouseEnter={() => {
               setSelectedItem("contact");
@@ -106,7 +106,7 @@ const Header: React.FC<Props> = (props) => {
               setSelectedItem("");
             }}
           >
-            CONTACT
+            Contact
           </Link>
           <CSSTransition
             in={selectedItem == "contact"}
