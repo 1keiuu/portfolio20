@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import "../../styles/profileSlide.scss";
-import profileImg from "../../images/me.png";
-import { CSSTransition } from "react-transition-group";
-const Fade = require("react-reveal/Fade");
+import React, { useState, useEffect } from 'react';
+import '../../styles/profileSlide.scss';
+import profileImg from '../../images/me.png';
+import { CSSTransition } from 'react-transition-group';
+const Fade = require('react-reveal/Fade');
 
 interface Props {
   isLoaded: boolean;
@@ -36,7 +36,7 @@ const ProfileSlide: React.FC<Props> = (props) => {
           <CSSTransition
             in={isLoadeded}
             classNames="slide-upper__text"
-            timeout={1200}
+            timeout={500}
           >
             <p className="slide-upper__text">
               慶應義塾大学経済学部3年の原島一桂です。
@@ -45,7 +45,7 @@ const ProfileSlide: React.FC<Props> = (props) => {
           <CSSTransition
             in={isLoadeded}
             classNames="slide-upper__text"
-            timeout={1500}
+            timeout={1000}
           >
             <p className="slide-upper__text">
               現在は長期インターンできる職場を探しつつ、フリーランスで知り合いの仕事(タイピングゲームの開発)を手伝ったり、個人でもWebアプリの開発をしております。
@@ -57,7 +57,7 @@ const ProfileSlide: React.FC<Props> = (props) => {
         <CSSTransition
           in={isLoadeded}
           classNames="slide-lower__text"
-          timeout={1800}
+          timeout={1500}
         >
           <p className="slide-lower__text">
             フロントエンドはJavaScript( Vue、React)、サーバーサイドはGO, Ruby,
@@ -67,7 +67,7 @@ const ProfileSlide: React.FC<Props> = (props) => {
         <CSSTransition
           in={isLoadeded}
           classNames="slide-lower__text"
-          timeout={2000}
+          timeout={1800}
         >
           <p className="slide-lower__text">
             趣味は写真を撮ること、海外旅行、芸術鑑賞、海外サッカー観戦🏴󠁧󠁢󠁥󠁮󠁧󠁿等。

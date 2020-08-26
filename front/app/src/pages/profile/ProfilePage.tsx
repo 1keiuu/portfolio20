@@ -83,14 +83,10 @@ const SkillPage: React.FC<Props> = (props) => {
         <Swiper
           slidesPerView={1}
           centeredSlides
-          speed={100}
-          freeModeMomentumRatio={0.1}
-          freeModeMomentumVelocityRatio={0.1}
+          speed={1500}
           spaceBetween={0}
           mousewheel={true}
-          freeMode
           effect="fade"
-          // initialSlide={1}
           onSwiper={(swiper) => {
             swiper.slideTo(initSlide());
           }}

@@ -1,27 +1,27 @@
-import React, { useState, useRef, useEffect } from "react";
-import VerticalSlider from "../../components/VerticalSlider";
-import SlidePagination from "../../components/SlidePagination";
-import "../../styles/productPage.scss";
-import axios from "axios";
-import SearchProductBar from "../../components/SearchProductBar";
-import GopherImage from "../../components/GopherImage";
+import React, { useState, useRef, useEffect } from 'react';
+import VerticalSlider from '../../components/VerticalSlider';
+import SlidePagination from '../../components/SlidePagination';
+import '../../styles/productPage.scss';
+import axios from 'axios';
+import SearchProductBar from '../../components/SearchProductBar';
+import GopherImage from '../../components/GopherImage';
 
 //redux
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../store";
-import { addProductsAction } from "../../store/product/actions";
-import { addSkillsAction } from "../../store/skill/actions";
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../store';
+import { addProductsAction } from '../../store/product/actions';
+import { addSkillsAction } from '../../store/skill/actions';
 //swiper
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Mousewheel } from "swiper";
-import "swiper/swiper.scss";
-import "swiper/components/pagination/pagination.scss";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Mousewheel } from 'swiper';
+import 'swiper/swiper.scss';
+import 'swiper/components/pagination/pagination.scss';
 // router
-import * as H from "history";
-import { RouteComponentProps, withRouter } from "react-router-dom";
-import { CSSTransition } from "react-transition-group";
+import * as H from 'history';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 
-const Fade = require("react-reveal/Fade");
+const Fade = require('react-reveal/Fade');
 
 SwiperCore.use([Mousewheel]);
 
@@ -61,46 +61,14 @@ const ProductPage: React.FC<Props> = (props) => {
   const isFirstRenderRef = useRef(true);
   const isLoadedRef = useRef(false);
 
-  const [products, setProducts] = useState<Product[]>([
-    {
-      id: 1,
-      title: "title1",
-      span: "2020/02~2020/07",
-      background_color: "#fff",
-      images: "https://placekitten.com/640/360",
-      descriptions: "desc",
-      skill_ids: "1,2",
-    },
-    {
-      id: 1,
-      title: "title2",
-      span: "2020/02~2020/07",
-      background_color: "#fff",
-      images: "https://placekitten.com/640/360",
-      descriptions: "desc",
-      skill_ids: "2,5",
-    },
-    {
-      id: 1,
-      title: "title3",
-      span: "2020/02~2020/07",
-      background_color: "#fff",
-      images: "https://placekitten.com/640/360",
-      descriptions: "desc",
-      skill_ids: "2,4",
-    },
-  ]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   //swiper
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState(-1);
-  const [swiper, setSwiper] = useState({
-    slideTo: (i: number) => {},
-    slideNext: () => {},
-    removeSlide: (i: number) => {},
-  });
+  const [swiper, setSwiper] = useState<SwiperCore>();
   const changeCurrentSlide = (i: number) => {
-    swiper.slideTo(i);
+    swiper!.slideTo(i);
   };
   //store
   const storeProducts = useSelector((state: RootState) => state.product);
@@ -120,7 +88,7 @@ const ProductPage: React.FC<Props> = (props) => {
     // 絞り込み機能
     selectedItems.forEach((item) => {
       const newProducts = products.filter((product) => {
-        const arr = product.skill_ids.split(",");
+        const arr = product.skill_ids.split(',');
         return arr.includes(item.id.toString());
       });
       setSelectedProducts(newProducts);
@@ -128,48 +96,63 @@ const ProductPage: React.FC<Props> = (props) => {
     setIsSideBarOpen(false);
   };
 
-  const initializeSlide = (swiper: SwiperCore) => {
-    products.forEach((product, i) => {
-      const slide = `
-      <div class="swiper-slide" id="slide${i}">
-        <img
-          class="product-card__image"
-          src=${product.images.split(",")[0]}
-        ></img>
-        <div class="product-card__title-wrapper">
-          <p class="product-card__title">${product.title}</p>
-          <p class="product-card__sub-title">${product.span}</p>
-        </div>
-      </div>`;
+  const initializeSlide = async (swiper: SwiperCore) => {
+    const PRODUCTS_URL = `${process.env.REACT_APP_API_URL}/api/products`;
 
-      swiper.addSlide(1 + i, slide);
-
-      const a = document.getElementById(String(i));
-      a?.addEventListener("mouseenter", (e) => {
-        const id = (e.target! as Element).getAttribute("id");
-        setHoveredIndex(Number(id));
-        console.log(hoveredIndex);
+    // const get = async () => {
+    //   await axios.get(PRODUCTS_URL).then((res) => {
+    //     handleAddProducts(res.data.products);
+    //     setSelectedProducts(res.data.products);
+    //     res.data.products.forEach((product: Product, i: number) => {
+    //       addSlide(product,i)
+    //     });
+    //   });
+    //   await axios.get(SKILLS_URL).then((res) => {
+    //     handleAddSkills(res.data.skills);
+    //   });
+    // };
+    await axios.get(PRODUCTS_URL).then((res) => {
+      // handleAddProducts(res.data.products);
+      // setSelectedProducts(res.data.products);
+      res.data.products.forEach((product: Product, i: number) => {
+        addSlide(swiper, product, i);
       });
+    });
+  };
+
+  const addSlide = (swiper: SwiperCore, product: Product, i: number) => {
+    const slide = `
+    <div class="swiper-slide" id="slide${i}">
+      <img
+        class="product-card__image"
+        src=${product.images.split(',')[0]}
+      ></img>
+      <div class="product-card__title-wrapper">
+        <p class="product-card__title">${product.title}</p>
+        <p class="product-card__sub-title">${product.span}</p>
+      </div>
+    </div>`;
+
+    swiper!.addSlide(1 + i, slide);
+
+    const a = document.getElementById(String(i));
+    a?.addEventListener('mouseenter', (e) => {
+      const id = (e.target! as Element).getAttribute('id');
+      setHoveredIndex(Number(id));
+      console.log(hoveredIndex);
     });
   };
 
   useEffect(() => {
     isFirstRenderRef.current = false;
     isLoadedRef.current = true;
-
-    const PRODUCTS_URL = `${process.env.REACT_APP_API_URL}/api/products`;
     const SKILLS_URL = `${process.env.REACT_APP_API_URL}/api/skills`;
-
-    const get = async () => {
-      await axios.get(PRODUCTS_URL).then((res) => {
-        handleAddProducts(res.data.products);
-        setSelectedProducts(res.data.products);
-      });
+    const getSkills = async () => {
       await axios.get(SKILLS_URL).then((res) => {
         handleAddSkills(res.data.skills);
       });
     };
-    get();
+    getSkills();
   }, []);
 
   const handleReachEnd = (func: () => void) => {
@@ -204,14 +187,14 @@ const ProductPage: React.FC<Props> = (props) => {
                 onReachBeginning={() => {
                   isLoadedRef.current = false;
                   setTimeout(() => {
-                    props.history.push("/profile");
+                    props.history.push('/profile');
                   }, 500);
                 }}
                 onReachEnd={() => {
                   isLoadedRef.current = false;
                   handleReachEnd(() => {
                     setTimeout(() => {
-                      props.history.push("/contact");
+                      props.history.push('/contact');
                     }, 500);
                   });
                 }}
@@ -253,9 +236,9 @@ const ProductPage: React.FC<Props> = (props) => {
               setIsSideBarOpen(false);
             }}
             className={
-              "search-product__background" +
-              " " +
-              (isSideBarOpen ? "--active" : "")
+              'search-product__background' +
+              ' ' +
+              (isSideBarOpen ? '--active' : '')
             }
           ></div>
         </div>
