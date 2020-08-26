@@ -15,17 +15,17 @@ jobs:
           paths:
             - .git
       - restore_cache:
-          key: v1-npm-deps-{{ checksum "front/package.json" }}
+          key: v1-npm-deps-{{ checksum "front/app/package.json" }}
       - run:
-          working_directory: front
+          working_directory: front/app
           command: npm install
       - save_cache:
-          key: v1-npm-deps-{{ checksum "front/package.json" }}
+          key: v1-npm-deps-{{ checksum "front/app/package.json" }}
           paths:
             - node_modules
       - run:
           name: lint
-          working_directory: front
+          working_directory: front/app
           command: |
             mkdir -p /tmp/test-reports/eslint
             node_modules/.bin/eslint . --format junit --output-file /tmp/test-reports/eslint/results.xml
