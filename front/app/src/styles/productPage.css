@@ -2,7 +2,7 @@
   opacity: 0;
   filter: blur(50px);
   transform: perspective(50px) translateZ(50px);
-  transition: 1s;
+  transition: 2s;
 }
 
 .product-page__inner-enter-done {

@@ -81,7 +81,7 @@ func updateTodaysContribution(count int, date string) {
 		panic(err.Error())
 	}
 	defer db.Close()
-	// ?入れてるのはSQL injectionを防ぐ為 → timestampもそうするべき？
+	// ?入れてるのはSQL injectionを防ぐ為
 	stmtInsert, err := db.Prepare("UPDATE contributions SET count=? WHERE date=?")
 	if err != nil {
 		panic(err.Error())

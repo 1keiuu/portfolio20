@@ -1,12 +1,16 @@
 .contact-page {
   height: 100vh;
+  box-sizing: border-box;
   opacity: 0;
-  transition: 1s;
+  filter: blur(50px);
+  transform: perspective(50px) translateZ(50px);
+  transition: 2s;
   padding: 30%;
 }
 
 .contact-page-enter-done {
   opacity: 1;
-
+  filter: blur(0);
+  transform: perspective(50px) translateZ(0);
   transition: 1s;
 }
