@@ -1,27 +1,28 @@
-import React, { useState, useRef, useEffect } from "react";
-import "../../styles/ProfilePage.scss";
-import axios from "../../plugin/axios/index";
-import ProgressBar from "../../components/ProgressBar";
-import ProfileSlide from "./ProfileSlide";
-import CareerSlide from "./CareerSlide";
-import SkillSlide from "./SkillSlide";
-import GithubSlide from "./GithubSlide";
+import React, { useState, useRef, useEffect } from 'react';
+import '../../styles/ProfilePage.scss';
+import axios from '../../plugin/axios/index';
+import ProgressBar from '../../components/ProgressBar';
+import ProfileSlide from './ProfileSlide';
+import CareerSlide from './CareerSlide';
+import SkillSlide from './SkillSlide';
+import GithubSlide from './GithubSlide';
 // router
-import * as H from "history";
-import { RouteComponentProps, withRouter } from "react-router-dom";
+import * as H from 'history';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 // swiper
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Mousewheel } from "swiper";
-import "swiper/swiper.scss";
-import "swiper/components/pagination/pagination.scss";
-import { CSSTransition } from "react-transition-group";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Mousewheel } from 'swiper';
+import 'swiper/swiper.scss';
+import 'swiper/components/pagination/pagination.scss';
+import { CSSTransition } from 'react-transition-group';
 
-const Fade = require("react-reveal/Fade");
+const Fade = require('react-reveal/Fade');
 
 SwiperCore.use([Mousewheel]);
 
 interface Props extends RouteComponentProps<{}> {
   history: H.History;
+  params: string;
 }
 
 const SkillPage: React.FC<Props> = (props) => {
@@ -37,8 +38,8 @@ const SkillPage: React.FC<Props> = (props) => {
     setIsLoad(true);
 
     const fetchData = async () => {
-      const res = await axios.get("/contributions", {
-        headers: { "Content-Type": "application/json" },
+      const res = await axios.get('/contributions', {
+        headers: { 'Content-Type': 'application/json' },
       });
       setContributions(res.data);
       console.log(res.data);
@@ -47,13 +48,12 @@ const SkillPage: React.FC<Props> = (props) => {
     fetchData();
   }, []);
   const initSlide = () => {
-    const params = window.location.pathname.replace("/profile/", "");
-    switch (params) {
-      case "career":
+    switch (props.params) {
+      case 'career':
         return 2;
-      case "skill":
+      case 'skill':
         return 3;
-      case "github":
+      case 'github':
         return 4;
       default:
         return 1;
@@ -63,16 +63,16 @@ const SkillPage: React.FC<Props> = (props) => {
     setCurrentIndex(swiper.activeIndex);
     switch (swiper.activeIndex) {
       case 2:
-        window.history.pushState(null, "", "/profile/career");
+        window.history.pushState(null, '', '/profile/career');
         break;
       case 3:
-        window.history.pushState(null, "", "/profile/skill");
+        window.history.pushState(null, '', '/profile/skill');
         break;
       case 4:
-        window.history.pushState(null, "", "/profile/github");
+        window.history.pushState(null, '', '/profile/github');
         break;
       case 1:
-        window.history.pushState(null, "", "/profile");
+        window.history.pushState(null, '', '/profile');
         break;
     }
   };
@@ -90,25 +90,26 @@ const SkillPage: React.FC<Props> = (props) => {
           effect="fade"
           initialSlide={1}
           onSwiper={(swiper) => {
+            console.log(initSlide());
             swiper.slideTo(initSlide());
           }}
           onReachBeginning={() => {
             // index=0(空)のスライドに到達したらホームへ
             setIsLoad(false);
             setTimeout(() => {
-              props.history.push("/");
+              props.history.push('/');
             }, 500);
           }}
           onSlideChange={(swiper) => {
             if (swiper.activeIndex >= 5) {
               setIsLoad(false);
               setTimeout(() => {
-                props.history.push("/product");
+                props.history.push('/product');
               }, 500);
             } else if (swiper.activeIndex <= 0) {
               setIsLoad(false);
               setTimeout(() => {
-                props.history.push("/");
+                props.history.push('/');
               }, 500);
             }
             handleChangeSlide(swiper);

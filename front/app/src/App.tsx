@@ -13,13 +13,18 @@ import ContactPage from './pages/contact/ContactPage';
 type PageProps = {};
 
 const App: React.FC<PageProps> = () => {
+  const page_params = window.location.pathname.replace('/profile/', '');
+
   return (
     <div className="App">
       <Router>
         <Route>
           <Layout>
             <Route exact path="/" render={() => <Home />}></Route>
-            <Route path="/profile" render={() => <ProfilePage />}></Route>
+            <Route
+              path="/profile"
+              render={() => <ProfilePage params={page_params} />}
+            ></Route>
             <Route path="/product" render={() => <ProductPage />}></Route>
             <Route path="/contact" render={() => <ContactPage />}></Route>
           </Layout>
