@@ -22,7 +22,6 @@ SwiperCore.use([Mousewheel]);
 
 interface Props extends RouteComponentProps<{}> {
   history: H.History;
-  params: string;
 }
 
 const SkillPage: React.FC<Props> = (props) => {
@@ -48,7 +47,8 @@ const SkillPage: React.FC<Props> = (props) => {
     fetchData();
   }, []);
   const initSlide = () => {
-    switch (props.params) {
+    const params = props.location.pathname.replace('/profile/', '');
+    switch (params) {
       case 'career':
         return 2;
       case 'skill':
@@ -84,13 +84,14 @@ const SkillPage: React.FC<Props> = (props) => {
           slidesPerView={1}
           centeredSlides
           speed={100}
+          freeModeMomentumRatio={0.1}
+          freeModeMomentumVelocityRatio={0.1}
           spaceBetween={0}
           mousewheel={true}
           freeMode
           effect="fade"
-          initialSlide={1}
+          // initialSlide={1}
           onSwiper={(swiper) => {
-            console.log(initSlide());
             swiper.slideTo(initSlide());
           }}
           onReachBeginning={() => {
