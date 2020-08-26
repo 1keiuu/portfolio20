@@ -1,14 +1,14 @@
-import React from "react";
-import "./App.scss";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Layout from "./components/Layout";
-import AdminSignIn from "./pages/admin/SignIn";
-import AdminHome from "./pages/admin/Home";
-import AdminProduct from "./pages/admin/Product";
-import Home from "./pages/home/Home";
-import ProfilePage from "./pages/profile/ProfilePage";
-import ProductPage from "./pages/product/ProductPage";
-import ContactPage from "./pages/contact/ContactPage";
+import React from 'react';
+import './App.scss';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import AdminSignIn from './pages/admin/SignIn';
+import AdminHome from './pages/admin/Home';
+import AdminProduct from './pages/admin/Product';
+import Home from './pages/home/Home';
+import ProfilePage from './pages/profile/ProfilePage';
+import ProductPage from './pages/product/ProductPage';
+import ContactPage from './pages/contact/ContactPage';
 
 type PageProps = {};
 
