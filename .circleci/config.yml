@@ -16,13 +16,16 @@ jobs:
             - .git
       - restore_cache:
           key: v1-npm-deps-{{ checksum "package.json" }}
-      - run: npm install
+      - run: 
+        working_directory: front
+        npm install
       - save_cache:
           key: v1-npm-deps-{{ checksum "package.json" }}
           paths:
             - node_modules
       - run:
           name: lint
+          working_directory: front
           command: |
             mkdir -p /tmp/test-reports/eslint
             node_modules/.bin/eslint . --format junit --output-file /tmp/test-reports/eslint/results.xml
