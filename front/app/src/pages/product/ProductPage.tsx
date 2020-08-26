@@ -96,24 +96,12 @@ const ProductPage: React.FC<Props> = (props) => {
     setIsSideBarOpen(false);
   };
 
-  const initializeSlide = async (swiper: SwiperCore) => {
+  const fetchProducts = async (swiper: SwiperCore) => {
     const PRODUCTS_URL = `${process.env.REACT_APP_API_URL}/api/products`;
 
-    // const get = async () => {
-    //   await axios.get(PRODUCTS_URL).then((res) => {
-    //     handleAddProducts(res.data.products);
-    //     setSelectedProducts(res.data.products);
-    //     res.data.products.forEach((product: Product, i: number) => {
-    //       addSlide(product,i)
-    //     });
-    //   });
-    //   await axios.get(SKILLS_URL).then((res) => {
-    //     handleAddSkills(res.data.skills);
-    //   });
-    // };
     await axios.get(PRODUCTS_URL).then((res) => {
-      // handleAddProducts(res.data.products);
-      // setSelectedProducts(res.data.products);
+      handleAddProducts(res.data.products);
+      setProducts(res.data.products);
       res.data.products.forEach((product: Product, i: number) => {
         addSlide(swiper, product, i);
       });
@@ -147,12 +135,12 @@ const ProductPage: React.FC<Props> = (props) => {
     isFirstRenderRef.current = false;
     isLoadedRef.current = true;
     const SKILLS_URL = `${process.env.REACT_APP_API_URL}/api/skills`;
-    const getSkills = async () => {
+    const fetchSkills = async () => {
       await axios.get(SKILLS_URL).then((res) => {
         handleAddSkills(res.data.skills);
       });
     };
-    getSkills();
+    fetchSkills();
   }, []);
 
   const handleReachEnd = (func: () => void) => {
@@ -181,7 +169,7 @@ const ProductPage: React.FC<Props> = (props) => {
                 initialSlide={1}
                 onSwiper={(swiper) => {
                   setSwiper(swiper);
-                  initializeSlide(swiper);
+                  fetchProducts(swiper);
                 }}
                 observer={true}
                 onReachBeginning={() => {
