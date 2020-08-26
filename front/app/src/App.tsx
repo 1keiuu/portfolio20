@@ -10,6 +10,8 @@ import ProfilePage from './pages/profile/ProfilePage';
 import ProductPage from './pages/product/ProductPage';
 import ContactPage from './pages/contact/ContactPage';
 
+var hoge = null;
+
 type PageProps = {};
 
 const App: React.FC<PageProps> = () => {
