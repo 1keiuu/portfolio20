@@ -17,8 +17,8 @@ jobs:
       - restore_cache:
           key: v1-npm-deps-{{ checksum "package.json" }}
       - run:
-        working_directory: front
-        command: npm install
+          working_directory: front
+          command: npm install
       - save_cache:
           key: v1-npm-deps-{{ checksum "package.json" }}
           paths:
