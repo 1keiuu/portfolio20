@@ -1,16 +1,17 @@
-.product-page__inner {
+.products-index__inner {
   opacity: 0;
   filter: blur(50px);
   transform: perspective(50px) translateZ(50px);
   transition: 2s;
+  height: 100%;
 }
-.product-page__inner-enter-done {
+.products-index__inner-enter-done {
   opacity: 1;
   filter: blur(0);
   transform: perspective(50px) translateZ(0);
   transition: 1s;
 }
-.product-page {
+.products-index {
   padding-left: 20%;
   .slider__wrapper {
     display: flex;

@@ -71,7 +71,6 @@ const ProductsIndex: React.FC<Props> = (props) => {
 
   //swiper
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [hoveredIndex, setHoveredIndex] = useState(-1);
   const [swiper, setSwiper] = useState<SwiperCore>();
   const changeCurrentSlide = (i: number) => {
     swiper!.slideTo(i);
@@ -162,13 +161,13 @@ const ProductsIndex: React.FC<Props> = (props) => {
   return (
     <CSSTransition
       in={isLoadedRef.current}
-      classNames="product-page__inner"
+      classNames="products-index__inner"
       timeout={0}
     >
-      <div className="product-page__inner">
+      <div className="products-index__inner">
         <Switch>
           <Route exact path="/product">
-            <div className="product-page">
+            <div className="products-index">
               <div className="slider__wrapper">
                 <VerticalSlider>
                   <Swiper
