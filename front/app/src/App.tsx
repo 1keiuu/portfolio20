@@ -7,7 +7,7 @@ import AdminHome from './pages/admin/Home';
 import AdminProduct from './pages/admin/Product';
 import Home from './pages/home/Home';
 import ProfilePage from './pages/profile/ProfilePage';
-import ProductPage from './pages/product/ProductPage';
+import ProductsIndex from './pages/product/ProductsIndex';
 import ContactPage from './pages/contact/ContactPage';
 
 type PageProps = {};
@@ -20,7 +20,7 @@ const App: React.FC<PageProps> = () => {
           <Layout>
             <Route exact path="/" render={() => <Home />}></Route>
             <Route path="/profile" render={() => <ProfilePage />}></Route>
-            <Route path="/product" render={() => <ProductPage />}></Route>
+            <Route path="/product" render={() => <ProductsIndex />}></Route>
             <Route path="/contact" render={() => <ContactPage />}></Route>
           </Layout>
         </Route>

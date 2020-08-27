@@ -8,6 +8,11 @@
   padding: 30%;
 }
 
+.contact-page .contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
 .contact-page-enter-done {
   opacity: 1;
   filter: blur(0);

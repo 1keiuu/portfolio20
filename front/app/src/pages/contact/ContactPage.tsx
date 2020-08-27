@@ -60,21 +60,25 @@ const ContactPage: React.FC<Props> = (props) => {
           onSubmit={(e) => {
             handleSubmit(e);
           }}
+          className="contact-form"
         >
           <input
             value={email}
+            placeholder="email"
             onChange={(e) => {
               setEmail(e.target.value);
             }}
           ></input>
           <input
             value={name}
+            placeholder="name"
             onChange={(e) => {
               setName(e.target.value);
             }}
           ></input>
           <textarea
             value={content}
+            placeholder="content"
             onChange={(e) => {
               setContent(e.target.value);
             }}

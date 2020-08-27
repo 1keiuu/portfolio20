@@ -6,6 +6,10 @@
   transform: perspective(50px) translateZ(50px);
   transition: 2s;
   padding: 30%;
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .contact-page-enter-done {
