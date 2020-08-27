@@ -8,6 +8,4 @@ scraping/go.sum
 web/go.sum
 web/work
 scraping/app
-web/work
-web/work
-web/work
+web/credentials.json
