@@ -3,6 +3,7 @@ import * as H from 'history';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import '../../styles/contactPage.scss';
 import { CSSTransition } from 'react-transition-group';
+import axios from 'axios';
 const Fade = require('react-reveal/Fade');
 
 interface Props extends RouteComponentProps<{}> {
@@ -36,7 +37,20 @@ const ContactPage: React.FC<Props> = (props) => {
   const [content, setContent] = useState('');
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    console.log(email, name, content);
+    const Contact_URL = `${process.env.REACT_APP_API_URL}/api/contacts`;
+    const params = {
+      email: email,
+      name: name,
+      content: content,
+    };
+    axios
+      .post(Contact_URL, params)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
     e.preventDefault();
   };
   return (
