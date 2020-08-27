@@ -63,10 +63,15 @@
 .product-page .section {
   transform: translateY(100px);
   opacity: 0;
+  margin-top: 70px;
 }
 
 .product-page .section-enter-done {
   transition: 1s;
   transform: translateY(0);
   opacity: 1;
+}
+
+.product-page .section-enter-done.--first-load {
+  transition-delay: 1s;
 }

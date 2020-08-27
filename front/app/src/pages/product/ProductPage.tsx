@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import '../../styles/productPage.scss';
 import { withRouter, RouteComponentProps } from 'react-router';
 import { CSSTransition } from 'react-transition-group';
+const VisibilitySensor = require('react-visibility-sensor').default;
 interface Product {
   id: number;
   title: string;
@@ -13,6 +14,28 @@ interface Product {
 }
 
 interface Props extends RouteComponentProps<{}> {}
+
+const Section = (
+  image: string,
+  description: string,
+  index: number,
+  isVisible: boolean
+) => {
+  console.log(isVisible);
+  return (
+    <CSSTransition
+      in={isVisible}
+      classNames="section"
+      timeout={2000 + 500 * index}
+    >
+      <div className={'section ' + 'section' + index}>
+        <img src={image}></img>
+        <p>{description}</p>
+      </div>
+    </CSSTransition>
+  );
+};
+
 const ProductPage: React.FC<Props> = (props) => {
   const state: any = props.location.state;
   const product: Product = state!.product;
@@ -20,9 +43,13 @@ const ProductPage: React.FC<Props> = (props) => {
   const descriptions = product.descriptions.split(',');
 
   const [isLoaded, setIsloaded] = useState(false);
+  const isFirstLoad = useRef(true);
   useEffect(() => {
     setIsloaded(true);
     console.log(product);
+    setTimeout(() => {
+      isFirstLoad.current = false;
+    }, 1000);
   }, [props]);
   return (
     <div className="product-page">
@@ -43,16 +70,25 @@ const ProductPage: React.FC<Props> = (props) => {
         </div>
         {images.map((image, i) => {
           return (
-            <CSSTransition
-              in={isLoaded}
-              classNames="section"
-              timeout={2000 + 500 * i}
-            >
-              <div className={'section ' + 'section' + i}>
-                <img src={image}></img>
-                <p>{descriptions[i]}</p>
-              </div>
-            </CSSTransition>
+            <VisibilitySensor partialVisibility>
+              {({ isVisible }: any) => (
+                <div
+                  className={
+                    'section' +
+                    ' ' +
+                    'section' +
+                    i +
+                    ' ' +
+                    (isVisible ? 'section-enter-done' : '') +
+                    ' ' +
+                    (isFirstLoad.current ? '--first-load' : '')
+                  }
+                >
+                  <img src={image}></img>
+                  <p>{descriptions[i]}</p>
+                </div>
+              )}
+            </VisibilitySensor>
           );
         })}
       </div>

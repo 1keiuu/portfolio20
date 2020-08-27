@@ -53,10 +53,14 @@
   .section {
     transform: translateY(100px);
     opacity: 0;
+    margin-top: 70px;
   }
   .section-enter-done {
     transition: 1s;
     transform: translateY(0);
     opacity: 1;
+    &.--first-load {
+      transition-delay: 1s;
+    }
   }
 }
