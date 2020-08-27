@@ -66,7 +66,9 @@ const ProductPage: React.FC<Props> = (props) => {
           <CSSTransition in={isLoaded} classNames="title" timeout={1500}>
             <p className="title">{product.title}</p>
           </CSSTransition>
-          <div className="title__cover"></div>
+          <CSSTransition in={isLoaded} classNames="title__cover" timeout={1500}>
+            <div className="title__cover"></div>
+          </CSSTransition>
         </div>
         {images.map((image, i) => {
           return (
@@ -91,6 +93,9 @@ const ProductPage: React.FC<Props> = (props) => {
             </VisibilitySensor>
           );
         })}
+        <div className="skill-section">
+          <div className="skill-section__inner"></div>
+        </div>
       </div>
     </div>
   );
