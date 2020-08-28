@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import '../../styles/productPage.scss';
 import { withRouter, RouteComponentProps } from 'react-router';
 import { CSSTransition } from 'react-transition-group';
+import CrossIcon from '../../components/CrossIcon';
 const VisibilitySensor = require('react-visibility-sensor').default;
 interface Product {
   id: number;
@@ -42,16 +43,32 @@ const ProductPage: React.FC<Props> = (props) => {
       >
         <div className="product-page__curtain"> </div>
       </CSSTransition>
-
       <div className="product-page__content">
         <div className="title__wrapper">
-          <CSSTransition in={isLoaded} classNames="title" timeout={1500}>
-            <p className="title">{product.title}</p>
+          <CSSTransition in={isLoaded} classNames="title__inner" timeout={1500}>
+            <div className="title__inner">
+              <p className="title">{product.title}</p>
+              <p className="span">{product.span}</p>
+              <button
+                className="close-button"
+                onClick={() => {
+                  props.history.push({
+                    pathname: '/product',
+                  });
+                }}
+              >
+                <span className="close-button__inner">
+                  <CrossIcon></CrossIcon>
+                </span>
+                {/* <p className="close-button__text">C</p> */}
+              </button>
+            </div>
           </CSSTransition>
           <CSSTransition in={isLoaded} classNames="title__cover" timeout={1500}>
             <div className="title__cover"></div>
           </CSSTransition>
         </div>
+
         {images.map((image, i) => {
           return (
             <VisibilitySensor partialVisibility>
@@ -69,7 +86,9 @@ const ProductPage: React.FC<Props> = (props) => {
                   }
                 >
                   <img src={image}></img>
-                  <p>{descriptions[i]}</p>
+                  <div>
+                    <p className="description">{descriptions[i]}</p>
+                  </div>
                 </div>
               )}
             </VisibilitySensor>

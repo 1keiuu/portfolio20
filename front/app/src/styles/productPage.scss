@@ -1,6 +1,10 @@
 .product-page {
   width: 100%;
   height: 100%;
+  p {
+    text-align: start;
+    color: #333;
+  }
   .product-page__curtain {
     width: 100vw;
     height: 100vh;
@@ -18,22 +22,27 @@
     box-sizing: border-box;
     .title__wrapper {
       position: relative;
-      .title {
-        font-size: 2vw;
+
+      .title__inner {
         position: absolute;
-        font-weight: bold;
-        top: 0;
-        left: 50%;
         opacity: 0;
+        top: 0;
+        left: 20vw;
       }
-      .title-enter-done {
+      .title__inner-enter-done {
         transition: 1s;
-        top: -50px;
+        top: -100px;
         opacity: 1;
+        .title {
+          font-size: 3vw;
+          font-weight: bold;
+        }
+        .span {
+        }
       }
       .title__cover {
         z-index: 5;
-        height: 50px;
+        height: 75px;
         width: 100%;
         top: 0;
         position: absolute;
@@ -42,7 +51,6 @@
       }
       .title__cover-enter-done {
         opacity: 1;
-        // transition-delay: 1s;
       }
     }
     @keyframes slideCurtain {
@@ -53,11 +61,38 @@
         top: 0%;
       }
     }
+    .close-button {
+      position: fixed;
+      right: 5vw;
+      top: 5vw;
+      border-radius: 50%;
+      width: 4vw;
+      height: 4vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      outline: 0;
+      border: 0;
+      cursor: pointer;
+      background: transparent;
+      &:hover {
+        background: rgb(230, 232, 235);
+        transition: 0.6s;
+      }
+      .close-button__inner {
+        width: 40%;
+      }
+      .close-button__text {
+      }
+    }
   }
   .section {
     transform: translateY(60px);
     opacity: 0;
     margin-top: 70px;
+    .description {
+      color: #333;
+    }
   }
   .section-enter-done {
     transition: 1s;

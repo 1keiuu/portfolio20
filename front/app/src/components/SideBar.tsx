@@ -179,7 +179,11 @@ const Sidebar: React.FC<Props> = (props) => {
         </div>
       </div>
       <div className="icon__group">
-        <div className="icon__wrapper">
+        <div
+          className={
+            'icon__wrapper' + ' ' + (props.is_product_page ? '--white' : '')
+          }
+        >
           <a
             className="icon__link"
             href="https://github.com/ikkei12"
@@ -193,7 +197,11 @@ const Sidebar: React.FC<Props> = (props) => {
             )}
           </a>
         </div>
-        <div className="icon__wrapper">
+        <div
+          className={
+            'icon__wrapper' + ' ' + (props.is_product_page ? '--white' : '')
+          }
+        >
           <a
             className="icon__link"
             href="https://www.instagram.com/1keiuu/"
@@ -207,7 +215,11 @@ const Sidebar: React.FC<Props> = (props) => {
             )}
           </a>
         </div>
-        <div className="icon__wrapper">
+        <div
+          className={
+            'icon__wrapper' + ' ' + (props.is_product_page ? '--white' : '')
+          }
+        >
           <a
             className="icon__link"
             href="https://www.wantedly.com/users/103088073"

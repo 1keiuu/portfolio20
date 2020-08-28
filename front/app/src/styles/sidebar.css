@@ -96,10 +96,16 @@ nav .icon__group .icon__wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 nav .icon__group .icon__wrapper:hover {
   background: #363636;
+  transition: 0.5s;
+}
+
+nav .icon__group .icon__wrapper.--white:hover {
+  background: #dbdbdb;
   transition: 0.5s;
 }
 

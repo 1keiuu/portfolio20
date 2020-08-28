@@ -83,9 +83,16 @@ nav {
       display: flex;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
       &:hover {
         background: rgb(54, 54, 54);
         transition: 0.5s;
+      }
+      &.--white {
+        &:hover {
+          background: rgb(219, 219, 219);
+          transition: 0.5s;
+        }
       }
       .icon__link {
         display: flex;
