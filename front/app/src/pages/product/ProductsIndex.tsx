@@ -150,7 +150,7 @@ const ProductsIndex: React.FC<Props> = (props) => {
       });
     };
     fetchSkills();
-  }, []);
+  }, [props]);
 
   const handleReachEnd = (func: () => void) => {
     // 初回ロード時にスライドがないと見做されてcontactページへ遷移してしまうのを避ける
@@ -189,8 +189,9 @@ const ProductsIndex: React.FC<Props> = (props) => {
                         props.history.push('/profile');
                       }, 500);
                     }}
-                    onReachEnd={() => {
+                    onReachEnd={(swiper) => {
                       isLoadedRef.current = false;
+                      if (swiper?.activeIndex == 0) return;
                       handleReachEnd(() => {
                         setTimeout(() => {
                           props.history.push('/contact');

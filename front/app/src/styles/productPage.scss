@@ -75,6 +75,7 @@
       border: 0;
       cursor: pointer;
       background: transparent;
+      transition: 0.6s;
       &:hover {
         background: rgb(230, 232, 235);
         transition: 0.6s;

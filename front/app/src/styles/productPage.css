@@ -86,6 +86,7 @@
   border: 0;
   cursor: pointer;
   background: transparent;
+  transition: 0.6s;
 }
 
 .product-page .product-page__content .close-button:hover {
