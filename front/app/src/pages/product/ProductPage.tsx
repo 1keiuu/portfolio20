@@ -15,27 +15,6 @@ interface Product {
 
 interface Props extends RouteComponentProps<{}> {}
 
-const Section = (
-  image: string,
-  description: string,
-  index: number,
-  isVisible: boolean
-) => {
-  console.log(isVisible);
-  return (
-    <CSSTransition
-      in={isVisible}
-      classNames="section"
-      timeout={2000 + 500 * index}
-    >
-      <div className={'section ' + 'section' + index}>
-        <img src={image}></img>
-        <p>{description}</p>
-      </div>
-    </CSSTransition>
-  );
-};
-
 const ProductPage: React.FC<Props> = (props) => {
   const state: any = props.location.state;
   const product: Product = state!.product;
@@ -46,7 +25,6 @@ const ProductPage: React.FC<Props> = (props) => {
   const isFirstLoad = useRef(true);
   useEffect(() => {
     setIsloaded(true);
-    console.log(product);
     setTimeout(() => {
       isFirstLoad.current = false;
     }, 1000);
