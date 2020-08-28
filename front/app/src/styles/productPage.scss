@@ -10,7 +10,7 @@
     height: 100vh;
     position: absolute;
     background: #fff;
-    z-index: 0;
+    z-index: -1;
   }
   .product-page__curtain-enter-done {
     animation: slideCurtain 0.7s;
@@ -22,35 +22,57 @@
     box-sizing: border-box;
     .title__wrapper {
       position: relative;
+      height: 5vh;
+      margin-top: 70px;
+      padding-left: 15vw;
 
       .title__inner {
-        position: absolute;
         opacity: 0;
-        top: 0;
-        left: 20vw;
+        margin-bottom: 3vh;
       }
       .title__inner-enter-done {
-        transition: 1s;
-        top: -100px;
         opacity: 1;
         .title {
-          font-size: 3vw;
+          font-size: 4vh;
+          line-height: 4vh;
           font-weight: bold;
+          transition: transform 0.7s ease-in;
+          transform: translateY(-4vh);
         }
-        .span {
+        .title__cover {
+          z-index: 5;
+          height: 100%;
+          width: 100%;
+          top: 0;
+          position: absolute;
+          background: #fff;
         }
       }
-      .title__cover {
-        z-index: 5;
-        height: 75px;
-        width: 100%;
-        top: 0;
-        position: absolute;
-        background: #fff;
+      .span__inner {
         opacity: 0;
+        height: 2vh;
+        position: relative;
+        transform: translateY(-4vh);
+        z-index: 8;
       }
-      .title__cover-enter-done {
+      .span__inner-enter-done {
         opacity: 1;
+        .span {
+          z-index: 6;
+          font-size: 2vh;
+          line-height: 2vh;
+          font-weight: bold;
+          transition: transform 0.7s ease-in;
+          transform: translateY(-2vh);
+        }
+        .span__cover {
+          z-index: 7;
+          height: 100%;
+          width: 100%;
+          top: 0;
+          position: absolute;
+          background: #fff;
+        }
       }
     }
     @keyframes slideCurtain {
@@ -66,6 +88,7 @@
       right: 5vw;
       top: 5vw;
       border-radius: 50%;
+      z-index: 8;
       width: 4vw;
       height: 4vw;
       display: flex;
@@ -82,23 +105,76 @@
       }
       .close-button__inner {
         width: 40%;
+        display: flex;
       }
       .close-button__text {
       }
     }
   }
+
+  :nth-child(2n) {
+    // section一つ目
+    &.section {
+      align-items: flex-start;
+    }
+  }
+
+  :nth-child(2n + 1) {
+    &.section {
+      align-items: flex-end;
+
+      .section__description-background {
+        left: -10vw;
+        bottom: 0;
+      }
+    }
+  }
+
   .section {
-    transform: translateY(60px);
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 15vw;
     opacity: 0;
-    margin-top: 70px;
-    .description {
-      color: #333;
+    .section__image {
+      width: 80%;
+    }
+    .description__wrapper {
+      background: #fff;
+      margin: 10vw 5vw 3vw;
+      .description {
+        position: relative;
+        height: 3vh;
+        margin-bottom: 1vh;
+        .description__text {
+          color: #333;
+          font-size: 2vw;
+          text-align: start;
+          transform: translateY(0);
+          &.--active {
+            transition: 1s ease-in;
+            transform: translateY(-3vh);
+          }
+          &.--first-load {
+            transition-delay: 1s;
+          }
+        }
+        .description__cover {
+          position: absolute;
+          background: #fff;
+          height: 100%;
+          width: 100%;
+          top: 0;
+          left: 0;
+        }
+      }
     }
   }
   .section-enter-done {
     transition: 1s;
-    transform: translateY(0);
+    // transform: translateY(0);
     opacity: 1;
+
     &.--first-load {
       transition-delay: 1s;
     }
@@ -120,7 +196,6 @@
     .skill-card {
       width: 20vw;
       height: 20vw;
-      background: #fff;
       border-radius: 5px;
       margin-right: 5vw;
       display: flex;

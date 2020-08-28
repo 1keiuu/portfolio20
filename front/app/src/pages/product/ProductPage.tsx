@@ -48,25 +48,28 @@ const ProductPage: React.FC<Props> = (props) => {
           <CSSTransition in={isLoaded} classNames="title__inner" timeout={1500}>
             <div className="title__inner">
               <p className="title">{product.title}</p>
-              <p className="span">{product.span}</p>
-              <button
-                className="close-button"
-                onClick={() => {
-                  props.history.push({
-                    pathname: '/product',
-                  });
-                }}
-              >
-                <span className="close-button__inner">
-                  <CrossIcon></CrossIcon>
-                </span>
-                {/* <p className="close-button__text">C</p> */}
-              </button>
+              <div className="title__cover"></div>
             </div>
           </CSSTransition>
-          <CSSTransition in={isLoaded} classNames="title__cover" timeout={1500}>
-            <div className="title__cover"></div>
+          <CSSTransition in={isLoaded} classNames="span__inner" timeout={1500}>
+            <div className="span__inner">
+              <p className="span">{product.span}</p>
+              <div className="span__cover"></div>
+            </div>
           </CSSTransition>
+
+          <button
+            className="close-button"
+            onClick={() => {
+              props.history.push({
+                pathname: '/product',
+              });
+            }}
+          >
+            <span className="close-button__inner">
+              <CrossIcon></CrossIcon>
+            </span>
+          </button>
         </div>
 
         {images.map((image, i) => {
@@ -85,9 +88,26 @@ const ProductPage: React.FC<Props> = (props) => {
                     (isFirstLoad.current ? '--first-load' : '')
                   }
                 >
-                  <img src={image}></img>
-                  <div>
-                    <p className="description">{descriptions[i]}</p>
+                  <img className="section__image" src={image}></img>
+                  <div className="description__wrapper">
+                    {descriptions[i].split(',').map((description) => {
+                      return (
+                        <div className="description">
+                          <p
+                            className={
+                              'description__text' +
+                              ' ' +
+                              (isVisible ? '--active' : '') +
+                              ' ' +
+                              (isFirstLoad.current ? '--first-load' : '')
+                            }
+                          >
+                            {description}
+                          </p>
+                          <span className="description__cover"></span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}
