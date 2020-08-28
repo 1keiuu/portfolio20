@@ -17,6 +17,10 @@ nav .sidebar__title {
   text-align: start;
 }
 
+nav .sidebar__title.--black {
+  color: #333;
+}
+
 nav .menu-items {
   display: flex;
   flex-direction: column;
@@ -32,12 +36,19 @@ nav .menu-items .menu-item__wrapper {
 }
 
 nav .menu-items .menu-item__wrapper .menu-item {
-  font-size: 15px;
-  color: #fff;
   text-decoration: unset;
+  font-size: 15px;
   letter-spacing: 2px;
   font-family: Roboto;
   font-weight: bold;
+}
+
+nav .menu-items .menu-item__wrapper .menu-item .menu-item__text {
+  color: #fff;
+}
+
+nav .menu-items .menu-item__wrapper .menu-item .menu-item__text.--black {
+  color: #333;
 }
 
 nav .menu-items .menu-item__wrapper .menu-item.--hover {
@@ -56,6 +67,10 @@ nav .menu-items .menu-item__wrapper .underline {
   transform-origin: right;
   transition: 0.5s cubic-bezier(0.55, 0, 0.15, 1);
   position: absolute;
+}
+
+nav .menu-items .menu-item__wrapper .underline.--black {
+  border-bottom: 2px #333 solid;
 }
 
 nav .menu-items .menu-item__wrapper .underline-enter-done {

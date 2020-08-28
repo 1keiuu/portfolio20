@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import "../styles/sidebar.scss";
-import PageTitle from "./PageTitle";
-import igIcon from "../images/ig-icon.png";
-import wantedlyIcon from "../images/wantedly_mark.png";
-import gitIcon from "../images/GitHub_Icon.png";
+import React, { useState } from 'react';
+import '../styles/sidebar.scss';
+import PageTitle from './PageTitle';
+import igIcon from '../images/ig-icon.png';
+import wantedlyIcon from '../images/wantedly_mark.png';
+import gitIcon from '../images/git-icon-black.png';
 
 type Props = {
   current_page: string;
@@ -40,7 +40,7 @@ const SideBar: React.FC<Props> = (props) => {
       </div>
       <div className="page-title__wrapper">
         <PageTitle
-          title={props.current_page ? props.current_page : "WELCOME"}
+          title={props.current_page ? props.current_page : 'WELCOME'}
         ></PageTitle>
       </div>
     </div>

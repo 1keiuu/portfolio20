@@ -105,7 +105,6 @@ const ProductsIndex: React.FC<Props> = (props) => {
     const PRODUCTS_URL = `${process.env.REACT_APP_API_URL}/api/products`;
 
     await axios.get(PRODUCTS_URL).then((res) => {
-      console.log(res.data);
       handleAddProducts(res.data.products);
       setProducts(res.data.products);
       res.data.products.forEach((product: Product, i: number) => {

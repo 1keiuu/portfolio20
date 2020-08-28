@@ -13,6 +13,9 @@ nav {
     position: absolute;
     top: 10px;
     text-align: start;
+    &.--black {
+      color: #333;
+    }
   }
   .menu-items {
     display: flex;
@@ -26,12 +29,18 @@ nav {
       text-align: start;
 
       .menu-item {
-        font-size: 15px;
-        color: #fff;
         text-decoration: unset;
+        font-size: 15px;
         letter-spacing: 2px;
         font-family: Roboto;
         font-weight: bold;
+
+        .menu-item__text {
+          color: #fff;
+          &.--black {
+            color: #333;
+          }
+        }
         &.--hover {
           color: #fff;
         }
@@ -48,6 +57,9 @@ nav {
         transform-origin: right;
         transition: 0.5s cubic-bezier(0.55, 0, 0.15, 1);
         position: absolute;
+        &.--black {
+          border-bottom: 2px #333 solid;
+        }
       }
       .underline-enter-done {
         width: 100%;

@@ -11,8 +11,12 @@ interface Product {
   images: string;
   descriptions: string;
   skill_ids: string;
+  skills: Skill[];
 }
-
+interface Skill {
+  skill_name: string;
+  image_url: string;
+}
 interface Props extends RouteComponentProps<{}> {}
 
 const ProductPage: React.FC<Props> = (props) => {
@@ -72,7 +76,34 @@ const ProductPage: React.FC<Props> = (props) => {
           );
         })}
         <div className="skill-section">
-          <div className="skill-section__inner"></div>
+          <div className="skill-section__inner">
+            <VisibilitySensor partialVisibility>
+              {({ isVisible }: any) =>
+                product.skills.map((skill, i) => {
+                  return (
+                    <div
+                      className={
+                        'skill-card' +
+                        ' ' +
+                        'skill-card' +
+                        i +
+                        ' ' +
+                        (isVisible ? 'skill-card-enter-done' : '') +
+                        ' ' +
+                        (isFirstLoad.current ? '--first-load' : '')
+                      }
+                    >
+                      <img
+                        src={skill.image_url}
+                        className="skill-card__image"
+                      ></img>
+                      <p className="skill-card__title">{skill.skill_name}</p>
+                    </div>
+                  );
+                })
+              }
+            </VisibilitySensor>
+          </div>
         </div>
       </div>
     </div>

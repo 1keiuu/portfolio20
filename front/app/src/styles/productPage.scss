@@ -5,7 +5,7 @@
     width: 100vw;
     height: 100vh;
     position: absolute;
-    background: #b7babe;
+    background: #fff;
     z-index: 0;
   }
   .product-page__curtain-enter-done {
@@ -37,7 +37,7 @@
         width: 100%;
         top: 0;
         position: absolute;
-        background: #b7babe;
+        background: #fff;
         opacity: 0;
       }
       .title__cover-enter-done {
@@ -78,6 +78,34 @@
     background: rgb(216, 224, 234);
     width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .skill-card {
+      width: 20vw;
+      height: 20vw;
+      background: #fff;
+      border-radius: 5px;
+      margin-right: 5vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translateX(100px);
+      opacity: 0;
+
+      .skill-card__image {
+        width: 50%;
+      }
+      .skill-card__title {
+        color: #333;
+      }
+    }
+    .skill-card-enter-done {
+      transform: translateX(0);
+      opacity: 1;
+      transition: 1s;
+    }
   }
 }
 

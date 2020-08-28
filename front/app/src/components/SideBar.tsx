@@ -1,45 +1,66 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import "../styles/sidebar.scss";
-import { CSSTransition } from "react-transition-group";
-import igIcon from "../images/ig-icon.png";
-import wantedlyIcon from "../images/wantedly_mark.png";
-import gitIcon from "../images/GitHub_Icon-white.png";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import '../styles/sidebar.scss';
+import { CSSTransition } from 'react-transition-group';
+import igIconWhite from '../images/ig-icon-white.png';
+import igIconBlack from '../images/ig-icon-black.png';
+import wantedlyIcon from '../images/wantedly_mark.png';
+import gitIconWhite from '../images/git-icon-white.png';
+import gitIconBlack from '../images/git-icon-black.png';
 
 type Props = {
   current_page: string;
+  is_product_page: boolean;
 };
 
 const Sidebar: React.FC<Props> = (props) => {
-  const [selectedItem, setSelectedItem] = useState("");
+  const [selectedItem, setSelectedItem] = useState('');
 
   return (
     <nav>
-      <h3 className="sidebar__title">Ikkei Harashima</h3>
+      <h3
+        className={
+          'sidebar__title' + ' ' + (props.is_product_page ? '--black' : '')
+        }
+      >
+        Ikkei Harashima
+      </h3>
       <div className="menu-items">
         <div className="menu-item__wrapper">
           <Link
             to="/"
             className={
-              "menu-item" +
-              (selectedItem === "home" ? " --hover" : "") +
-              (props.current_page === "/" ? " --active" : "")
+              'menu-item' +
+              (selectedItem === 'home' ? ' --hover' : '') +
+              (props.current_page === '/' ? ' --active' : '')
             }
             onMouseEnter={() => {
-              setSelectedItem("home");
+              setSelectedItem('home');
             }}
             onMouseLeave={() => {
-              setSelectedItem("");
+              setSelectedItem('');
             }}
           >
-            Home
+            <p
+              className={
+                'menu-item__text' +
+                ' ' +
+                (props.is_product_page ? '--black' : '')
+              }
+            >
+              Home
+            </p>
           </Link>
           <CSSTransition
-            in={selectedItem === "home"}
+            in={selectedItem === 'home'}
             classNames="underline"
             timeout={0}
           >
-            <div className="underline"></div>
+            <div
+              className={
+                'underline' + ' ' + (props.is_product_page ? '--black' : '')
+              }
+            ></div>
           </CSSTransition>
         </div>
 
@@ -47,25 +68,37 @@ const Sidebar: React.FC<Props> = (props) => {
           <Link
             to="/profile"
             className={
-              "menu-item" +
-              (selectedItem === "profile" ? " --hover" : "") +
-              (props.current_page === "/profile" ? " --active" : "")
+              'menu-item' +
+              (selectedItem === 'profile' ? ' --hover' : '') +
+              (props.current_page === '/profile' ? ' --active' : '')
             }
             onMouseEnter={() => {
-              setSelectedItem("profile");
+              setSelectedItem('profile');
             }}
             onMouseLeave={() => {
-              setSelectedItem("");
+              setSelectedItem('');
             }}
           >
-            Profile
+            <p
+              className={
+                'menu-item__text' +
+                ' ' +
+                (props.is_product_page ? '--black' : '')
+              }
+            >
+              Profile
+            </p>
           </Link>
           <CSSTransition
-            in={selectedItem === "profile"}
+            in={selectedItem === 'profile'}
             classNames="underline"
             timeout={0}
           >
-            <div className="underline"></div>
+            <div
+              className={
+                'underline' + ' ' + (props.is_product_page ? '--black' : '')
+              }
+            ></div>
           </CSSTransition>
         </div>
 
@@ -73,25 +106,37 @@ const Sidebar: React.FC<Props> = (props) => {
           <Link
             to="/product"
             className={
-              "menu-item" +
-              (selectedItem === "product" ? " --hover" : "") +
-              (props.current_page === "/product" ? " --active" : "")
+              'menu-item' +
+              (selectedItem === 'product' ? ' --hover' : '') +
+              (props.current_page === '/product' ? ' --active' : '')
             }
             onMouseEnter={() => {
-              setSelectedItem("product");
+              setSelectedItem('product');
             }}
             onMouseLeave={() => {
-              setSelectedItem("");
+              setSelectedItem('');
             }}
           >
-            Product
+            <p
+              className={
+                'menu-item__text' +
+                ' ' +
+                (props.is_product_page ? '--black' : '')
+              }
+            >
+              Product
+            </p>
           </Link>
           <CSSTransition
-            in={selectedItem === "product"}
+            in={selectedItem === 'product'}
             classNames="underline"
             timeout={0}
           >
-            <div className="underline"></div>
+            <div
+              className={
+                'underline' + ' ' + (props.is_product_page ? '--black' : '')
+              }
+            ></div>
           </CSSTransition>
         </div>
 
@@ -99,25 +144,37 @@ const Sidebar: React.FC<Props> = (props) => {
           <Link
             to="/contact"
             className={
-              "menu-item" +
-              (selectedItem === "contact" ? " --hover" : "") +
-              (props.current_page === "/contact" ? " --active" : "")
+              'menu-item' +
+              (selectedItem === 'contact' ? ' --hover' : '') +
+              (props.current_page === '/contact' ? ' --active' : '')
             }
             onMouseEnter={() => {
-              setSelectedItem("contact");
+              setSelectedItem('contact');
             }}
             onMouseLeave={() => {
-              setSelectedItem("");
+              setSelectedItem('');
             }}
           >
-            Contact
+            <p
+              className={
+                'menu-item__text' +
+                ' ' +
+                (props.is_product_page ? '--black' : '')
+              }
+            >
+              Contact
+            </p>
           </Link>
           <CSSTransition
-            in={selectedItem === "contact"}
+            in={selectedItem === 'contact'}
             classNames="underline"
             timeout={0}
           >
-            <div className="underline"></div>
+            <div
+              className={
+                'underline' + ' ' + (props.is_product_page ? '--black' : '')
+              }
+            ></div>
           </CSSTransition>
         </div>
       </div>
@@ -129,7 +186,11 @@ const Sidebar: React.FC<Props> = (props) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={gitIcon} className="git-icon" />
+            {props.is_product_page ? (
+              <img src={gitIconBlack} className="git-icon" />
+            ) : (
+              <img src={gitIconWhite} className="git-icon" />
+            )}
           </a>
         </div>
         <div className="icon__wrapper">
@@ -139,7 +200,11 @@ const Sidebar: React.FC<Props> = (props) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={igIcon} className="ig-icon" />
+            {props.is_product_page ? (
+              <img src={igIconBlack} className="ig-icon" />
+            ) : (
+              <img src={igIconWhite} className="ig-icon" />
+            )}
           </a>
         </div>
         <div className="icon__wrapper">
