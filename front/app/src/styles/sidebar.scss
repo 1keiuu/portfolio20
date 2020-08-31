@@ -45,28 +45,30 @@ nav {
           color: #fff;
         }
         &.--active {
-          color: #f5a85b;
-          pointer-events: none;
+          .menu-item__text {
+            color: #f5a85b;
+            pointer-events: none;
+          }
         }
       }
 
-      .underline {
-        border-bottom: 2px #fff solid;
-        width: 0;
-        opacity: 0;
-        transform-origin: right;
-        transition: 0.5s cubic-bezier(0.55, 0, 0.15, 1);
-        position: absolute;
-        &.--black {
-          border-bottom: 2px #333 solid;
-        }
-      }
-      .underline-enter-done {
-        width: 100%;
-        opacity: 1;
-        bottom: -1px;
-        transition: 0.5s cubic-bezier(0.55, 0, 0.15, 1);
-      }
+      // .underline {
+      //   border-bottom: 2px #fff solid;
+      //   width: 0;
+      //   opacity: 0;
+      //   transform-origin: right;
+      //   transition: 0.5s cubic-bezier(0.55, 0, 0.15, 1);
+      //   position: absolute;
+      //   &.--black {
+      //     border-bottom: 2px #333 solid;
+      //   }
+      // }
+      // .underline-enter-done {
+      //   width: 100%;
+      //   opacity: 1;
+      //   bottom: -1px;
+      //   transition: 0.5s cubic-bezier(0.55, 0, 0.15, 1);
+      // }
     }
   }
   .icon__group {

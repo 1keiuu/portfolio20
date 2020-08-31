@@ -75,7 +75,7 @@ const ProductPage: React.FC<Props> = (props) => {
         {images.map((image, i) => {
           return (
             <VisibilitySensor partialVisibility>
-              {({ isVisible }: any) => (
+              {({ isVisible }: { isVisible: boolean }) => (
                 <div
                   className={
                     'section' +
@@ -117,7 +117,7 @@ const ProductPage: React.FC<Props> = (props) => {
         <div className="skill-section">
           <div className="skill-section__inner">
             <VisibilitySensor partialVisibility>
-              {({ isVisible }: any) =>
+              {({ isVisible }: { isVisible: boolean }) =>
                 product.skills.map((skill, i) => {
                   return (
                     <div

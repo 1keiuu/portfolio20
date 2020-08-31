@@ -51,7 +51,7 @@ const Sidebar: React.FC<Props> = (props) => {
               Home
             </p>
           </Link>
-          <CSSTransition
+          {/* <CSSTransition
             in={selectedItem === 'home'}
             classNames="underline"
             timeout={0}
@@ -61,7 +61,7 @@ const Sidebar: React.FC<Props> = (props) => {
                 'underline' + ' ' + (props.is_product_page ? '--black' : '')
               }
             ></div>
-          </CSSTransition>
+          </CSSTransition> */}
         </div>
 
         <div className="menu-item__wrapper">
@@ -70,7 +70,7 @@ const Sidebar: React.FC<Props> = (props) => {
             className={
               'menu-item' +
               (selectedItem === 'profile' ? ' --hover' : '') +
-              (props.current_page === '/profile' ? ' --active' : '')
+              (props.current_page.includes('/profile') ? ' --active' : '')
             }
             onMouseEnter={() => {
               setSelectedItem('profile');
@@ -89,7 +89,7 @@ const Sidebar: React.FC<Props> = (props) => {
               Profile
             </p>
           </Link>
-          <CSSTransition
+          {/* <CSSTransition
             in={selectedItem === 'profile'}
             classNames="underline"
             timeout={0}
@@ -99,7 +99,7 @@ const Sidebar: React.FC<Props> = (props) => {
                 'underline' + ' ' + (props.is_product_page ? '--black' : '')
               }
             ></div>
-          </CSSTransition>
+          </CSSTransition> */}
         </div>
 
         <div className="menu-item__wrapper">
@@ -108,7 +108,7 @@ const Sidebar: React.FC<Props> = (props) => {
             className={
               'menu-item' +
               (selectedItem === 'product' ? ' --hover' : '') +
-              (props.current_page === '/product' ? ' --active' : '')
+              (props.current_page.includes('/product') ? ' --active' : '')
             }
             onMouseEnter={() => {
               setSelectedItem('product');
@@ -127,7 +127,7 @@ const Sidebar: React.FC<Props> = (props) => {
               Product
             </p>
           </Link>
-          <CSSTransition
+          {/* <CSSTransition
             in={selectedItem === 'product'}
             classNames="underline"
             timeout={0}
@@ -137,7 +137,7 @@ const Sidebar: React.FC<Props> = (props) => {
                 'underline' + ' ' + (props.is_product_page ? '--black' : '')
               }
             ></div>
-          </CSSTransition>
+          </CSSTransition> */}
         </div>
 
         <div className="menu-item__wrapper">
@@ -146,7 +146,7 @@ const Sidebar: React.FC<Props> = (props) => {
             className={
               'menu-item' +
               (selectedItem === 'contact' ? ' --hover' : '') +
-              (props.current_page === '/contact' ? ' --active' : '')
+              (props.current_page.includes('/contact') ? ' --active' : '')
             }
             onMouseEnter={() => {
               setSelectedItem('contact');
@@ -165,7 +165,7 @@ const Sidebar: React.FC<Props> = (props) => {
               Contact
             </p>
           </Link>
-          <CSSTransition
+          {/* <CSSTransition
             in={selectedItem === 'contact'}
             classNames="underline"
             timeout={0}
@@ -175,7 +175,7 @@ const Sidebar: React.FC<Props> = (props) => {
                 'underline' + ' ' + (props.is_product_page ? '--black' : '')
               }
             ></div>
-          </CSSTransition>
+          </CSSTransition> */}
         </div>
       </div>
       <div className="icon__group">

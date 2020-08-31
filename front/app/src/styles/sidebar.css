@@ -55,29 +55,9 @@ nav .menu-items .menu-item__wrapper .menu-item.--hover {
   color: #fff;
 }
 
-nav .menu-items .menu-item__wrapper .menu-item.--active {
+nav .menu-items .menu-item__wrapper .menu-item.--active .menu-item__text {
   color: #f5a85b;
   pointer-events: none;
-}
-
-nav .menu-items .menu-item__wrapper .underline {
-  border-bottom: 2px #fff solid;
-  width: 0;
-  opacity: 0;
-  transform-origin: right;
-  transition: 0.5s cubic-bezier(0.55, 0, 0.15, 1);
-  position: absolute;
-}
-
-nav .menu-items .menu-item__wrapper .underline.--black {
-  border-bottom: 2px #333 solid;
-}
-
-nav .menu-items .menu-item__wrapper .underline-enter-done {
-  width: 100%;
-  opacity: 1;
-  bottom: -1px;
-  transition: 0.5s cubic-bezier(0.55, 0, 0.15, 1);
 }
 
 nav .icon__group {
