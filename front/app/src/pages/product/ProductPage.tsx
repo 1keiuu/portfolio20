@@ -118,6 +118,7 @@ const ProductPage: React.FC<Props> = (props) => {
             <VisibilitySensor partialVisibility>
               {({ isVisible }: { isVisible: boolean }) => (
                 <div
+                  key={'section' + i}
                   className={
                     'section' +
                     ' ' +
@@ -159,11 +160,7 @@ const ProductPage: React.FC<Props> = (props) => {
           <VisibilitySensor partialVisibility>
             {({ isVisible }: { isVisible: boolean }) => {
               return (
-                <div
-                  className={
-                    'skill-section__inner' + ' ' + (isVisible ? '' : '')
-                  }
-                >
+                <div className="skill-section__inner">
                   <h3
                     className={
                       'skill-section__title' +

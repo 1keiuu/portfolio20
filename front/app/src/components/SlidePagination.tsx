@@ -1,5 +1,5 @@
-import React from "react";
-import "../styles/SlidePagination.scss";
+import React from 'react';
+import '../styles/SlidePagination.scss';
 interface Product {
   id: number;
   title: string;
@@ -21,9 +21,10 @@ const SlidePagination: React.FC<Props> = (props) => {
         return (
           <span
             className={
-              "slide-pagination__dot " +
-              (i === props.currentIndex ? "--active" : "")
+              'slide-pagination__dot ' +
+              (i === props.currentIndex ? '--active' : '')
             }
+            key={'dot' + i}
             onClick={() => {
               props.callback(i);
             }}

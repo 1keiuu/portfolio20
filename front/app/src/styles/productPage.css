@@ -211,8 +211,8 @@
 
 .skill-section {
   width: 100vw;
-  height: 400px;
-  margin: 150px 0;
+  height: 330px;
+  margin-top: 150px;
   position: relative;
 }
 
@@ -224,17 +224,11 @@
 }
 
 .skill-section .skill-section__inner .skill-section__title {
-  transform: translateX(100px);
-  opacity: 0;
-  color: #333;
-  font-size: 40px;
   position: absolute;
-}
-
-.skill-section .skill-section__inner .skill-section__title.-enter-done {
-  transform: translateX(0);
-  opacity: 1;
-  transition: 1s;
+  font-size: 160px;
+  margin-left: 50px;
+  margin-top: 35px;
+  color: #a2a2a2;
 }
 
 .skill-section .skill-section__inner .skill-section__title.--first-load {
