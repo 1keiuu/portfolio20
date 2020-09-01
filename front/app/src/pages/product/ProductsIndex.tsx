@@ -115,7 +115,7 @@ const ProductsIndex: React.FC<Props> = (props) => {
   };
 
   const addSlide = (swiper: SwiperCore, product: Product, i: number) => {
-    const slide = `<div class="swiper-slide product-card">
+    const slide = `<div class="swiper-slide product-card" key="slide${i}">
       <div class="product-card__overlay" id="slide${i}"></div>
       <img
         class="product-card__image"
@@ -191,8 +191,8 @@ const ProductsIndex: React.FC<Props> = (props) => {
                       }, 500);
                     }}
                     onReachEnd={(swiper) => {
-                      isLoadedRef.current = false;
                       if (swiper?.activeIndex == 0) return;
+                      isLoadedRef.current = false;
                       handleReachEnd(() => {
                         setTimeout(() => {
                           props.history.push('/contact');
