@@ -2,6 +2,7 @@ package controller
 
 import (
 	"net/http"
+	"strconv"
 	"work/db"
 
 	"github.com/gin-gonic/gin"
@@ -63,5 +64,21 @@ func GetProducts(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{
 		"products": productsArray,
+	})
+}
+
+func GetProduct(c *gin.Context) {
+	id, _ := strconv.Atoi(c.Param("id"))
+
+	DB := db.Connect()
+	defer DB.Close()
+	productRow := DB.QueryRow("SELECT products.id, title, span, background_color,start_date, group_concat(distinct product_contents.image_url) AS images,group_concat(distinct product_contents.description) AS descriptions FROM products INNER JOIN product_contents ON (products.id=product_contents.product_id) where products.id = ? GROUP BY product_id;", id)
+	var product Product
+	err := productRow.Scan(&product.ID, &product.Title, &product.Span, &product.BackgroundColor, &product.StartDate, &product.Images, &product.Descriptions)
+	if err != nil {
+		panic(err.Error())
+	}
+	c.JSON(http.StatusOK, gin.H{
+		"product": product,
 	})
 }
