@@ -124,7 +124,7 @@ const ProductsIndex: React.FC<Props> = (props) => {
       ></img>
       <div class="product-card__title-wrapper">
         <p class="product-card__title">${product.title}</p>
-        <p class="product-card__sub-title">${product.span}</p>
+        <p class="product-card__sub-title">${product.start_date}</p>
       </div>
     </div>`;
 
