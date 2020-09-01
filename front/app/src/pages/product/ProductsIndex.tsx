@@ -151,7 +151,7 @@ const ProductsIndex: React.FC<Props> = (props) => {
       });
     };
     fetchSkills();
-  }, [props]);
+  }, []);
 
   const handleReachEnd = (func: () => void) => {
     // 初回ロード時にスライドがないと見做されてcontactページへ遷移してしまうのを避ける
