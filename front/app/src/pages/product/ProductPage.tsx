@@ -72,35 +72,45 @@ const ProductPage: React.FC<Props> = (props) => {
         <div className="product-page__curtain"> </div>
       </CSSTransition>
       <div className="product-page__content">
-        <div className="title__wrapper">
-          <CSSTransition in={isLoaded} classNames="title__inner" timeout={1000}>
-            <div className="title__inner">
-              <p className="title">{product!.title}</p>
-              <div className="title__cover"></div>
-            </div>
-          </CSSTransition>
-          <CSSTransition in={isLoaded} classNames="span__inner" timeout={1000}>
-            <div className="span__inner">
-              <span className="start-date__wrapper">
-                <p className="start-date">{product!.start_date}</p>
-              </span>
-              <p className="span">制作期間:{product!.span}</p>
-              <div className="span__cover"></div>
-            </div>
-          </CSSTransition>
+        <div className="title-section">
+          <div className="title-section__inner">
+            <CSSTransition
+              in={isLoaded}
+              classNames="title__inner"
+              timeout={1000}
+            >
+              <div className="title__inner">
+                <p className="title">{product!.title}</p>
+                <div className="title__cover"></div>
+              </div>
+            </CSSTransition>
+            <CSSTransition
+              in={isLoaded}
+              classNames="span__inner"
+              timeout={1000}
+            >
+              <div className="span__inner">
+                <span className="start-date__wrapper">
+                  <p className="start-date">{product!.start_date}</p>
+                </span>
+                <p className="span">制作期間:{product!.span}</p>
+                <div className="span__cover"></div>
+              </div>
+            </CSSTransition>
 
-          <button
-            className="close-button"
-            onClick={() => {
-              props.history.push({
-                pathname: '/product',
-              });
-            }}
-          >
-            <span className="close-button__inner">
-              <CrossIcon></CrossIcon>
-            </span>
-          </button>
+            <button
+              className="close-button"
+              onClick={() => {
+                props.history.push({
+                  pathname: '/product',
+                });
+              }}
+            >
+              <span className="close-button__inner">
+                <CrossIcon></CrossIcon>
+              </span>
+            </button>
+          </div>
         </div>
 
         {images!.map((image, i) => {
@@ -114,7 +124,7 @@ const ProductPage: React.FC<Props> = (props) => {
                     'section' +
                     i +
                     ' ' +
-                    (isVisible ? 'section-enter-done' : '') +
+                    (isVisible ? '-enter-done' : '') +
                     ' ' +
                     (isFirstLoad.current ? '--first-load' : '')
                   }
@@ -146,34 +156,55 @@ const ProductPage: React.FC<Props> = (props) => {
           );
         })}
         <div className="skill-section">
-          <div className="skill-section__inner">
-            <VisibilitySensor partialVisibility>
-              {({ isVisible }: { isVisible: boolean }) =>
-                skills.map((skill, i) => {
-                  return (
-                    <div
-                      className={
-                        'skill-card' +
-                        ' ' +
-                        'skill-card' +
-                        i +
-                        ' ' +
-                        (isVisible ? 'skill-card-enter-done' : '') +
-                        ' ' +
-                        (isFirstLoad.current ? '--first-load' : '')
-                      }
-                    >
-                      <img
-                        src={skill.image_url}
-                        className="skill-card__image"
-                      ></img>
-                      <p className="skill-card__title">{skill.skill_name}</p>
-                    </div>
-                  );
-                })
-              }
-            </VisibilitySensor>
-          </div>
+          <VisibilitySensor partialVisibility>
+            {({ isVisible }: { isVisible: boolean }) => {
+              return (
+                <div
+                  className={
+                    'skill-section__inner' + ' ' + (isVisible ? '' : '')
+                  }
+                >
+                  <h3
+                    className={
+                      'skill-section__title' +
+                      ' ' +
+                      (isVisible ? '-enter-done' : '') +
+                      ' ' +
+                      (isFirstLoad.current ? '--first-load' : '')
+                    }
+                  >
+                    Created with
+                  </h3>
+                  <div className="skill-cards">
+                    {skills.map((skill, i) => {
+                      return (
+                        <div
+                          className={
+                            'skill-card' +
+                            ' ' +
+                            'skill-card' +
+                            i +
+                            ' ' +
+                            (isVisible ? '-enter-done' : '') +
+                            ' ' +
+                            (isFirstLoad.current ? '--first-load' : '')
+                          }
+                        >
+                          <img
+                            src={skill.image_url}
+                            className="skill-card__image"
+                          ></img>
+                          <p className="skill-card__title">
+                            {skill.skill_name}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            }}
+          </VisibilitySensor>
         </div>
       </div>
     </div>

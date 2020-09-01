@@ -16,7 +16,7 @@
   z-index: -1;
 }
 
-.product-page .product-page__curtain-enter-done {
+.product-page .product-page__curtain.-enter-done {
   animation: slideCurtain 0.7s;
 }
 
@@ -27,23 +27,27 @@
   box-sizing: border-box;
 }
 
-.product-page .product-page__content .title__wrapper {
+.product-page .product-page__content .title-section {
+  display: flex;
+  justify-content: center;
+}
+
+.product-page .product-page__content .title-section .title-section__inner {
   position: relative;
   height: 30px;
   margin-top: 70px;
-  padding-left: 15vw;
 }
 
-.product-page .product-page__content .title__wrapper .title__inner {
+.product-page .product-page__content .title-section .title-section__inner .title__inner {
   opacity: 0;
   margin-bottom: 3vh;
 }
 
-.product-page .product-page__content .title__wrapper .title__inner-enter-done {
+.product-page .product-page__content .title-section .title-section__inner .title__inner-enter-done {
   opacity: 1;
 }
 
-.product-page .product-page__content .title__wrapper .title__inner-enter-done .title {
+.product-page .product-page__content .title-section .title-section__inner .title__inner-enter-done .title {
   font-size: 25px;
   line-height: 25px;
   font-weight: bold;
@@ -51,7 +55,7 @@
   transform: translateY(-25px);
 }
 
-.product-page .product-page__content .title__wrapper .title__inner-enter-done .title__cover {
+.product-page .product-page__content .title-section .title-section__inner .title__inner-enter-done .title__cover {
   z-index: 5;
   height: 100%;
   width: 100%;
@@ -60,7 +64,7 @@
   background: #fff;
 }
 
-.product-page .product-page__content .title__wrapper .span__inner {
+.product-page .product-page__content .title-section .title-section__inner .span__inner {
   opacity: 0;
   height: 19px;
   position: relative;
@@ -69,11 +73,11 @@
   display: flex;
 }
 
-.product-page .product-page__content .title__wrapper .span__inner-enter-done {
+.product-page .product-page__content .title-section .title-section__inner .span__inner-enter-done {
   opacity: 1;
 }
 
-.product-page .product-page__content .title__wrapper .span__inner-enter-done .start-date__wrapper {
+.product-page .product-page__content .title-section .title-section__inner .span__inner-enter-done .start-date__wrapper {
   display: flex;
   padding: 6px 12px;
   border-radius: 30px;
@@ -84,14 +88,14 @@
   align-items: center;
 }
 
-.product-page .product-page__content .title__wrapper .span__inner-enter-done .start-date__wrapper .start-date {
+.product-page .product-page__content .title-section .title-section__inner .span__inner-enter-done .start-date__wrapper .start-date {
   color: #999;
   z-index: 6;
   font-size: 14px;
   line-height: 14px;
 }
 
-.product-page .product-page__content .title__wrapper .span__inner-enter-done .span {
+.product-page .product-page__content .title-section .title-section__inner .span__inner-enter-done .span {
   z-index: 6;
   font-size: 11px;
   color: grey;
@@ -100,7 +104,7 @@
   margin-left: 10px;
 }
 
-.product-page .product-page__content .title__wrapper .span__inner-enter-done .span__cover {
+.product-page .product-page__content .title-section .title-section__inner .span__inner-enter-done .span__cover {
   z-index: 7;
   height: 100%;
   width: 100%;
@@ -118,7 +122,7 @@
   }
 }
 
-.product-page .product-page__content .close-button {
+.product-page .product-page__content .title-section .close-button {
   position: fixed;
   right: 5vw;
   top: 5vw;
@@ -136,12 +140,12 @@
   transition: 0.6s;
 }
 
-.product-page .product-page__content .close-button:hover {
-  background: #e6e8eb;
+.product-page .product-page__content .title-section .close-button:hover {
+  background: #ffe9c1;
   transition: 0.6s;
 }
 
-.product-page .product-page__content .close-button .close-button__inner {
+.product-page .product-page__content .title-section .close-button .close-button__inner {
   width: 40%;
   display: flex;
 }
@@ -154,8 +158,18 @@
   opacity: 0;
 }
 
+.product-page .section.-enter-done {
+  transition: 1s;
+  opacity: 1;
+}
+
+.product-page .section.-enter-done.--first-load {
+  transition-delay: 1s;
+}
+
 .product-page .section .section__image {
   width: 50%;
+  border-radius: 10px;
 }
 
 .product-page .section .description__wrapper {
@@ -165,21 +179,21 @@
 
 .product-page .section .description__wrapper .description {
   position: relative;
-  height: 17px;
+  height: 14px;
   margin-bottom: 2vh;
 }
 
 .product-page .section .description__wrapper .description .description__text {
   color: #333;
-  font-size: 17px;
-  line-height: 17px;
+  font-size: 14px;
+  line-height: 14px;
   text-align: start;
   transform: translateY(0);
 }
 
 .product-page .section .description__wrapper .description .description__text.--active {
   transition: 0.6s ease-in;
-  transform: translateY(-17px);
+  transform: translateY(-14px);
 }
 
 .product-page .section .description__wrapper .description .description__text.--first-load {
@@ -195,15 +209,6 @@
   left: 0;
 }
 
-.product-page .section-enter-done {
-  transition: 1s;
-  opacity: 1;
-}
-
-.product-page .section-enter-done.--first-load {
-  transition-delay: 1s;
-}
-
 .skill-section {
   width: 100vw;
   height: 400px;
@@ -216,12 +221,34 @@
   background: #d8e0ea;
   width: 100%;
   height: 100%;
+}
+
+.skill-section .skill-section__inner .skill-section__title {
+  transform: translateX(100px);
+  opacity: 0;
+  color: #333;
+  font-size: 40px;
+  position: absolute;
+}
+
+.skill-section .skill-section__inner .skill-section__title.-enter-done {
+  transform: translateX(0);
+  opacity: 1;
+  transition: 1s;
+}
+
+.skill-section .skill-section__inner .skill-section__title.--first-load {
+  transition-delay: 1s;
+}
+
+.skill-section .skill-section__inner .skill-cards {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
-.skill-section .skill-section__inner .skill-card {
+.skill-section .skill-section__inner .skill-cards .skill-card {
   width: 20vw;
   height: 20vw;
   border-radius: 5px;
@@ -234,18 +261,18 @@
   opacity: 0;
 }
 
-.skill-section .skill-section__inner .skill-card .skill-card__image {
-  width: 50%;
-}
-
-.skill-section .skill-section__inner .skill-card .skill-card__title {
-  color: #333;
-}
-
-.skill-section .skill-section__inner .skill-card-enter-done {
+.skill-section .skill-section__inner .skill-cards .skill-card.-enter-done {
   transform: translateX(0);
   opacity: 1;
   transition: 1s;
+}
+
+.skill-section .skill-section__inner .skill-cards .skill-card .skill-card__image {
+  width: 50%;
+}
+
+.skill-section .skill-section__inner .skill-cards .skill-card .skill-card__title {
+  color: #333;
 }
 
 ::-webkit-scrollbar {
