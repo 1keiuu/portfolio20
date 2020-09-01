@@ -3,6 +3,8 @@ import '../../styles/productPage.scss';
 import { withRouter, RouteComponentProps } from 'react-router';
 import { CSSTransition } from 'react-transition-group';
 import CrossIcon from '../../components/CrossIcon';
+import axios from 'axios';
+
 const VisibilitySensor = require('react-visibility-sensor').default;
 interface Product {
   id: number;
@@ -22,19 +24,44 @@ interface Skill {
 interface Props extends RouteComponentProps<{}> {}
 
 const ProductPage: React.FC<Props> = (props) => {
-  const state: any = props.location.state;
-  const product: Product = state!.product;
-  const images = product.images.split(',');
-  const descriptions = product.descriptions.split(',');
+  const defaultProduct = {
+    id: 0,
+    title: '',
+    span: '',
+    background_color: '',
+    images: '',
+    descriptions: '',
+    skill_ids: '',
+    start_date: '',
+    skills: [],
+  };
+  const [product, setProduct] = useState<Product>(defaultProduct);
 
+  let images: string[] = [];
+  let descriptions: string[] = [];
+  let skills: Skill[] = [];
+  if (product) {
+    images = product.images.split(',');
+    descriptions = product.descriptions.split(',');
+    skills = product.skills;
+  }
   const [isLoaded, setIsloaded] = useState(false);
   const isFirstLoad = useRef(true);
+  const fetchProduct = async () => {
+    const id = props.location.pathname.replace('/product/', '');
+    const PRODUCTS_URL = `${process.env.REACT_APP_API_URL}/api/products/${id}`;
+
+    await axios.get(PRODUCTS_URL).then((res) => {
+      setProduct(res.data.product);
+    });
+  };
   useEffect(() => {
     setIsloaded(true);
+    fetchProduct();
     setTimeout(() => {
       isFirstLoad.current = false;
     }, 1000);
-  }, [props]);
+  }, []);
   return (
     <div className="product-page">
       <CSSTransition
@@ -48,14 +75,14 @@ const ProductPage: React.FC<Props> = (props) => {
         <div className="title__wrapper">
           <CSSTransition in={isLoaded} classNames="title__inner" timeout={1000}>
             <div className="title__inner">
-              <p className="title">{product.title}</p>
+              <p className="title">{product!.title}</p>
               <div className="title__cover"></div>
             </div>
           </CSSTransition>
           <CSSTransition in={isLoaded} classNames="span__inner" timeout={1000}>
             <div className="span__inner">
-              <p className="start-date">{product.start_date}</p>
-              <p className="span">制作期間:{product.span}</p>
+              <p className="start-date">{product!.start_date}</p>
+              <p className="span">制作期間:{product!.span}</p>
               <div className="span__cover"></div>
             </div>
           </CSSTransition>
@@ -74,7 +101,7 @@ const ProductPage: React.FC<Props> = (props) => {
           </button>
         </div>
 
-        {images.map((image, i) => {
+        {images!.map((image, i) => {
           return (
             <VisibilitySensor partialVisibility>
               {({ isVisible }: { isVisible: boolean }) => (
@@ -92,7 +119,7 @@ const ProductPage: React.FC<Props> = (props) => {
                 >
                   <img className="section__image" src={image}></img>
                   <div className="description__wrapper">
-                    {descriptions[i].split('///').map((description) => {
+                    {descriptions![i].split('///').map((description) => {
                       return (
                         <div className="description">
                           <p
@@ -120,7 +147,7 @@ const ProductPage: React.FC<Props> = (props) => {
           <div className="skill-section__inner">
             <VisibilitySensor partialVisibility>
               {({ isVisible }: { isVisible: boolean }) =>
-                product.skills.map((skill, i) => {
+                skills.map((skill, i) => {
                   return (
                     <div
                       className={
