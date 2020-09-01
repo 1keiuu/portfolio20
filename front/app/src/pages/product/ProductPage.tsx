@@ -187,10 +187,12 @@ const ProductPage: React.FC<Props> = (props) => {
                             (isFirstLoad.current ? '--first-load' : '')
                           }
                         >
-                          <img
-                            src={skill.image_url}
-                            className="skill-card__image"
-                          ></img>
+                          <div className="skill-card__image-wrapper">
+                            <img
+                              src={skill.image_url}
+                              className="skill-card__image"
+                            ></img>
+                          </div>
                           <p className="skill-card__title">
                             {skill.skill_name}
                           </p>

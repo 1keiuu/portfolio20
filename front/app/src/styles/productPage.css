@@ -226,9 +226,9 @@
 .skill-section .skill-section__inner .skill-section__title {
   position: absolute;
   font-size: 160px;
-  margin-left: 50px;
+  margin-left: 8vw;
   margin-top: 35px;
-  color: #a2a2a2;
+  color: #c4c4c4;
 }
 
 .skill-section .skill-section__inner .skill-section__title.--first-load {
@@ -261,12 +261,22 @@
   transition: 1s;
 }
 
-.skill-section .skill-section__inner .skill-cards .skill-card .skill-card__image {
+.skill-section .skill-section__inner .skill-cards .skill-card .skill-card__image-wrapper {
   width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skill-section .skill-section__inner .skill-cards .skill-card .skill-card__image-wrapper .skill-card__image {
+  width: 100%;
 }
 
 .skill-section .skill-section__inner .skill-cards .skill-card .skill-card__title {
   color: #333;
+  font-weight: bold;
+  margin-top: 10px;
 }
 
 ::-webkit-scrollbar {
