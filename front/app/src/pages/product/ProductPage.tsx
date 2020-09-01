@@ -81,7 +81,9 @@ const ProductPage: React.FC<Props> = (props) => {
           </CSSTransition>
           <CSSTransition in={isLoaded} classNames="span__inner" timeout={1000}>
             <div className="span__inner">
-              <p className="start-date">{product!.start_date}</p>
+              <span className="start-date__wrapper">
+                <p className="start-date">{product!.start_date}</p>
+              </span>
               <p className="span">制作期間:{product!.span}</p>
               <div className="span__cover"></div>
             </div>

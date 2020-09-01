@@ -1,5 +1,5 @@
 $titleHeight: 25px;
-$spanHeight: 17px;
+$spanHeight: 14px;
 $descriptionHeight: 17px;
 
 .product-page {
@@ -62,21 +62,29 @@ $descriptionHeight: 17px;
       }
       .span__inner-enter-done {
         opacity: 1;
-        .start-date {
-          z-index: 6;
-          font-size: $spanHeight;
-          line-height: $spanHeight;
+        .start-date__wrapper {
+          display: flex;
+          padding: 6px 12px;
+          border-radius: 30px;
+          background: #f7f7f7;
           transition: transform 0.7s ease-in;
           transform: translateY(-($spanHeight + 5));
+          display: flex;
+          align-items: center;
+          .start-date {
+            color: #999;
+            z-index: 6;
+            font-size: $spanHeight;
+            line-height: $spanHeight;
+          }
         }
         .span {
           z-index: 6;
-          font-size: $spanHeight - 5;
+          font-size: $spanHeight - 3;
           color: grey;
           transition: transform 0.7s ease-in;
-          transform: translateY(-$spanHeight - 5);
+          transform: translateY(-$spanHeight - 3);
           margin-left: 10px;
-          vertical-align: middle;
         }
         .span__cover {
           z-index: 7;
@@ -160,7 +168,7 @@ $descriptionHeight: 17px;
       .description {
         position: relative;
         height: $descriptionHeight;
-        margin-bottom: 1vh;
+        margin-bottom: 2vh;
         .description__text {
           color: #333;
           font-size: $descriptionHeight;
