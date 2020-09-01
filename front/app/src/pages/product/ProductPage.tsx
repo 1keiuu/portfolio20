@@ -46,15 +46,16 @@ const ProductPage: React.FC<Props> = (props) => {
       </CSSTransition>
       <div className="product-page__content">
         <div className="title__wrapper">
-          <CSSTransition in={isLoaded} classNames="title__inner" timeout={1500}>
+          <CSSTransition in={isLoaded} classNames="title__inner" timeout={1000}>
             <div className="title__inner">
               <p className="title">{product.title}</p>
               <div className="title__cover"></div>
             </div>
           </CSSTransition>
-          <CSSTransition in={isLoaded} classNames="span__inner" timeout={1500}>
+          <CSSTransition in={isLoaded} classNames="span__inner" timeout={1000}>
             <div className="span__inner">
-              <p className="span">{product.span}</p>
+              <p className="start-date">{product.start_date}</p>
+              <p className="span">制作期間:{product.span}</p>
               <div className="span__cover"></div>
             </div>
           </CSSTransition>
@@ -91,7 +92,7 @@ const ProductPage: React.FC<Props> = (props) => {
                 >
                   <img className="section__image" src={image}></img>
                   <div className="description__wrapper">
-                    {descriptions[i].split(',').map((description) => {
+                    {descriptions[i].split('///').map((description) => {
                       return (
                         <div className="description">
                           <p
