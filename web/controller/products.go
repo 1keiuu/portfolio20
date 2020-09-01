@@ -15,6 +15,7 @@ type Product struct {
 	BackgroundColor string           `json:"background_color"`
 	Images          string           `json:"images"`
 	Descriptions    string           `json:"descriptions"`
+	StartDate       string           `json:"start_date"`
 	Skills          []ProductsSkills `json:"skills"`
 }
 type ProductsSkills struct {
@@ -29,7 +30,7 @@ type ProductsSkills struct {
 func GetProducts(c *gin.Context) {
 	DB := db.Connect()
 	defer DB.Close()
-	productsRows, err := DB.Query("SELECT products.id, title, span, background_color, group_concat(distinct product_contents.image_url) AS images,group_concat(distinct product_contents.description) AS descriptions FROM products INNER JOIN product_contents ON (products.id=product_contents.product_id) GROUP BY product_id;")
+	productsRows, err := DB.Query("SELECT products.id, title, span, background_color,start_date, group_concat(distinct product_contents.image_url) AS images,group_concat(distinct product_contents.description) AS descriptions FROM products INNER JOIN product_contents ON (products.id=product_contents.product_id) GROUP BY product_id;")
 	if err != nil {
 		panic(err.Error())
 	}
@@ -48,7 +49,7 @@ func GetProducts(c *gin.Context) {
 	productsArray := make([]Product, 0)
 	for productsRows.Next() {
 		var product Product
-		err = productsRows.Scan(&product.ID, &product.Title, &product.Span, &product.BackgroundColor, &product.Images, &product.Descriptions)
+		err = productsRows.Scan(&product.ID, &product.Title, &product.Span, &product.BackgroundColor, &product.StartDate, &product.Images, &product.Descriptions)
 		if err != nil {
 			panic(err.Error())
 		}

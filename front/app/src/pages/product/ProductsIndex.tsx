@@ -39,6 +39,7 @@ interface Product {
   images: string;
   descriptions: string;
   skill_ids: string;
+  start_date: string;
 }
 
 interface Skill {
@@ -107,6 +108,7 @@ const ProductsIndex: React.FC<Props> = (props) => {
     await axios.get(PRODUCTS_URL).then((res) => {
       handleAddProducts(res.data.products);
       setProducts(res.data.products);
+      console.log(res.data.products);
       res.data.products.forEach((product: Product, i: number) => {
         addSlide(swiper, product, i);
       });

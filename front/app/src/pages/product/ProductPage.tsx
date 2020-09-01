@@ -12,6 +12,7 @@ interface Product {
   images: string;
   descriptions: string;
   skill_ids: string;
+  start_date: string;
   skills: Skill[];
 }
 interface Skill {
