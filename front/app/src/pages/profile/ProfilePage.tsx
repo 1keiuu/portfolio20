@@ -20,6 +20,13 @@ const Fade = require('react-reveal/Fade');
 
 SwiperCore.use([Mousewheel]);
 
+interface Skill {
+  id: number;
+  name: string;
+  image_url: string;
+  background_color: string;
+  skill_type_name: string;
+}
 interface Props extends RouteComponentProps<{}> {
   history: H.History;
 }
@@ -30,6 +37,9 @@ const SkillPage: React.FC<Props> = (props) => {
     monthly: [],
     yearly: [],
   });
+  const [skills, addSkills] = useState<
+    { skill_type: string; skills: Skill[] }[]
+  >();
   const [isLoaded, setIsLoad] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -41,10 +51,32 @@ const SkillPage: React.FC<Props> = (props) => {
         headers: { 'Content-Type': 'application/json' },
       });
       setContributions(res.data);
-      console.log(res.data);
+    };
+    const SKILLS_URL = `${process.env.REACT_APP_API_URL}/api/skills`;
+    const fetchSkills = async () => {
+      await axios.get(SKILLS_URL).then((res) => {
+        const skillsArray: { skill_type: string; skills: Skill[] }[] = [];
+        const skillTypeArray: string[] = [];
+        res.data.skills!.forEach((skill: Skill) => {
+          if (!skillTypeArray.includes(skill.skill_type_name)) {
+            skillTypeArray.push(skill.skill_type_name);
+          }
+        });
+        skillTypeArray.forEach((skill_type) => {
+          skillsArray.push({
+            skill_type: skill_type,
+            skills: res.data.skills.filter((skill: Skill) => {
+              return skill.skill_type_name == skill_type;
+            }),
+          });
+        });
+        console.log(skillsArray);
+        addSkills(skillsArray);
+      });
     };
 
     fetchData();
+    fetchSkills();
   }, []);
   const initSlide = () => {
     const params = props.location.pathname.replace('/profile/', '');
@@ -76,6 +108,7 @@ const SkillPage: React.FC<Props> = (props) => {
         break;
     }
   };
+
   return (
     <CSSTransition in={isLoaded} classNames="profile__inner" timeout={0}>
       <div className="profile__inner">
@@ -126,6 +159,7 @@ const SkillPage: React.FC<Props> = (props) => {
           <SwiperSlide>
             <SkillSlide
               isLoaded={currentIndex === 3 ? true : false}
+              skills={skills}
             ></SkillSlide>
           </SwiperSlide>
           <SwiperSlide>

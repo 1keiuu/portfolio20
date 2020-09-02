@@ -20,13 +20,13 @@
   border-radius: 10px;
 }
 
-.skill__slide .skill-section {
+.skill__slide .section {
   transform: translateY(100px);
   opacity: 0;
   transition: 0.5s;
 }
 
-.skill__slide .skill-section .skill-section__skill-type {
+.skill__slide .section .section__skill-type {
   text-align: start;
   color: #989898;
   font-size: 1.9vw;
@@ -34,17 +34,16 @@
   padding-left: 5px;
 }
 
-.skill__slide .skill-section .skill-cards__group {
+.skill__slide .section .skill-cards__group {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
 }
 
-.skill__slide .skill-section .skill-cards__group .skill-card {
-  width: 11vw;
+.skill__slide .section .skill-cards__group .skill-card {
+  width: 15vw;
   height: 11vw;
-  margin-left: 3vw;
-  background: #fff;
+  margin-left: 1vw;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -52,20 +51,18 @@
   align-items: center;
   transition: 0.5s;
   cursor: pointer;
-  margin-bottom: 20px;
-  box-shadow: 1px 1px 20px #cfcfcf;
 }
 
-.skill__slide .skill-section .skill-cards__group .skill-card:hover {
+.skill__slide .section .skill-cards__group .skill-card:hover {
   transition: 0.5s;
 }
 
-.skill__slide .skill-section .skill-cards__group .skill-card .skill-card__circle-wrapper {
+.skill__slide .section .skill-cards__group .skill-card .skill-card__circle-wrapper {
   position: relative;
   width: 60%;
 }
 
-.skill__slide .skill-section .skill-cards__group .skill-card .skill-card__circle-wrapper .skill-card__logo {
+.skill__slide .section .skill-cards__group .skill-card .skill-card__circle-wrapper .skill-card__logo {
   width: 50%;
   height: 50%;
   object-fit: contain;
@@ -77,17 +74,17 @@
   -ms-transform: translate(-50%, -50%);
 }
 
-.skill__slide .skill-section .skill-cards__group .skill-card .skill-card__title {
+.skill__slide .section .skill-cards__group .skill-card .skill-card__title {
   margin-top: 6px;
   font-size: 1.2vw;
 }
 
-.skill__slide .skill-section .skill-cards__group .skill-card .skill-card__sub-title {
+.skill__slide .section .skill-cards__group .skill-card .skill-card__sub-title {
   font-size: 1vw;
   color: #989898;
 }
 
-.skill__slide .skill-section-enter-done {
+.skill__slide .section-enter-done {
   transform: translateY(0);
   opacity: 1;
   transition: 1s;

@@ -3,6 +3,8 @@
   height: 100%;
   padding-left: 9vw;
   overflow-y: scroll;
+  .slide__inner {
+  }
   &::-webkit-scrollbar {
     width: 10px;
     border-radius: 30px;
@@ -15,12 +17,12 @@
     background-color: #f1f1f1;
     border-radius: 10px;
   }
-  .skill-section {
+  .section {
     transform: translateY(100px);
     opacity: 0;
     transition: 0.5s;
 
-    .skill-section__skill-type {
+    .section__skill-type {
       text-align: start;
       color: #989898;
       font-size: 1.9vw;
@@ -32,10 +34,9 @@
       justify-content: flex-start;
       flex-wrap: wrap;
       .skill-card {
-        width: 11vw;
+        width: 15vw;
         height: 11vw;
-        margin-left: 3vw;
-        background: #fff;
+        margin-left: 1vw;
         border-radius: 10px;
         display: flex;
         flex-direction: column;
@@ -43,8 +44,6 @@
         align-items: center;
         transition: 0.5s;
         cursor: pointer;
-        margin-bottom: 20px;
-        box-shadow: 1px 1px 20px rgb(207, 207, 207);
         &:hover {
           transition: 0.5s;
         }
@@ -74,7 +73,7 @@
       }
     }
   }
-  .skill-section-enter-done {
+  .section-enter-done {
     transform: translateY(0);
     opacity: 1;
     transition: 1s;
