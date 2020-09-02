@@ -2,25 +2,26 @@
   width: 100%;
   height: 100%;
   padding-left: 9vw;
-  overflow-y: scroll;
   .slide__inner {
+    &::-webkit-scrollbar {
+      width: 10px;
+      border-radius: 30px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #b6b6b6;
+      border-radius: 30px;
+    }
+    &::-webkit-scrollbar {
+      background-color: #f1f1f1;
+      border-radius: 10px;
+    }
   }
-  &::-webkit-scrollbar {
-    width: 10px;
-    border-radius: 30px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: #b6b6b6;
-    border-radius: 30px;
-  }
-  &::-webkit-scrollbar {
-    background-color: #f1f1f1;
-    border-radius: 10px;
-  }
+
   .section {
     transform: translateY(100px);
     opacity: 0;
     transition: 0.5s;
+    margin-top: 15px;
 
     .section__skill-type {
       text-align: start;
@@ -34,22 +35,22 @@
       justify-content: flex-start;
       flex-wrap: wrap;
       .skill-card {
-        width: 15vw;
-        height: 11vw;
+        width: 20vw;
         margin-left: 1vw;
-        border-radius: 10px;
+        margin-bottom: 20px;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
+        background: #fff;
         align-items: center;
         transition: 0.5s;
         cursor: pointer;
         &:hover {
           transition: 0.5s;
         }
-        .skill-card__circle-wrapper {
+        .skill-card__logo-wrapper {
           position: relative;
-          width: 60%;
+          height: 100px;
+          width: 100px;
           .skill-card__logo {
             width: 50%;
             height: 50%;
@@ -62,13 +63,19 @@
             -ms-transform: translate(-50%, -50%);
           }
         }
-        .skill-card__title {
-          margin-top: 6px;
-          font-size: 1.2vw;
-        }
-        .skill-card__sub-title {
-          font-size: 1vw;
-          color: #989898;
+        .skill-card__title-wrapper {
+          margin-left: 10px;
+          .skill-card__title {
+            color: #333;
+            margin-top: 6px;
+            font-size: 1.2vw;
+            text-align: start;
+          }
+          .skill-card__sub-title {
+            font-size: 1vw;
+            color: #989898;
+            text-align: start;
+          }
         }
       }
     }

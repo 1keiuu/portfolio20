@@ -278,7 +278,3 @@
   font-weight: bold;
   margin-top: 10px;
 }
-
-::-webkit-scrollbar {
-  display: none;
-}

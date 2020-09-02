@@ -92,8 +92,7 @@ const SkillSlide: React.FC<Props> = (props) => {
                   {item.skills.map((skill, i) => {
                     return (
                       <div className="skill-card" key={'card' + i}>
-                        <div className="skill-card__circle-wrapper">
-                          <Circle
+                        {/* <Circle
                             progress={progressArray[i]}
                             responsive={true}
                             animate={true}
@@ -102,14 +101,20 @@ const SkillSlide: React.FC<Props> = (props) => {
                             showPercentage={false}
                             progressColor={skill.background_color}
                             bgColor="whitesmoke"
-                          />
+                          /> */}
+                        <div
+                          className="skill-card__logo-wrapper"
+                          style={{ backgroundColor: skill.background_color }}
+                        >
                           <img
                             className="skill-card__logo"
                             src={skill.image_url}
                           />
                         </div>
-                        <p className="skill-card__title">{skill.name}</p>
-                        <p className="skill-card__sub-title"></p>
+                        <div className="skill-card__title-wrapper">
+                          <p className="skill-card__title">{skill.name}</p>
+                          <p className="skill-card__sub-title">2 Projects</p>
+                        </div>
                       </div>
                     );
                   })}
