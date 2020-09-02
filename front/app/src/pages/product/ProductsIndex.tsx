@@ -106,9 +106,17 @@ const ProductsIndex: React.FC<Props> = (props) => {
     const PRODUCTS_URL = `${process.env.REACT_APP_API_URL}/api/products`;
 
     await axios.get(PRODUCTS_URL).then((res) => {
-      handleAddProducts(res.data.products);
-      setProducts(res.data.products);
-      res.data.products.forEach((product: Product, i: number) => {
+      const sortedProducts = res.data.products.sort(function (
+        a: Product,
+        b: Product
+      ) {
+        if (a.start_date < b.start_date) return 1;
+        if (a.start_date > b.start_date) return -1;
+        return 0;
+      });
+      handleAddProducts(sortedProducts);
+      setProducts(sortedProducts);
+      sortedProducts.forEach((product: Product, i: number) => {
         addSlide(swiper, product, i);
       });
     });
