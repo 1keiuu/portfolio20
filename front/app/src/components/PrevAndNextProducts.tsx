@@ -18,10 +18,17 @@ interface ItemProps {
 const Item: React.FC<ItemProps> = (props) => {
   if (!props.product.id.Valid) return <div></div>;
   return (
-    <a href={'/product/' + props.product.id.Int64}>
-      <div className="other-product">
-        {props.type === 'next' ? (
-          <p>next</p>
+    <a
+      href={'/product/' + props.product.id.Int64}
+      className="other-product__link"
+    >
+      <div
+        className={
+          'other-product' + ' ' + (props.type === 'prev' ? '--prev' : '--next')
+        }
+      >
+        {props.type === 'prev' ? (
+          <p className="other-product__arrow-text">prev</p>
         ) : (
           <span style={{ display: 'none' }}></span>
         )}
@@ -29,8 +36,9 @@ const Item: React.FC<ItemProps> = (props) => {
           src={props.product.image_url.String}
           className="other-product__image"
         ></img>
-        {props.type === 'prev' ? (
-          <p>prev</p>
+
+        {props.type === 'next' ? (
+          <p className="other-product__arrow-text">next</p>
         ) : (
           <span style={{ display: 'none' }}></span>
         )}
@@ -45,8 +53,8 @@ const PrevAndNextProducts: React.FC<Props> = (props) => {
     const next = props.next_product;
     return (
       <div className="other-products__inner">
-        <Item product={next} type="next"></Item>
         <Item product={prev} type="prev"></Item>
+        <Item product={next} type="next"></Item>
       </div>
     );
   }

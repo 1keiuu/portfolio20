@@ -1,12 +1,30 @@
 .other-products__inner {
   display: flex;
   justify-content: space-between;
-  padding: 0 20vw;
+  padding: 0 12vw;
   margin-top: 20vh;
-  .other-product {
-    .other-product__image {
-      width: 20vw;
-      height: (20vw / 16 * 9);
+  .other-product__link {
+    text-decoration: none;
+
+    .other-product {
+      display: flex;
+      align-items: center;
+      .other-product__arrow-text {
+      }
+      .other-product__image {
+        width: 20vw;
+        height: (20vw / 16 * 9);
+      }
+      &.--next {
+        .other-product__arrow-text {
+          margin-left: 20px;
+        }
+      }
+      &.--prev {
+        .other-product__arrow-text {
+          margin-right: 20px;
+        }
+      }
     }
   }
 }

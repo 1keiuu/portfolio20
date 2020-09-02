@@ -226,7 +226,7 @@ const ProductsIndex: React.FC<Props> = (props) => {
               </div>
             </div>
 
-            <div className="search-product__wrapper">
+            {/* <div className="search-product__wrapper">
               <SearchProductBar
                 skills={storeSkills.value}
                 isOpen={isSideBarOpen}
@@ -249,7 +249,7 @@ const ProductsIndex: React.FC<Props> = (props) => {
                   (isSideBarOpen ? '--active' : '')
                 }
               ></div>
-            </div>
+            </div> */}
           </Route>
           <Route
             path={`${props.match.path}/:id`}
