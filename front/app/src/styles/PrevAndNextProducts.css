@@ -1,0 +1,11 @@
+.other-products__inner {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20vw;
+  margin-top: 20vh;
+}
+
+.other-products__inner .other-product .other-product__image {
+  width: 20vw;
+  height: 11.25vw;
+}

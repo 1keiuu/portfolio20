@@ -4,7 +4,7 @@ import { withRouter, RouteComponentProps } from 'react-router';
 import { CSSTransition } from 'react-transition-group';
 import CrossIcon from '../../components/CrossIcon';
 import axios from 'axios';
-
+import PrevAndNextProducts from '../../components/PrevAndNextProducts';
 const VisibilitySensor = require('react-visibility-sensor').default;
 interface Product {
   id: number;
@@ -21,6 +21,11 @@ interface Skill {
   skill_name: string;
   image_url: string;
 }
+
+interface ProductContent {
+  id: { Int64: number; Valid: boolean };
+  image_url: { String: string; Valid: boolean };
+}
 interface Props extends RouteComponentProps<{}> {}
 
 const ProductPage: React.FC<Props> = (props) => {
@@ -36,6 +41,8 @@ const ProductPage: React.FC<Props> = (props) => {
     skills: [],
   };
   const [product, setProduct] = useState<Product>(defaultProduct);
+  const [nextProduct, setNextProduct] = useState<ProductContent>();
+  const [prevProduct, setPrevProduct] = useState<ProductContent>();
 
   let images: string[] = [];
   let descriptions: string[] = [];
@@ -52,8 +59,10 @@ const ProductPage: React.FC<Props> = (props) => {
     const PRODUCTS_URL = `${process.env.REACT_APP_API_URL}/api/products/${id}`;
 
     await axios.get(PRODUCTS_URL).then((res) => {
-      console.log(res);
+      console.log(res.data);
       setProduct(res.data.product);
+      setNextProduct(res.data.next_product);
+      setPrevProduct(res.data.prev_product);
     });
   };
   useEffect(() => {
@@ -205,6 +214,12 @@ const ProductPage: React.FC<Props> = (props) => {
               );
             }}
           </VisibilitySensor>
+        </div>
+        <div className="other-products__wrapper">
+          <PrevAndNextProducts
+            next_product={nextProduct}
+            prev_product={prevProduct}
+          ></PrevAndNextProducts>
         </div>
       </div>
     </div>
