@@ -52,6 +52,7 @@ const ProductPage: React.FC<Props> = (props) => {
     const PRODUCTS_URL = `${process.env.REACT_APP_API_URL}/api/products/${id}`;
 
     await axios.get(PRODUCTS_URL).then((res) => {
+      console.log(res);
       setProduct(res.data.product);
     });
   };
