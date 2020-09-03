@@ -26,6 +26,7 @@ interface Skill {
   image_url: string;
   background_color: string;
   skill_type_name: string;
+  products_count: number;
 }
 interface Props extends RouteComponentProps<{}> {
   history: H.History;

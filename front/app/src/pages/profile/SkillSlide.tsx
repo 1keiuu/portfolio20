@@ -10,6 +10,7 @@ interface Skill {
   image_url: string;
   background_color: string;
   skill_type_name: string;
+  products_count: number;
 }
 interface SkillArray {
   skill_type: string;
@@ -113,7 +114,9 @@ const SkillSlide: React.FC<Props> = (props) => {
                         </div>
                         <div className="skill-card__title-wrapper">
                           <p className="skill-card__title">{skill.name}</p>
-                          <p className="skill-card__sub-title">2 Projects</p>
+                          <p className="skill-card__sub-title">
+                            {skill.products_count} Projects
+                          </p>
                         </div>
                       </div>
                     );
