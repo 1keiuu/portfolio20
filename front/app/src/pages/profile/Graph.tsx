@@ -232,7 +232,7 @@ const Graph: React.FC<Props> = (props) => {
               if (currentData === yearlyData) return;
               if (currentData.labels === weeklyData.labels) {
                 // weekly
-                if (currentWeeklyIndex !== 3) {
+                if (currentWeeklyIndex !== weeklyArray.length - 1) {
                   return (
                     <div
                       onClick={async () => {

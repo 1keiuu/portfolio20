@@ -79,10 +79,30 @@ func culcWeeklyData(array []Contribution, todaysContributionIndex int) ([][]int,
 		}
 		from = from + 7
 		to = to + 7
-		counts = append(counts, countsArray)
-		labels = append(labels, labelsArray)
+
+		counts = append(counts, reverseIntArray(countsArray))
+		labels = append(labels, reverseStrArray(labelsArray))
 	}
 	return counts, labels
+}
+
+func reverseStrArray(array []string) []string {
+	// 配列を逆順に
+	length := len(array)
+	var outArray []string
+	for i := length - 1; i >= 0; i-- {
+		outArray = append(outArray, array[i])
+	}
+	return outArray
+}
+
+func reverseIntArray(array []int) []int {
+	length := len(array)
+	var outArray []int
+	for i := length - 1; i >= 0; i-- {
+		outArray = append(outArray, array[i])
+	}
+	return outArray
 }
 
 func getWeeklyData(array []Contribution) ([][]int, [][]string) {
