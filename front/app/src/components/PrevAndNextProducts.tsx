@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/PrevAndNextProducts.scss';
+import ArrowPonterIcon from '../components/ArrowPointerIcon';
 interface ProductContent {
   id: { Int64: number; Valid: boolean };
   image_url: { String: string; Valid: boolean };
@@ -28,7 +29,12 @@ const Item: React.FC<ItemProps> = (props) => {
         }
       >
         {props.type === 'prev' ? (
-          <p className="other-product__arrow-text">prev</p>
+          <div className="other-product__arrow-wrapper">
+            <p className="other-product__arrow-text">prev</p>
+            <div className="other-product__arrow">
+              <ArrowPonterIcon isLeft></ArrowPonterIcon>
+            </div>
+          </div>
         ) : (
           <span style={{ display: 'none' }}></span>
         )}
@@ -38,7 +44,12 @@ const Item: React.FC<ItemProps> = (props) => {
         ></img>
 
         {props.type === 'next' ? (
-          <p className="other-product__arrow-text">next</p>
+          <div className="other-product__arrow-wrapper">
+            <p className="other-product__arrow-text">next</p>
+            <div className="other-product__arrow">
+              <ArrowPonterIcon></ArrowPonterIcon>
+            </div>
+          </div>
         ) : (
           <span style={{ display: 'none' }}></span>
         )}
