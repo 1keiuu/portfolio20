@@ -143,9 +143,9 @@ const Graph: React.FC<Props> = (props) => {
         setCurrentMaxYAxis(culcMax(data.weekly.counts) + 3);
         // y軸の最大値を設定(+分はゆとり)
         setMaxYAxisGroup({
-          weekly: culcMax(data.weekly.counts) + 3,
-          monthly: culcMax(data.monthly.counts) + 40,
-          yearly: culcMax(data.yearly.counts) + 100,
+          weekly: culcMax(data.weekly.counts) + 1,
+          monthly: culcMax(data.monthly.counts) + 10,
+          yearly: culcMax(data.yearly.counts) + 50,
         });
         setCurrentData(
           contributionsData(
