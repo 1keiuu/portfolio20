@@ -8,10 +8,14 @@
 .layout .layout__inner {
   z-index: 5;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .layout .layout__inner .layout__content {
   height: 100%;
+  width: 100%;
 }
 
 .layout-enter-done {

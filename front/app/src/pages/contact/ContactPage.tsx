@@ -4,6 +4,17 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import '../../styles/contactPage.scss';
 import { CSSTransition } from 'react-transition-group';
 import axios from 'axios';
+import Lottie from 'react-lottie';
+import animationData from '../../lottie/email.json';
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData,
+  rendererSettings: {
+    preserveAspectRatio: 'xMidYMid slice',
+  },
+};
+
 const Fade = require('react-reveal/Fade');
 
 interface Props extends RouteComponentProps<{}> {
@@ -56,6 +67,12 @@ const ContactPage: React.FC<Props> = (props) => {
   return (
     <CSSTransition in={isLoaded} classNames="contact-page" timeout={500}>
       <div className="contact-page">
+        <Lottie options={defaultOptions} height={350} width={350} />
+        <div className="contact-page__text">
+          <p>訪問していただきありがとうございます</p>
+          <p>仕事依頼等あればお気軽にご連絡ください！</p>
+        </div>
+
         <form
           onSubmit={(e) => {
             handleSubmit(e);
@@ -64,26 +81,29 @@ const ContactPage: React.FC<Props> = (props) => {
         >
           <input
             value={email}
-            placeholder="email"
+            placeholder="メールアドレス"
             onChange={(e) => {
               setEmail(e.target.value);
             }}
+            className="email__input"
           ></input>
           <input
             value={name}
-            placeholder="name"
+            placeholder="お名前"
             onChange={(e) => {
               setName(e.target.value);
             }}
+            className="name__input"
           ></input>
           <textarea
             value={content}
-            placeholder="content"
+            placeholder="内容"
             onChange={(e) => {
               setContent(e.target.value);
             }}
+            className="content__input"
           ></textarea>
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" className="submit__button" />
         </form>
       </div>
     </CSSTransition>

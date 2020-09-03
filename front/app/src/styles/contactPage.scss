@@ -1,14 +1,54 @@
 .contact-page {
-  height: 100vh;
   box-sizing: border-box;
   opacity: 0;
   filter: blur(50px);
   transform: perspective(50px) translateZ(50px);
   transition: 2s;
-  padding: 30%;
+  padding: 0 30%;
+  .contact-page__text {
+    font-weight: bold;
+    text-align: center;
+    &:nth-child(2) {
+      margin-bottom: 30px;
+    }
+  }
   .contact-form {
     display: flex;
     flex-direction: column;
+
+    .email__input {
+      margin-bottom: 15px;
+      padding: 10px 8px;
+      border-radius: 4px;
+      border: 0;
+      outline: 0;
+    }
+    .name__input {
+      margin-bottom: 15px;
+      padding: 10px 8px;
+      border-radius: 4px;
+      border: 0;
+      outline: 0;
+    }
+    .content__input {
+      margin-bottom: 25px;
+      padding: 10px 8px;
+      border-radius: 4px;
+      border: 0;
+      outline: 0;
+      height: 25vh;
+    }
+    .submit__button {
+      border-radius: 30px;
+      background: #3981f0;
+      color: #fff;
+      border: 0;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 12px 0;
+      margin: 0 30%;
+      cursor: pointer;
+    }
   }
 }
 

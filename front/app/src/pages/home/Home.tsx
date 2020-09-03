@@ -1,14 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
-import "../../styles/home.scss";
+import React, { useEffect, useRef, useState } from 'react';
+import '../../styles/home.scss';
 //swiper
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Mousewheel } from "swiper";
-import "swiper/swiper.scss";
-import "swiper/components/pagination/pagination.scss";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Mousewheel } from 'swiper';
+import 'swiper/swiper.scss';
+import 'swiper/components/pagination/pagination.scss';
 
-import * as H from "history";
-import { RouteComponentProps, withRouter } from "react-router-dom";
-import { CSSTransition } from "react-transition-group";
+import * as H from 'history';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 
 SwiperCore.use([Mousewheel]);
 
@@ -27,7 +27,7 @@ const Home: React.FC<Props> = (props) => {
       if (current_pos - start_pos <= 0) return;
       setIsLoaded(false);
       setTimeout(() => {
-        props.history.push("/profile");
+        props.history.push('/profile');
       }, 500);
     }
     start_pos = current_pos;
@@ -36,9 +36,9 @@ const Home: React.FC<Props> = (props) => {
   useEffect(() => {
     setIsLoaded(true);
 
-    window.addEventListener("wheel", handleWheel);
+    window.addEventListener('wheel', handleWheel);
     return () => {
-      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener('wheel', handleWheel);
     };
   }, []);
   return (
