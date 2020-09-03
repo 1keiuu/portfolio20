@@ -55,6 +55,7 @@
 .graph .date-select {
   width: 110px;
   height: 40px;
+  padding-left: 10px;
   cursor: pointer;
   position: absolute;
   top: 0;
