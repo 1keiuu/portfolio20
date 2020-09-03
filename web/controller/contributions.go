@@ -148,7 +148,8 @@ func getMonthlyData(array []Contribution) ([]int, []string) {
 		data := DataStruct{month, culculateCount(array, month)}
 		counts = append(counts, data.Count)
 	}
-	return counts, labels
+
+	return reverseIntArray(counts), reverseStrArray(labels)
 }
 
 func culculateCount(array []Contribution, month string) int {
@@ -186,5 +187,5 @@ func getYearlyData(array []Contribution) ([]int, []string) {
 		data := DataStruct{year, culculateCount(array, year)}
 		counts = append(counts, data.Count)
 	}
-	return counts, labels
+	return reverseIntArray(counts), reverseStrArray(labels)
 }

@@ -121,11 +121,12 @@ const Graph: React.FC<Props> = (props) => {
       setYearlyData(
         contributionsData(data.yearly.labels, data.yearly.counts, 'yearly')
       );
-      const array: { labels: string[]; counts: number[] }[] = [];
+      const weekly_array: { labels: string[]; counts: number[] }[] = [];
       data.weekly.labels.forEach((label: string[], i: number) => {
-        array.push({ labels: label, counts: data.weekly.counts[i] });
+        weekly_array.push({ labels: label, counts: data.weekly.counts[i] });
       });
-      setWeeklyArray(array);
+      setWeeklyArray(weekly_array);
+      // setMonthlyArray()
       // setMonthlyData(data.monthly);
       // getWeeklyData(currentWeeklyIndex);
       // getMonthlyData(currentMonthlyIndex);
@@ -229,23 +230,10 @@ const Graph: React.FC<Props> = (props) => {
         <div className="span-display__wrapper">
           <div className="prev-button">
             {(() => {
-              if (currentData === yearlyData) return;
+              if (currentData.labels !== weeklyData.labels) return;
               if (currentData.labels === weeklyData.labels) {
                 // weekly
                 if (currentWeeklyIndex !== weeklyArray.length - 1) {
-                  return (
-                    <div
-                      onClick={async () => {
-                        await changeGraphSpan(1);
-                      }}
-                      className="prev-arrow__wrapper"
-                    >
-                      <ArrowIcon isLeft={true} fill="#093e49" />
-                    </div>
-                  );
-                }
-              } else {
-                if (currentMonthlyIndex !== monthlyArray.length - 1) {
                   return (
                     <div
                       onClick={async () => {
@@ -263,13 +251,6 @@ const Graph: React.FC<Props> = (props) => {
 
           <div>
             <p className="graph__span">{culcSpan(currentData.labels)}</p>
-            <button
-              onClick={() => {
-                console.log(currentData);
-              }}
-            >
-              culc
-            </button>
           </div>
           <div className="next-button">
             {(() => {
