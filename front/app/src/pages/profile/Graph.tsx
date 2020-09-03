@@ -212,7 +212,7 @@ const Graph: React.FC<Props> = (props) => {
     switch (currentData.labels) {
       case weeklyData.labels:
         setCurrentWeeklyIndex(currentWeeklyIndex + n);
-        getWeeklyData(currentWeeklyIndex);
+        getWeeklyData(currentWeeklyIndex + n);
 
         break;
       case monthlyData.labels:
@@ -230,7 +230,7 @@ const Graph: React.FC<Props> = (props) => {
           <div className="prev-button">
             {(() => {
               if (currentData === yearlyData) return;
-              if (currentData === weeklyData) {
+              if (currentData.labels === weeklyData.labels) {
                 // weekly
                 if (currentWeeklyIndex !== 3) {
                   return (
@@ -274,7 +274,7 @@ const Graph: React.FC<Props> = (props) => {
           <div className="next-button">
             {(() => {
               if (currentData === yearlyData) return;
-              if (currentData === weeklyData) {
+              if (currentData.labels === weeklyData.labels) {
                 // weekly
                 if (currentWeeklyIndex !== 0) {
                   return (
