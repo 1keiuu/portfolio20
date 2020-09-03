@@ -1,6 +1,6 @@
 import React from 'react';
-import iconSrc from '../images/GitHub_Logo.png';
-import logoSrc from '../images/git-icon-black.png';
+import iconSrc from '../images/git-logo-white.png';
+import logoSrc from '../images/git-icon-white.png';
 import '../styles/GithubTitle.scss';
 const GithubTitle: React.FC = () => {
   return (

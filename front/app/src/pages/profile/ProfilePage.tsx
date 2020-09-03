@@ -173,7 +173,7 @@ const SkillPage: React.FC<Props> = (props) => {
           </SwiperSlide>
           <SwiperSlide></SwiperSlide>
         </Swiper>
-        <CSSTransition
+        {/* <CSSTransition
           in={isLoaded}
           classNames="scroll-text__wrapper"
           timeout={0}
@@ -187,7 +187,7 @@ const SkillPage: React.FC<Props> = (props) => {
               <p className="scroll-text">SCROLL↑</p>
             </div>
           )}
-        </CSSTransition>
+        </CSSTransition> */}
       </div>
     </CSSTransition>
   );
