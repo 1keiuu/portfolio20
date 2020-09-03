@@ -29,6 +29,11 @@ type LabelsAndCounts struct {
 	Counts []int    `json:"counts"`
 }
 
+type LabelsAndCountsMultiple struct {
+	Labels [][]string `json:"labels"`
+	Counts [][]int    `json:"counts"`
+}
+
 func GetContributions(c *gin.Context) {
 	DB := db.Connect()
 	defer DB.Close()
@@ -52,31 +57,35 @@ func GetContributions(c *gin.Context) {
 	yCounts, yLabels := getYearlyData(contributionsArray)
 
 	c.JSON(http.StatusOK, gin.H{
-		"weekly":  LabelsAndCounts{Counts: wCounts, Labels: wLabels},
+		"weekly":  LabelsAndCountsMultiple{Counts: wCounts, Labels: wLabels},
 		"monthly": LabelsAndCounts{Counts: mCounts, Labels: mLabels},
 		"yearly":  LabelsAndCounts{Counts: yCounts, Labels: yLabels},
 	})
 }
 
-func culcWeeklyData(array []Contribution, todaysContributionIndex int) ([]int, []string) {
+func culcWeeklyData(array []Contribution, todaysContributionIndex int) ([][]int, [][]string) {
 
 	from := todaysContributionIndex // 週の初日
 	to := from + 7                  // 週の最終日
 
-	var counts []int
-	var labels []string
+	var counts [][]int
+	var labels [][]string
 	for i := 0; i < 4; i++ {
+		var countsArray []int
+		var labelsArray []string
 		for _, item := range array[from:to] {
-			counts = append(counts, item.Count)
-			labels = append(labels, item.Date)
+			countsArray = append(countsArray, item.Count)
+			labelsArray = append(labelsArray, item.Date)
 		}
 		from = from + 7
 		to = to + 7
+		counts = append(counts, countsArray)
+		labels = append(labels, labelsArray)
 	}
 	return counts, labels
 }
 
-func getWeeklyData(array []Contribution) ([]int, []string) {
+func getWeeklyData(array []Contribution) ([][]int, [][]string) {
 	// 日付time.Now()を日本時間へ
 	nowUTC := time.Now().UTC()
 	jst := time.FixedZone("Asia/Tokyo", 9*60*60)

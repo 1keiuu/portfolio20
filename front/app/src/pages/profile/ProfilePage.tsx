@@ -33,11 +33,7 @@ interface Props extends RouteComponentProps<{}> {
 }
 
 const SkillPage: React.FC<Props> = (props) => {
-  const [contributions, setContributions] = useState<any>({
-    weekly: [],
-    monthly: [],
-    yearly: [],
-  });
+  const [contributions, setContributions] = useState<any>();
   const [skills, addSkills] = useState<
     { skill_type: string; skills: Skill[] }[]
   >([]);

@@ -87,10 +87,9 @@ const Graph: React.FC<Props> = (props) => {
   const [yearlyData, setYearlyData] = useState(
     contributionsData([], [], 'yearly')
   );
-  const [weeklyArray, setWeeklyArray]: [
-    { labels: []; counts: [] }[],
-    React.Dispatch<React.SetStateAction<[]>>
-  ] = useState([]);
+  const [weeklyArray, setWeeklyArray] = useState<
+    { labels: string[]; counts: number[] }[]
+  >([]);
   const [monthlyArray, setMonthlyArray]: [
     { labels: []; counts: [] }[],
     React.Dispatch<React.SetStateAction<[]>>
@@ -108,9 +107,13 @@ const Graph: React.FC<Props> = (props) => {
     const data = props.contributions;
 
     if (data) {
-      console.log(data);
+      console.log(props);
       setWeeklyData(
-        contributionsData(data.weekly.labels, data.weekly.counts, 'weekly')
+        contributionsData(
+          data.weekly.labels[0],
+          data.weekly.counts[0],
+          'weekly'
+        )
       );
       setMonthlyData(
         contributionsData(data.monthly.labels, data.monthly.counts, 'monthly')
@@ -118,6 +121,11 @@ const Graph: React.FC<Props> = (props) => {
       setYearlyData(
         contributionsData(data.yearly.labels, data.yearly.counts, 'yearly')
       );
+      const array: { labels: string[]; counts: number[] }[] = [];
+      data.weekly.labels.forEach((label: string[], i: number) => {
+        array.push({ labels: label, counts: data.weekly.counts[i] });
+      });
+      setWeeklyArray(array);
       // setMonthlyData(data.monthly);
       // getWeeklyData(currentWeeklyIndex);
       // getMonthlyData(currentMonthlyIndex);
@@ -125,13 +133,17 @@ const Graph: React.FC<Props> = (props) => {
       //   contributionsData(data.yearly.labels, data.yearly.data, "yearly")
       // );
 
-      const culcMax = (array: number[]) => {
+      const culcMax = (countArray: number[][]) => {
+        // 配列を連結
+        let arr1: number[] = [];
+        countArray.forEach((arr2) => {
+          arr1 = arr1.concat(arr2);
+        });
         // 降順にして1番目(最大)を返す
-
         const sortDesc = (a: number, b: number) => {
           return b - a;
         };
-        return array.sort(sortDesc)[0];
+        return arr1.sort(sortDesc)[0];
       };
 
       if (data.weekly.counts) {
@@ -143,7 +155,11 @@ const Graph: React.FC<Props> = (props) => {
           yearly: culcMax(data.yearly.counts) + 100,
         });
         setCurrentData(
-          contributionsData(data.weekly.labels, data.weekly.counts, 'weekly')
+          contributionsData(
+            data.weekly.labels[0],
+            data.weekly.counts[0],
+            'weekly'
+          )
         );
       }
     }
@@ -174,12 +190,13 @@ const Graph: React.FC<Props> = (props) => {
   const getWeeklyData = (index: number) => {
     const contData = () => {
       return contributionsData(
-        weeklyArray[0].labels,
-        weeklyArray[0].counts,
+        weeklyArray[index].labels,
+        weeklyArray[index].counts,
         'weekly'
       );
     };
     setWeeklyData(contData());
+    setCurrentData(contData());
   };
   const getMonthlyData = (index: number) => {
     const contData = () => {
@@ -192,15 +209,15 @@ const Graph: React.FC<Props> = (props) => {
     setMonthlyData(contData);
   };
   const changeGraphSpan = async (n: number) => {
-    switch (currentData) {
-      case weeklyData:
-        await setCurrentWeeklyIndex(currentWeeklyIndex + n);
-        await getWeeklyData(currentWeeklyIndex);
-        setCurrentData(weeklyData);
+    switch (currentData.labels) {
+      case weeklyData.labels:
+        setCurrentWeeklyIndex(currentWeeklyIndex + n);
+        getWeeklyData(currentWeeklyIndex);
+
         break;
-      case monthlyData:
-        await setCurrentMonthlyIndex(currentMonthlyIndex + n);
-        await getMonthlyData(currentMonthlyIndex);
+      case monthlyData.labels:
+        setCurrentMonthlyIndex(currentMonthlyIndex + n);
+        getMonthlyData(currentMonthlyIndex);
         setCurrentData(monthlyData);
         break;
     }
