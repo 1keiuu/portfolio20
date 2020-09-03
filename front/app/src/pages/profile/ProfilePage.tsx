@@ -45,7 +45,6 @@ const SkillPage: React.FC<Props> = (props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    console.log('tbsougnbisbng');
     setIsLoad(true);
 
     const fetchData = async () => {
@@ -72,7 +71,6 @@ const SkillPage: React.FC<Props> = (props) => {
             }),
           });
         });
-        console.log(skillsArray);
         addSkills(skillsArray);
       });
     };
