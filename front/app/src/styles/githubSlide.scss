@@ -4,6 +4,9 @@
   display: flex;
   justify-content: center;
   .slide__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 50vw;
   }
 }

@@ -52,17 +52,17 @@ const contributionsData = (
         label: type,
         fill: true,
         lineTension: 0.1,
-        backgroundColor: 'rgb(255, 255, 255,0.4)',
+        backgroundColor: 'rgb(0, 0, 0,0.4)',
         borderColor: 'rgb(0, 0, 0,1)',
         borderCapStyle: 'round',
         borderDash: [],
         borderDashOffset: 0.0,
         borderJoinStyle: 'square',
         pointBorderColor: 'rgb(0, 0, 0,1)',
-        pointBackgroundColor: '#eee',
+        pointBackgroundColor: '#fff',
         pointBorderWidth: 10,
         pointHoverRadius: 5,
-        pointHoverBackgroundColor: 'rgb(0, 0, 0,1)',
+        pointHoverBackgroundColor: 'rgb(220,220,220,1)',
         pointHoverBorderColor: 'rgba(220,220,220,1)',
         pointHoverBorderWidth: 1,
         pointRadius: 1,
@@ -70,7 +70,6 @@ const contributionsData = (
         data: counts,
       },
     ],
-    // date: { first: labels[0], last: labels[labels.length - 1] },
   };
 };
 
@@ -126,13 +125,6 @@ const Graph: React.FC<Props> = (props) => {
         weekly_array.push({ labels: label, counts: data.weekly.counts[i] });
       });
       setWeeklyArray(weekly_array);
-      // setMonthlyArray()
-      // setMonthlyData(data.monthly);
-      // getWeeklyData(currentWeeklyIndex);
-      // getMonthlyData(currentMonthlyIndex);
-      // setYearlyData(
-      //   contributionsData(data.yearly.labels, data.yearly.data, "yearly")
-      // );
 
       const culcMax = (countArray: number[][]) => {
         // 配列を連結
@@ -186,7 +178,7 @@ const Graph: React.FC<Props> = (props) => {
   };
   const culcSpan = (labels: string[]) => {
     if (!labels) return;
-    return labels[0] + '~' + labels[labels.length - 1];
+    return labels[0] + ' ~ ' + labels[labels.length - 1];
   };
   const getWeeklyData = (index: number) => {
     const contData = () => {
@@ -241,7 +233,7 @@ const Graph: React.FC<Props> = (props) => {
                       }}
                       className="prev-arrow__wrapper"
                     >
-                      <ArrowIcon isLeft={true} fill="#093e49" />
+                      <ArrowIcon isLeft={true} fill="#333" />
                     </div>
                   );
                 }
@@ -265,7 +257,7 @@ const Graph: React.FC<Props> = (props) => {
                       }}
                       className="next-arrow__wrapper"
                     >
-                      <ArrowIcon isLeft={false} fill="#093e49" />
+                      <ArrowIcon isLeft={false} fill="#333" />
                     </div>
                   );
                 }
@@ -278,7 +270,7 @@ const Graph: React.FC<Props> = (props) => {
                       }}
                       className="next-arrow__wrapper"
                     >
-                      <ArrowIcon isLeft={false} fill="#093e49" />
+                      <ArrowIcon isLeft={false} fill="#333" />
                     </div>
                   );
                 }
