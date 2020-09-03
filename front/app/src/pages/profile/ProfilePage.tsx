@@ -40,11 +40,12 @@ const SkillPage: React.FC<Props> = (props) => {
   });
   const [skills, addSkills] = useState<
     { skill_type: string; skills: Skill[] }[]
-  >();
+  >([]);
   const [isLoaded, setIsLoad] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
+    console.log('tbsougnbisbng');
     setIsLoad(true);
 
     const fetchData = async () => {
@@ -117,6 +118,7 @@ const SkillPage: React.FC<Props> = (props) => {
         <Swiper
           slidesPerView={1}
           centeredSlides
+          initialSlide={1}
           speed={1500}
           spaceBetween={0}
           mousewheel={true}

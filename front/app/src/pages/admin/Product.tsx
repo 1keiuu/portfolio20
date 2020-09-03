@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { RouteComponentProps } from "react-router-dom";
-import * as H from "history";
-import { withRouter } from "react-router-dom";
-import AdminInner from "./Inner";
+import React, { useState } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
+import * as H from 'history';
+import { withRouter } from 'react-router-dom';
+import AdminInner from './Inner';
 import {
   TextField,
   FormControl,
@@ -11,9 +10,9 @@ import {
   FormControlLabel,
   Checkbox,
   FormGroup,
-} from "@material-ui/core";
+} from '@material-ui/core';
 
-import "../../styles/admin/product.scss";
+import '../../styles/admin/product.scss';
 interface Props extends RouteComponentProps<{}> {
   history: H.History;
 }
@@ -22,8 +21,8 @@ const AdminProduct: React.FC<Props> = (props) => {
   const [isSignIn, setIsSignIn] = useState(true);
 
   const skills: { name: string; checked?: boolean }[] = [
-    { name: "test1" },
-    { name: "test2" },
+    { name: 'test1' },
+    { name: 'test2' },
   ];
   const SKILLS = skills.map((skill) => {
     return { name: skill.name, checked: false };
