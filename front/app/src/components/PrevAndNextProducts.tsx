@@ -38,11 +38,15 @@ const Item: React.FC<ItemProps> = (props) => {
         ) : (
           <span style={{ display: 'none' }}></span>
         )}
-        <img
-          src={props.product.image_url.String}
-          className="other-product__image"
-        ></img>
-
+        <div className="other-product__image-wrapper">
+          <img
+            src={props.product.image_url.String}
+            className="other-product__image"
+          ></img>
+          <div className="a">
+            <div className="b"></div>
+          </div>
+        </div>
         {props.type === 'next' ? (
           <div className="other-product__arrow-wrapper">
             <p className="other-product__arrow-text">next</p>
