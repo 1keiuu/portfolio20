@@ -5,6 +5,13 @@
   transform: perspective(50px) translateZ(50px);
   transition: 2s;
   padding: 0 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-page .lottie__wrapper {
+  width: 25vw;
 }
 
 .contact-page .contact-page__text {
@@ -19,6 +26,7 @@
 .contact-page .contact-form {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .contact-page .contact-form .email__input {

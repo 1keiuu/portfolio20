@@ -57,7 +57,7 @@ const ProfileSlide: React.FC<Props> = (props) => {
           <div className="slide__text">
             <p className="hobby__title slide__title">趣味</p>
             <p className="hobby__text">
-              趣味は写真を撮ること、海外旅行、芸術鑑賞、海外サッカー観戦🏴󠁧󠁢󠁥󠁮󠁧󠁿等。
+              趣味は写真を撮ること、海外旅行、芸術鑑賞、海外サッカー観戦等。
             </p>
           </div>
         </CSSTransition>

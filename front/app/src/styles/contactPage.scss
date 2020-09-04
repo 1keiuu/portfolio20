@@ -5,6 +5,12 @@
   transform: perspective(50px) translateZ(50px);
   transition: 2s;
   padding: 0 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .lottie__wrapper {
+    width: 25vw;
+  }
   .contact-page__text {
     font-weight: bold;
     text-align: center;
@@ -15,7 +21,7 @@
   .contact-form {
     display: flex;
     flex-direction: column;
-
+    width: 100%;
     .email__input {
       margin-bottom: 15px;
       padding: 10px 8px;

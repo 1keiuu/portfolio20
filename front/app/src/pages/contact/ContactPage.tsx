@@ -67,7 +67,9 @@ const ContactPage: React.FC<Props> = (props) => {
   return (
     <CSSTransition in={isLoaded} classNames="contact-page" timeout={500}>
       <div className="contact-page">
-        <Lottie options={defaultOptions} height={350} width={350} />
+        <div className="lottie__wrapper">
+          <Lottie options={defaultOptions} />
+        </div>
         <div className="contact-page__text">
           <p>訪問していただきありがとうございます</p>
           <p>仕事依頼等あればお気軽にご連絡ください！</p>
