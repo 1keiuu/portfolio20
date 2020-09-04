@@ -43,9 +43,6 @@ const Item: React.FC<ItemProps> = (props) => {
             src={props.product.image_url.String}
             className="other-product__image"
           ></img>
-          <div className="a">
-            <div className="b"></div>
-          </div>
         </div>
         {props.type === 'next' ? (
           <div className="other-product__arrow-wrapper">

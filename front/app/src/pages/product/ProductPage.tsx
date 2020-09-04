@@ -180,7 +180,7 @@ const ProductPage: React.FC<Props> = (props) => {
                       (isFirstLoad.current ? '--first-load' : '')
                     }
                   >
-                    Created with
+                    CreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWith
                   </h3>
                   <div className="skill-cards">
                     {skills.map((skill, i) => {

@@ -182,6 +182,7 @@ $descriptionHeight: 14px;
         position: relative;
         height: $descriptionHeight;
         margin-bottom: 2vh;
+        font-weight: bold;
         .description__text {
           color: #333;
           font-size: $descriptionHeight;
@@ -215,17 +216,28 @@ $descriptionHeight: 14px;
   position: relative;
   .skill-section__inner {
     position: absolute;
-    background: rgb(216, 224, 234);
+    // background: rgb(216, 224, 234);
     width: 100%;
     height: 100%;
     .skill-section__title {
       position: absolute;
-      font-size: 160px;
-      margin-left: 8vw;
-      margin-top: 35px;
-      color: #c4c4c4;
+      font-size: 18vw;
+      font-weight: 900;
+      bottom: 0;
+      margin: 0;
+      left: 10%;
+      color: transparent;
+      -webkit-text-stroke: 2px #333;
+      white-space: nowrap;
+      animation: flowing 500s linear infinite;
+      transform: translateX(0%); /*初期位置*/
       &.--first-load {
         transition-delay: 1s;
+      }
+      @keyframes flowing {
+        100% {
+          transform: translateX(-100%);
+        }
       }
     }
 
@@ -264,6 +276,7 @@ $descriptionHeight: 14px;
           color: #333;
           font-weight: bold;
           margin-top: 10px;
+          font-size: 18px;
         }
       }
     }

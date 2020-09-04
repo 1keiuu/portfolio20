@@ -53,9 +53,7 @@ const Home: React.FC<Props> = (props) => {
     >
       <SwiperSlide>
         <CSSTransition in={isLoaded} timeout={0} classNames="home__inner">
-          <div className="home__inner">
-            <p>home</p>
-          </div>
+          <div className="home__inner"></div>
         </CSSTransition>
       </SwiperSlide>
     </Swiper>
