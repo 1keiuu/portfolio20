@@ -67,10 +67,11 @@ const SkillSlide: React.FC<Props> = (props) => {
               <div className="section" key={'section' + i}>
                 <p className="section__skill-type">{item.skill_type}</p>
                 <div className="skill-cards__group">
-                  {item.skills.map((skill, i) => {
-                    return (
-                      <div className="skill-card" key={'card' + i}>
-                        {/* <Circle
+                  <div className="skill-cards__group-inner">
+                    {item.skills.map((skill, i) => {
+                      return (
+                        <div className="skill-card" key={'card' + i}>
+                          {/* <Circle
                             progress={progressArray[i]}
                             responsive={true}
                             animate={true}
@@ -80,24 +81,25 @@ const SkillSlide: React.FC<Props> = (props) => {
                             progressColor={skill.background_color}
                             bgColor="whitesmoke"
                           /> */}
-                        <div
-                          className="skill-card__logo-wrapper"
-                          style={{ backgroundColor: skill.background_color }}
-                        >
-                          <img
-                            className="skill-card__logo"
-                            src={skill.image_url}
-                          />
+                          <div
+                            className="skill-card__logo-wrapper"
+                            style={{ backgroundColor: skill.background_color }}
+                          >
+                            <img
+                              className="skill-card__logo"
+                              src={skill.image_url}
+                            />
+                          </div>
+                          <div className="skill-card__title-wrapper">
+                            <p className="skill-card__title">{skill.name}</p>
+                            <p className="skill-card__sub-title">
+                              {skill.products_count} Projects
+                            </p>
+                          </div>
                         </div>
-                        <div className="skill-card__title-wrapper">
-                          <p className="skill-card__title">{skill.name}</p>
-                          <p className="skill-card__sub-title">
-                            {skill.products_count} Projects
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             </CSSTransition>

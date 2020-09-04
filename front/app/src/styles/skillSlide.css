@@ -1,7 +1,11 @@
 .skill__slide {
-  width: 100%;
+  width: 90%;
   height: 100%;
   padding-left: 9vw;
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .skill__slide .slide__inner::-webkit-scrollbar {
@@ -23,7 +27,7 @@
   transform: translateY(100px);
   opacity: 0;
   transition: 0.5s;
-  margin-top: 15px;
+  margin-top: 2vh;
 }
 
 .skill__slide .section .section__skill-type {
@@ -37,12 +41,18 @@
 
 .skill__slide .section .skill-cards__group {
   display: flex;
+  justify-content: center;
+}
+
+.skill__slide .section .skill-cards__group .skill-cards__group-inner {
+  width: 72vw;
+  display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
 }
 
-.skill__slide .section .skill-cards__group .skill-card {
-  width: 20vw;
+.skill__slide .section .skill-cards__group .skill-cards__group-inner .skill-card {
+  width: 17vw;
   margin-left: 1vw;
   margin-bottom: 20px;
   display: flex;
@@ -53,17 +63,17 @@
   cursor: pointer;
 }
 
-.skill__slide .section .skill-cards__group .skill-card:hover {
+.skill__slide .section .skill-cards__group .skill-cards__group-inner .skill-card:hover {
   transition: 0.5s;
 }
 
-.skill__slide .section .skill-cards__group .skill-card .skill-card__logo-wrapper {
+.skill__slide .section .skill-cards__group .skill-cards__group-inner .skill-card .skill-card__logo-wrapper {
   position: relative;
   height: 100px;
   width: 100px;
 }
 
-.skill__slide .section .skill-cards__group .skill-card .skill-card__logo-wrapper .skill-card__logo {
+.skill__slide .section .skill-cards__group .skill-cards__group-inner .skill-card .skill-card__logo-wrapper .skill-card__logo {
   width: 50%;
   height: 50%;
   object-fit: contain;
@@ -75,18 +85,18 @@
   -ms-transform: translate(-50%, -50%);
 }
 
-.skill__slide .section .skill-cards__group .skill-card .skill-card__title-wrapper {
+.skill__slide .section .skill-cards__group .skill-cards__group-inner .skill-card .skill-card__title-wrapper {
   margin-left: 10px;
 }
 
-.skill__slide .section .skill-cards__group .skill-card .skill-card__title-wrapper .skill-card__title {
+.skill__slide .section .skill-cards__group .skill-cards__group-inner .skill-card .skill-card__title-wrapper .skill-card__title {
   color: #333;
   margin-top: 6px;
   font-size: 1.2vw;
   text-align: start;
 }
 
-.skill__slide .section .skill-cards__group .skill-card .skill-card__title-wrapper .skill-card__sub-title {
+.skill__slide .section .skill-cards__group .skill-cards__group-inner .skill-card .skill-card__title-wrapper .skill-card__sub-title {
   font-size: 1vw;
   color: #989898;
   text-align: start;
