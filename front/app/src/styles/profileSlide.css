@@ -3,6 +3,18 @@
   padding-top: 5%;
 }
 
+.profile__slide p {
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.profile__slide .profile-image {
+  width: 40%;
+  position: absolute;
+  filter: brightness(0.6);
+}
+
 .profile__slide .slide-upper__image-wrapper {
   position: relative;
   overflow: hidden;

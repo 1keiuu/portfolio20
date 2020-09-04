@@ -15,6 +15,7 @@ import SwiperCore, { Mousewheel } from 'swiper';
 import 'swiper/swiper.scss';
 import 'swiper/components/pagination/pagination.scss';
 import { CSSTransition } from 'react-transition-group';
+import Img from '../../images/profile1.jpeg';
 
 const Fade = require('react-reveal/Fade');
 
@@ -182,6 +183,7 @@ const SkillPage: React.FC<Props> = (props) => {
             </div>
           )}
         </CSSTransition> */}
+        <img src={Img} className="bg-image" />
       </div>
     </CSSTransition>
   );

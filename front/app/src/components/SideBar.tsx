@@ -7,7 +7,6 @@ import igIconBlack from '../images/ig-icon-black.png';
 import wantedlyIcon from '../images/wantedly_mark.png';
 import gitIconWhite from '../images/git-icon-white.png';
 import gitIconBlack from '../images/git-icon-black.png';
-
 type Props = {
   current_page: string;
   is_product_page: boolean;

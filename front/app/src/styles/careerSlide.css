@@ -45,6 +45,7 @@
 
 .career__slide .timeline .timeline__item .item__text {
   margin-left: 10px;
+  font-weight: bold;
 }
 
 .career__slide .timeline .timeline__item .item__text-list {
@@ -52,6 +53,7 @@
   padding-left: 50px;
   margin-top: 8px;
   color: grey;
+  font-weight: bold;
   text-align: left;
 }
 

@@ -1,6 +1,16 @@
 .profile__slide {
   width: 65%;
   padding-top: 5%;
+  p {
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-align: center;
+  }
+  .profile-image {
+    width: 40%;
+    position: absolute;
+    filter: brightness(0.6);
+  }
   .slide-upper__image-wrapper {
     position: relative;
     overflow: hidden;

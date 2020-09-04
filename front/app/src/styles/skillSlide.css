@@ -31,7 +31,8 @@
   color: #989898;
   font-size: 1.9vw;
   margin-bottom: 8px;
-  padding-left: 5px;
+  padding-left: 15px;
+  font-weight: bold;
 }
 
 .skill__slide .section .skill-cards__group {

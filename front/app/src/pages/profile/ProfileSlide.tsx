@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/profileSlide.scss';
-import profileImg from '../../images/me.png';
+import profileImg from '../../images/me.jpg';
 import { CSSTransition } from 'react-transition-group';
 
 const Fade = require('react-reveal/Fade');
@@ -33,6 +33,8 @@ const ProfileSlide: React.FC<Props> = (props) => {
         </CSSTransition>
         <img className="slide-upper__image" src={profileImg}></img>
       </div> */}
+      <div></div>
+      <img src={profileImg} className="profile-image" />
       <div className="slide-upper">
         <div className="slide-upper__text-group">
           <CSSTransition
