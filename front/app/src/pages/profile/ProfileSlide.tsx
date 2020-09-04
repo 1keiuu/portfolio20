@@ -34,7 +34,7 @@ const ProfileSlide: React.FC<Props> = (props) => {
         <img className="slide-upper__image" src={profileImg}></img>
       </div> */}
       <div></div>
-      <img src={profileImg} className="profile-image" />
+      {/* <img src={profileImg} className="profile-image" /> */}
       <div className="slide-upper">
         <div className="slide-upper__text-group">
           <CSSTransition
