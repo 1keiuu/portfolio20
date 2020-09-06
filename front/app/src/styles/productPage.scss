@@ -1,6 +1,6 @@
 $titleHeight: 25px;
 $spanHeight: 14px;
-$descriptionHeight: 14px;
+$descriptionHeight: 16px;
 
 .product-page {
   width: 100%;
@@ -160,9 +160,9 @@ $descriptionHeight: 14px;
   .section {
     margin-top: 100px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     opacity: 0;
+    padding-left: 13%;
     &.-enter-done {
       transition: 1s;
       opacity: 1;
@@ -180,18 +180,16 @@ $descriptionHeight: 14px;
       margin: 6vh 5vh 3vh;
       .description {
         position: relative;
-        height: $descriptionHeight;
         margin-bottom: 2vh;
-        font-weight: bold;
         .description__text {
           color: #333;
           font-size: $descriptionHeight;
-          line-height: $descriptionHeight;
+          // line-height: $descriptionHeight;
           text-align: start;
           transform: translateY(0);
           &.--active {
             transition: 0.6s ease-in;
-            transform: translateY(-$descriptionHeight);
+            transform: translateY(-100%);
           }
           &.--first-load {
             transition-delay: 1s;
@@ -227,7 +225,7 @@ $descriptionHeight: 14px;
       margin: 0;
       left: 10%;
       color: transparent;
-      -webkit-text-stroke: 2px #333;
+      -webkit-text-stroke: 2px #b7b7b7;
       white-space: nowrap;
       animation: flowing 500s linear infinite;
       transform: translateX(0%); /*初期位置*/

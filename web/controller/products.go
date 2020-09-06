@@ -11,14 +11,15 @@ import (
 )
 
 type Product struct {
-	ID              int              `json:"id"`
-	Title           string           `json:"title"`
-	Span            string           `json:"span"`
-	BackgroundColor string           `json:"background_color"`
-	Images          string           `json:"images"`
-	Descriptions    string           `json:"descriptions"`
-	StartDate       string           `json:"start_date"`
-	Skills          []ProductsSkills `json:"skills"`
+	ID                int              `json:"id"`
+	Title             string           `json:"title"`
+	Span              string           `json:"span"`
+	BackgroundColor   string           `json:"background_color"`
+	Images            string           `json:"images"`
+	Descriptions      string           `json:"descriptions"`
+	DescriptionTitles string           `json:"description_titles"`
+	StartDate         string           `json:"start_date"`
+	Skills            []ProductsSkills `json:"skills"`
 }
 type ProductsSkills struct {
 	ProductId       int    `json:"product_id"`
@@ -37,7 +38,7 @@ type ProductDescription struct {
 func GetProducts(c *gin.Context) {
 	DB := db.Connect()
 	defer DB.Close()
-	productsRows, err := DB.Query("SELECT products.id, title, span, background_color,start_date, group_concat(distinct product_contents.image_url) AS images,group_concat(distinct product_contents.description) AS descriptions FROM products INNER JOIN product_contents ON (products.id=product_contents.product_id) GROUP BY product_id;")
+	productsRows, err := DB.Query("SELECT products.id, products.title, span, background_color,start_date, group_concat(distinct product_contents.image_url) AS images,group_concat(distinct product_contents.description) AS descriptions, group_concat(distinct product_contents.title) AS description_titles FROM products INNER JOIN product_contents ON (products.id=product_contents.product_id) GROUP BY product_id;")
 	if err != nil {
 		panic(err.Error())
 	}
@@ -58,7 +59,7 @@ func GetProducts(c *gin.Context) {
 	productsArray := make([]Product, 0)
 	for productsRows.Next() {
 		var product Product
-		err = productsRows.Scan(&product.ID, &product.Title, &product.Span, &product.BackgroundColor, &product.StartDate, &product.Images, &product.Descriptions)
+		err = productsRows.Scan(&product.ID, &product.Title, &product.Span, &product.BackgroundColor, &product.StartDate, &product.Images, &product.Descriptions, &product.DescriptionTitles)
 		if err != nil {
 			panic(err.Error())
 		}
@@ -81,7 +82,7 @@ func GetProduct(c *gin.Context) {
 
 	DB := db.Connect()
 	defer DB.Close()
-	productRow := DB.QueryRow("SELECT products.id, title, span, background_color,start_date, group_concat(distinct product_contents.image_url) AS images,group_concat(distinct product_contents.description) AS descriptions FROM products INNER JOIN product_contents ON (products.id=product_contents.product_id) where products.id = ? GROUP BY product_id;", id)
+	productRow := DB.QueryRow("SELECT products.id, products.title, span, background_color,start_date, group_concat(distinct product_contents.image_url) AS images,group_concat(distinct product_contents.description) AS descriptions, group_concat(distinct product_contents.title) AS description_titles FROM products INNER JOIN product_contents ON (products.id=product_contents.product_id) where products.id = ? GROUP BY product_id;", id)
 	prevProductRow := DB.QueryRow("SELECT product_id AS id, image_url FROM product_contents WHERE product_id = ?;", id-1)
 	nextProductRow := DB.QueryRow("SELECT product_id AS id, image_url FROM product_contents WHERE product_id = ?;", id+1)
 
@@ -97,7 +98,7 @@ func GetProduct(c *gin.Context) {
 	}
 
 	var product Product
-	err = productRow.Scan(&product.ID, &product.Title, &product.Span, &product.BackgroundColor, &product.StartDate, &product.Images, &product.Descriptions)
+	err = productRow.Scan(&product.ID, &product.Title, &product.Span, &product.BackgroundColor, &product.StartDate, &product.Images, &product.Descriptions, &product.DescriptionTitles)
 	if err != nil {
 		panic(err.Error())
 	}
