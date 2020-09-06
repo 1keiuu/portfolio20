@@ -4,6 +4,8 @@
 CREATE TABLE skills(
     id int AUTO_INCREMENT,
     name varchar(255),
+    background_color varchar(255),
+    image_url varchar(255),
     skill_type_id int NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY(skill_type_id)

@@ -6,6 +6,7 @@ CREATE TABLE products(
     title varchar(255),
     span varchar(255),
     background_color varchar(255),
+    start_date varchar(255),
     PRIMARY KEY(id)
 );
 
