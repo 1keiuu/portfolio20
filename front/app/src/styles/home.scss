@@ -7,6 +7,17 @@
   transform: perspective(50px) translateZ(50px);
   transition: 2s;
   padding: 5vh 10vw;
+  display: flex;
+  .home__title-wrapper {
+    width: 30%;
+    height: 100%;
+    position: relative;
+    .home__title {
+      font-size: 6vw;
+      white-space: nowrap;
+      position: absolute;
+    }
+  }
 }
 
 .home__inner-enter-done {
