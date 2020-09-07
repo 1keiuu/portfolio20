@@ -13,6 +13,7 @@ interface Product {
   background_color: string;
   images: string;
   descriptions: string;
+  description_titles: string;
   skill_ids: string;
   start_date: string;
   skills: Skill[];
@@ -36,6 +37,7 @@ const ProductPage: React.FC<Props> = (props) => {
     background_color: '',
     images: '',
     descriptions: '',
+    description_titles: '',
     skill_ids: '',
     start_date: '',
     skills: [],
@@ -46,10 +48,12 @@ const ProductPage: React.FC<Props> = (props) => {
 
   let images: string[] = [];
   let descriptions: string[] = [];
+  let description_titles: string[] = [];
   let skills: Skill[] = [];
   if (product) {
     images = product.images.split(',');
     descriptions = product.descriptions.split(',');
+    description_titles = product.description_titles.split(',');
     skills = product.skills;
   }
   const [isLoaded, setIsloaded] = useState(false);
@@ -144,19 +148,30 @@ const ProductPage: React.FC<Props> = (props) => {
                   <div className="description__wrapper">
                     {descriptions![i].split('///').map((description) => {
                       return (
-                        <div className="description">
-                          <p
+                        <div className="description__inner">
+                          <h3
                             className={
-                              'description__text' +
+                              'description__title' +
                               ' ' +
-                              (isVisible ? '--active' : '') +
-                              ' ' +
-                              (isFirstLoad.current ? '--first-load' : '')
+                              (isVisible ? '--active' : '')
                             }
                           >
-                            {description}
-                          </p>
-                          <span className="description__cover"></span>
+                            {description_titles[i]}
+                          </h3>
+                          <div className="description">
+                            <p
+                              className={
+                                'description__text' +
+                                ' ' +
+                                (isVisible ? '--active' : '') +
+                                ' ' +
+                                (isFirstLoad.current ? '--first-load' : '')
+                              }
+                            >
+                              {description}
+                            </p>
+                            <span className="description__cover"></span>
+                          </div>
                         </div>
                       );
                     })}

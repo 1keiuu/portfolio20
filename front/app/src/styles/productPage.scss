@@ -1,5 +1,5 @@
-$titleHeight: 25px;
-$spanHeight: 14px;
+$titleHeight: 3.5vh;
+$spanHeight: 16px;
 $descriptionHeight: 16px;
 
 .product-page {
@@ -26,7 +26,7 @@ $descriptionHeight: 16px;
     box-sizing: border-box;
     .title-section {
       display: flex;
-      justify-content: center;
+      padding-left: 18%;
       .title-section__inner {
         position: relative;
         height: $titleHeight + 5;
@@ -67,7 +67,7 @@ $descriptionHeight: 16px;
           opacity: 1;
           .start-date__wrapper {
             display: flex;
-            padding: 6px 12px;
+            padding: 9px 12px;
             border-radius: 30px;
             background: #f7f7f7;
             transition: transform 0.7s ease-in;
@@ -137,32 +137,19 @@ $descriptionHeight: 16px;
     }
   }
 
-  // :nth-child(2n) {
-  //   // section一つ目
-  //   &.section {
-  //     align-items: flex-start;
-  //     padding-left: 15vw;
-  //   }
-  // }
-
-  // :nth-child(2n + 1) {
-  //   &.section {
-  //     align-items: flex-end;
-  //     padding-right: 5vw;
-
-  //     .section__description-background {
-  //       left: -10vw;
-  //       bottom: 0;
-  //     }
-  //   }
-  // }
+  :nth-child(2n + 1) {
+    // section(2n番目)
+    &.section {
+      flex-direction: row-reverse;
+    }
+  }
 
   .section {
-    margin-top: 100px;
+    margin-top: 150px;
     display: flex;
     align-items: center;
+    padding: 0 7% 0 15%;
     opacity: 0;
-    padding-left: 13%;
     &.-enter-done {
       transition: 1s;
       opacity: 1;
@@ -177,19 +164,31 @@ $descriptionHeight: 16px;
     }
     .description__wrapper {
       background: #fff;
-      margin: 6vh 5vh 3vh;
+      margin-left: 5vh;
+      .description__title {
+        margin-top: 0;
+        color: #333;
+        font-size: 30px;
+        font-family: 'Noto Sans', sans-serif;
+        font-weight: 700;
+
+        // transform: translateY(0);
+        &.--active {
+          transition: 0.6s ease-in;
+          // transform: translateY(-100%);
+        }
+      }
       .description {
         position: relative;
-        margin-bottom: 2vh;
+        margin: 2vh;
         .description__text {
           color: #333;
           font-size: $descriptionHeight;
-          // line-height: $descriptionHeight;
           text-align: start;
-          transform: translateY(0);
+          transform: translateY(100%);
           &.--active {
             transition: 0.6s ease-in;
-            transform: translateY(-100%);
+            transform: translateY(0%);
           }
           &.--first-load {
             transition-delay: 1s;
@@ -200,7 +199,7 @@ $descriptionHeight: 16px;
           background: #fff;
           height: 100%;
           width: 100%;
-          top: 0;
+          top: 100%;
           left: 0;
         }
       }
