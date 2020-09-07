@@ -33,49 +33,43 @@ const HomeAnimation = () => {
 
     // マテリアルを作成
     const material = new THREE.MeshPhongMaterial({
-      map: new THREE.TextureLoader().load('imgs/earthmap1k.jpg'),
+      map: new THREE.TextureLoader().load(
+        'https://media.giphy.com/media/RczrZPh9LHpCM/giphy.gif'
+      ),
       side: THREE.DoubleSide,
     });
 
-    // // 球体の形状を作成します
-    // const geometry = new THREE.SphereGeometry(300, 30, 30);
-    // // 形状とマテリアルからメッシュを作成します
-    // const earthMesh = new THREE.Mesh(geometry, material);
-    // // シーンにメッシュを追加します
-    // scene.add(earthMesh);
-
-    var { MeshLine } = require('threejs-meshline');
-    var line = new MeshLine();
-    var geometry2 = new THREE.Geometry();
-    for (var j = 0; j < Math.PI; j += (2 * Math.PI) / 100) {
-      var v = new THREE.Vector3(Math.cos(j), Math.sin(j), 0);
-      geometry2.vertices.push(v);
-    }
-    line.setGeometry(geometry2);
+    // 球体の形状を作成します
+    const geometry = new THREE.SphereGeometry(300, 30, 30);
+    // 形状とマテリアルからメッシュを作成します
+    const earthMesh = new THREE.Mesh(geometry, material);
+    // シーンにメッシュを追加します
+    scene.add(earthMesh);
 
     // 星屑を作成します (カメラの動きをわかりやすくするため)
     createStarField();
 
     function createStarField() {
       // 形状データを作成
-      //   const geometry = new THREE.Geometry();
-      //   for (let i = 0; i < 1000; i++) {
-      //     geometry.vertices.push(
-      //       new THREE.Vector3(
-      //         3000 * (Math.random() - 0.5),
-      //         3000 * (Math.random() - 0.5),
-      //         3000 * (Math.random() - 0.5)
-      //       )
-      //     );
-      //   }
-      //   // マテリアルを作成
-      //   const material = new THREE.PointsMaterial({
-      //     size: 10,
-      //     color: 0xffffff,
-      //   });
-      //   // 物体を作成
-      //   const mesh = new THREE.Points(geometry, material);
-      //   scene.add(mesh);
+      const geometry = new THREE.Geometry();
+      for (let i = 0; i < 1000; i++) {
+        geometry.vertices.push(
+          new THREE.Vector3(
+            3000 * (Math.random() - 0.5),
+            3000 * (Math.random() - 0.5),
+            3000 * (Math.random() - 0.5)
+          )
+        );
+      }
+      // マテリアルを作成
+      const material = new THREE.PointsMaterial({
+        size: 10,
+        color: 0xffffff,
+      });
+
+      // 物体を作成
+      const mesh = new THREE.Points(geometry, material);
+      scene.add(mesh);
     }
 
     // マウス座標はマウスが動いた時のみ取得できる
@@ -107,7 +101,7 @@ const HomeAnimation = () => {
 
       // 角度に応じてカメラの位置を設定
       camera.position.x = 1000 * Math.sin(radian);
-      camera.position.y = 200 * Math.sin(radianY);
+      camera.position.y = 1000 * Math.sin(radianY);
       camera.position.z = 1000 * Math.cos(radian);
       // 原点方向を見つめる
       camera.lookAt(new THREE.Vector3(0, 0, 0));
