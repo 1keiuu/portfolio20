@@ -15,7 +15,7 @@ import SwiperCore, { Mousewheel } from 'swiper';
 import 'swiper/swiper.scss';
 import 'swiper/components/pagination/pagination.scss';
 import { CSSTransition } from 'react-transition-group';
-import Img from '../../images/profile1.jpeg';
+import Img from '../../images/profile.jpeg';
 
 const Fade = require('react-reveal/Fade');
 

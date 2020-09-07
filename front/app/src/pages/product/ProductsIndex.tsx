@@ -26,7 +26,7 @@ import {
   Switch,
 } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-
+import productImg from '../../images/product.jpeg';
 const Fade = require('react-reveal/Fade');
 
 SwiperCore.use([Mousewheel]);
@@ -258,6 +258,7 @@ const ProductsIndex: React.FC<Props> = (props) => {
             }}
           ></Route>
         </Switch>
+        <img src={productImg} className="bg-image" />
       </div>
     </CSSTransition>
   );
