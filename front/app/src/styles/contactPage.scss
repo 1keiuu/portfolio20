@@ -57,7 +57,14 @@
     }
   }
 }
-
+.bg-image {
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+  bottom: 0;
+  left: 0;
+  filter: brightness(0.5);
+}
 .contact-page-enter-done {
   opacity: 1;
   filter: blur(0);

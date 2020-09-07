@@ -37,18 +37,18 @@
       transform: translateY(8px);
     }
   }
+  .bg-image {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    filter: brightness(0.4);
+  }
 }
 .profile__inner-enter-done {
   opacity: 1;
   filter: blur(0);
   transform: perspective(50px) translateZ(0);
   transition: 1s;
-}
-
-.bg-image {
-  position: absolute;
-  width: 100%;
-  left: 0;
-  bottom: 0;
-  z-index: -1;
 }

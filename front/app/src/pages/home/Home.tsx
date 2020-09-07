@@ -37,17 +37,14 @@ const Home: React.FC<Props> = (props) => {
     setIsLoaded(true);
 
     window.addEventListener('wheel', handleWheel);
-    let index = 0;
     const timerId = window.setInterval(() => {
-      index += 1;
       var child = document.createElement('h3');
-      const first_child = document.getElementById('title__wrapper')
+      const firstChild = document.getElementById('title__wrapper')
         ?.childNodes[0];
       child.classList.add('home__title');
-      child.id = 'title' + index;
-      child.textContent = "IKKEIPORTFOLIO'20  ";
-      if (first_child)
-        document.getElementById('title__wrapper')?.removeChild(first_child);
+      child.textContent = "IKKEIPORTFOLIO'20";
+      if (firstChild)
+        document.getElementById('title__wrapper')?.removeChild(firstChild);
       document.getElementById('title__wrapper')?.appendChild(child);
     }, 10000);
     return () => {
@@ -59,11 +56,11 @@ const Home: React.FC<Props> = (props) => {
     <div>
       <div>
         <div className="home__title-wrapper" id="title__wrapper">
-          <h3 className="home__title">IKKEIPORTFOLIO'20 </h3>
-          <h3 className="home__title">IKKEIPORTFOLIO'20 </h3>
-          <h3 className="home__title">IKKEIPORTFOLIO'20 </h3>
-          <h3 className="home__title">IKKEIPORTFOLIO'20 </h3>
-          <h3 className="home__title">IKKEIPORTFOLIO'20 </h3>
+          <h3 className="home__title">IKKEIPORTFOLIO'20</h3>
+          <h3 className="home__title">IKKEIPORTFOLIO'20</h3>
+          <h3 className="home__title">IKKEIPORTFOLIO'20</h3>
+          <h3 className="home__title">IKKEIPORTFOLIO'20</h3>
+          <h3 className="home__title">IKKEIPORTFOLIO'20</h3>
         </div>
         <div></div>
       </div>

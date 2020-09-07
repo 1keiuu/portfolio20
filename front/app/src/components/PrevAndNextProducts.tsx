@@ -30,7 +30,7 @@ const Item: React.FC<ItemProps> = (props) => {
       >
         {props.type === 'prev' ? (
           <div className="other-product__arrow-wrapper">
-            <p className="other-product__arrow-text">prev</p>
+            <p className="other-product__arrow-text">PREV</p>
             <div className="other-product__arrow">
               <ArrowPonterIcon isLeft></ArrowPonterIcon>
             </div>
@@ -46,7 +46,7 @@ const Item: React.FC<ItemProps> = (props) => {
         </div>
         {props.type === 'next' ? (
           <div className="other-product__arrow-wrapper">
-            <p className="other-product__arrow-text">next</p>
+            <p className="other-product__arrow-text">NEXT</p>
             <div className="other-product__arrow">
               <ArrowPonterIcon></ArrowPonterIcon>
             </div>
