@@ -9,7 +9,7 @@ import 'swiper/components/pagination/pagination.scss';
 import * as H from 'history';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-
+import HomeAnimation from '../../components/HomeAnimation';
 SwiperCore.use([Mousewheel]);
 
 interface Props extends RouteComponentProps<{}> {
@@ -53,7 +53,11 @@ const Home: React.FC<Props> = (props) => {
     >
       <SwiperSlide>
         <CSSTransition in={isLoaded} timeout={0} classNames="home__inner">
-          <div className="home__inner"></div>
+          <div className="home__inner">
+            <div></div>
+
+            <HomeAnimation></HomeAnimation>
+          </div>
         </CSSTransition>
       </SwiperSlide>
     </Swiper>

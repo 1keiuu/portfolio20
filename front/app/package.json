@@ -35,6 +35,7 @@
     "redux": "^4.0.5",
     "swiper": "^6.1.1",
     "three": "^0.119.1",
+    "three-orbitcontrols": "^2.110.3",
     "typescript": "^3.9.6"
   },
   "scripts": {
