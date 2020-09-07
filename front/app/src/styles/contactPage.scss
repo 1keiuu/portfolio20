@@ -13,15 +13,18 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   .lottie__wrapper {
     width: 25vw;
   }
   .contact-page__text {
-    text-align: center;
     h2 {
       font-size: 4vh;
       font-weight: bold;
+      font-size: 5vh;
+    }
+    p {
+      text-align: start;
     }
     &:nth-child(2) {
       margin-bottom: 30px;
@@ -54,15 +57,30 @@
       height: 25vh;
     }
     .submit__button {
-      border-radius: 30px;
-      background: #3981f0;
+      border-radius: 5px;
+      background: #5a52f1;
       color: #fff;
       border: 0;
-      font-size: 14px;
+      font-size: 2vh;
       font-weight: bold;
       padding: 12px 0;
-      margin: 0 30%;
+      height: 12%;
+      width: 25%;
       cursor: pointer;
+      outline: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &.--done {
+        background: #fff;
+        border: 2px solid #5a52f1;
+        color: #5a52f1;
+        .lottie__wrapper {
+          height: 30px;
+          width: 30px;
+          margin-right: 10px;
+        }
+      }
     }
   }
 }
@@ -74,7 +92,7 @@
   z-index: -1;
   bottom: 0;
   left: 0;
-  filter: brightness(0.5);
+  filter: brightness(0.4);
 }
 .contact-page-enter-done {
   opacity: 1;

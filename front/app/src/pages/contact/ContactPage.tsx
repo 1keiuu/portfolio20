@@ -5,18 +5,16 @@ import '../../styles/contactPage.scss';
 import { CSSTransition } from 'react-transition-group';
 import axios from 'axios';
 import Lottie from 'react-lottie';
-import animationData from '../../lottie/email.json';
+import animationData from '../../lottie/check.json';
 import Img from '../../images/contact.jpeg';
 const defaultOptions = {
-  loop: true,
+  loop: false,
   autoplay: true,
   animationData,
   rendererSettings: {
     preserveAspectRatio: 'xMidYMid slice',
   },
 };
-
-const Fade = require('react-reveal/Fade');
 
 interface Props extends RouteComponentProps<{}> {
   history: H.History;
@@ -47,15 +45,48 @@ const ContactPage: React.FC<Props> = (props) => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [content, setContent] = useState('');
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const SubmitButton = (props: {
+    callback: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  }) => {
+    if (isSubmitted) {
+      return (
+        <button
+          className="submit__button --done"
+          onClick={(e) => {
+            props.callback(e);
+          }}
+        >
+          <div className="lottie__wrapper">
+            <Lottie options={defaultOptions}></Lottie>
+          </div>
+          <p>Thanks!</p>
+        </button>
+      );
+    } else {
+      return (
+        <button
+          className="submit__button"
+          onClick={(e) => {
+            props.callback(e);
+          }}
+        >
+          <p>Submit</p>
+        </button>
+      );
+    }
+  };
+  const handleSubmit = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    if (isSubmitted) return;
     const Contact_URL = `${process.env.REACT_APP_API_URL}/api/contacts`;
     const params = {
       email: email,
       name: name,
       content: content,
     };
-    axios
+    await axios
       .post(Contact_URL, params)
       .then((res) => {
         console.log(res);
@@ -63,7 +94,9 @@ const ContactPage: React.FC<Props> = (props) => {
       .catch((e) => {
         console.log(e);
       });
+    console.log('submitted');
     e.preventDefault();
+    setIsSubmitted(true);
   };
   return (
     <div className="contact-page__wrapper">
@@ -78,12 +111,7 @@ const ContactPage: React.FC<Props> = (props) => {
             <p>お気軽にご連絡ください！</p>
           </div>
 
-          <form
-            onSubmit={(e) => {
-              handleSubmit(e);
-            }}
-            className="contact-form"
-          >
+          <form className="contact-form">
             <input
               value={email}
               placeholder="メールアドレス"
@@ -108,7 +136,7 @@ const ContactPage: React.FC<Props> = (props) => {
               }}
               className="content__input"
             ></textarea>
-            <input type="submit" value="Submit" className="submit__button" />
+            <SubmitButton callback={(e) => handleSubmit(e)}></SubmitButton>
           </form>
         </div>
       </CSSTransition>
