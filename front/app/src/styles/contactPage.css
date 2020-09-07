@@ -1,5 +1,10 @@
+.contact-page__wrapper {
+  height: 100%;
+}
+
 .contact-page {
   box-sizing: border-box;
+  height: 100%;
   opacity: 0;
   filter: blur(50px);
   transform: perspective(50px) translateZ(50px);
@@ -7,6 +12,7 @@
   padding: 0 20%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
@@ -15,8 +21,12 @@
 }
 
 .contact-page .contact-page__text {
-  font-weight: bold;
   text-align: center;
+}
+
+.contact-page .contact-page__text h2 {
+  font-size: 4vh;
+  font-weight: bold;
 }
 
 .contact-page .contact-page__text:nth-child(2) {
@@ -69,6 +79,8 @@
 .bg-image {
   position: absolute;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   z-index: -1;
   bottom: 0;
   left: 0;
