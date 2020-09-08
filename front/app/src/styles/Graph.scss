@@ -38,7 +38,7 @@ $breakpoint-down: (
   .graph__upper {
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     height: 40px;
     margin: 2% 1.6%;
     .span-display__wrapper {
@@ -48,7 +48,7 @@ $breakpoint-down: (
       .prev-button {
         width: 34px;
         height: 34px;
-        margin-right: 50px;
+        margin-right: 10px;
         .prev-arrow__wrapper {
           cursor: pointer;
           background: #fff;
@@ -64,7 +64,7 @@ $breakpoint-down: (
       .next-button {
         width: 34px;
         height: 34px;
-        margin-left: 50px;
+        margin-left: 0;
         .next-arrow__wrapper {
           cursor: pointer;
           background: #fff;
@@ -77,10 +77,18 @@ $breakpoint-down: (
           justify-content: center;
         }
       }
-      .graph__span {
-        margin: 0;
-        font-size: 18px;
-        color: #333;
+      .graph__span-wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        .graph__span {
+          margin: 0;
+          font-size: 18px;
+          color: #333;
+        }
       }
     }
   }
@@ -116,8 +124,16 @@ $breakpoint-down: (
     .line-graph__wrapper {
       height: 22vh;
     }
-    .graph__upper .span-display__wrapper .graph__span {
+    .graph__upper .span-display__wrapper .graph__span-wrapper .graph__span {
       font-size: 14px;
     }
+  }
+}
+@include mq-down(md) {
+  .github__slide .slide__inner {
+    width: 90vw;
+  }
+  .graph__upper .span-display__wrapper .graph__span-wrapper .graph__span {
+    font-size: 16px;
   }
 }

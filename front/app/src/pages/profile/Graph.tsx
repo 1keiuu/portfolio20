@@ -240,7 +240,7 @@ const Graph: React.FC<Props> = (props) => {
             })()}
           </div>
 
-          <div>
+          <div className="graph__span-wrapper">
             <p className="graph__span">{culcSpan(currentData.labels)}</p>
           </div>
           <div className="next-button">

@@ -1,7 +1,7 @@
 .graph .graph__upper {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   height: 40px;
   margin: 2% 1.6%;
 }
@@ -15,7 +15,7 @@
 .graph .graph__upper .span-display__wrapper .prev-button {
   width: 34px;
   height: 34px;
-  margin-right: 50px;
+  margin-right: 10px;
 }
 
 .graph .graph__upper .span-display__wrapper .prev-button .prev-arrow__wrapper {
@@ -33,7 +33,7 @@
 .graph .graph__upper .span-display__wrapper .next-button {
   width: 34px;
   height: 34px;
-  margin-left: 50px;
+  margin-left: 0;
 }
 
 .graph .graph__upper .span-display__wrapper .next-button .next-arrow__wrapper {
@@ -48,7 +48,16 @@
   justify-content: center;
 }
 
-.graph .graph__upper .span-display__wrapper .graph__span {
+.graph .graph__upper .span-display__wrapper .graph__span-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.graph .graph__upper .span-display__wrapper .graph__span-wrapper .graph__span {
   margin: 0;
   font-size: 18px;
   color: #333;
@@ -85,7 +94,16 @@
   .graph .line-graph__wrapper {
     height: 22vh;
   }
-  .graph .graph__upper .span-display__wrapper .graph__span {
+  .graph .graph__upper .span-display__wrapper .graph__span-wrapper .graph__span {
     font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .github__slide .slide__inner {
+    width: 90vw;
+  }
+  .graph__upper .span-display__wrapper .graph__span-wrapper .graph__span {
+    font-size: 16px;
   }
 }
