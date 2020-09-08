@@ -5,10 +5,20 @@ import '../../styles/contactPage.scss';
 import { CSSTransition } from 'react-transition-group';
 import axios from 'axios';
 import Lottie from 'react-lottie';
-import animationData from '../../lottie/check.json';
+
 import Img from '../../images/contact.jpeg';
+let animationData = require('../../lottie/check.json');
 const defaultOptions = {
   loop: false,
+  autoplay: true,
+  animationData,
+  rendererSettings: {
+    preserveAspectRatio: 'xMidYMid slice',
+  },
+};
+animationData = require('../../lottie/loading.json');
+const loadingOptions = {
+  loop: true,
   autoplay: true,
   animationData,
   rendererSettings: {
@@ -46,6 +56,8 @@ const ContactPage: React.FC<Props> = (props) => {
   const [name, setName] = useState('');
   const [content, setContent] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const SubmitButton = (props: {
     callback: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   }) => {
@@ -64,22 +76,33 @@ const ContactPage: React.FC<Props> = (props) => {
         </button>
       );
     } else {
-      return (
-        <button
-          className="submit__button"
-          onClick={(e) => {
-            props.callback(e);
-          }}
-        >
-          <p>Submit</p>
-        </button>
-      );
+      if (isLoading) {
+        return (
+          <button className="submit__button">
+            <div className="lottie__wrapper">
+              <Lottie options={loadingOptions}></Lottie>
+            </div>
+          </button>
+        );
+      } else {
+        return (
+          <button
+            className="submit__button"
+            onClick={(e) => {
+              props.callback(e);
+            }}
+          >
+            <p>Submit</p>
+          </button>
+        );
+      }
     }
   };
   const handleSubmit = async (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     if (isSubmitted) return;
+    setIsLoading(true);
     const Contact_URL = `${process.env.REACT_APP_API_URL}/api/contacts`;
     const params = {
       email: email,
@@ -89,14 +112,15 @@ const ContactPage: React.FC<Props> = (props) => {
     await axios
       .post(Contact_URL, params)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
       })
       .catch((e) => {
         console.log(e);
+        alert(`送信に失敗しました\n再度お試しください`);
       });
-    console.log('submitted');
-    e.preventDefault();
+    setIsLoading(false);
     setIsSubmitted(true);
+    e.preventDefault();
   };
   return (
     <div className="contact-page__wrapper">
@@ -111,7 +135,7 @@ const ContactPage: React.FC<Props> = (props) => {
             <p>お気軽にご連絡ください！</p>
           </div>
 
-          <form className="contact-form">
+          <div className="contact-form">
             <input
               value={email}
               placeholder="メールアドレス"
@@ -137,7 +161,7 @@ const ContactPage: React.FC<Props> = (props) => {
               className="content__input"
             ></textarea>
             <SubmitButton callback={(e) => handleSubmit(e)}></SubmitButton>
-          </form>
+          </div>
         </div>
       </CSSTransition>
       <img src={Img} className="bg-image" />

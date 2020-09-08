@@ -15,7 +15,8 @@
   justify-content: center;
   align-items: flex-start;
   .lottie__wrapper {
-    width: 25vw;
+    height: 50px;
+    width: 50px;
   }
   .contact-page__text {
     h2 {
@@ -75,6 +76,7 @@
         background: #fff;
         border: 2px solid #5a52f1;
         color: #5a52f1;
+        cursor: unset;
         .lottie__wrapper {
           height: 30px;
           width: 30px;

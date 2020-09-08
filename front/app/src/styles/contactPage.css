@@ -17,7 +17,8 @@
 }
 
 .contact-page .lottie__wrapper {
-  width: 25vw;
+  height: 50px;
+  width: 50px;
 }
 
 .contact-page .contact-page__text h2 {
@@ -86,6 +87,7 @@
   background: #fff;
   border: 2px solid #5a52f1;
   color: #5a52f1;
+  cursor: unset;
 }
 
 .contact-page .contact-form .submit__button.--done .lottie__wrapper {
