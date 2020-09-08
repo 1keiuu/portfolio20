@@ -50,17 +50,6 @@ const Sidebar: React.FC<Props> = (props) => {
               Home
             </p>
           </Link>
-          {/* <CSSTransition
-            in={selectedItem === 'home'}
-            classNames="underline"
-            timeout={0}
-          >
-            <div
-              className={
-                'underline' + ' ' + (props.is_product_page ? '--black' : '')
-              }
-            ></div>
-          </CSSTransition> */}
         </div>
 
         <div className="menu-item__wrapper">
@@ -88,17 +77,6 @@ const Sidebar: React.FC<Props> = (props) => {
               Profile
             </p>
           </Link>
-          {/* <CSSTransition
-            in={selectedItem === 'profile'}
-            classNames="underline"
-            timeout={0}
-          >
-            <div
-              className={
-                'underline' + ' ' + (props.is_product_page ? '--black' : '')
-              }
-            ></div>
-          </CSSTransition> */}
         </div>
 
         <div className="menu-item__wrapper">
@@ -164,17 +142,6 @@ const Sidebar: React.FC<Props> = (props) => {
               Contact
             </p>
           </Link>
-          {/* <CSSTransition
-            in={selectedItem === 'contact'}
-            classNames="underline"
-            timeout={0}
-          >
-            <div
-              className={
-                'underline' + ' ' + (props.is_product_page ? '--black' : '')
-              }
-            ></div>
-          </CSSTransition> */}
         </div>
       </div>
       <div className="icon__group">

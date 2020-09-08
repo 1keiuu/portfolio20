@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { Link, RouteComponentProps } from 'react-router-dom';
 import MenuIcon from './_MenuIcon';
 import ArrowIcon from './ArrowIcon';
 import '../styles/header.scss';
 import { CSSTransition } from 'react-transition-group';
-import title from '../images/title.png';
-import titleWhite from '../images/title-white.png';
+import * as H from 'history';
+import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 
-type Props = {};
-
+interface Props extends RouteComponentProps<{}> {
+  history: H.History;
+}
 const MenuButton = (props: any) => {
   if (!props.isMenuOpen) {
     return (
@@ -49,6 +49,11 @@ const Header: React.FC<Props> = (props) => {
     }
   };
 
+  const handleItemClick = (params: string) => {
+    setIsMenuOpen(false);
+    props.history.push(params);
+  };
+
   return (
     <header className={'header' + ' ' + (isMenuOpen ? '--is-menu-open' : '')}>
       <CSSTransition
@@ -59,18 +64,38 @@ const Header: React.FC<Props> = (props) => {
         <div className="menu-items__back-ground">
           <div className="menu-items__inner">
             <div className="menu-items">
-              <Link to="/" className="menu-item">
+              <div
+                onClick={() => {
+                  handleItemClick('/');
+                }}
+                className="menu-item"
+              >
                 Home
-              </Link>
-              <Link to="/profile" className="menu-item">
+              </div>
+              <div
+                onClick={() => {
+                  handleItemClick('/profile');
+                }}
+                className="menu-item"
+              >
                 Profile
-              </Link>
-              <Link to="/product" className="menu-item">
+              </div>
+              <div
+                onClick={() => {
+                  handleItemClick('/product');
+                }}
+                className="menu-item"
+              >
                 Product
-              </Link>
-              <Link to="/contact" className="menu-item">
+              </div>
+              <div
+                onClick={() => {
+                  handleItemClick('/contact');
+                }}
+                className="menu-item"
+              >
                 Contact
-              </Link>
+              </div>
             </div>
             <CSSTransition
               in={isMenuOpen}
@@ -99,4 +124,4 @@ const Header: React.FC<Props> = (props) => {
   );
 };
 
-export default Header;
+export default withRouter(Header);

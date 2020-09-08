@@ -1,5 +1,7 @@
 .career__slide {
-  margin-top: 25px;
+  margin: 3% 0;
+  display: flex;
+  align-items: center;
 }
 
 .career__slide .timeline {
