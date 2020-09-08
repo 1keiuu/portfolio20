@@ -107,3 +107,30 @@
   opacity: 1;
   transition: 1s;
 }
+
+@media screen and (max-width: 767px) {
+  .skill__slide {
+    padding: 0;
+  }
+  .skill__slide .section .skill-cards__group .skill-cards__group-inner {
+    width: 100vw;
+  }
+  .skill__slide .section .skill-cards__group .skill-cards__group-inner .skill-card {
+    width: 40vw;
+    margin-left: 2vw;
+  }
+  .skill__slide .section .skill-cards__group .skill-cards__group-inner .skill-card .skill-card__logo-wrapper {
+    height: 9vh;
+    width: 9vh;
+  }
+  .slide__inner {
+    padding: 0;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .skill__slide .section .section__skill-type {
+    font-size: 4vw;
+  }
+}

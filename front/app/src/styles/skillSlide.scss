@@ -1,3 +1,39 @@
+///////////////////////////////////////////////////////////////////////////////////
+
+// 変数の定義
+
+// min-width
+$breakpoint-up: (
+  'sm': 'screen and (min-width: 400px)',
+  'md': 'screen and (min-width: 768px)',
+  'lg': 'screen and (min-width: 1000px)',
+  'xl': 'screen and (min-width: 1200px)',
+) !default;
+
+// max-width
+$breakpoint-down: (
+  'sm': 'screen and (max-width: 399px)',
+  'md': 'screen and (max-width: 767px)',
+  'lg': 'screen and (max-width: 999px)',
+  'xl': 'screen and (max-width: 1199px)',
+) !default;
+
+// @mixinの定義
+@mixin mq-up($breakpoint: md) {
+  @media #{map-get($breakpoint-up, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin mq-down($breakpoint: md) {
+  @media #{map-get($breakpoint-down, $breakpoint)} {
+    @content;
+  }
+}
+// 参考 https://www.tam-tam.co.jp/tipsnote/html_css/post10708.html
+
+///////////////////////////////////////////////////////////////////////////////////
+
 .skill__slide {
   width: 90%;
   height: 100%;
@@ -94,5 +130,35 @@
     transform: translateY(0);
     opacity: 1;
     transition: 1s;
+  }
+}
+
+@include mq-down(md) {
+  .skill__slide {
+    padding: 0;
+
+    .section {
+      .skill-cards__group .skill-cards__group-inner {
+        width: 100vw;
+        .skill-card {
+          width: 40vw;
+          margin-left: 2vw;
+          .skill-card__logo-wrapper {
+            height: 9vh;
+            width: 9vh;
+          }
+        }
+      }
+    }
+  }
+  .slide__inner {
+    padding: 0;
+    width: 100%;
+  }
+}
+
+@include mq-down(md) {
+  .skill__slide .section .section__skill-type {
+    font-size: 4vw;
   }
 }

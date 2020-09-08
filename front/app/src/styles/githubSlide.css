@@ -19,18 +19,42 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  height: 33%;
+}
+
+.github__slide .slide__inner .github__stats .stats__link1 {
+  box-sizing: border-box;
+}
+
+.github__slide .slide__inner .github__stats .stats__link1 img {
+  height: 100%;
+  width: 100%;
 }
 
 .github__slide .slide__inner .github__stats .stats__link2 {
-  height: 100%;
+  margin-left: 3%;
 }
 
 .github__slide .slide__inner .github__stats .stats__link2 img {
   height: 100%;
+  width: 100%;
 }
 
 .github__slide .slide__inner .graph__wrapper {
   background: #fff;
   border-radius: 4px;
+}
+
+@media screen and (max-width: 399px) {
+  .github__slide .slide__inner {
+    width: 95vw;
+    justify-content: space-between;
+  }
+  .github__slide .slide__inner .github__stats .stats__link1 {
+    height: unset;
+  }
+  .github__slide .slide__inner .github__stats .stats__link2 {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 5px;
+  }
 }

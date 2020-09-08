@@ -1,3 +1,38 @@
+///////////////////////////////////////////////////////////////////////////////////
+
+// 変数の定義
+
+// min-width
+$breakpoint-up: (
+  'sm': 'screen and (min-width: 400px)',
+  'md': 'screen and (min-width: 768px)',
+  'lg': 'screen and (min-width: 1000px)',
+  'xl': 'screen and (min-width: 1200px)',
+) !default;
+
+// max-width
+$breakpoint-down: (
+  'sm': 'screen and (max-width: 399px)',
+  'md': 'screen and (max-width: 767px)',
+  'lg': 'screen and (max-width: 999px)',
+  'xl': 'screen and (max-width: 1199px)',
+) !default;
+
+// @mixinの定義
+@mixin mq-up($breakpoint: md) {
+  @media #{map-get($breakpoint-up, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin mq-down($breakpoint: md) {
+  @media #{map-get($breakpoint-down, $breakpoint)} {
+    @content;
+  }
+}
+// 参考 https://www.tam-tam.co.jp/tipsnote/html_css/post10708.html
+
+///////////////////////////////////////////////////////////////////////////////////
 .github__slide {
   width: 100%;
   height: 100%;
@@ -15,17 +50,46 @@
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      height: 33%;
-      .stats__link2 {
-        height: 100%;
+      // height: 33%;
+      .stats__link1 {
+        // height: 100%;
+        // padding: 1% 5%;
+        box-sizing: border-box;
         img {
           height: 100%;
+          width: 100%;
+        }
+      }
+      .stats__link2 {
+        // height: 100%;
+        margin-left: 3%;
+        img {
+          height: 100%;
+          width: 100%;
         }
       }
     }
     .graph__wrapper {
       background: #fff;
       border-radius: 4px;
+    }
+  }
+}
+
+@include mq-down(sm) {
+  .github__slide .slide__inner {
+    width: 95vw;
+    justify-content: space-between;
+    .github__stats {
+      .stats__link1 {
+        height: unset;
+      }
+
+      .stats__link2 {
+        display: flex;
+        justify-content: flex-start;
+        margin-left: 5px;
+      }
     }
   }
 }

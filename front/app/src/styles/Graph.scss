@@ -1,6 +1,40 @@
+///////////////////////////////////////////////////////////////////////////////////
+
+// 変数の定義
+
+// min-width
+$breakpoint-up: (
+  'sm': 'screen and (min-width: 400px)',
+  'md': 'screen and (min-width: 768px)',
+  'lg': 'screen and (min-width: 1000px)',
+  'xl': 'screen and (min-width: 1200px)',
+) !default;
+
+// max-width
+$breakpoint-down: (
+  'sm': 'screen and (max-width: 399px)',
+  'md': 'screen and (max-width: 767px)',
+  'lg': 'screen and (max-width: 999px)',
+  'xl': 'screen and (max-width: 1199px)',
+) !default;
+
+// @mixinの定義
+@mixin mq-up($breakpoint: md) {
+  @media #{map-get($breakpoint-up, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin mq-down($breakpoint: md) {
+  @media #{map-get($breakpoint-down, $breakpoint)} {
+    @content;
+  }
+}
+// 参考 https://www.tam-tam.co.jp/tipsnote/html_css/post10708.html
+
+///////////////////////////////////////////////////////////////////////////////////
+
 .graph {
-  // min-width: 500px;
-  // padding: 30px 50px;
   .graph__upper {
     position: relative;
     display: flex;
@@ -51,7 +85,7 @@
     }
   }
   .date-select {
-    width: 110px;
+    width: 22%;
     height: 100%;
     padding-left: 10px;
     cursor: pointer;
@@ -74,5 +108,11 @@
     .chartjs-render-monitor {
       height: 100% !important;
     }
+  }
+}
+
+@include mq-down(sm) {
+  .graph .graph__upper .span-display__wrapper .graph__span {
+    font-size: 14px;
   }
 }

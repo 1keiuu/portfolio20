@@ -55,7 +55,7 @@
 }
 
 .graph .date-select {
-  width: 110px;
+  width: 22%;
   height: 100%;
   padding-left: 10px;
   cursor: pointer;
@@ -79,4 +79,10 @@
 
 .graph .line-graph__wrapper .chartjs-render-monitor {
   height: 100% !important;
+}
+
+@media screen and (max-width: 399px) {
+  .graph .graph__upper .span-display__wrapper .graph__span {
+    font-size: 14px;
+  }
 }
