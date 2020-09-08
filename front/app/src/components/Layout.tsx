@@ -5,7 +5,7 @@ import SlideCurtain from '../components/SlideCurtain';
 import { CSSTransition } from 'react-transition-group';
 import * as H from 'history';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import Header from '../components/_Header';
+import Header from './Header';
 // interface Props {
 //   current_page: string;
 // }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import MenuIcon from './_MenuIcon';
 import ArrowIcon from './ArrowIcon';
-import '../styles/_header.scss';
+import '../styles/header.scss';
 import { CSSTransition } from 'react-transition-group';
 import title from '../images/title.png';
 import titleWhite from '../images/title-white.png';
