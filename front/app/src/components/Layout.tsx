@@ -5,7 +5,7 @@ import SlideCurtain from '../components/SlideCurtain';
 import { CSSTransition } from 'react-transition-group';
 import * as H from 'history';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-
+import Header from '../components/_Header';
 // interface Props {
 //   current_page: string;
 // }
@@ -30,6 +30,7 @@ const Layout: React.FC<Props> = (props) => {
   return (
     <CSSTransition in={isLoaded} classNames="layout" timeout={0}>
       <div className="layout">
+        <Header></Header>
         <Sidebar
           current_page={props.location.pathname}
           is_product_page={isProductPage()}

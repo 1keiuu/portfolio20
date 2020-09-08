@@ -1,8 +1,15 @@
 .header {
-  height: 140px;
+  height: 10vh;
+  width: 100vw;
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  position: fixed;
+  top: 0;
+  z-index: 6;
+  transition: 1s;
+  &.--is-menu-open {
+  }
   .title {
     width: 60px;
     margin-top: 20px;
@@ -30,14 +37,14 @@
     top: 15px;
     cursor: pointer;
     &:hover {
-      background: #f7ede7;
+      background: #f5a85b;
     }
     &.--close {
       background: #f8f2ee;
     }
   }
   .close-button {
-    height: 100%;
+    height: 100vh;
     width: 70px;
     padding: 0 16px 0 24px;
     position: absolute;
@@ -51,7 +58,7 @@
     opacity: 0;
     &:hover {
       transition: 0.3s;
-      background: #1e4b3f3b;
+      background: #f5a85b;
     }
     .close-button__inner {
       display: flex;
@@ -78,9 +85,9 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   opacity: 0;
-  background: #1e4b3f;
+  background: #f5a85b;
   opacity: 0;
   display: flex;
   justify-content: flex-end;
@@ -99,7 +106,7 @@
       align-items: flex-start;
       .menu-item {
         color: #f8f2ee;
-        font-size: 5em;
+        font-size: 14vw;
         margin-bottom: 12px;
         text-decoration: unset;
         font-weight: bold;

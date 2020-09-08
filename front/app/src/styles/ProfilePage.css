@@ -62,3 +62,9 @@
   transform: perspective(50px) translateZ(0);
   transition: 1s;
 }
+
+@media screen and (max-width: 767px) {
+  .profile__inner {
+    padding-top: 20%;
+  }
+}

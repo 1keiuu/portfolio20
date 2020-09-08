@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { Link, RouteComponentProps } from "react-router-dom";
-import MenuIcon from "./_MenuIcon";
-import ArrowIcon from "./ArrowIcon";
-import "../styles/header.scss";
-import { CSSTransition } from "react-transition-group";
-import title from "../images/title.png";
-import titleWhite from "../images/title-white.png";
+import React, { useState } from 'react';
+import { Link, RouteComponentProps } from 'react-router-dom';
+import MenuIcon from './_MenuIcon';
+import ArrowIcon from './ArrowIcon';
+import '../styles/_header.scss';
+import { CSSTransition } from 'react-transition-group';
+import title from '../images/title.png';
+import titleWhite from '../images/title-white.png';
 
-type Props = {} & RouteComponentProps<{ mode: string }>;
+type Props = {};
 
 const MenuButton = (props: any) => {
   if (!props.isMenuOpen) {
@@ -42,7 +42,7 @@ const MenuButton = (props: any) => {
 const Header: React.FC<Props> = (props) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const changeMenuStatus = (type: string) => {
-    if (type === "open") {
+    if (type === 'open') {
       setIsMenuOpen(true);
     } else {
       setIsMenuOpen(false);
@@ -50,7 +50,7 @@ const Header: React.FC<Props> = (props) => {
   };
 
   return (
-    <header className={"header" + " " + (isMenuOpen ? "--is-menu-open" : "")}>
+    <header className={'header' + ' ' + (isMenuOpen ? '--is-menu-open' : '')}>
       <CSSTransition
         in={isMenuOpen}
         classNames="menu-items__back-ground"
@@ -63,7 +63,7 @@ const Header: React.FC<Props> = (props) => {
                 Home
               </Link>
               <Link to="/profile" className="menu-item">
-                Carrer
+                Profile
               </Link>
               <Link to="/product" className="menu-item">
                 Product
@@ -83,23 +83,14 @@ const Header: React.FC<Props> = (props) => {
         </div>
       </CSSTransition>
 
-      <img
-        src={title}
-        className={"title" + " " + (isMenuOpen ? "--open" : "")}
-        alt="title"
-      />
-      <img
-        src={titleWhite}
-        className={"white-title" + " " + (isMenuOpen ? "--open" : "")}
-      />
       <CSSTransition in={isMenuOpen} classNames="close-button" timeout={0}>
         <MenuButton
           isMenuOpen={isMenuOpen}
           click={() => {
             if (!isMenuOpen) {
-              changeMenuStatus("open");
+              changeMenuStatus('open');
             } else {
-              changeMenuStatus("close");
+              changeMenuStatus('close');
             }
           }}
         />
