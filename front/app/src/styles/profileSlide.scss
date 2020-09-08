@@ -1,3 +1,27 @@
+///////////////////////////////////////////////////////////////////////////////////
+
+// 変数の定義
+
+// max-width
+$breakpoint-down: (
+  'sm': 'screen and (max-width: 399px)',
+  'md': 'screen and (max-width: 767px)',
+  'lg': 'screen and (max-width: 999px)',
+  'xl': 'screen and (max-width: 1199px)',
+) !default;
+
+// @mixinの定義
+
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoint-down, $breakpoint)} {
+    @content;
+  }
+}
+
+// 参考 https://www.tam-tam.co.jp/tipsnote/html_css/post10708.html
+
+///////////////////////////////////////////////////////////////////////////////////
+
 .profile__slide {
   width: 80%;
   display: flex;
@@ -48,5 +72,14 @@
   }
   .hobby__text {
     padding-left: 10px;
+  }
+}
+
+@include mq(md) {
+  .slide__inner {
+    flex-direction: column;
+  }
+  .profile__slide .slide__text {
+    width: 100%;
   }
 }

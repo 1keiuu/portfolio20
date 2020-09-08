@@ -101,3 +101,9 @@ nav .icon__group .icon__wrapper .icon__link .ig-icon {
 nav .icon__group .icon__wrapper .icon__link .wantedly-icon {
   width: 21px;
 }
+
+@media screen and (max-width: 767px) {
+  nav .menu-items {
+    display: none;
+  }
+}

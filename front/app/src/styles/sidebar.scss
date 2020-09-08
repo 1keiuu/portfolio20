@@ -1,3 +1,27 @@
+///////////////////////////////////////////////////////////////////////////////////
+
+// 変数の定義
+
+// max-width
+$breakpoint-down: (
+  'sm': 'screen and (max-width: 399px)',
+  'md': 'screen and (max-width: 767px)',
+  'lg': 'screen and (max-width: 999px)',
+  'xl': 'screen and (max-width: 1199px)',
+) !default;
+
+// @mixinの定義
+
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoint-down, $breakpoint)} {
+    @content;
+  }
+}
+
+// 参考 https://www.tam-tam.co.jp/tipsnote/html_css/post10708.html
+
+///////////////////////////////////////////////////////////////////////////////////
+
 nav {
   height: 100%;
   display: flex;
@@ -109,5 +133,11 @@ nav {
         }
       }
     }
+  }
+}
+
+@include mq(md) {
+  nav .menu-items {
+    display: none;
   }
 }

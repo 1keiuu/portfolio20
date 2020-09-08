@@ -55,3 +55,12 @@
 .profile__slide .hobby__text {
   padding-left: 10px;
 }
+
+@media screen and (max-width: 767px) {
+  .slide__inner {
+    flex-direction: column;
+  }
+  .profile__slide .slide__text {
+    width: 100%;
+  }
+}
