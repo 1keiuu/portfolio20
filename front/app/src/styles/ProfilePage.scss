@@ -100,5 +100,9 @@ $breakpoint-down: (
 @include mq-down(sm) {
   .profile__inner {
     padding-top: 30%;
+    .swiper-slide {
+      justify-content: flex-start;
+      padding-top: 10px;
+    }
   }
 }

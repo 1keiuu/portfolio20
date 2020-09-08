@@ -32,6 +32,7 @@
 
 .swiper-slide {
   display: flex;
+  flex-direction: column;
 }
 
 .product-card {
@@ -75,7 +76,7 @@
   text-align: start;
   margin: 0;
   color: #fff;
-  font-size: 15px;
+  font-size: 18px;
   font-family: Roboto;
 }
 
@@ -100,4 +101,23 @@
 .search-product__background.--active {
   display: block;
   transition: 1s;
+}
+
+@media screen and (max-width: 767px) {
+  .products-index {
+    padding-left: 0;
+    padding: 0 7%;
+  }
+  .products-index .product-card .product-card__title-wrapper {
+    padding-top: 0;
+  }
+  .products-index .product-card .product-card__title-wrapper .product-card__title {
+    font-size: 14px;
+  }
+  .products-index .product-card .product-card__title-wrapper .product-card__sub-title {
+    font-size: 13px;
+  }
+  .swiper-slide {
+    margin-bottom: 5%;
+  }
 }

@@ -73,4 +73,8 @@
   .profile__inner {
     padding-top: 30%;
   }
+  .profile__inner .swiper-slide {
+    justify-content: flex-start;
+    padding-top: 10px;
+  }
 }

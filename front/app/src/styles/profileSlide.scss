@@ -76,6 +76,9 @@ $breakpoint-down: (
 }
 
 @include mq(md) {
+  .swiper-slide {
+    align-items: center;
+  }
   .slide__inner {
     flex-direction: column;
   }

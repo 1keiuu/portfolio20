@@ -57,6 +57,9 @@
 }
 
 @media screen and (max-width: 767px) {
+  .swiper-slide {
+    align-items: center;
+  }
   .slide__inner {
     flex-direction: column;
   }

@@ -1,3 +1,39 @@
+///////////////////////////////////////////////////////////////////////////////////
+
+// 変数の定義
+
+// min-width
+$breakpoint-up: (
+  'sm': 'screen and (min-width: 400px)',
+  'md': 'screen and (min-width: 768px)',
+  'lg': 'screen and (min-width: 1000px)',
+  'xl': 'screen and (min-width: 1200px)',
+) !default;
+
+// max-width
+$breakpoint-down: (
+  'sm': 'screen and (max-width: 399px)',
+  'md': 'screen and (max-width: 767px)',
+  'lg': 'screen and (max-width: 999px)',
+  'xl': 'screen and (max-width: 1199px)',
+) !default;
+
+// @mixinの定義
+@mixin mq-up($breakpoint: md) {
+  @media #{map-get($breakpoint-up, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin mq-down($breakpoint: md) {
+  @media #{map-get($breakpoint-down, $breakpoint)} {
+    @content;
+  }
+}
+// 参考 https://www.tam-tam.co.jp/tipsnote/html_css/post10708.html
+
+///////////////////////////////////////////////////////////////////////////////////
+
 .products-index__inner {
   opacity: 0;
   filter: blur(50px);
@@ -28,6 +64,7 @@
 
 .swiper-slide {
   display: flex;
+  flex-direction: column;
 }
 
 .product-card {
@@ -67,7 +104,7 @@
       text-align: start;
       margin: 0;
       color: #fff;
-      font-size: 15px;
+      font-size: 18px;
       font-family: Roboto;
     }
     .product-card__title {
@@ -91,5 +128,24 @@
   &.--active {
     display: block;
     transition: 1s;
+  }
+}
+
+@include mq-down(md) {
+  .products-index {
+    padding-left: 0;
+    padding: 0 7%;
+    .product-card .product-card__title-wrapper {
+      padding-top: 0;
+      .product-card__title {
+        font-size: 14px;
+      }
+      .product-card__sub-title {
+        font-size: 13px;
+      }
+    }
+  }
+  .swiper-slide {
+    margin-bottom: 5%;
   }
 }

@@ -1,5 +1,6 @@
 .career__slide {
   margin: 3% 0;
+  height: 90%;
   display: flex;
   align-items: center;
 }
@@ -67,4 +68,25 @@
   transform: translateY(0px);
   opacity: 1;
   transition: 1s;
+}
+
+@media screen and (max-width: 399px) {
+  .career__slide {
+    width: 80%;
+    margin: 0;
+  }
+  .career__slide .item__text {
+    font-size: 13px;
+  }
+  .profile__slide .slide__text {
+    margin-bottom: 8px;
+  }
+  .biography__text,
+  .skill__text,
+  .hobby__text {
+    font-size: 14px;
+  }
+  .career__slide .timeline {
+    height: 85%;
+  }
 }
