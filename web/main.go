@@ -30,7 +30,7 @@ func main() {
 		},
 		AllowOrigins: []string{
 			"http://localhost:4000",
-			"http://ec2-54-249-216-252.ap-northeast-1.compute.amazonaws.com",
+			"1k-cove.com",
 		},
 	}))
 
