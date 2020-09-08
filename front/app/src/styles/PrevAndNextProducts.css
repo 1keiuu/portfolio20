@@ -65,3 +65,26 @@
   border-left: #fff 20px solid;
   border-right: #fff 20px solid;
 }
+
+@media screen and (max-width: 767px) {
+  .other-products__inner {
+    flex-direction: column;
+  }
+  .other-products__inner :first-child.other-product__link {
+    justify-content: flex-start;
+    margin-bottom: 15px;
+  }
+  .other-products__inner :nth-child(2).other-product__link {
+    justify-content: flex-end;
+  }
+  .other-products__inner .other-product__link {
+    display: inline-flex;
+  }
+  .other-products__inner .other-product__link .other-product {
+    display: inline-flex;
+  }
+  .other-products__inner .other-product__link .other-product .other-product__image-wrapper {
+    width: 30vw;
+    height: 16.875vw;
+  }
+}

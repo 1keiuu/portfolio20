@@ -1,3 +1,39 @@
+///////////////////////////////////////////////////////////////////////////////////
+
+// 変数の定義
+
+// min-width
+$breakpoint-up: (
+  'sm': 'screen and (min-width: 400px)',
+  'md': 'screen and (min-width: 768px)',
+  'lg': 'screen and (min-width: 1000px)',
+  'xl': 'screen and (min-width: 1200px)',
+) !default;
+
+// max-width
+$breakpoint-down: (
+  'sm': 'screen and (max-width: 399px)',
+  'md': 'screen and (max-width: 767px)',
+  'lg': 'screen and (max-width: 999px)',
+  'xl': 'screen and (max-width: 1199px)',
+) !default;
+
+// @mixinの定義
+@mixin mq-up($breakpoint: md) {
+  @media #{map-get($breakpoint-up, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin mq-down($breakpoint: md) {
+  @media #{map-get($breakpoint-down, $breakpoint)} {
+    @content;
+  }
+}
+// 参考 https://www.tam-tam.co.jp/tipsnote/html_css/post10708.html
+
+///////////////////////////////////////////////////////////////////////////////////
+
 $titleHeight: 3.5vh;
 $spanHeight: 16px;
 $descriptionHeight: 16px;
@@ -213,7 +249,6 @@ $descriptionHeight: 16px;
   position: relative;
   .skill-section__inner {
     position: absolute;
-    // background: rgb(216, 224, 234);
     width: 100%;
     height: 100%;
     .skill-section__title {
@@ -274,6 +309,130 @@ $descriptionHeight: 16px;
           font-weight: bold;
           margin-top: 10px;
           font-size: 18px;
+        }
+      }
+    }
+  }
+}
+
+@include mq-down(md) {
+  .product-page {
+    :nth-child(2n + 1) {
+      // section(2n番目)
+      &.section {
+        flex-direction: column;
+        padding: 0 7%;
+      }
+    }
+
+    .section {
+      flex-direction: column;
+      margin-top: 65px;
+      padding: 0 7%;
+      .section__image {
+        width: 100%;
+      }
+      .description__wrapper {
+        margin-left: 0;
+        .description__title {
+          font-size: 25px;
+          margin: 10px 0 0;
+        }
+        .description .description__text {
+          font-size: 14px;
+          &.--active {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    .product-page__content .title-section {
+      padding: 0 5%;
+      .title-section__inner {
+        margin-top: 14vh;
+        .title__inner-enter-done {
+          .title {
+            font-size: 4vw;
+          }
+          .title__cover {
+            display: none;
+          }
+        }
+        .span__inner-enter-done .start-date__wrapper .start-date {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+  .skill-section {
+    height: 10vh;
+    .skill-section__inner {
+      height: unset;
+      .skill-cards .skill-card {
+        width: 30vw;
+        .skill-card__title {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+@include mq-down(sm) {
+  .product-page {
+    :nth-child(2n + 1) {
+      // section(2n番目)
+      &.section {
+        flex-direction: column;
+        padding: 0 7%;
+      }
+    }
+
+    .section {
+      flex-direction: column;
+      margin-top: 65px;
+      padding: 0 7%;
+      .section__image {
+        width: 100%;
+      }
+      .description__wrapper {
+        margin-left: 0;
+        .description__title {
+          font-size: 20px;
+          margin: 10px 0 0;
+        }
+        .description .description__text {
+          font-size: 13px;
+        }
+      }
+    }
+    .product-page__content .title-section {
+      padding: 0 5%;
+      .title-section__inner {
+        margin-top: 14vh;
+
+        .title__inner-enter-done {
+          .title {
+            font-size: 4vw;
+          }
+          .title__cover {
+            display: none;
+          }
+        }
+        .span__inner-enter-done .start-date__wrapper .start-date {
+          font-size: 13px;
+        }
+      }
+    }
+    .skill-section {
+      height: 10vh;
+      .skill-section__inner {
+        height: unset;
+        .skill-cards .skill-card {
+          width: 30vw;
+          .skill-card__title {
+            font-size: 12px;
+          }
         }
       }
     }

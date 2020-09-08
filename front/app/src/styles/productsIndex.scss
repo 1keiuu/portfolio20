@@ -135,13 +135,19 @@ $breakpoint-down: (
   .products-index {
     padding-left: 0;
     padding: 0 7%;
-    .product-card .product-card__title-wrapper {
-      padding-top: 0;
-      .product-card__title {
-        font-size: 14px;
+    .product-card {
+      .product-card__image {
+        height: unset;
+        width: 100%;
       }
-      .product-card__sub-title {
-        font-size: 13px;
+      .product-card__title-wrapper {
+        padding-top: 0;
+        .product-card__title {
+          font-size: 14px;
+        }
+        .product-card__sub-title {
+          font-size: 13px;
+        }
       }
     }
   }

@@ -306,3 +306,110 @@
   margin-top: 10px;
   font-size: 18px;
 }
+
+@media screen and (max-width: 767px) {
+  .product-page :nth-child(2n + 1).section {
+    flex-direction: column;
+    padding: 0 7%;
+  }
+  .product-page .section {
+    flex-direction: column;
+    margin-top: 65px;
+    padding: 0 7%;
+  }
+  .product-page .section .section__image {
+    width: 100%;
+  }
+  .product-page .section .description__wrapper {
+    margin-left: 0;
+  }
+  .product-page .section .description__wrapper .description__title {
+    font-size: 25px;
+    margin: 10px 0 0;
+  }
+  .product-page .section .description__wrapper .description .description__text {
+    font-size: 14px;
+  }
+  .product-page .section .description__wrapper .description .description__text.--active {
+    font-size: 14px;
+  }
+  .product-page .product-page__content .title-section {
+    padding: 0 5%;
+  }
+  .product-page .product-page__content .title-section .title-section__inner {
+    margin-top: 14vh;
+  }
+  .product-page .product-page__content .title-section .title-section__inner .title__inner-enter-done .title {
+    font-size: 4vw;
+  }
+  .product-page .product-page__content .title-section .title-section__inner .title__inner-enter-done .title__cover {
+    display: none;
+  }
+  .product-page .product-page__content .title-section .title-section__inner .span__inner-enter-done .start-date__wrapper .start-date {
+    font-size: 13px;
+  }
+  .skill-section {
+    height: 10vh;
+  }
+  .skill-section .skill-section__inner {
+    height: unset;
+  }
+  .skill-section .skill-section__inner .skill-cards .skill-card {
+    width: 30vw;
+  }
+  .skill-section .skill-section__inner .skill-cards .skill-card .skill-card__title {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 399px) {
+  .product-page :nth-child(2n + 1).section {
+    flex-direction: column;
+    padding: 0 7%;
+  }
+  .product-page .section {
+    flex-direction: column;
+    margin-top: 65px;
+    padding: 0 7%;
+  }
+  .product-page .section .section__image {
+    width: 100%;
+  }
+  .product-page .section .description__wrapper {
+    margin-left: 0;
+  }
+  .product-page .section .description__wrapper .description__title {
+    font-size: 20px;
+    margin: 10px 0 0;
+  }
+  .product-page .section .description__wrapper .description .description__text {
+    font-size: 13px;
+  }
+  .product-page .product-page__content .title-section {
+    padding: 0 5%;
+  }
+  .product-page .product-page__content .title-section .title-section__inner {
+    margin-top: 14vh;
+  }
+  .product-page .product-page__content .title-section .title-section__inner .title__inner-enter-done .title {
+    font-size: 4vw;
+  }
+  .product-page .product-page__content .title-section .title-section__inner .title__inner-enter-done .title__cover {
+    display: none;
+  }
+  .product-page .product-page__content .title-section .title-section__inner .span__inner-enter-done .start-date__wrapper .start-date {
+    font-size: 13px;
+  }
+  .product-page .skill-section {
+    height: 10vh;
+  }
+  .product-page .skill-section .skill-section__inner {
+    height: unset;
+  }
+  .product-page .skill-section .skill-section__inner .skill-cards .skill-card {
+    width: 30vw;
+  }
+  .product-page .skill-section .skill-section__inner .skill-cards .skill-card .skill-card__title {
+    font-size: 12px;
+  }
+}

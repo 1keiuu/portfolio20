@@ -20,3 +20,9 @@
 .slide-pagination .slide-pagination__dot.--active {
   background: #a1a1a1;
 }
+
+@media screen and (max-width: 767px) {
+  .slide-pagination {
+    margin-left: 0;
+  }
+}
