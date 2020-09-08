@@ -38,10 +38,10 @@ $breakpoint-down: (
   margin: 3% 0;
   height: 90%;
   display: flex;
+  justify-content: center;
   align-items: center;
   .timeline {
     position: relative;
-    width: 100%;
     height: 95%;
     display: flex;
     flex-direction: column;
