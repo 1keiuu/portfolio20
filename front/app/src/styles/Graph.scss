@@ -112,7 +112,12 @@ $breakpoint-down: (
 }
 
 @include mq-down(sm) {
-  .graph .graph__upper .span-display__wrapper .graph__span {
-    font-size: 14px;
+  .graph {
+    .line-graph__wrapper {
+      height: 22vh;
+    }
+    .graph__upper .span-display__wrapper .graph__span {
+      font-size: 14px;
+    }
   }
 }

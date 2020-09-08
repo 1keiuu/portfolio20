@@ -46,8 +46,11 @@
 
 @media screen and (max-width: 399px) {
   .github__slide .slide__inner {
-    width: 95vw;
-    justify-content: space-between;
+    width: 92vw;
+    justify-content: flex-start;
+  }
+  .github__slide .slide__inner .github__stats {
+    margin-bottom: 10px;
   }
   .github__slide .slide__inner .github__stats .stats__link1 {
     height: unset;

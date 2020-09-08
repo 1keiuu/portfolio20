@@ -71,7 +71,7 @@
 
 @media screen and (max-width: 399px) {
   .profile__inner {
-    padding-top: 30%;
+    padding-top: 25%;
   }
   .profile__inner .swiper-slide {
     justify-content: flex-start;

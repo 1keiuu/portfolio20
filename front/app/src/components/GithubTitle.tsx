@@ -4,8 +4,8 @@ import logoSrc from '../images/git-icon-white.png';
 import '../styles/GithubTitle.scss';
 const GithubTitle: React.FC = () => {
   return (
-    <div>
-      <div className="github-title__wrapper">
+    <div className="github-title">
+      <div className="github-title__inner">
         <p>ikkei12's contributions on</p>
         <img src={iconSrc} alt="logo" className="github-title__logo" />
         <img src={logoSrc} alt="icon" className="github-title__icon" />

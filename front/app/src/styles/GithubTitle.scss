@@ -1,5 +1,41 @@
+///////////////////////////////////////////////////////////////////////////////////
+
+// 変数の定義
+
+// min-width
+$breakpoint-up: (
+  'sm': 'screen and (min-width: 400px)',
+  'md': 'screen and (min-width: 768px)',
+  'lg': 'screen and (min-width: 1000px)',
+  'xl': 'screen and (min-width: 1200px)',
+) !default;
+
+// max-width
+$breakpoint-down: (
+  'sm': 'screen and (max-width: 399px)',
+  'md': 'screen and (max-width: 767px)',
+  'lg': 'screen and (max-width: 999px)',
+  'xl': 'screen and (max-width: 1199px)',
+) !default;
+
+// @mixinの定義
+@mixin mq-up($breakpoint: md) {
+  @media #{map-get($breakpoint-up, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin mq-down($breakpoint: md) {
+  @media #{map-get($breakpoint-down, $breakpoint)} {
+    @content;
+  }
+}
+// 参考 https://www.tam-tam.co.jp/tipsnote/html_css/post10708.html
+
+///////////////////////////////////////////////////////////////////////////////////
+
 .github-title {
-  &__wrapper {
+  &__inner {
     display: inline-flex;
     position: relative;
     justify-content: center;
@@ -30,5 +66,28 @@
     color: #fff;
     color: #fff;
     text-decoration: underline;
+  }
+}
+
+@include mq-down(sm) {
+  .github-title {
+    margin-top: 15px;
+  }
+  .github-title__inner {
+    p {
+      font-size: 14px;
+    }
+    .github-title__logo {
+      height: 24px;
+    }
+    .github-title__icon {
+      height: 30px;
+      right: -28px;
+    }
+  }
+  .github__link {
+    p {
+      font-size: 12px;
+    }
   }
 }
