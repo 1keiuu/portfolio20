@@ -69,6 +69,7 @@ nav .icon__group {
 
 nav .icon__group .icon__wrapper {
   padding: 9px;
+  padding-left: 0;
   width: 18px;
   height: 18px;
   margin-bottom: 30px;
@@ -95,14 +96,19 @@ nav .icon__group .icon__wrapper .icon__link {
 
 nav .icon__group .icon__wrapper .icon__link .git-icon,
 nav .icon__group .icon__wrapper .icon__link .ig-icon {
+  height: 18px;
   width: 18px;
 }
 
 nav .icon__group .icon__wrapper .icon__link .wantedly-icon {
   width: 21px;
+  height: 21px;
 }
 
 @media screen and (max-width: 767px) {
+  nav {
+    padding-left: 3vw;
+  }
   nav .menu-items {
     display: none;
   }

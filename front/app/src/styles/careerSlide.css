@@ -52,6 +52,7 @@
 
 .career__slide .timeline .timeline__item .item__text {
   margin-left: 10px;
+  text-align: start;
   font-weight: bold;
 }
 

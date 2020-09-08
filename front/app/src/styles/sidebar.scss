@@ -75,24 +75,6 @@ nav {
           }
         }
       }
-
-      // .underline {
-      //   border-bottom: 2px #fff solid;
-      //   width: 0;
-      //   opacity: 0;
-      //   transform-origin: right;
-      //   transition: 0.5s cubic-bezier(0.55, 0, 0.15, 1);
-      //   position: absolute;
-      //   &.--black {
-      //     border-bottom: 2px #333 solid;
-      //   }
-      // }
-      // .underline-enter-done {
-      //   width: 100%;
-      //   opacity: 1;
-      //   bottom: -1px;
-      //   transition: 0.5s cubic-bezier(0.55, 0, 0.15, 1);
-      // }
     }
   }
   .icon__group {
@@ -102,6 +84,7 @@ nav {
     flex-direction: column;
     .icon__wrapper {
       padding: 9px;
+      padding-left: 0;
       width: 18px;
       height: 18px;
       margin-bottom: 30px;
@@ -122,14 +105,15 @@ nav {
       }
       .icon__link {
         display: flex;
-
         .git-icon,
         .ig-icon {
+          height: 18px;
           width: 18px;
         }
 
         .wantedly-icon {
           width: 21px;
+          height: 21px;
         }
       }
     }
@@ -137,7 +121,10 @@ nav {
 }
 
 @include mq(md) {
-  nav .menu-items {
-    display: none;
+  nav {
+    padding-left: 3vw;
+    .menu-items {
+      display: none;
+    }
   }
 }
