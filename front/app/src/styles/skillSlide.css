@@ -133,7 +133,22 @@
   .skill__slide {
     align-items: flex-start;
   }
-  .skill__slide .section .section__skill-type {
+  .skill__slide .section .skill-cards__group
+.skill-cards__group-inner
+.skill-card
+.skill-card__title-wrapper .skill-card__sub-title {
+    font-size: 3vw;
+  }
+  .skill__slide .section .skill-cards__group
+.skill-cards__group-inner
+.skill-card
+.skill-card__title-wrapper .skill-card__title {
+    font-size: 3.3vw;
+  }
+  .skill__slide .section .skill-cards__group
+.skill-cards__group-inner
+.skill-card
+.skill-card__title-wrapper .section__skill-type {
     font-size: 4vw;
   }
 }
