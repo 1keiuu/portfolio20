@@ -52,13 +52,13 @@ const contributionsData = (
         label: type,
         fill: true,
         lineTension: 0.1,
-        backgroundColor: 'rgb(0, 0, 0,0.4)',
-        borderColor: 'rgb(0, 0, 0,1)',
+        backgroundColor: 'rgb(46, 128, 237,0.4)',
+        borderColor: 'rgb(46, 128, 237,1)',
         borderCapStyle: 'round',
         borderDash: [],
         borderDashOffset: 0.0,
         borderJoinStyle: 'square',
-        pointBorderColor: 'rgb(0, 0, 0,1)',
+        pointBorderColor: 'rgb(46, 128, 237,1)',
         pointBackgroundColor: '#fff',
         pointBorderWidth: 10,
         pointHoverRadius: 5,
@@ -106,7 +106,6 @@ const Graph: React.FC<Props> = (props) => {
     const data = props.contributions;
 
     if (data) {
-      console.log(props);
       setWeeklyData(
         contributionsData(
           data.weekly.labels[0],

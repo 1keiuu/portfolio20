@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef } from "react";
-import "../../styles/githubSlide.scss";
-import Graph from "./Graph";
-import GithubTitle from "../../components/GithubTitle";
-import { CSSTransition } from "react-transition-group";
+import React, { useEffect, useState, useRef } from 'react';
+import '../../styles/githubSlide.scss';
+import Graph from './Graph';
+import GithubTitle from '../../components/GithubTitle';
+import { CSSTransition } from 'react-transition-group';
 
 interface Props {
   contributions: any;
@@ -31,16 +31,24 @@ const GithubSlide: React.FC<Props> = (props) => {
   return (
     <div className="slide github__slide">
       <div className="slide__inner">
-        <CSSTransition in={props.isLoaded} classNames="wrap" timeout={30}>
-          <div className="wrap">
-            <Graph contributions={contributions}></Graph>
-          </div>
-        </CSSTransition>
-        <CSSTransition in={props.isLoaded} classNames="wrap" timeout={800}>
-          <div className="wrap">
-            <GithubTitle />
-          </div>
-        </CSSTransition>
+        <div className="github__stats">
+          <a
+            className="stats__link1"
+            href="https://github.com/anuraghazra/github-readme-stats"
+          >
+            <img src="https://github-readme-stats.vercel.app/api?username=ikkei12&count_private=true&show_icons=true" />
+          </a>
+          <a
+            className="stats__link2"
+            href="https://github.com/anuraghazra/github-readme-stats"
+          >
+            <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ikkei12" />
+          </a>
+        </div>
+        <div className="graph__wrapper">
+          <Graph contributions={contributions}></Graph>
+        </div>
+        <GithubTitle />
       </div>
     </div>
   );
