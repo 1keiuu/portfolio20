@@ -130,6 +130,9 @@
 }
 
 @media screen and (max-width: 767px) {
+  .skill__slide {
+    align-items: flex-start;
+  }
   .skill__slide .section .section__skill-type {
     font-size: 4vw;
   }

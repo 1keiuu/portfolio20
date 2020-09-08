@@ -158,7 +158,10 @@ $breakpoint-down: (
 }
 
 @include mq-down(md) {
-  .skill__slide .section .section__skill-type {
-    font-size: 4vw;
+  .skill__slide {
+    align-items: flex-start;
+    .section .section__skill-type {
+      font-size: 4vw;
+    }
   }
 }
