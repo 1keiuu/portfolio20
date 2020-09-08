@@ -126,9 +126,6 @@ const ContactPage: React.FC<Props> = (props) => {
     <div className="contact-page__wrapper">
       <CSSTransition in={isLoaded} classNames="contact-page" timeout={500}>
         <div className="contact-page">
-          <div className="lottie__wrapper">
-            {/* <Lottie options={defaultOptions} /> */}
-          </div>
           <div className="contact-page__text">
             <h2>Thank you for visiting</h2>
             <p>訪問していただきありがとうございます</p>

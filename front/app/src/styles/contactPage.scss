@@ -1,3 +1,39 @@
+///////////////////////////////////////////////////////////////////////////////////
+
+// 変数の定義
+
+// min-width
+$breakpoint-up: (
+  'sm': 'screen and (min-width: 400px)',
+  'md': 'screen and (min-width: 768px)',
+  'lg': 'screen and (min-width: 1000px)',
+  'xl': 'screen and (min-width: 1200px)',
+) !default;
+
+// max-width
+$breakpoint-down: (
+  'sm': 'screen and (max-width: 399px)',
+  'md': 'screen and (max-width: 767px)',
+  'lg': 'screen and (max-width: 999px)',
+  'xl': 'screen and (max-width: 1199px)',
+) !default;
+
+// @mixinの定義
+@mixin mq-up($breakpoint: md) {
+  @media #{map-get($breakpoint-up, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin mq-down($breakpoint: md) {
+  @media #{map-get($breakpoint-down, $breakpoint)} {
+    @content;
+  }
+}
+// 参考 https://www.tam-tam.co.jp/tipsnote/html_css/post10708.html
+
+///////////////////////////////////////////////////////////////////////////////////
+
 .contact-page__wrapper {
   height: 100%;
 }
@@ -27,7 +63,7 @@
     p {
       text-align: start;
     }
-    &:nth-child(2) {
+    :nth-child(3) {
       margin-bottom: 30px;
     }
   }
@@ -36,28 +72,39 @@
     flex-direction: column;
     width: 100%;
     .email__input {
-      margin-bottom: 15px;
+      width: 130%;
       padding: 10px 8px;
       border-radius: 4px;
       border: 0;
       outline: 0;
+      font-size: 16px;
+      transform: scale(calc(12 / 16));
+      transform-origin: left;
     }
     .name__input {
-      margin-bottom: 15px;
+      width: 130%;
       padding: 10px 8px;
       border-radius: 4px;
       border: 0;
       outline: 0;
+      font-size: 16px;
+      transform-origin: left;
+      transform: scale(calc(12 / 16));
     }
     .content__input {
-      margin-bottom: 25px;
+      width: 130%;
+      margin-top: 5px;
       padding: 10px 8px;
       border-radius: 4px;
       border: 0;
       outline: 0;
       height: 25vh;
+      font-size: 16px;
+      transform-origin: top left;
+      transform: scale(calc(12 / 16));
     }
     .submit__button {
+      width: 130%;
       border-radius: 5px;
       background: #5a52f1;
       color: #fff;
@@ -101,4 +148,25 @@
   filter: blur(0);
   transform: perspective(50px) translateZ(0);
   transition: 1s;
+}
+
+@include mq-down(md) {
+  .contact-page {
+    padding: 35% 12% 0;
+    .contact-page__text {
+      h2 {
+        font-size: 4vh;
+        margin-top: 0;
+      }
+      p {
+        font-size: 14px;
+      }
+      :nth-child(3) {
+        margin-bottom: 13px;
+      }
+    }
+    .contact-form .content__input {
+      margin-bottom: 12px;
+    }
+  }
 }
