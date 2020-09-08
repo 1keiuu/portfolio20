@@ -68,3 +68,9 @@
     padding-top: 20%;
   }
 }
+
+@media screen and (max-width: 399px) {
+  .profile__inner {
+    padding-top: 30%;
+  }
+}

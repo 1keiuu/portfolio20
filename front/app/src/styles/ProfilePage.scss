@@ -96,3 +96,9 @@ $breakpoint-down: (
     padding-top: 20%;
   }
 }
+
+@include mq-down(sm) {
+  .profile__inner {
+    padding-top: 30%;
+  }
+}

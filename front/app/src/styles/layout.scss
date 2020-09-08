@@ -54,13 +54,6 @@ $breakpoint-down: (
 
 .layout-enter-done {
   opacity: 1;
-  // transition: 5s ease-in;
-}
-
-@include mq-up(md) {
-  .header__wrapper {
-    display: none;
-  }
 }
 
 @include mq-down(md) {

@@ -63,4 +63,7 @@
   .profile__slide .slide__text {
     width: 100%;
   }
+  .profile__slide {
+    padding-left: 0;
+  }
 }
