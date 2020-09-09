@@ -74,6 +74,27 @@
   display: flex;
 }
 
+.product-page .product-page__content .title-section .title-section__inner .url__link {
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.product-page .product-page__content .title-section .title-section__inner .url__link .link-icon__wrappper {
+  width: 16px;
+  height: 16px;
+  padding: 0 1px 1px;
+  box-sizing: border-box;
+  margin-right: 1px;
+}
+
+.product-page .product-page__content .title-section .title-section__inner .url__link .url {
+  color: cornflowerblue;
+  text-decoration-color: cornflowerblue;
+  text-decoration: underline;
+  font-size: 16px -2;
+}
+
 .product-page .product-page__content .title-section .title-section__inner .span__inner-enter-done {
   opacity: 1;
 }
@@ -112,6 +133,11 @@
   top: 0;
   position: absolute;
   background: #fff;
+}
+
+.product-page .product-page__content .title-section .title-section__inner .span__inner-enter-done .url__link {
+  transform: translateY(-21px);
+  transition: transform 0.7s ease-in;
 }
 
 @keyframes slideCurtain {

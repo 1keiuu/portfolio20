@@ -99,6 +99,24 @@ $descriptionHeight: 16px;
           z-index: 8;
           display: flex;
         }
+        .url__link {
+          margin-left: 15px;
+          display: flex;
+          align-items: center;
+          .link-icon__wrappper {
+            width: $spanHeight;
+            height: $spanHeight;
+            padding: 0 1px 1px;
+            box-sizing: border-box;
+            margin-right: 1px;
+          }
+          .url {
+            color: cornflowerblue;
+            text-decoration-color: cornflowerblue;
+            text-decoration: underline;
+            font-size: $spanHeight -2;
+          }
+        }
         .span__inner-enter-done {
           opacity: 1;
           .start-date__wrapper {
@@ -132,6 +150,10 @@ $descriptionHeight: 16px;
             top: 0;
             position: absolute;
             background: #fff;
+          }
+          .url__link {
+            transform: translateY(-($spanHeight + 5));
+            transition: transform 0.7s ease-in;
           }
         }
       }

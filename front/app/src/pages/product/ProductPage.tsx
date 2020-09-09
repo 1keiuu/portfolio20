@@ -5,6 +5,7 @@ import { CSSTransition } from 'react-transition-group';
 import CrossIcon from '../../components/CrossIcon';
 import axios from 'axios';
 import PrevAndNextProducts from '../../components/PrevAndNextProducts';
+import LinkIcon from '../../components/LinkIcon';
 const VisibilitySensor = require('react-visibility-sensor').default;
 interface Product {
   id: number;
@@ -110,12 +111,15 @@ const ProductPage: React.FC<Props> = (props) => {
                   <p className="start-date">{product!.start_date}</p>
                 </span>
                 <p className="span">制作期間:{product!.span}</p>
+                <a className="url__link" href={product!.web_url.String}>
+                  <div className="link-icon__wrappper">
+                    <LinkIcon></LinkIcon>
+                  </div>
+                  <p className="url">{product!.web_url.String}</p>
+                </a>
                 <div className="span__cover"></div>
               </div>
             </CSSTransition>
-            <a className="url__link" href={product!.web_url.String}>
-              <p className="url">{product!.web_url.String}</p>
-            </a>
 
             <button
               className="close-button"
