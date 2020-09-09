@@ -11,6 +11,7 @@ interface Product {
   title: string;
   span: string;
   background_color: string;
+  web_url: { String: string };
   images: string;
   descriptions: string;
   description_titles: string;
@@ -35,6 +36,7 @@ const ProductPage: React.FC<Props> = (props) => {
     title: '',
     span: '',
     background_color: '',
+    web_url: { String: '' },
     images: '',
     descriptions: '',
     description_titles: '',
@@ -111,6 +113,9 @@ const ProductPage: React.FC<Props> = (props) => {
                 <div className="span__cover"></div>
               </div>
             </CSSTransition>
+            <a className="url__link" href={product!.web_url.String}>
+              <p className="url">{product!.web_url.String}</p>
+            </a>
 
             <button
               className="close-button"
