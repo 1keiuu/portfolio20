@@ -111,13 +111,13 @@ $descriptionHeight: 16px;
             height: $spanHeight;
             padding: 0 1px 1px;
             box-sizing: border-box;
-            margin-right: 1px;
+            margin-right: 5px;
           }
           .url {
             color: cornflowerblue;
             text-decoration-color: cornflowerblue;
             text-decoration: underline;
-            font-size: $spanHeight -2;
+            font-size: $spanHeight;
           }
         }
         .span__inner-enter-done {
@@ -276,7 +276,6 @@ $descriptionHeight: 16px;
   margin-top: 150px;
   position: relative;
   .skill-section__inner {
-    // position: absolute;
     width: 100%;
     height: 100%;
     &:hover {
@@ -395,6 +394,16 @@ $descriptionHeight: 16px;
       padding: 0 5%;
       .title-section__inner {
         margin-top: 14vh;
+        .url__link.--active {
+          margin: 0;
+          position: absolute;
+          bottom: -($spanHeight + 20);
+          word-break: break-all;
+          z-index: 17;
+          .url {
+            font-size: 16px;
+          }
+        }
         .title__inner-enter-done {
           .title {
             font-size: 4vw;
@@ -455,7 +464,12 @@ $descriptionHeight: 16px;
       padding: 0 5%;
       .title-section__inner {
         margin-top: 14vh;
-
+        .url__link .url {
+          font-size: 13px !important;
+        }
+        .link-icon__wrappper {
+          display: none;
+        }
         .title__inner-enter-done {
           .title {
             font-size: 4vw;

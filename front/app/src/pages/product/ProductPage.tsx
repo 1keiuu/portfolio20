@@ -125,25 +125,22 @@ const ProductPage: React.FC<Props> = (props) => {
                   <p className="start-date">{product!.start_date}</p>
                 </span>
                 <p className="span">制作期間:{product!.span}</p>
-                <a
-                  className={
-                    'url__link' +
-                    ' ' +
-                    (product!.web_url.Valid ? '--active' : '')
-                  }
-                  href={product!.web_url.String}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div className="link-icon__wrappper">
-                    <LinkIcon></LinkIcon>
-                  </div>
-                  <p className="url">{product!.web_url.String}</p>
-                </a>
                 <div className="span__cover"></div>
               </div>
             </CSSTransition>
-
+            <a
+              className={
+                'url__link' + ' ' + (product!.web_url.Valid ? '--active' : '')
+              }
+              href={product!.web_url.String}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="link-icon__wrappper">
+                <LinkIcon></LinkIcon>
+              </div>
+              <p className="url">{product!.web_url.String}</p>
+            </a>
             <button
               className="close-button"
               onClick={() => {
@@ -216,17 +213,6 @@ const ProductPage: React.FC<Props> = (props) => {
             {({ isVisible }: { isVisible: boolean }) => {
               return (
                 <div className="skill-section__inner">
-                  {/* <h3
-                    className={
-                      'skill-section__title' +
-                      ' ' +
-                      (isVisible ? '-enter-done' : '') +
-                      ' ' +
-                      (isFirstLoad.current ? '--first-load' : '')
-                    }
-                  >
-                    CreatedWith
-                  </h3> */}
                   <div className="skill__title-wrapper" id="title__wrapper">
                     <h3 className="skill__title">CreatedWith</h3>
                     <h3 className="skill__title">CreatedWith</h3>
