@@ -101,10 +101,10 @@ $descriptionHeight: 16px;
         }
         .url__link {
           margin-left: 15px;
-          display: flex;
+          display: none;
           align-items: center;
-          &.--disabled {
-            display: none;
+          &.--active {
+            display: flex;
           }
           .link-icon__wrappper {
             width: $spanHeight;
@@ -247,6 +247,7 @@ $descriptionHeight: 16px;
           font-size: $descriptionHeight;
           text-align: start;
           transform: translateY(100%);
+          word-break: break-all;
           &.--active {
             transition: 0.6s ease-in;
             transform: translateY(0%);

@@ -66,7 +66,6 @@ const ProductPage: React.FC<Props> = (props) => {
     const PRODUCTS_URL = `${process.env.REACT_APP_API_URL}/api/products/${id}`;
 
     await axios.get(PRODUCTS_URL).then((res) => {
-      console.log(res.data);
       setProduct(res.data.product);
       setNextProduct(res.data.next_product);
       setPrevProduct(res.data.prev_product);
@@ -115,9 +114,11 @@ const ProductPage: React.FC<Props> = (props) => {
                   className={
                     'url__link' +
                     ' ' +
-                    (product!.web_url.Valid ? '--disabled' : '')
+                    (product!.web_url.Valid ? '--active' : '')
                   }
                   href={product!.web_url.String}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <div className="link-icon__wrappper">
                     <LinkIcon></LinkIcon>
@@ -162,35 +163,33 @@ const ProductPage: React.FC<Props> = (props) => {
                 >
                   <img className="section__image" src={image}></img>
                   <div className="description__wrapper">
-                    {descriptions![i].split('///').map((description) => {
-                      return (
-                        <div className="description__inner">
-                          <h3
-                            className={
-                              'description__title' +
-                              ' ' +
-                              (isVisible ? '--active' : '')
-                            }
-                          >
-                            {description_titles[i]}
-                          </h3>
-                          <div className="description">
-                            <p
-                              className={
-                                'description__text' +
-                                ' ' +
-                                (isVisible ? '--active' : '') +
-                                ' ' +
-                                (isFirstLoad.current ? '--first-load' : '')
-                              }
-                            >
-                              {description}
-                            </p>
-                            <span className="description__cover"></span>
-                          </div>
-                        </div>
-                      );
-                    })}
+                    return (
+                    <div className="description__inner">
+                      <h3
+                        className={
+                          'description__title' +
+                          ' ' +
+                          (isVisible ? '--active' : '')
+                        }
+                      >
+                        {description_titles[i]}
+                      </h3>
+                      <div className="description">
+                        <p
+                          className={
+                            'description__text' +
+                            ' ' +
+                            (isVisible ? '--active' : '') +
+                            ' ' +
+                            (isFirstLoad.current ? '--first-load' : '')
+                          }
+                        >
+                          {descriptions[i]}
+                        </p>
+                        <span className="description__cover"></span>
+                      </div>
+                    </div>
+                    );
                   </div>
                 </div>
               )}
