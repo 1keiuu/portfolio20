@@ -83,7 +83,7 @@ func GetProduct(c *gin.Context) {
 
 	DB := db.Connect()
 	defer DB.Close()
-	productRow := DB.QueryRow("SELECT products.id, products.title, span, background_color,start_date, web_url, group_concat(distinct product_contents.image_url) AS images,group_concat(distinct product_contents.description) AS descriptions, group_concat(distinct product_contents.title) AS description_titles FROM products INNER JOIN product_contents ON (products.id=product_contents.product_id) where products.id = ? GROUP BY product_id;", id)
+	productRow := DB.QueryRow("SELECT products.id, products.title, span, background_color,start_date, web_url, group_concat(distinct product_contents.image_url order by product_contents.id) AS images,group_concat(distinct product_contents.description order by product_contents.id) AS descriptions, group_concat(distinct product_contents.title order by product_contents.id) AS description_titles FROM products INNER JOIN product_contents ON (products.id=product_contents.product_id) where products.id = ? GROUP BY product_id;", id)
 	prevProductRow := DB.QueryRow("SELECT product_id AS id, image_url FROM product_contents WHERE product_id = ?;", id-1)
 	nextProductRow := DB.QueryRow("SELECT product_id AS id, image_url FROM product_contents WHERE product_id = ?;", id+1)
 
