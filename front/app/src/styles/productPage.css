@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .product-page {
   width: 100%;
   height: 100%;
@@ -265,13 +264,25 @@
 }
 
 .skill-section .skill-section__inner {
-  position: absolute;
   width: 100%;
   height: 100%;
 }
 
-.skill-section .skill-section__inner .skill-section__title {
+.skill-section .skill-section__inner:hover .skill__title {
+  filter: blur(5px);
+}
+
+.skill-section .skill-section__inner .skill__title-wrapper {
+  display: flex;
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.skill-section .skill-section__inner .skill__title-wrapper .skill__title {
   font-size: 18vw;
   font-weight: 900;
   bottom: 0;
@@ -279,17 +290,17 @@
   left: 10%;
   color: transparent;
   -webkit-text-stroke: 2px #b7b7b7;
+  transition: 1s;
+  margin: 0;
   white-space: nowrap;
-  animation: flowing 500s linear infinite;
-  transform: translateX(0%);
-  /*初期位置*/
+  letter-spacing: 2px;
+  animation: scrollSample01 10s linear infinite;
 }
 
-.skill-section .skill-section__inner .skill-section__title.--first-load {
-  transition-delay: 1s;
-}
-
-@keyframes flowing {
+@keyframes scrollSample01 {
+  0% {
+    transform: translateX(0);
+  }
   100% {
     transform: translateX(-100%);
   }
@@ -330,6 +341,7 @@
 }
 
 .skill-section .skill-section__inner .skill-cards .skill-card .skill-card__image-wrapper .skill-card__image {
+  height: 100%;
   width: 100%;
 }
 

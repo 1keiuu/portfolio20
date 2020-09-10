@@ -74,9 +74,24 @@ const ProductPage: React.FC<Props> = (props) => {
   useEffect(() => {
     setIsloaded(true);
     fetchProduct();
-    setTimeout(() => {
+    const timerId1 = setTimeout(() => {
       isFirstLoad.current = false;
     }, 1000);
+
+    const timerId2 = window.setInterval(() => {
+      var child = document.createElement('h3');
+      const firstChild = document.getElementById('title__wrapper')
+        ?.childNodes[0];
+      child.classList.add('skill__title');
+      child.textContent = 'CreatedWith';
+      if (firstChild)
+        document.getElementById('title__wrapper')?.removeChild(firstChild);
+      document.getElementById('title__wrapper')?.appendChild(child);
+    }, 10000);
+    return () => {
+      clearTimeout(timerId1);
+      clearTimeout(timerId2);
+    };
   }, []);
   return (
     <div className="product-page">
@@ -201,7 +216,7 @@ const ProductPage: React.FC<Props> = (props) => {
             {({ isVisible }: { isVisible: boolean }) => {
               return (
                 <div className="skill-section__inner">
-                  <h3
+                  {/* <h3
                     className={
                       'skill-section__title' +
                       ' ' +
@@ -210,8 +225,15 @@ const ProductPage: React.FC<Props> = (props) => {
                       (isFirstLoad.current ? '--first-load' : '')
                     }
                   >
-                    CreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWithCreatedWith
-                  </h3>
+                    CreatedWith
+                  </h3> */}
+                  <div className="skill__title-wrapper" id="title__wrapper">
+                    <h3 className="skill__title">CreatedWith</h3>
+                    <h3 className="skill__title">CreatedWith</h3>
+                    <h3 className="skill__title">CreatedWith</h3>
+                    <h3 className="skill__title">CreatedWith</h3>
+                    <h3 className="skill__title">CreatedWith</h3>
+                  </div>
                   <div className="skill-cards">
                     {skills.map((skill, i) => {
                       return (
