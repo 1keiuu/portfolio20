@@ -248,6 +248,7 @@ $descriptionHeight: 16px;
           text-align: start;
           transform: translateY(100%);
           word-break: break-all;
+          white-space: break-spaces;
           &.--active {
             transition: 0.6s ease-in;
             transform: translateY(0%);

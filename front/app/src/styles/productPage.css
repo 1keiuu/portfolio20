@@ -235,6 +235,7 @@
   text-align: start;
   transform: translateY(100%);
   word-break: break-all;
+  white-space: break-spaces;
 }
 
 .product-page .section .description__wrapper .description .description__text.--active {
