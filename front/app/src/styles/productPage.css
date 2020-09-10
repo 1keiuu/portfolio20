@@ -80,6 +80,10 @@
   align-items: center;
 }
 
+.product-page .product-page__content .title-section .title-section__inner .url__link.--disabled {
+  display: none;
+}
+
 .product-page .product-page__content .title-section .title-section__inner .url__link .link-icon__wrappper {
   width: 16px;
   height: 16px;

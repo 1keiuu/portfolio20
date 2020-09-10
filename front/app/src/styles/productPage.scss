@@ -103,6 +103,9 @@ $descriptionHeight: 16px;
           margin-left: 15px;
           display: flex;
           align-items: center;
+          &.--disabled {
+            display: none;
+          }
           .link-icon__wrappper {
             width: $spanHeight;
             height: $spanHeight;

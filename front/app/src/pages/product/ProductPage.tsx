@@ -12,7 +12,7 @@ interface Product {
   title: string;
   span: string;
   background_color: string;
-  web_url: { String: string };
+  web_url: { String: string; Valid: boolean };
   images: string;
   descriptions: string;
   description_titles: string;
@@ -37,7 +37,7 @@ const ProductPage: React.FC<Props> = (props) => {
     title: '',
     span: '',
     background_color: '',
-    web_url: { String: '' },
+    web_url: { String: '', Valid: false },
     images: '',
     descriptions: '',
     description_titles: '',
@@ -111,7 +111,14 @@ const ProductPage: React.FC<Props> = (props) => {
                   <p className="start-date">{product!.start_date}</p>
                 </span>
                 <p className="span">制作期間:{product!.span}</p>
-                <a className="url__link" href={product!.web_url.String}>
+                <a
+                  className={
+                    'url__link' +
+                    ' ' +
+                    (product!.web_url.Valid ? '--disabled' : '')
+                  }
+                  href={product!.web_url.String}
+                >
                   <div className="link-icon__wrappper">
                     <LinkIcon></LinkIcon>
                   </div>
