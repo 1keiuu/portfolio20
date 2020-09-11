@@ -34,7 +34,7 @@
 
 .product-page .product-page__content .title-section .title-section__inner {
   position: relative;
-  height: 8.5vh;
+  height: 9vh;
   margin-top: 70px;
 }
 
@@ -48,11 +48,11 @@
 }
 
 .product-page .product-page__content .title-section .title-section__inner .title__inner-enter-done .title {
-  font-size: 3.5vh;
-  line-height: 3.5vh;
+  font-size: 4vh;
+  line-height: 4vh;
   font-weight: bold;
   transition: transform 0.7s ease-in;
-  transform: translateY(-3.5vh);
+  transform: translateY(-4vh);
 }
 
 .product-page .product-page__content .title-section .title-section__inner .title__inner-enter-done .title__cover {
@@ -384,6 +384,9 @@
   .product-page .product-page__content .title-section .title-section__inner {
     margin-top: 14vh;
   }
+  .product-page .product-page__content .title-section .title-section__inner .close-button {
+    display: none;
+  }
   .product-page .product-page__content .title-section .title-section__inner .url__link.--active {
     margin: 0;
     position: absolute;
@@ -414,6 +417,13 @@
   }
   .skill-section .skill-section__inner .skill-cards .skill-card .skill-card__title {
     font-size: 12px;
+  }
+  .menu-icon__wrapper svg {
+    fill: #333;
+  }
+  .menu-icon__wrapper:hover svg {
+    fill: #fff;
+    transition: 0.7s;
   }
 }
 

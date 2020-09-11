@@ -71,7 +71,6 @@ const SkillPage: React.FC<Props> = (props) => {
         addSkills(skillsArray);
       });
     };
-
     fetchData();
     fetchSkills();
   }, []);
@@ -168,21 +167,6 @@ const SkillPage: React.FC<Props> = (props) => {
           </SwiperSlide>
           <SwiperSlide></SwiperSlide>
         </Swiper>
-        {/* <CSSTransition
-          in={isLoaded}
-          classNames="scroll-text__wrapper"
-          timeout={0}
-        >
-          {currentIndex < 3 ? (
-            <div className="scroll-text__wrapper">
-              <p className="scroll-text">SCROLL↓</p>
-            </div>
-          ) : (
-            <div className="scroll-text__wrapper">
-              <p className="scroll-text">SCROLL↑</p>
-            </div>
-          )}
-        </CSSTransition> */}
         <img src={Img} className="bg-image" />
       </div>
     </CSSTransition>
