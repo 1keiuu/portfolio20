@@ -292,7 +292,8 @@ $descriptionHeight: 16px;
       transform: translate(-50%, -50%);
       -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
-
+      width: 100vw;
+      overflow: hidden;
       .skill__title {
         font-size: 18vw;
         font-weight: 900;
