@@ -3,8 +3,6 @@ import VerticalSlider from '../../components/VerticalSlider';
 import SlidePagination from '../../components/SlidePagination';
 import '../../styles/productsIndex.scss';
 import axios from 'axios';
-import SearchProductBar from '../../components/SearchProductBar';
-import GopherImage from '../../components/GopherImage';
 import ProductPage from './ProductPage';
 
 //redux
@@ -225,31 +223,6 @@ const ProductsIndex: React.FC<Props> = (props) => {
                 ></SlidePagination>
               </div>
             </div>
-
-            {/* <div className="search-product__wrapper">
-              <SearchProductBar
-                skills={storeSkills.value}
-                isOpen={isSideBarOpen}
-                decide_button_callback={(selectedItems) => {
-                  handleDecideButtonClick(selectedItems);
-                }}
-              ></SearchProductBar>
-              <GopherImage
-                callback={() => {
-                  setIsSideBarOpen(!isSideBarOpen);
-                }}
-              ></GopherImage>
-              <div
-                onClick={() => {
-                  setIsSideBarOpen(false);
-                }}
-                className={
-                  'search-product__background' +
-                  ' ' +
-                  (isSideBarOpen ? '--active' : '')
-                }
-              ></div>
-            </div> */}
           </Route>
           <Route
             path={`${props.match.path}/:id`}
