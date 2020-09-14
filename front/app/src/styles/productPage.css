@@ -25,6 +25,8 @@
   overflow-y: scroll;
   height: 100vh;
   box-sizing: border-box;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 .product-page .product-page__content .title-section {
