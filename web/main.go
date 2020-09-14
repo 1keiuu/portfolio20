@@ -2,14 +2,31 @@ package main
 
 import (
 	"log"
+	"os"
 	"work/admincontroller"
 	"work/controller"
 
+	"github.com/getsentry/sentry-go"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 )
 
+func Env_load() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+}
 func main() {
+	Env_load()
+	Sentry_DSN := os.Getenv("Sentry_DSN")
+	err := sentry.Init(sentry.ClientOptions{
+		Dsn: Sentry_DSN,
+	})
+	if err != nil {
+		log.Fatalf("sentry.Init: %s", err)
+	}
 	engine := gin.Default()
 
 	engine.Use(cors.New(cors.Config{
