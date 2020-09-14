@@ -435,17 +435,6 @@ $descriptionHeight: 16px;
       }
     }
   }
-  .menu-icon__wrapper {
-    svg {
-      fill: #333;
-    }
-    &:hover {
-      svg {
-        fill: #fff;
-        transition: 0.7s;
-      }
-    }
-  }
 }
 
 @include mq-down(sm) {

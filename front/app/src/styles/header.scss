@@ -60,6 +60,7 @@ $breakpoint-down: (
       display: block;
     }
   }
+
   .menu-icon__wrapper {
     padding: 20px;
     width: 60px;
@@ -70,11 +71,18 @@ $breakpoint-down: (
     right: 20px;
     top: 15px;
     cursor: pointer;
+    &.--product-page {
+      svg {
+        fill: #333;
+      }
+    }
     &:hover {
       background: #333;
-    }
-    &.--close {
-      background: #fff;
+      transition: 0.7s;
+      svg {
+        fill: #fff;
+        transition: 0.7s;
+      }
     }
   }
   .close-button {

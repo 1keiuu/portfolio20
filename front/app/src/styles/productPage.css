@@ -420,13 +420,6 @@
   .skill-section .skill-section__inner .skill-cards .skill-card .skill-card__title {
     font-size: 12px;
   }
-  .menu-icon__wrapper svg {
-    fill: #333;
-  }
-  .menu-icon__wrapper:hover svg {
-    fill: #fff;
-    transition: 0.7s;
-  }
 }
 
 @media screen and (max-width: 399px) {

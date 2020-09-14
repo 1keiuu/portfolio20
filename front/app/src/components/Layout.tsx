@@ -30,7 +30,7 @@ const Layout: React.FC<Props> = (props) => {
   return (
     <CSSTransition in={isLoaded} classNames="layout" timeout={0}>
       <div className="layout">
-        <Header></Header>
+        <Header is_product_page={isProductPage()}></Header>
         <Sidebar
           current_page={props.location.pathname}
           is_product_page={isProductPage()}

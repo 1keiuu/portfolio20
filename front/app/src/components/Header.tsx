@@ -8,12 +8,17 @@ import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
 
 interface Props extends RouteComponentProps<{}> {
   history: H.History;
+  is_product_page: boolean;
 }
 const MenuButton = (props: any) => {
   if (!props.isMenuOpen) {
     return (
       <div
-        className="menu-icon__wrapper"
+        className={
+          'menu-icon__wrapper' +
+          ' ' +
+          (props.is_product_page ? '--product-page' : '')
+        }
         onClick={() => {
           props.click();
         }}
@@ -111,6 +116,7 @@ const Header: React.FC<Props> = (props) => {
       <CSSTransition in={isMenuOpen} classNames="close-button" timeout={0}>
         <MenuButton
           isMenuOpen={isMenuOpen}
+          is_product_page={props.is_product_page}
           click={() => {
             if (!isMenuOpen) {
               changeMenuStatus('open');
