@@ -125,6 +125,7 @@ const ProductsIndex: React.FC<Props> = (props) => {
       <div class="product-card__overlay" id="slide${i}"></div>
       <img
         class="product-card__image"
+        loading="lazy"
         src=${product.images.split(',')[0]}
       ></img>
       <div class="product-card__title-wrapper">
