@@ -8,7 +8,7 @@ const GithubTitle: React.FC = () => {
       <div className="github-title__inner">
         <p>ikkei12's contributions on</p>
         <img src={iconSrc} alt="logo" className="github-title__logo" />
-        <img src={logoSrc} alt="icon" className="github-title__icon" />
+        {/* <img src={logoSrc} alt="icon" className="github-title__icon" /> */}
       </div>
       <a
         href="https://github.com/ikkei12"

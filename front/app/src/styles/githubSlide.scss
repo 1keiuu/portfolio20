@@ -50,9 +50,11 @@ $breakpoint-down: (
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      // height: 33%;
+      height: 30%;
+      padding: 1.5% 0;
       .stats__link1 {
-        // height: 100%;
+        height: 100%;
+        width: 100%;
         // padding: 1% 5%;
         box-sizing: border-box;
         img {
@@ -62,6 +64,8 @@ $breakpoint-down: (
       }
       .stats__link2 {
         margin-left: 3%;
+        height: 100%;
+        width: 100%;
         img {
           height: 100%;
           width: 100%;
@@ -71,6 +75,10 @@ $breakpoint-down: (
     .graph__wrapper {
       background: #fff;
       border-radius: 4px;
+      height: 60%;
+    }
+    .github-title {
+      height: 10%;
     }
   }
 }

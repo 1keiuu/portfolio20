@@ -20,9 +20,9 @@ func Env_load() {
 }
 func main() {
 	Env_load()
-	Sentry_DSN := os.Getenv("Sentry_DSN")
+	SentryDSN := os.Getenv("Sentry_DSN")
 	err := sentry.Init(sentry.ClientOptions{
-		Dsn: Sentry_DSN,
+		Dsn: SentryDSN,
 	})
 	if err != nil {
 		log.Fatalf("sentry.Init: %s", err)

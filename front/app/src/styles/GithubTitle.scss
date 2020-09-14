@@ -35,20 +35,20 @@ $breakpoint-down: (
 ///////////////////////////////////////////////////////////////////////////////////
 
 .github-title {
+  height: 10%;
   &__inner {
     display: inline-flex;
-    position: relative;
+    height: 70%;
     justify-content: center;
     align-items: center;
     p {
-      font-size: 24px;
       font-weight: bold;
       margin: 0;
       color: #fff;
     }
   }
   &__logo {
-    height: 40px;
+    height: 100%;
     margin-left: 5px;
   }
   &__icon {

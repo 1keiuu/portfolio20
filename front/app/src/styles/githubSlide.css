@@ -19,9 +19,13 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  height: 30%;
+  padding: 1.5% 0;
 }
 
 .github__slide .slide__inner .github__stats .stats__link1 {
+  height: 100%;
+  width: 100%;
   box-sizing: border-box;
 }
 
@@ -32,6 +36,8 @@
 
 .github__slide .slide__inner .github__stats .stats__link2 {
   margin-left: 3%;
+  height: 100%;
+  width: 100%;
 }
 
 .github__slide .slide__inner .github__stats .stats__link2 img {
@@ -42,6 +48,11 @@
 .github__slide .slide__inner .graph__wrapper {
   background: #fff;
   border-radius: 4px;
+  height: 60%;
+}
+
+.github__slide .slide__inner .github-title {
+  height: 10%;
 }
 
 @media screen and (max-width: 399px) {

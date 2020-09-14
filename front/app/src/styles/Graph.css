@@ -1,3 +1,7 @@
+.graph {
+  height: 100%;
+}
+
 .graph .graph__upper {
   position: relative;
   display: flex;
@@ -82,7 +86,7 @@
 .graph .line-graph__wrapper {
   background: #fff;
   padding: 0 40px 20px 40px;
-  height: 30vh;
+  height: 70%;
   border-radius: 4px;
 }
 
@@ -92,7 +96,7 @@
 
 @media screen and (max-width: 399px) {
   .graph .line-graph__wrapper {
-    height: 22vh;
+    height: 47%;
   }
   .graph .graph__upper .span-display__wrapper .graph__span-wrapper .graph__span {
     font-size: 14px;

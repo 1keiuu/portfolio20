@@ -1,19 +1,22 @@
+.github-title {
+  height: 10%;
+}
+
 .github-title__inner {
   display: inline-flex;
-  position: relative;
+  height: 70%;
   justify-content: center;
   align-items: center;
 }
 
 .github-title__inner p {
-  font-size: 24px;
   font-weight: bold;
   margin: 0;
   color: #fff;
 }
 
 .github-title__logo {
-  height: 40px;
+  height: 100%;
   margin-left: 5px;
 }
 
