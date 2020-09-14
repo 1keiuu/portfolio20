@@ -128,19 +128,30 @@ const ProductPage: React.FC<Props> = (props) => {
                 <div className="span__cover"></div>
               </div>
             </CSSTransition>
-            <a
-              className={
-                'url__link' + ' ' + (product!.web_url.Valid ? '--active' : '')
-              }
-              href={product!.web_url.String}
-              target="_blank"
-              rel="noopener noreferrer"
+            <CSSTransition
+              in={isLoaded}
+              classNames="url__wrapper"
+              timeout={1000}
             >
-              <div className="link-icon__wrappper">
-                <LinkIcon></LinkIcon>
+              <div className="url__wrapper">
+                <a
+                  className={
+                    'url__link' +
+                    ' ' +
+                    (product!.web_url.Valid ? '--active' : '')
+                  }
+                  href={product!.web_url.String}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="link-icon__wrappper">
+                    <LinkIcon></LinkIcon>
+                  </div>
+                  <p className="url">{product!.web_url.String}</p>
+                </a>
+                <span className="url__cover"></span>
               </div>
-              <p className="url">{product!.web_url.String}</p>
-            </a>
+            </CSSTransition>
             <button
               className="close-button"
               onClick={() => {

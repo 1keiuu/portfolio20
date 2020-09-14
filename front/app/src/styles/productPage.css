@@ -58,7 +58,7 @@
 }
 
 .product-page .product-page__content .title-section .title-section__inner .title__inner-enter-done .title__cover {
-  z-index: 5;
+  z-index: 0;
   height: 100%;
   width: 100%;
   top: 0;
@@ -75,17 +75,28 @@
   display: flex;
 }
 
-.product-page .product-page__content .title-section .title-section__inner .url__link {
+.product-page .product-page__content .title-section .title-section__inner .url__wrapper {
+  position: relative;
+}
+
+.product-page .product-page__content .title-section .title-section__inner .url__wrapper .url__cover {
+  position: absolute;
+  background: #fff;
+}
+
+.product-page .product-page__content .title-section .title-section__inner .url__wrapper .url__link {
   margin-left: 15px;
   display: none;
   align-items: center;
+  z-index: 8;
+  opacity: 0;
 }
 
-.product-page .product-page__content .title-section .title-section__inner .url__link.--active {
+.product-page .product-page__content .title-section .title-section__inner .url__wrapper .url__link.--active {
   display: flex;
 }
 
-.product-page .product-page__content .title-section .title-section__inner .url__link .link-icon__wrappper {
+.product-page .product-page__content .title-section .title-section__inner .url__wrapper .url__link .link-icon__wrappper {
   width: 16px;
   height: 16px;
   padding: 0 1px 1px;
@@ -93,11 +104,25 @@
   margin-right: 5px;
 }
 
-.product-page .product-page__content .title-section .title-section__inner .url__link .url {
+.product-page .product-page__content .title-section .title-section__inner .url__wrapper .url__link .url {
   color: cornflowerblue;
   text-decoration-color: cornflowerblue;
   text-decoration: underline;
   font-size: 16px;
+}
+
+.product-page .product-page__content .title-section .title-section__inner .url__wrapper-enter-done .url__link {
+  opacity: 1;
+  transition: 1s;
+  transform: translateY(-19px);
+}
+
+.product-page .product-page__content .title-section .title-section__inner .url__wrapper-enter-done .url__cover {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9;
 }
 
 .product-page .product-page__content .title-section .title-section__inner .span__inner-enter-done {
@@ -394,12 +419,11 @@
   .product-page .product-page__content .title-section .title-section__inner .url__link.--active {
     margin: 0;
     position: absolute;
-    bottom: -36px;
     word-break: break-all;
-    z-index: 17;
   }
   .product-page .product-page__content .title-section .title-section__inner .url__link.--active .url {
     font-size: 16px;
+    line-height: 16px;
   }
   .product-page .product-page__content .title-section .title-section__inner .title__inner-enter-done .title {
     font-size: 4vw;
