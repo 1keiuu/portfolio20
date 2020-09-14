@@ -17,7 +17,7 @@ import (
 	"golang.org/x/net/html/charset"
 )
 
-func update() {
+func main() {
 
 	base, _ := url.Parse("https://github.com/ikkei12")
 	doc := getThisYearDoc(base.String())
