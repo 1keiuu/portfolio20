@@ -54,7 +54,7 @@
   line-height: 4vh;
   font-weight: bold;
   transition: transform 0.7s ease-in;
-  transform: translateY(-4vh);
+  transform: translateY(-8vh);
 }
 
 .product-page .product-page__content .title-section .title-section__inner .title__inner-enter-done .title__cover {
@@ -205,7 +205,7 @@
 
 .product-page .section .section__image {
   width: 50%;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .product-page .section .description__wrapper {

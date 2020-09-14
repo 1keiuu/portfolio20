@@ -81,7 +81,7 @@ $descriptionHeight: 16px;
             line-height: $titleHeight;
             font-weight: bold;
             transition: transform 0.7s ease-in;
-            transform: translateY(-$titleHeight);
+            transform: translateY(-($titleHeight + $titleHeight));
           }
           .title__cover {
             z-index: 5;
@@ -223,7 +223,7 @@ $descriptionHeight: 16px;
     }
     .section__image {
       width: 50%;
-      border-radius: 10px;
+      border-radius: 5px;
     }
     .description__wrapper {
       background: #fff;
