@@ -441,9 +441,6 @@ $descriptionHeight: 16px;
           .title {
             font-size: 4vw;
           }
-          .title__cover {
-            display: none;
-          }
         }
         .span__inner-enter-done .start-date__wrapper .start-date {
           font-size: 13px;
@@ -506,6 +503,7 @@ $descriptionHeight: 16px;
         .title__inner-enter-done {
           .title {
             font-size: 4vw;
+            z-index: -1;
           }
           .title__cover {
             display: none;

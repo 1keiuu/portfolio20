@@ -428,9 +428,6 @@
   .product-page .product-page__content .title-section .title-section__inner .title__inner-enter-done .title {
     font-size: 4vw;
   }
-  .product-page .product-page__content .title-section .title-section__inner .title__inner-enter-done .title__cover {
-    display: none;
-  }
   .product-page .product-page__content .title-section .title-section__inner .span__inner-enter-done .start-date__wrapper .start-date {
     font-size: 13px;
   }
@@ -485,6 +482,7 @@
   }
   .product-page .product-page__content .title-section .title-section__inner .title__inner-enter-done .title {
     font-size: 4vw;
+    z-index: -1;
   }
   .product-page .product-page__content .title-section .title-section__inner .title__inner-enter-done .title__cover {
     display: none;
