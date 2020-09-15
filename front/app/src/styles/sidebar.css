@@ -69,7 +69,7 @@ nav .icon__group {
 
 nav .icon__group .icon__wrapper {
   padding: 9px;
-  padding-left: 0;
+  transform: translateX(-9px);
   width: 18px;
   height: 18px;
   margin-bottom: 30px;

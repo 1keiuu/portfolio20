@@ -250,7 +250,7 @@
 }
 
 .product-page .section .description__wrapper .description__inner {
-  width: 50%;
+  width: 70%;
   box-sizing: border-box;
 }
 
@@ -428,6 +428,7 @@
   }
   .product-page .section .description__wrapper .description .description__text.--active {
     font-size: 14px;
+    line-height: 28px;
   }
   .product-page .product-page__content .title-section {
     padding: 0 5%;

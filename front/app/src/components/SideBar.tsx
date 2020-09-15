@@ -104,17 +104,6 @@ const Sidebar: React.FC<Props> = (props) => {
               Product
             </p>
           </Link>
-          {/* <CSSTransition
-            in={selectedItem === 'product'}
-            classNames="underline"
-            timeout={0}
-          >
-            <div
-              className={
-                'underline' + ' ' + (props.is_product_page ? '--black' : '')
-              }
-            ></div>
-          </CSSTransition> */}
         </div>
 
         <div className="menu-item__wrapper">

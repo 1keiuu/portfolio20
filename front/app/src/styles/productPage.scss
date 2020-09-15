@@ -266,7 +266,7 @@ $descriptionHeight: 16px;
       justify-content: center;
       width: 100%;
       .description__inner {
-        width: 50%;
+        width: 70%;
         box-sizing: border-box;
         .description__title {
           margin: 0;
@@ -436,6 +436,7 @@ $descriptionHeight: 16px;
           font-size: 14px;
           &.--active {
             font-size: 14px;
+            line-height: 28px;
           }
         }
       }
