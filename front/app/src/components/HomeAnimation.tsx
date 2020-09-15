@@ -31,11 +31,18 @@ const HomeAnimation = () => {
     directionalLight.position.set(1, 1, 1);
     scene.add(directionalLight);
 
+    const urlArray = [
+      'https://media.giphy.com/media/WrmapnnhP7tm0nPD6I/giphy.gif',
+      'https://media.giphy.com/media/e3LOYBU83CyoE/giphy.gif',
+      'https://media.giphy.com/media/TFlCbrht89RbG/giphy.gif',
+    ];
+    var min = 0;
+    var max = 2;
+    const urlIndex = Math.floor(Math.random() * (max + 1 - min)) + min;
+
     // マテリアルを作成
     const material = new THREE.MeshPhongMaterial({
-      map: new THREE.TextureLoader().load(
-        'https://media.giphy.com/media/RczrZPh9LHpCM/giphy.gif'
-      ),
+      map: new THREE.TextureLoader().load(urlArray[urlIndex]),
       side: THREE.DoubleSide,
     });
 
