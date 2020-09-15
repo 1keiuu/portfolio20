@@ -186,7 +186,6 @@ const ProductPage: React.FC<Props> = (props) => {
                 >
                   <img className="section__image" src={image}></img>
                   <div className="description__wrapper">
-                    return (
                     <div className="description__inner">
                       <h3
                         className={
@@ -212,7 +211,6 @@ const ProductPage: React.FC<Props> = (props) => {
                         <span className="description__cover"></span>
                       </div>
                     </div>
-                    );
                   </div>
                 </div>
               )}
