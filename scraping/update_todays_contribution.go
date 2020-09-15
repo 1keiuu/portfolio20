@@ -18,7 +18,7 @@ import (
 )
 
 func main() {
-
+	Env_load()
 	base, _ := url.Parse("https://github.com/ikkei12")
 	doc := getThisYearDoc(base.String())
 
