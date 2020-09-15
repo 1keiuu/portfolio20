@@ -42,38 +42,58 @@
 }
 
 .contact-page .contact-form .email__input {
+  background: transparent;
+  color: #fff;
   width: 130%;
+  margin-top: 10px;
   padding: 10px 8px;
-  border-radius: 4px;
   border: 0;
+  border-bottom: 2px solid #b9b9b9;
   outline: 0;
   font-size: 16px;
   transform: scale(calc(12 / 16));
   transform-origin: left;
+}
+
+.contact-page .contact-form .email__input::placeholder {
+  color: #b9b9b9;
 }
 
 .contact-page .contact-form .name__input {
+  color: #fff;
   width: 130%;
   padding: 10px 8px;
-  border-radius: 4px;
+  margin-top: 10px;
+  background: transparent;
   border: 0;
+  border-bottom: 2px solid #b9b9b9;
   outline: 0;
   font-size: 16px;
   transform-origin: left;
   transform: scale(calc(12 / 16));
 }
 
+.contact-page .contact-form .name__input::placeholder {
+  color: #b9b9b9;
+}
+
 .contact-page .contact-form .content__input {
+  color: #fff;
   width: 130%;
-  margin-top: 5px;
+  margin-top: 15px;
   padding: 10px 8px;
-  border-radius: 4px;
+  background: transparent;
   border: 0;
+  border-bottom: 2px solid #b9b9b9;
   outline: 0;
   height: 25vh;
   font-size: 16px;
   transform-origin: top left;
   transform: scale(calc(12 / 16));
+}
+
+.contact-page .contact-form .content__input::placeholder {
+  color: #b9b9b9;
 }
 
 .contact-page .contact-form .submit__button {

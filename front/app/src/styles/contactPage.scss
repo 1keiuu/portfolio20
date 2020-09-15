@@ -72,36 +72,53 @@ $breakpoint-down: (
     flex-direction: column;
     width: 100%;
     .email__input {
+      background: transparent;
+      color: #fff;
       width: 130%;
+      margin-top: 10px;
       padding: 10px 8px;
-      border-radius: 4px;
       border: 0;
+      border-bottom: 2px solid rgb(185, 185, 185);
       outline: 0;
       font-size: 16px;
       transform: scale(calc(12 / 16));
       transform-origin: left;
+      &::placeholder {
+        color: rgb(185, 185, 185);
+      }
     }
     .name__input {
+      color: #fff;
       width: 130%;
       padding: 10px 8px;
-      border-radius: 4px;
+      margin-top: 10px;
+      background: transparent;
       border: 0;
+      border-bottom: 2px solid rgb(185, 185, 185);
       outline: 0;
       font-size: 16px;
       transform-origin: left;
       transform: scale(calc(12 / 16));
+      &::placeholder {
+        color: rgb(185, 185, 185);
+      }
     }
     .content__input {
+      color: #fff;
       width: 130%;
-      margin-top: 5px;
+      margin-top: 15px;
       padding: 10px 8px;
-      border-radius: 4px;
+      background: transparent;
       border: 0;
+      border-bottom: 2px solid rgb(185, 185, 185);
       outline: 0;
       height: 25vh;
       font-size: 16px;
       transform-origin: top left;
       transform: scale(calc(12 / 16));
+      &::placeholder {
+        color: rgb(185, 185, 185);
+      }
     }
     .submit__button {
       width: 130%;
