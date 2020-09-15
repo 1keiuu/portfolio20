@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import "../styles/progreeBar.scss";
+import React, { useEffect, useRef, useState } from 'react';
+import '../styles/progreeBar.scss';
 
 interface Props {
   active_index: number;
@@ -20,51 +20,51 @@ const ProgreeBar: React.FC<Props> = (props) => {
   const prevIndex = usePrevious(activeIndex);
 
   useEffect(() => {
-    const ROBOT = props.active_index - 1;
+    const Index = props.active_index - 1;
     // setActiveIndex(props.active_index - 1);
-    const currentDot = REF.current!.children[ROBOT] as HTMLElement;
-    if (ROBOT > 0) setCurrentLeft(currentDot!.offsetLeft);
+    const currentDot = REF.current!.children[Index] as HTMLElement;
+    if (Index > 0) setCurrentLeft(currentDot!.offsetLeft);
     else setCurrentLeft(0);
-    if (ROBOT > prevIndex!) {
+    if (Index > prevIndex!) {
       // バーが戻る時は遅らせたくない
       if (prevIndex) {
-        if (prevIndex! < 1) return setActiveIndex(ROBOT);
+        if (prevIndex! < 1) return setActiveIndex(Index);
       }
       setTimeout(() => {
-        setActiveIndex(ROBOT);
+        setActiveIndex(Index);
       }, 900);
     } else {
-      setActiveIndex(ROBOT);
+      setActiveIndex(Index);
     }
   }, [props.active_index]);
 
   const slideArray = [
     {
-      title: "Profile",
+      title: 'Profile',
     },
     {
-      title: "Career",
+      title: 'Career',
     },
     {
-      title: "SkillSet",
+      title: 'SkillSet',
     },
     {
-      title: "Github",
+      title: 'Github',
     },
   ];
   return (
     <div className="progress-bar" ref={REF}>
       {slideArray.map((slide, i) => {
         return (
-          <div className="dot__wrapper" key={"dot" + i}>
-            <p className={activeIndex >= i ? "--active" : ""}>{slide.title}</p>
+          <div className="dot__wrapper" key={'dot' + i}>
+            <p className={activeIndex >= i ? '--active' : ''}>{slide.title}</p>
             <span
               className={
-                "dot__border" + " " + (activeIndex >= i ? "--active" : "")
+                'dot__border' + ' ' + (activeIndex >= i ? '--active' : '')
               }
             >
               <span
-                className={"dot" + " " + (activeIndex >= i ? "--active" : "")}
+                className={'dot' + ' ' + (activeIndex >= i ? '--active' : '')}
               ></span>
             </span>
           </div>
@@ -74,7 +74,7 @@ const ProgreeBar: React.FC<Props> = (props) => {
       <span className="progress-bar__line"></span>
       <span
         className="progress-bar__active-line"
-        style={{ width: currentLeft + "px" }}
+        style={{ width: currentLeft + 'px' }}
       ></span>
     </div>
   );

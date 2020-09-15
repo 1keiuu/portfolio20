@@ -26,7 +26,7 @@ const SlidePagination: React.FC<Props> = (props) => {
             }
             key={'dot' + i}
             onClick={() => {
-              props.callback(i);
+              props.callback(i + 1);
             }}
           ></span>
         );
