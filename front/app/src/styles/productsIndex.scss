@@ -88,7 +88,6 @@ $breakpoint-down: (
   }
 
   .product-card__title-wrapper {
-    height: 25%;
     width: 100%;
     padding-top: 3%;
     border-radius: 10px;
@@ -141,9 +140,10 @@ $breakpoint-down: (
         width: 100%;
       }
       .product-card__title-wrapper {
-        padding-top: 0;
+        padding-top: 8px;
         .product-card__title {
           font-size: 14px;
+          margin-bottom: 0;
         }
         .product-card__sub-title {
           font-size: 13px;
