@@ -17,13 +17,15 @@ const Sidebar: React.FC<Props> = (props) => {
 
   return (
     <nav>
-      <h3
-        className={
-          'sidebar__title' + ' ' + (props.is_product_page ? '--black' : '')
-        }
-      >
-        Ikkei Harashima
-      </h3>
+      <a className="top__link" href="/">
+        <h3
+          className={
+            'sidebar__title' + ' ' + (props.is_product_page ? '--black' : '')
+          }
+        >
+          Ikkei Harashima
+        </h3>
+      </a>
       <div className="menu-items">
         <div className="menu-item__wrapper">
           <Link

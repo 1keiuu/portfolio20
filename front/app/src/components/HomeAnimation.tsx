@@ -64,7 +64,8 @@ const HomeAnimation = () => {
       // マテリアルを作成
       const material = new THREE.PointsMaterial({
         size: 10,
-        color: 0xffffff,
+        color: 0x888888,
+        transparent: true,
       });
 
       // 物体を作成
