@@ -14,6 +14,7 @@ const ArrowPonterIcon: React.FC<Props> = (props) => {
         id="Capa_1"
         x="0px"
         y="0px"
+        fill={props.fill}
         viewBox="0 0 512 512"
         style={{ background: 'new 0 0 512 512' }}
       >
@@ -27,7 +28,7 @@ const ArrowPonterIcon: React.FC<Props> = (props) => {
     );
   } else {
     return (
-      <svg viewBox="0 0 512 512" width="100%" height="100%">
+      <svg viewBox="0 0 512 512" width="100%" height="100%" fill={props.fill}>
         <path
           d="M506.134,241.843c-0.006-0.006-0.011-0.013-0.018-0.019l-104.504-104c-7.829-7.791-20.492-7.762-28.285,0.068
 			c-7.792,7.829-7.762,20.492,0.067,28.284L443.558,236H20c-11.046,0-20,8.954-20,20c0,11.046,8.954,20,20,20h423.557

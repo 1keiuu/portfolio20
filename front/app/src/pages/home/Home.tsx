@@ -10,6 +10,7 @@ import * as H from 'history';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import HomeAnimation from '../../components/HomeAnimation';
+import ArrowPointerIcon from '../../components/ArrowPointerIcon';
 SwiperCore.use([Mousewheel]);
 
 interface Props extends RouteComponentProps<{}> {
@@ -79,8 +80,13 @@ const Home: React.FC<Props> = (props) => {
         <SwiperSlide>
           <CSSTransition in={isLoaded} timeout={0} classNames="home__inner">
             <div className="home__inner">
-              <div></div>
               <HomeAnimation></HomeAnimation>
+              <div className="scroll-text__wrapper">
+                <div className="scroll-text__icon">
+                  <ArrowPointerIcon fill="#d7d7d7"></ArrowPointerIcon>
+                </div>
+                <p className="scroll-text">SCROLL</p>
+              </div>
             </div>
           </CSSTransition>
         </SwiperSlide>

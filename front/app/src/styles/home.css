@@ -61,6 +61,44 @@
   position: absolute;
 }
 
+.home__inner .scroll-text__wrapper {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  bottom: 2%;
+  display: flex;
+  align-items: center;
+  animation: flow 3s infinite;
+}
+
+@keyframes flow {
+  0% {
+    bottom: 4%;
+  }
+  50% {
+    bottom: 3%;
+  }
+  100% {
+    bottom: 4%;
+  }
+}
+
+.home__inner .scroll-text__wrapper .scroll-text__icon {
+  width: 1.5vw;
+  height: 1.5vw;
+  transform: rotate(90deg);
+}
+
+.home__inner .scroll-text__wrapper .scroll-text {
+  font-size: 1.7vw;
+  font-weight: bold;
+  letter-spacing: 0.18vw;
+  color: #d7d7d7;
+  margin-left: 10px;
+}
+
 .home__inner-enter-done {
   opacity: 1;
   filter: blur(0);

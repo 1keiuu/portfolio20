@@ -1,15 +1,15 @@
-import React from "react";
-import "../styles/ArrowIcon.scss";
+import React from 'react';
+import '../styles/ArrowIcon.scss';
 
 interface Props {
-  isLeft: boolean;
+  isLeft?: boolean;
   fill: string;
 }
 
 const ArrowIcon: React.FC<Props> = (props) => {
   return (
     <svg
-      className={["arrow-icon", props.isLeft ? "prev-arrow" : ""].join(" ")}
+      className={['arrow-icon', props.isLeft ? 'prev-arrow' : ''].join(' ')}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 512.002 512.002"
       fill={props.fill}

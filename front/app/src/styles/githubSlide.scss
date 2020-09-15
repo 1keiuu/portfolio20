@@ -87,6 +87,12 @@ $breakpoint-down: (
   .github__slide .slide__inner {
     width: 92vw;
     justify-content: flex-start;
+    .graph__wrapper {
+      height: 40%;
+      .line-graph__wrapper {
+        height: 65%;
+      }
+    }
     .github__stats {
       margin-bottom: 10px;
       .stats__link1 {

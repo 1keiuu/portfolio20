@@ -21,19 +21,6 @@ const ProfileSlide: React.FC<Props> = (props) => {
 
   return (
     <div className="slide profile__slide">
-      {/* <div className="slide-upper__image-wrapper">
-        <CSSTransition
-          in={isLoadeded}
-          classNames="slide-upper__image-surface"
-          timeout={1000}
-        >
-          <div className="slide-upper__image-surface">
-            <div className="noise --upper"></div>
-          </div>
-        </CSSTransition>
-        <img className="slide-upper__image" src={profileImg}></img>
-      </div> */}
-      {/* <img src={profileImg} className="profile-image" /> */}
       <div className="slide__inner">
         <CSSTransition in={isLoadeded} classNames="slide__text" timeout={500}>
           <div className="slide__text">

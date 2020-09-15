@@ -60,6 +60,12 @@
     width: 92vw;
     justify-content: flex-start;
   }
+  .github__slide .slide__inner .graph__wrapper {
+    height: 40%;
+  }
+  .github__slide .slide__inner .graph__wrapper .line-graph__wrapper {
+    height: 65%;
+  }
   .github__slide .slide__inner .github__stats {
     margin-bottom: 10px;
   }
