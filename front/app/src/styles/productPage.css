@@ -473,6 +473,9 @@
     flex-direction: column;
     padding: 0 7%;
   }
+  .product-page :nth-child(2).section {
+    margin-top: 0;
+  }
   .product-page .section {
     flex-direction: column;
     margin-top: 65px;
@@ -490,6 +493,9 @@
   }
   .product-page .section .description__wrapper .description .description__text {
     font-size: 13px;
+  }
+  .product-page .product-page__content {
+    padding: 13% 0;
   }
   .product-page .product-page__content .title-section {
     padding: 0 5%;
