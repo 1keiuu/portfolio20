@@ -152,7 +152,7 @@ const Graph: React.FC<Props> = (props) => {
   const dataChange = (e: any) => {
     const val = e.target.value;
     switch (val) {
-      case 'week':
+      case 'day':
         setCurrentData(dailyData);
         setCurrentMaxYAxis(maxYAxisGroup.daily);
         break;
@@ -270,8 +270,8 @@ const Graph: React.FC<Props> = (props) => {
           </div>
         </div>
         <select className="date-select" onChange={dataChange}>
-          <option className="date-option" value="week">
-            Week
+          <option className="date-option" value="day">
+            Day
           </option>
           <option className="date-option" value="month">
             Month
