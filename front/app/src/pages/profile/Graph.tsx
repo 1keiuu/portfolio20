@@ -30,15 +30,15 @@ interface State {
       data: any;
     }[];
   };
-  weeklyData: any;
+  dailyData: any;
   monthlyData: any;
   yearlyData: any;
-  weeklyArray: { labels: []; counts: [] }[];
+  dailyArray: { labels: []; counts: [] }[];
   monthlyArray: { labels: []; counts: [] }[];
   currentWeeklyIndex: number;
   currentMonthlyIndex: number;
   currentMaxYAxis: number;
-  maxYAxisGroup: { weekly: number; monthly: number; yearly: number };
+  maxYAxisGroup: { daily: number; monthly: number; yearly: number };
 }
 const contributionsData = (
   labels: string[],
@@ -75,10 +75,10 @@ const contributionsData = (
 
 const Graph: React.FC<Props> = (props) => {
   const [currentData, setCurrentData] = useState(
-    contributionsData([], [], 'weekly')
+    contributionsData([], [], 'daily')
   );
-  const [weeklyData, setWeeklyData] = useState(
-    contributionsData([], [], 'weekly')
+  const [dailyData, setWeeklyData] = useState(
+    contributionsData([], [], 'daily')
   );
   const [monthlyData, setMonthlyData] = useState(
     contributionsData([], [], 'monthly')
@@ -86,7 +86,7 @@ const Graph: React.FC<Props> = (props) => {
   const [yearlyData, setYearlyData] = useState(
     contributionsData([], [], 'yearly')
   );
-  const [weeklyArray, setWeeklyArray] = useState<
+  const [dailyArray, setWeeklyArray] = useState<
     { labels: string[]; counts: number[] }[]
   >([]);
   const [monthlyArray, setMonthlyArray]: [
@@ -97,7 +97,7 @@ const Graph: React.FC<Props> = (props) => {
   const [currentMonthlyIndex, setCurrentMonthlyIndex] = useState(0);
   const [currentMaxYAxis, setCurrentMaxYAxis] = useState(0);
   const [maxYAxisGroup, setMaxYAxisGroup] = useState({
-    weekly: 0,
+    daily: 0,
     monthly: 0,
     yearly: 0,
   });
@@ -107,11 +107,7 @@ const Graph: React.FC<Props> = (props) => {
 
     if (data) {
       setWeeklyData(
-        contributionsData(
-          data.weekly.labels[0],
-          data.weekly.counts[0],
-          'weekly'
-        )
+        contributionsData(data.daily.labels[0], data.daily.counts[0], 'daily')
       );
       setMonthlyData(
         contributionsData(data.monthly.labels, data.monthly.counts, 'monthly')
@@ -119,11 +115,11 @@ const Graph: React.FC<Props> = (props) => {
       setYearlyData(
         contributionsData(data.yearly.labels, data.yearly.counts, 'yearly')
       );
-      const weekly_array: { labels: string[]; counts: number[] }[] = [];
-      data.weekly.labels.forEach((label: string[], i: number) => {
-        weekly_array.push({ labels: label, counts: data.weekly.counts[i] });
+      const daily_array: { labels: string[]; counts: number[] }[] = [];
+      data.daily.labels.forEach((label: string[], i: number) => {
+        daily_array.push({ labels: label, counts: data.daily.counts[i] });
       });
-      setWeeklyArray(weekly_array);
+      setWeeklyArray(daily_array);
 
       const culcMax = (countArray: number[][]) => {
         // 配列を連結
@@ -138,20 +134,16 @@ const Graph: React.FC<Props> = (props) => {
         return arr1.sort(sortDesc)[0];
       };
 
-      if (data.weekly.counts) {
-        setCurrentMaxYAxis(culcMax(data.weekly.counts) + 3);
+      if (data.daily.counts) {
+        setCurrentMaxYAxis(culcMax(data.daily.counts) + 3);
         // y軸の最大値を設定(+分はゆとり)
         setMaxYAxisGroup({
-          weekly: culcMax(data.weekly.counts) + 1,
+          daily: culcMax(data.daily.counts) + 1,
           monthly: culcMax(data.monthly.counts) + 10,
           yearly: culcMax(data.yearly.counts) + 50,
         });
         setCurrentData(
-          contributionsData(
-            data.weekly.labels[0],
-            data.weekly.counts[0],
-            'weekly'
-          )
+          contributionsData(data.daily.labels[0], data.daily.counts[0], 'daily')
         );
       }
     }
@@ -161,8 +153,8 @@ const Graph: React.FC<Props> = (props) => {
     const val = e.target.value;
     switch (val) {
       case 'week':
-        setCurrentData(weeklyData);
-        setCurrentMaxYAxis(maxYAxisGroup.weekly);
+        setCurrentData(dailyData);
+        setCurrentMaxYAxis(maxYAxisGroup.daily);
         break;
       case 'month':
         setCurrentData(monthlyData);
@@ -182,9 +174,9 @@ const Graph: React.FC<Props> = (props) => {
   const getWeeklyData = (index: number) => {
     const contData = () => {
       return contributionsData(
-        weeklyArray[index].labels,
-        weeklyArray[index].counts,
-        'weekly'
+        dailyArray[index].labels,
+        dailyArray[index].counts,
+        'daily'
       );
     };
     setWeeklyData(contData());
@@ -202,7 +194,7 @@ const Graph: React.FC<Props> = (props) => {
   };
   const changeGraphSpan = async (n: number) => {
     switch (currentData.labels) {
-      case weeklyData.labels:
+      case dailyData.labels:
         setCurrentWeeklyIndex(currentWeeklyIndex + n);
         getWeeklyData(currentWeeklyIndex + n);
 
@@ -221,10 +213,10 @@ const Graph: React.FC<Props> = (props) => {
         <div className="span-display__wrapper">
           <div className="prev-button">
             {(() => {
-              if (currentData.labels !== weeklyData.labels) return;
-              if (currentData.labels === weeklyData.labels) {
-                // weekly
-                if (currentWeeklyIndex !== weeklyArray.length - 1) {
+              if (currentData.labels !== dailyData.labels) return;
+              if (currentData.labels === dailyData.labels) {
+                // daily
+                if (currentWeeklyIndex !== dailyArray.length - 1) {
                   return (
                     <div
                       onClick={async () => {
@@ -246,8 +238,8 @@ const Graph: React.FC<Props> = (props) => {
           <div className="next-button">
             {(() => {
               if (currentData === yearlyData) return;
-              if (currentData.labels === weeklyData.labels) {
-                // weekly
+              if (currentData.labels === dailyData.labels) {
+                // daily
                 if (currentWeeklyIndex !== 0) {
                   return (
                     <div

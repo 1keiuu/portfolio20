@@ -52,18 +52,18 @@ func GetContributions(c *gin.Context) {
 		contributionsArray = append(contributionsArray, contributions)
 	}
 
-	wCounts, wLabels := getWeeklyData(contributionsArray)
+	wCounts, wLabels := getDailyData(contributionsArray)
 	mCounts, mLabels := getMonthlyData(contributionsArray)
 	yCounts, yLabels := getYearlyData(contributionsArray)
 
 	c.JSON(http.StatusOK, gin.H{
-		"weekly":  LabelsAndCountsMultiple{Counts: wCounts, Labels: wLabels},
+		"daily":   LabelsAndCountsMultiple{Counts: wCounts, Labels: wLabels},
 		"monthly": LabelsAndCounts{Counts: mCounts, Labels: mLabels},
 		"yearly":  LabelsAndCounts{Counts: yCounts, Labels: yLabels},
 	})
 }
 
-func culcWeeklyData(array []Contribution, todaysContributionIndex int) ([][]int, [][]string) {
+func culcDailyData(array []Contribution, todaysContributionIndex int) ([][]int, [][]string) {
 
 	from := todaysContributionIndex // 週の初日
 	to := from + 7                  // 週の最終日
@@ -105,7 +105,7 @@ func reverseIntArray(array []int) []int {
 	return outArray
 }
 
-func getWeeklyData(array []Contribution) ([][]int, [][]string) {
+func getDailyData(array []Contribution) ([][]int, [][]string) {
 	// 日付time.Now()を日本時間へ
 	nowUTC := time.Now().UTC()
 	jst := time.FixedZone("Asia/Tokyo", 9*60*60)
@@ -124,7 +124,7 @@ func getWeeklyData(array []Contribution) ([][]int, [][]string) {
 		}
 	}
 
-	counts, labels := culcWeeklyData(array, todaysContributionIndex)
+	counts, labels := culcDailyData(array, todaysContributionIndex)
 
 	return counts, labels
 }
