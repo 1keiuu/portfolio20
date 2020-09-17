@@ -1,8 +1,8 @@
-import { combineReducers, createStore } from "redux";
+import { combineReducers, createStore } from 'redux';
 
-import { productReducer } from "./product/reducer";
-import { skillReducer } from "./skill/reducer";
-
+import { productReducer } from './product/reducer';
+import { skillReducer } from './skill/reducer';
+import { signInStatusReducer } from './signInStatus/reducer';
 // *
 // * store 本体
 // *
@@ -11,6 +11,7 @@ import { skillReducer } from "./skill/reducer";
 const rootReducer = combineReducers({
   product: productReducer,
   skill: skillReducer,
+  signInStatus: signInStatusReducer,
 });
 
 // states type

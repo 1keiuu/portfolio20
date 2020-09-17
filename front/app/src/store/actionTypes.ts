@@ -4,8 +4,10 @@
 // *
 
 export const ActionTypes = {
-  addProducts: "ADD_PRODUCTS",
-  resetProducts: "RESET_PRODUCTS",
-  addSkills: "ADD_SKILLS",
-  resetSkills: "RESET_SKILLS",
+  addProducts: 'ADD_PRODUCTS',
+  resetProducts: 'RESET_PRODUCTS',
+  addSkills: 'ADD_SKILLS',
+  resetSkills: 'RESET_SKILLS',
+  setSignInStatus: 'SET_SIGNIN',
+  resetSignInStatus: 'RESET_SIGNIN',
 } as const;

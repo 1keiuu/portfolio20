@@ -1,5 +1,5 @@
-import { ActionTypes } from "../actionTypes";
-import { SkillActionTypes } from "./types";
+import { ActionTypes } from '../actionTypes';
+import { SkillActionTypes } from './types';
 
 // *
 // * action creators
