@@ -1,19 +1,19 @@
-import React from "react";
-import List from "@material-ui/core/List";
+import React from 'react';
+import List from '@material-ui/core/List';
 import {
   ListItem,
   ListItemIcon,
   ListItemText,
   Divider,
   Drawer,
-} from "@material-ui/core";
-import AssignmentInd from "@material-ui/icons/AssignmentInd";
-import ExitToApp from "@material-ui/icons/ExitToApp";
-import Assignment from "@material-ui/icons/Assignment";
-import "../../styles/components/sidebar.scss";
-import { withRouter } from "react-router-dom";
-import * as H from "history";
-import { RouteComponentProps } from "react-router-dom";
+} from '@material-ui/core';
+import AssignmentInd from '@material-ui/icons/AssignmentInd';
+import ExitToApp from '@material-ui/icons/ExitToApp';
+import Assignment from '@material-ui/icons/Assignment';
+import '../../styles/components/sidebar.scss';
+import { withRouter } from 'react-router-dom';
+import * as H from 'history';
+import { RouteComponentProps } from 'react-router-dom';
 
 interface Props extends RouteComponentProps<{}> {
   history: H.History;
@@ -22,17 +22,17 @@ interface Props extends RouteComponentProps<{}> {
 const SideBar: React.FC<Props> = (props) => {
   const handleClick = (type: string) => {
     switch (type) {
-      case "profile":
-        props.history.push("/admin/profile");
+      case 'profile':
+        props.history.push('/admin/profile');
         break;
-      case "product":
-        props.history.push("/admin/product");
+      case 'product':
+        props.history.push('/admin/product');
         break;
-      case "skill":
-        props.history.push("/admin/skill");
+      case 'skill':
+        props.history.push('/admin/skill');
         break;
-      case "signOut":
-        props.history.push("/admin/signIn");
+      case 'signOut':
+        props.history.push('/admin/signIn');
         break;
     }
   };
@@ -44,26 +44,30 @@ const SideBar: React.FC<Props> = (props) => {
       // open={state[anchor]}
       // onClose={toggleDrawer(anchor, false)}
     >
-      <List component="nav" aria-label="main mailbox folders">
+      <List
+        component="nav"
+        style={{ justifyContent: 'flex-start', paddingTop: '10vh' }}
+        aria-label="main mailbox folders"
+      >
         <ListItem
           button
           onClick={() => {
-            handleClick("profile");
+            handleClick('profile');
           }}
         >
           <ListItemIcon>
-            <AssignmentInd style={{ color: "rgb(194, 199, 208)" }} />
+            <AssignmentInd style={{ color: 'rgb(194, 199, 208)' }} />
           </ListItemIcon>
           <ListItemText color="white" primary="プロフィール" />
         </ListItem>
         <ListItem
           button
           onClick={() => {
-            handleClick("product");
+            handleClick('product');
           }}
         >
           <ListItemIcon>
-            <Assignment style={{ color: "rgb(194, 199, 208)" }} />
+            <Assignment style={{ color: 'rgb(194, 199, 208)' }} />
           </ListItemIcon>
           <ListItemText primary="成果物管理" />
         </ListItem>
@@ -71,11 +75,11 @@ const SideBar: React.FC<Props> = (props) => {
         <ListItem
           button
           onClick={() => {
-            handleClick("skill");
+            handleClick('skill');
           }}
         >
           <ListItemIcon>
-            <Assignment style={{ color: "rgb(194, 199, 208)" }} />
+            <Assignment style={{ color: 'rgb(194, 199, 208)' }} />
           </ListItemIcon>
           <ListItemText primary="スキル" />
         </ListItem>
@@ -83,11 +87,11 @@ const SideBar: React.FC<Props> = (props) => {
         <ListItem
           button
           onClick={() => {
-            handleClick("signOut");
+            handleClick('signOut');
           }}
         >
           <ListItemIcon>
-            <ExitToApp style={{ color: "rgb(194, 199, 208)" }} />
+            <ExitToApp style={{ color: 'rgb(194, 199, 208)' }} />
           </ListItemIcon>
           <ListItemText primary="サインアウト" />
         </ListItem>

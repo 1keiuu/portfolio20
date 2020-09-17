@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import * as H from 'history';
 import { withRouter } from 'react-router-dom';
-import AdminInner from './Inner';
+import AdminInner from './AdminInner';
 import {
   TextField,
   FormControl,

@@ -2,9 +2,10 @@ import React from 'react';
 import './App.scss';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Layout from './components/Layout';
-import AdminSignIn from './pages/admin/SignIn';
-import AdminHome from './pages/admin/Home';
-import AdminProduct from './pages/admin/Product';
+import AdminLayout from './pages/admin/AdminLayout';
+import AdminSignIn from './pages/admin/AdminSignIn';
+import AdminHome from './pages/admin/AdminHome';
+import AdminProduct from './pages/admin/AdminProduct';
 import Home from './pages/home/Home';
 import ProfilePage from './pages/profile/ProfilePage';
 import ProductsIndex from './pages/product/ProductsIndex';
@@ -28,9 +29,16 @@ const App: React.FC<PageProps> = () => {
         ) : (
           <div></div>
         )}
-        <Route path="/admin/signIn" component={AdminSignIn}></Route>
-        <Route exact path="/admin" component={AdminHome}></Route>
-        <Route path="/admin/product" component={AdminProduct}></Route>
+        <Route>
+          <AdminLayout>
+            <Route path="/admin/signIn" render={() => <AdminSignIn />}></Route>
+            <Route exact path="/admin" render={() => <AdminHome />}></Route>
+            <Route
+              path="/admin/product"
+              render={() => <AdminProduct />}
+            ></Route>
+          </AdminLayout>
+        </Route>
       </Router>
     </div>
   );

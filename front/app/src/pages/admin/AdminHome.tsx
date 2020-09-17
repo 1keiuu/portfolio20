@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import * as H from 'history';
 import { withRouter } from 'react-router-dom';
-import AdminInner from './Inner';
+import AdminInner from './AdminInner';
 import '../../styles/admin/home.scss';
 interface Props extends RouteComponentProps<{}> {
   history: H.History;
