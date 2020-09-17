@@ -5,7 +5,9 @@ import Layout from './components/Layout';
 import AdminLayout from './pages/admin/AdminLayout';
 import AdminSignIn from './pages/admin/AdminSignIn';
 import AdminHome from './pages/admin/AdminHome';
-import AdminProduct from './pages/admin/AdminProduct';
+import AdminProduct from './pages/admin/AdminProducts';
+import AdminProfile from './pages/admin/AdminProfile';
+import AdminSkill from './pages/admin/AdminSkills';
 import Home from './pages/home/Home';
 import ProfilePage from './pages/profile/ProfilePage';
 import ProductsIndex from './pages/product/ProductsIndex';
@@ -37,6 +39,11 @@ const App: React.FC<PageProps> = () => {
               path="/admin/product"
               render={() => <AdminProduct />}
             ></Route>
+            <Route
+              path="/admin/profile"
+              render={() => <AdminProfile />}
+            ></Route>
+            <Route path="/admin/skill" render={() => <AdminSkill />}></Route>
           </AdminLayout>
         </Route>
       </Router>

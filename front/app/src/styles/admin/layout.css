@@ -1,3 +1,7 @@
 .admin__container {
   height: 100vh;
 }
+
+.admin__container p {
+  color: #333 !important;
+}
