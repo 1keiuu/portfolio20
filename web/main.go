@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 	"os"
-	"work/admincontroller"
+	"work/adminController"
 	"work/controller"
 
 	"github.com/getsentry/sentry-go"
@@ -58,7 +58,8 @@ func main() {
 	engine.GET("/api/products/:id", controller.GetProduct)
 	engine.GET("/api/skills", controller.GetSkills)
 	engine.POST("/api/contacts", controller.PostContacts)
-	engine.POST("/api/admin/signIn", admincontroller.SignIn)
+	engine.POST("/api/admin/signIn", adminController.SignIn)
+	// engine.POST("/api/admin/create", adminController.CreateAdminUser)
 
 	engine.Run(":8000")
 	if err := engine.Run(); err != nil {

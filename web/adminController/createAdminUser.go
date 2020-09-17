@@ -1,4 +1,4 @@
-package admincontroller
+package adminController
 
 import (
 	"fmt"
@@ -28,7 +28,7 @@ func CreateAdminUser(c *gin.Context) {
 		if err := insertDB(email, password); err != nil {
 			fmt.Println("same")
 		}
-		c.JSON(http.StatusOK, gin.H{"email": json.Password})
+		c.JSON(http.StatusOK, gin.H{"email": json.Email})
 	}
 }
 
@@ -44,5 +44,4 @@ func insertDB(email string, password string) []error {
 	ins.Exec(email, passwordEncrypt)
 
 	return nil
-
 }

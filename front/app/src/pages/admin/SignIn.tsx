@@ -1,26 +1,26 @@
-import React, { FormEvent, useState } from "react";
-import axios from "axios";
-import { RouteComponentProps } from "react-router-dom";
-import * as H from "history";
-import { withRouter } from "react-router-dom";
-import "../../styles/admin/signin.scss";
-import { Button, TextField } from "@material-ui/core";
+import React, { FormEvent, useState } from 'react';
+import axios from '../../plugin/axios/index';
+import { RouteComponentProps } from 'react-router-dom';
+import * as H from 'history';
+import { withRouter } from 'react-router-dom';
+import '../../styles/admin/signin.scss';
+import { Button, TextField } from '@material-ui/core';
 interface Props extends RouteComponentProps<{}> {
   history: H.History;
 }
 
 const AdminSignIn: React.FC<Props> = (props) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errorText, setErrorText] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorText, setErrorText] = useState('');
 
   const signIn = async (event: FormEvent) => {
     event.preventDefault();
-    setErrorText("");
+    setErrorText('');
 
-    try {
-      const URL = `${process.env.REACT_APP_API_URL}/api/admin/signIn`;
-      const res = await axios.post(
+    const URL = '/admin/signIn';
+    await axios
+      .post(
         URL,
         {
           email: email,
@@ -28,25 +28,26 @@ const AdminSignIn: React.FC<Props> = (props) => {
         },
         {
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         }
-      );
-      console.log(res);
-      props.history.push({
-        pathname: "/admin",
-        state: res.data,
+      )
+      .then((res) => {
+        props.history.push({
+          pathname: '/admin',
+          state: res.data,
+        });
+      })
+      .catch((e) => {
+        setErrorText('ログインに失敗しました');
       });
-    } catch {
-      setErrorText("ログインに失敗しました");
-    }
   };
   const handleChange = (event: { target: { value: string } }, type: string) => {
     switch (type) {
-      case "email":
+      case 'email':
         setEmail(event.target.value);
         break;
-      case "password":
+      case 'password':
         setPassword(event.target.value);
         break;
     }
@@ -66,7 +67,7 @@ const AdminSignIn: React.FC<Props> = (props) => {
           type="text"
           value={email}
           onChange={(e) => {
-            handleChange(e, "email");
+            handleChange(e, 'email');
           }}
           className="sign-in__email-input"
         />
@@ -76,7 +77,7 @@ const AdminSignIn: React.FC<Props> = (props) => {
           type="password"
           value={password}
           onChange={(e) => {
-            handleChange(e, "password");
+            handleChange(e, 'password');
           }}
           className="sign-in__password-input"
         />
