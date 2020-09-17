@@ -1,22 +1,18 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import withStyles, { StyleRules } from '@material-ui/core/styles/withStyles';
-import createStyles from '@material-ui/core/styles/createStyles';
 import '../../styles/admin/layout.scss';
-import axios from '../../plugin/axios/index';
+import store from '../../store/index';
+import * as H from 'history';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-const styles = (): StyleRules =>
-  createStyles({
-    root: {
-      textAlign: 'center',
-    },
-  });
+interface Props extends RouteComponentProps<{}> {
+  history: H.History;
+}
 
-const Layout: React.FC = (props) => {
+const Layout: React.FC<Props> = (props) => {
+  const signInStatus = store.getState().signInStatus.value;
   useEffect(() => {
-    const checkSignIn = async () => {};
-    const URL = '/admin/signIn';
+    if (!signInStatus) props.history.push('/admin/signIn');
   }, []);
   return <div className="admin__container">{props.children}</div>;
 };
-export default withStyles(styles)(Layout);
+export default withRouter(Layout);

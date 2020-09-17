@@ -5,6 +5,9 @@ import * as H from 'history';
 import { withRouter } from 'react-router-dom';
 import '../../styles/admin/signin.scss';
 import { Button, TextField } from '@material-ui/core';
+import { setSignInStatusAction } from '../../store/signInStatus/actions';
+import { useSelector, useDispatch } from 'react-redux';
+
 interface Props extends RouteComponentProps<{}> {
   history: H.History;
 }
@@ -13,6 +16,7 @@ const AdminSignIn: React.FC<Props> = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorText, setErrorText] = useState('');
+  const dispatch = useDispatch();
 
   const signIn = async (event: FormEvent) => {
     event.preventDefault();
@@ -33,6 +37,7 @@ const AdminSignIn: React.FC<Props> = (props) => {
         }
       )
       .then((res) => {
+        dispatch(setSignInStatusAction(true));
         props.history.push({
           pathname: '/admin',
           state: res.data,

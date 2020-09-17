@@ -14,6 +14,7 @@ import '../../styles/components/sidebar.scss';
 import { withRouter } from 'react-router-dom';
 import * as H from 'history';
 import { RouteComponentProps } from 'react-router-dom';
+import { resetSignInStatussAction } from '../../store/signInStatus/actions';
 
 interface Props extends RouteComponentProps<{}> {
   history: H.History;
@@ -32,18 +33,14 @@ const SideBar: React.FC<Props> = (props) => {
         props.history.push('/admin/skill');
         break;
       case 'signOut':
+        resetSignInStatussAction();
         props.history.push('/admin/signIn');
         break;
     }
   };
 
   return (
-    <Drawer
-      variant="permanent"
-      // anchor={anchor}
-      // open={state[anchor]}
-      // onClose={toggleDrawer(anchor, false)}
-    >
+    <Drawer variant="permanent">
       <List
         component="nav"
         style={{ justifyContent: 'flex-start', paddingTop: '10vh' }}
