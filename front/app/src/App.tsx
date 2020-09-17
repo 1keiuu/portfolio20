@@ -33,31 +33,39 @@ const App: React.FC<PageProps> = () => {
         ) : (
           <div></div>
         )}
-        <Route>
-          <Provider store={store}>
-            <PersistGate loading={null} persistor={persistor}>
-              <AdminLayout>
-                <Route
-                  path="/admin/signIn"
-                  render={() => <AdminSignIn />}
-                ></Route>
-                <Route exact path="/admin" render={() => <AdminHome />}></Route>
-                <Route
-                  path="/admin/product"
-                  render={() => <AdminProduct />}
-                ></Route>
-                <Route
-                  path="/admin/profile"
-                  render={() => <AdminProfile />}
-                ></Route>
-                <Route
-                  path="/admin/skill"
-                  render={() => <AdminSkill />}
-                ></Route>
-              </AdminLayout>
-            </PersistGate>
-          </Provider>
-        </Route>
+        {window.location.pathname.includes('/admin') ? (
+          <Route>
+            <Provider store={store}>
+              <PersistGate loading={null} persistor={persistor}>
+                <AdminLayout>
+                  <Route
+                    path="/admin/signIn"
+                    render={() => <AdminSignIn />}
+                  ></Route>
+                  <Route
+                    exact
+                    path="/admin"
+                    render={() => <AdminHome />}
+                  ></Route>
+                  <Route
+                    path="/admin/product"
+                    render={() => <AdminProduct />}
+                  ></Route>
+                  <Route
+                    path="/admin/profile"
+                    render={() => <AdminProfile />}
+                  ></Route>
+                  <Route
+                    path="/admin/skill"
+                    render={() => <AdminSkill />}
+                  ></Route>
+                </AdminLayout>
+              </PersistGate>
+            </Provider>
+          </Route>
+        ) : (
+          <div></div>
+        )}
       </Router>
     </div>
   );
