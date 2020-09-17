@@ -9,7 +9,7 @@ const initialState: SignInStatus = {
   value: false,
 };
 
-export const signInStatusReducer = (
+const signInStatusReducer = (
   state = initialState,
   action: SignInStatusActionTypes
 ): SignInStatus => {
@@ -22,3 +22,5 @@ export const signInStatusReducer = (
       return state;
   }
 };
+
+export default signInStatusReducer;

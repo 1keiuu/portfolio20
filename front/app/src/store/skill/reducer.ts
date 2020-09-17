@@ -1,5 +1,5 @@
-import { ActionTypes } from "../actionTypes";
-import { Skill, SkillActionTypes } from "./types";
+import { ActionTypes } from '../actionTypes';
+import { Skill, SkillActionTypes } from './types';
 
 // *
 // * reducer
@@ -9,7 +9,7 @@ const initialState: Skill = {
   value: [],
 };
 
-export const skillReducer = (
+const skillReducer = (
   state = initialState,
   action: SkillActionTypes
 ): Skill => {
@@ -22,3 +22,5 @@ export const skillReducer = (
       return state;
   }
 };
+
+export default skillReducer;

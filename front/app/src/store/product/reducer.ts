@@ -1,5 +1,5 @@
-import { ActionTypes } from "../actionTypes";
-import { Product, ProductActionTypes } from "./types";
+import { ActionTypes } from '../actionTypes';
+import { Product, ProductActionTypes } from './types';
 
 // *
 // * reducer
@@ -9,7 +9,7 @@ const initialState: Product = {
   value: [],
 };
 
-export const productReducer = (
+const productReducer = (
   state = initialState,
   action: ProductActionTypes
 ): Product => {
@@ -22,3 +22,5 @@ export const productReducer = (
       return state;
   }
 };
+
+export default productReducer;

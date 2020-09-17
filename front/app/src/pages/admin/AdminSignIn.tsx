@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import '../../styles/admin/signin.scss';
 import { Button, TextField } from '@material-ui/core';
 import { setSignInStatusAction } from '../../store/signInStatus/actions';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 interface Props extends RouteComponentProps<{}> {
   history: H.History;
