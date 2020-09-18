@@ -1,5 +1,5 @@
-import React from "react";
-import "../styles/verticalSlider.scss";
+import React from 'react';
+import '../styles/verticalSlider.scss';
 
 const VerticalSlider: React.FC = (props) => {
   return (
