@@ -65,7 +65,6 @@ const AdminSignIn: React.FC<Props> = (props) => {
         }}
         className="sign-in__form"
       >
-        <p>Admin</p>
         <TextField
           variant="outlined"
           placeholder="Email Address"

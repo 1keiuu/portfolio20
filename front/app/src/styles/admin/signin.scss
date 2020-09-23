@@ -11,10 +11,20 @@
     .sign-in__email-input {
       width: 30%;
       margin-bottom: 25px;
+      .MuiInputBase-formControl {
+        border: #fff solid 1px;
+        color: #fff;
+        outline: 0;
+      }
     }
     .sign-in__password-input {
       width: 30%;
       margin-bottom: 25px;
+      .MuiInputBase-formControl {
+        border: #fff solid 1px;
+        color: #fff;
+        outline: 0;
+      }
     }
   }
   .error-text {

@@ -17,9 +17,21 @@
   margin-bottom: 25px;
 }
 
+.sign-in__wrapper .sign-in__form .sign-in__email-input .MuiInputBase-formControl {
+  border: #fff solid 1px;
+  color: #fff;
+  outline: 0;
+}
+
 .sign-in__wrapper .sign-in__form .sign-in__password-input {
   width: 30%;
   margin-bottom: 25px;
+}
+
+.sign-in__wrapper .sign-in__form .sign-in__password-input .MuiInputBase-formControl {
+  border: #fff solid 1px;
+  color: #fff;
+  outline: 0;
 }
 
 .sign-in__wrapper .error-text {
