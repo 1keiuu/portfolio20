@@ -3,7 +3,6 @@ import '../../styles/admin/layout.scss';
 import store from '../../store/index';
 import * as H from 'history';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-
 interface Props extends RouteComponentProps<{}> {
   history: H.History;
 }
