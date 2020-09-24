@@ -61,6 +61,14 @@ const Header: React.FC<Props> = (props) => {
 
   return (
     <header className={'header' + ' ' + (isMenuOpen ? '--is-menu-open' : '')}>
+      <div
+        onClick={() => {
+          handleItemClick('/gallery');
+        }}
+        className="gallery__link"
+      >
+        Photo Gallery
+      </div>
       <CSSTransition
         in={isMenuOpen}
         classNames="menu-items__back-ground"
@@ -92,14 +100,6 @@ const Header: React.FC<Props> = (props) => {
                 className="menu-item"
               >
                 Product
-              </div>
-              <div
-                onClick={() => {
-                  handleItemClick('/gallery');
-                }}
-                className="menu-item"
-              >
-                Photo
               </div>
               <div
                 onClick={() => {
