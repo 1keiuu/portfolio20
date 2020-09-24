@@ -12,6 +12,7 @@ import Home from './pages/home/Home';
 import ProfilePage from './pages/profile/ProfilePage';
 import ProductsIndex from './pages/product/ProductsIndex';
 import ContactPage from './pages/contact/ContactPage';
+import GalleryPage from './pages/gallery/GalleryPage';
 import { PersistGate } from 'redux-persist/integration/react';
 import store, { persistor } from './store/configureStore';
 import { Provider } from 'react-redux';
@@ -27,6 +28,7 @@ const App: React.FC<PageProps> = () => {
               <Route exact path="/" render={() => <Home />}></Route>
               <Route path="/profile" render={() => <ProfilePage />}></Route>
               <Route path="/product" render={() => <ProductsIndex />}></Route>
+              <Route path="/gallery" render={() => <GalleryPage />}></Route>
               <Route path="/contact" render={() => <ContactPage />}></Route>
             </Layout>
           </Route>

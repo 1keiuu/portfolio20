@@ -107,7 +107,32 @@ const Sidebar: React.FC<Props> = (props) => {
             </p>
           </Link>
         </div>
-
+        <div className="menu-item__wrapper">
+          <Link
+            to="/gallery"
+            className={
+              'menu-item' +
+              (selectedItem === 'gallery' ? ' --hover' : '') +
+              (props.current_page.includes('/gallery') ? ' --active' : '')
+            }
+            onMouseEnter={() => {
+              setSelectedItem('gallery');
+            }}
+            onMouseLeave={() => {
+              setSelectedItem('');
+            }}
+          >
+            <p
+              className={
+                'menu-item__text' +
+                ' ' +
+                (props.is_product_page ? '--black' : '')
+              }
+            >
+              Photo
+            </p>
+          </Link>
+        </div>
         <div className="menu-item__wrapper">
           <Link
             to="/contact"

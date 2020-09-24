@@ -95,6 +95,14 @@ const Header: React.FC<Props> = (props) => {
               </div>
               <div
                 onClick={() => {
+                  handleItemClick('/gallery');
+                }}
+                className="menu-item"
+              >
+                Photo
+              </div>
+              <div
+                onClick={() => {
                   handleItemClick('/contact');
                 }}
                 className="menu-item"
