@@ -240,6 +240,8 @@
   border-radius: 5px;
   z-index: 1;
   margin-top: 16px;
+  max-height: 70vh;
+  object-fit: contain;
 }
 
 .product-page .section .description__wrapper {
@@ -483,6 +485,7 @@
   }
   .product-page .section .section__image {
     width: 100%;
+    max-height: 50vh;
   }
   .product-page .section .description__wrapper {
     margin-left: 0;
