@@ -12,7 +12,7 @@
   width: 100vw;
   height: 100vh;
   position: absolute;
-  background: #fafafa;
+  background: #fcfcfc;
   z-index: -1;
 }
 
@@ -64,7 +64,7 @@
   width: 100%;
   top: 0;
   position: absolute;
-  background: #fafafa;
+  background: #fcfcfc;
 }
 
 .product-page .product-page__content .title-section .title-section__inner .span__inner {
@@ -82,7 +82,7 @@
 
 .product-page .product-page__content .title-section .title-section__inner .url__wrapper .url__cover {
   position: absolute;
-  background: #fafafa;
+  background: #fcfcfc;
 }
 
 .product-page .product-page__content .title-section .title-section__inner .url__wrapper .url__link {
@@ -164,7 +164,7 @@
   width: 100%;
   top: 0;
   position: absolute;
-  background: #fafafa;
+  background: #fcfcfc;
 }
 
 .product-page .product-page__content .title-section .title-section__inner .span__inner-enter-done .url__link {
@@ -245,7 +245,7 @@
 }
 
 .product-page .section .description__wrapper {
-  background: #fafafa;
+  background: #fcfcfc;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -297,7 +297,7 @@
 
 .product-page .section .description__wrapper .description .description__cover {
   position: absolute;
-  background: #fafafa;
+  background: #fcfcfc;
   height: 100%;
   width: 100%;
   top: 100%;
