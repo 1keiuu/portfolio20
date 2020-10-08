@@ -50,7 +50,7 @@ $descriptionHeight: 16px;
     width: 100vw;
     height: 100vh;
     position: absolute;
-    background: #fff;
+    background: rgb(250, 250, 250);
     z-index: -1;
     &.-enter-done {
       animation: slideCurtain 0.7s;
@@ -90,7 +90,7 @@ $descriptionHeight: 16px;
             width: 100%;
             top: 0;
             position: absolute;
-            background: #fff;
+            background: rgb(250, 250, 250);
           }
         }
 
@@ -106,7 +106,7 @@ $descriptionHeight: 16px;
           position: relative;
           .url__cover {
             position: absolute;
-            background: #fff;
+            background: rgb(250, 250, 250);
           }
 
           .url__link {
@@ -180,7 +180,7 @@ $descriptionHeight: 16px;
             width: 100%;
             top: 0;
             position: absolute;
-            background: #fff;
+            background: rgb(250, 250, 250);
           }
           .url__link {
             transform: translateY(-($spanHeight + 5));
@@ -261,7 +261,7 @@ $descriptionHeight: 16px;
       object-fit: contain;
     }
     .description__wrapper {
-      background: #fff;
+      background: rgb(250, 250, 250);
       display: flex;
       justify-content: center;
       width: 100%;
@@ -305,7 +305,7 @@ $descriptionHeight: 16px;
         }
         .description__cover {
           position: absolute;
-          background: #fff;
+          background: rgb(250, 250, 250);
           height: 100%;
           width: 100%;
           top: 100%;
