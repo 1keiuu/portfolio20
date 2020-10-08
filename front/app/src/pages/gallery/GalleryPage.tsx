@@ -10,9 +10,19 @@ const GalleryPage: React.FC = () => {
   const ref = useRef<HTMLInputElement>(null) as React.MutableRefObject<
     HTMLInputElement
   >;
-  const [value, setValue] = useState(0);
-  const [lastSlidesValue, setLastSlidesValue] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [progressVolume, setProgressVolume] = useState(0);
+  const [initialProgress, setInitialProgress] = useState(0);
 
+  const getFirstSlideLeft = () => {
+    const swiper__slides = document.getElementById('swiper__slides')
+      ?.childNodes[0].childNodes;
+    if (swiper__slides) {
+      const last__slides = swiper__slides[0] as HTMLElement;
+      return last__slides.getBoundingClientRect().left;
+    }
+    return 0;
+  };
   const getLastSlideLeft = () => {
     const swiper__slides = document.getElementById('swiper__slides')
       ?.childNodes[0].childNodes;
@@ -25,7 +35,9 @@ const GalleryPage: React.FC = () => {
   };
 
   useEffect(() => {
-    setLastSlidesValue(getLastSlideLeft());
+    setInitialProgress(getFirstSlideLeft());
+    setProgress(getFirstSlideLeft());
+    setProgressVolume(getLastSlideLeft() - getFirstSlideLeft());
   }, []);
 
   return (
@@ -35,7 +47,7 @@ const GalleryPage: React.FC = () => {
         centeredSlides
         freeMode
         onProgress={() => {
-          setValue(getLastSlideLeft());
+          setProgress(getFirstSlideLeft() + Math.abs(initialProgress));
         }}
         speed={1000}
         spaceBetween={30}
@@ -58,7 +70,11 @@ const GalleryPage: React.FC = () => {
           </div>
         </SwiperSlide>
       </Swiper>
-      <p className="text">{value}</p>
+      <div>
+        <span></span>
+      </div>
+      <p className="text1"> {progressVolume}</p>
+      <p className="text">{progress}</p>
     </div>
   );
 };

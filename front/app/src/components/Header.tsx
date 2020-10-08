@@ -61,14 +61,14 @@ const Header: React.FC<Props> = (props) => {
 
   return (
     <header className={'header' + ' ' + (isMenuOpen ? '--is-menu-open' : '')}>
-      <div
+      {/* <div
         onClick={() => {
           handleItemClick('/gallery');
         }}
         className="gallery__link"
       >
         Photo Gallery
-      </div>
+      </div> */}
       <CSSTransition
         in={isMenuOpen}
         classNames="menu-items__back-ground"
