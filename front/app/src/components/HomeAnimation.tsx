@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 import * as THREE from 'three';
 import '../styles/HomeAnimation.scss';
+import gif1 from "../images/top_gif/1.gif"
+import gif2 from "../images/top_gif/2.gif"
+import gif3 from "../images/top_gif/3.gif"
+
 const HomeAnimation = () => {
   //   const OrbitControls = require('three-orbitcontrols');
   const init = () => {
@@ -32,9 +36,9 @@ const HomeAnimation = () => {
     scene.add(directionalLight);
 
     const urlArray = [
-      'https://media.giphy.com/media/WrmapnnhP7tm0nPD6I/giphy.gif',
-      'https://media.giphy.com/media/e3LOYBU83CyoE/giphy.gif',
-      'https://media.giphy.com/media/TFlCbrht89RbG/giphy.gif',
+      gif1,
+      gif2,
+      gif3,
     ];
     var min = 0;
     var max = 2;

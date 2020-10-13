@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, lazy,Suspense, useState } from 'react';
 import '../../styles/home.scss';
 //swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -9,14 +9,15 @@ import 'swiper/components/pagination/pagination.scss';
 import * as H from 'history';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import HomeAnimation from '../../components/HomeAnimation';
 import ArrowPointerIcon from '../../components/ArrowPointerIcon';
+const HomeAnimation = lazy(() => import('../../components/HomeAnimation'));
+
 SwiperCore.use([Mousewheel]);
 
 interface Props extends RouteComponentProps<{}> {
   history: H.History;
 }
-
+const renderLoader = () => <p>Loading</p>;
 const Home: React.FC<Props> = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -80,7 +81,9 @@ const Home: React.FC<Props> = (props) => {
         <SwiperSlide>
           <CSSTransition in={isLoaded} timeout={0} classNames="home__inner">
             <div className="home__inner">
-              <HomeAnimation></HomeAnimation>
+            <Suspense fallback={renderLoader()}>
+                <HomeAnimation></HomeAnimation>
+                </Suspense>
               <div className="scroll-text__wrapper">
                 <div className="scroll-text__icon">
                   <ArrowPointerIcon fill="#d7d7d7"></ArrowPointerIcon>
