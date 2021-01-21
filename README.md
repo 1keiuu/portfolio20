@@ -6,9 +6,8 @@
 ### https://1k-cove.com/
 
 
-## 📟 開発環境  
-  TypeScript  
-  React  
+## 📟 開発環境    
+  React (TypeScript)
   Go (Gin)  
   MySQL  
   AWS (EC2,S3)
