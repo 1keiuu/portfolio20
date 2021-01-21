@@ -3,7 +3,7 @@
 
 
 ## 🌐 URL
-### https://1k-cove.com/
+~~### https://1k-cove.com/
 
 
 ## 📟 開発環境    
