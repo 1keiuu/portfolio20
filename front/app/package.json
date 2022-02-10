@@ -21,7 +21,7 @@
     "chart.js": "^2.9.3",
     "cra-template-typescript": "1.0.3",
     "moment": "^2.27.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "react": "^16.13.1",
     "react-chartjs-2": "^2.9.0",
     "react-circle": "^1.1.1",
